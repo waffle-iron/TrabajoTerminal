@@ -24,10 +24,6 @@
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		
-<!-- 		<property name="jdbcUrl" value="jdbc:mysql://127.4.199.2:3306/tt" /> -->
-<!-- 		<property name="user" value="admingktKSS3" /> -->
-<!-- 		<property name="password" value="2WisdFyFXuxI" /> -->
-
 		<property name="jdbcUrl" value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/tt" />
 		<property name="user" value="${OPENSHIFT_MYSQL_DB_USERNAME}" />
 		<property name="password" value="${OPENSHIFT_MYSQL_DB_PASSWORD}" />
