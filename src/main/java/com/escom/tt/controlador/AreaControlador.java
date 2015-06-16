@@ -21,7 +21,7 @@ public class AreaControlador {
 		List<Area> areas = null;
 		areas = areaServicio.mostrarTodas();
 		modelo.addAttribute("areas",areas);
-		
+		System.out.println("hola");
 		return "areas";
 	}
 }
