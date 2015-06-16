@@ -12,7 +12,7 @@
 <!-- BEGIN HEAD -->
 <head>
 
-<title>Areas | Trabajor terminal</title>
+<title>Areas | 	Trabajor terminal</title>
 <meta content="" name="description" />
 <meta content="" name="author" />
 
