@@ -24,4 +24,10 @@ public class AreaControlador {
 		System.out.println("hola");
 		return "areas";
 	}
+	
+	@RequestMapping(value="/prueba")
+	public String prueba(){
+		return "prueba";
+	}
+	
 }
