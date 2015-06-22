@@ -13,7 +13,7 @@ import com.escom.tt.servicio.AreaServicio;
 @Controller
 public class AreaControlador {
 
-	@Autowired(required=true)
+	@Autowired
 	private AreaServicio areaServicio;
 	
 	@RequestMapping(value="/areas")

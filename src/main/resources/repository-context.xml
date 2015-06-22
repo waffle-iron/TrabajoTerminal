@@ -28,7 +28,7 @@
 		<property name="user" value="${OPENSHIFT_MYSQL_DB_USERNAME}" />
 		<property name="password" value="${OPENSHIFT_MYSQL_DB_PASSWORD}" />
 
-<!-- 		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/tt" /> -->
+<!-- 		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/mydb" /> -->
 <!-- 		<property name="user" value="root" /> -->
 <!-- 		<property name="password" value="" /> -->
 
