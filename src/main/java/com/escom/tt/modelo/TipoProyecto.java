@@ -6,17 +6,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "area")
-public class Area {
+@Table(name="tipo_proyecto")
+public class TipoProyecto {
 	@Id
-	private int idArea;
+	private int idTipoProyecto;
 	@Column(name = "nombre")
 	private String nombre;
-	public int getIdArea() {
-		return idArea;
+	public int getIdTipoProyecto() {
+		return idTipoProyecto;
 	}
-	public void setIdArea(int idArea) {
-		this.idArea = idArea;
+	public void setIdTipoProyecto(int idTipoProyecto) {
+		this.idTipoProyecto = idTipoProyecto;
 	}
 	public String getNombre() {
 		return nombre;
@@ -24,8 +24,6 @@ public class Area {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	@Override
-	public String toString() {
-		return super.toString();
-	}
+	
+	
 }
