@@ -7,10 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Id del usuario solicitado: ${abc.getId()}</h1>
-<h1>Nombre del usuario solicitado: ${abc.getNombre()}</h1>
 
-<h1>Id del usuario solicitado: ${otro.getId()}</h1>
-<h1>Nombre del usuario solicitado: ${otro.getNombre()}</h1>
+	Un cambio
+
 </body>
 </html>
