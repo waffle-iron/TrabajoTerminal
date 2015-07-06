@@ -12,7 +12,7 @@ import com.escom.tt.repositorio.TipoProyectoRepositorio;
 
 @Service
 public class TipoProyectoServicio implements InterTipoProyecto{
-	@Autowired
+	
 	private TipoProyectoRepositorio tipoProyectoRepositorio;
 	
 	@Override
