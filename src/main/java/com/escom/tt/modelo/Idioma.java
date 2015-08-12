@@ -6,17 +6,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tipo_proyecto")
-public class TipoProyecto {
+@Table(name = "idioma")
+public class Idioma {
 	@Id
-	private int idTipoProyecto;
+	private String idIdioma;
 	@Column(name = "nombre")
 	private String nombre;
-	public int getIdTipoProyecto() {
-		return idTipoProyecto;
+	
+	public String getIdIdioma() {
+		return idIdioma;
 	}
-	public void setIdTipoProyecto(int idTipoProyecto) {
-		this.idTipoProyecto = idTipoProyecto;
+	public void setIdIdioma(String idIdioma) {
+		this.idIdioma = idIdioma;
 	}
 	public String getNombre() {
 		return nombre;
