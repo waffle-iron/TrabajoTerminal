@@ -1,22 +1,24 @@
 package com.escom.tt.modelo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "idioma")
+@Table(name = "IDIOMA")
 public class Idioma {
+
 	@Id
-	private String idIdioma;
+	@Column(name = "idIdiomas")
+	//@SequenceGenerator(name = "idArticuloSecuencia", sequenceName = "articulo_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer idIdioma;
+
 	@Column(name = "nombre")
 	private String nombre;
 	
-	public String getIdIdioma() {
+	public Integer getIdIdioma() {
 		return idIdioma;
 	}
-	public void setIdIdioma(String idIdioma) {
+	public void setIdIdioma(Integer idIdioma) {
 		this.idIdioma = idIdioma;
 	}
 	public String getNombre() {

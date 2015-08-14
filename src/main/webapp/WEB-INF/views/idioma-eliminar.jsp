@@ -50,7 +50,7 @@
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row">
 					<div class="col-md-12">
-						<h1>${mensanje}</h1>
+						${mensaje}
 					</div>
 				</div>
 				<!-- END PAGE CONTENT-->
