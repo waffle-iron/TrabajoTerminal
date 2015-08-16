@@ -1,6 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url value="/" var="contexto" />
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -53,7 +55,7 @@
 					<div class="col-md-12">
 						<ul>
 						<c:forEach items="${idiomas}" var="idioma">
-							<li>ID: ${idioma.idIdioma} ## NOMBRE: ${idioma.nombre}</li>
+							<li>ID: ${idioma.idIdioma} ## NOMBRE: ${idioma.nombre} <a href="${contexto}/idioma/${idioma.idIdioma}/editar">EDITAR</a> ******* <a href="${contexto}/idioma/eliminar/${idioma.idIdioma}">ELIMINAR</a></li>
 						</c:forEach>
 						</ul>
 					</div>

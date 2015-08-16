@@ -8,11 +8,11 @@ import java.util.List;
  * Created by darcusfenix on 13/08/15.
  */
 public interface IdiomaRepositorio {
-    void crearIdioma(Idioma idioma);
+    Integer crearIdioma(Idioma idioma);
 
     void eliminarIdioma(Idioma idioma);
 
-    void actualizarIdioma(Idioma idioma);
+    Integer actualizarIdioma(Idioma idioma);
 
     Idioma buscarPorId(Integer id);
 

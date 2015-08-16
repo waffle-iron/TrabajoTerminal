@@ -1,10 +1,12 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 <div class="page-header navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="index.html"> <img
-				src="${pageContext.request.contextPath}/resources/tema/img/logo-light.png" alt="logo"
+				src="${context}/resources/tema/img/logo-light.png" alt="logo"
 				class="logo-default" />
 			</a>
 			<div class="menu-toggler sidebar-toggler">
@@ -167,7 +169,7 @@
 								<ul class="dropdown-menu-list scroller" style="height: 275px;"
 									data-handle-color="#637283">
 									<li><a href="inbox.html?a=view"> <span class="photo">
-												<img src="../../assets/admin/layout3/img/avatar2.jpg"
+												<img src="${context}/assets/admin/layout3/img/avatar2.jpg"
 												class="img-circle" alt="">
 										</span> <span class="subject"> <span class="from"> Lisa
 													Wong </span> <span class="time">Just Now </span>
@@ -175,7 +177,7 @@
 												nibh. auctor nibh auctor nibh... </span>
 									</a></li>
 									<li><a href="inbox.html?a=view"> <span class="photo">
-												<img src="../../assets/admin/layout3/img/avatar3.jpg"
+												<img src="${context}/assets/admin/layout3/img/avatar3.jpg"
 												class="img-circle" alt="">
 										</span> <span class="subject"> <span class="from">
 													Richard Doe </span> <span class="time">16 mins </span>
@@ -183,7 +185,7 @@
 												nibh congue nibh. auctor nibh auctor nibh... </span>
 									</a></li>
 									<li><a href="inbox.html?a=view"> <span class="photo">
-												<img src="../../assets/admin/layout3/img/avatar1.jpg"
+												<img src="${context}/assets/admin/layout3/img/avatar1.jpg"
 												class="img-circle" alt="">
 										</span> <span class="subject"> <span class="from"> Bob
 													Nilson </span> <span class="time">2 hrs </span>
@@ -191,7 +193,7 @@
 												congue nibh. auctor nibh auctor nibh... </span>
 									</a></li>
 									<li><a href="inbox.html?a=view"> <span class="photo">
-												<img src="../../assets/admin/layout3/img/avatar2.jpg"
+												<img src="${context}/assets/admin/layout3/img/avatar2.jpg"
 												class="img-circle" alt="">
 										</span> <span class="subject"> <span class="from"> Lisa
 													Wong </span> <span class="time">40 mins </span>
@@ -199,7 +201,7 @@
 												congue nibh... </span>
 									</a></li>
 									<li><a href="inbox.html?a=view"> <span class="photo">
-												<img src="../../assets/admin/layout3/img/avatar3.jpg"
+												<img src="${context}/assets/admin/layout3/img/avatar3.jpg"
 												class="img-circle" alt="">
 										</span> <span class="subject"> <span class="from">
 													Richard Doe </span> <span class="time">46 mins </span>
@@ -303,7 +305,7 @@
 						data-hover="dropdown" data-close-others="true"> <span
 							class="username username-hide-on-mobile"> Nick </span> <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
 							<img alt="" class="img-circle"
-							src="${pageContext.request.contextPath}/resources/tema/img/avatar9.jpg" />
+							src="${context}/resources/tema/img/avatar9.jpg" />
 					</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li><a href="extra_profile.html"> <i class="icon-user"></i>

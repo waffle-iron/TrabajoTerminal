@@ -4,12 +4,13 @@ import com.escom.tt.repositorio.IdiomaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import com.escom.tt.modelo.Idioma;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -18,35 +19,70 @@ public class IdiomaControlador {
 	@Autowired
 	private IdiomaRepositorio idiomaRepositorio;
 	
-	@RequestMapping(value="/idioma/crear")
-	public String crear(@RequestParam(value = "nombre", required = true) String nombre,
-						Model modelo) {
-
-		if (nombre != null){
-			Idioma idioma = new Idioma();
-
-			idioma.setNombre(nombre);
-
-			idiomaRepositorio.crearIdioma(idioma);
-
-			modelo.addAttribute("mensanje","Se ha creado un nuevo idioma con el nombre: " + nombre);
-		}else{
-			modelo.addAttribute("mensanje","No se puede agregar, debes ingresar el nombre, ejemplo:  ?nombre=INGLÉS");
-		}
-
+	@RequestMapping(value="/idioma/crear", method = RequestMethod.GET)
+	public String crear(Model modelo) {
+		modelo.addAttribute("idioma", new Idioma());
 		return "idioma-crear";
 	}
 
-	@RequestMapping(value="/idioma/ver/{idiomaId:[0-9]+}")
-	public String ver(@PathVariable Integer idiomaId, Model modelo) {
+	@RequestMapping(value="/idioma/guardar", method = RequestMethod.POST)
+	public String guardar(@ModelAttribute("idioma") @Valid Idioma idioma, BindingResult validacion, Model modelo) {
+		String ruta = null;
 
+		if (validacion.hasErrors()){
+			modelo.addAttribute("idioma", idioma);
+			ruta = "idioma-crear";
+		}else{
+			Integer id = idiomaRepositorio.crearIdioma(idioma);
+			ruta = "redirect:/idioma/ver/" + idioma.getIdIdioma()+ "/?creado=true";
+		}
+		return ruta;
+	}
+	@RequestMapping(value="/idioma/guardarCambios", method = RequestMethod.POST)
+	public String guardarCambios(@ModelAttribute("idioma") @Valid Idioma idioma, BindingResult validacion, Model modelo) {
+		String ruta = null;
+
+		if (validacion.hasErrors()){
+			modelo.addAttribute("idioma", idioma);
+			ruta = "idioma-editar";
+		}else{
+			Integer id = idiomaRepositorio.actualizarIdioma(idioma);
+			ruta = "redirect:/idioma/ver/" + idioma.getIdIdioma() + "/?actualizado=true";
+		}
+		return ruta;
+	}
+
+	@RequestMapping(value="/idioma/{idiomaId:[0-9]+}/editar", method = RequestMethod.GET)
+	public String editar(@PathVariable Integer idiomaId,Model modelo) {
+		Idioma idioma = null;
+		String ruta = null;
+		idioma = idiomaRepositorio.buscarPorId(idiomaId);
+
+		if (idioma != null) {
+			modelo.addAttribute("idioma", idioma);
+			ruta = "idioma-editar";
+		}
+		else
+			ruta = "redirect:/idioma";
+
+		return ruta;
+	}
+
+	@RequestMapping(value="/idioma/ver/{idiomaId:[0-9]+}")
+	public String ver(@PathVariable Integer idiomaId, Model modelo, Boolean actualizado, Boolean creado) {
+		String ruta = null;
 		Idioma idioma = null;
 
 		idioma = idiomaRepositorio.buscarPorId(idiomaId);
+		if (idioma != null) {
+			modelo.addAttribute("idioma", idioma);
+			modelo.addAttribute("actualizado", actualizado);
+			modelo.addAttribute("creado", creado);
+			ruta = "idioma-ver";
+		}else
+			ruta = "redirect:/idioma";
 
-		modelo.addAttribute("idioma", idioma);
-
-		return "idioma-ver";
+		return ruta;
 	}
 
 	@RequestMapping(value="/idioma/eliminar/{idiomaId:[0-9]+}")
@@ -70,5 +106,4 @@ public class IdiomaControlador {
 
 		return "idioma-todos";
 	}
-
 }

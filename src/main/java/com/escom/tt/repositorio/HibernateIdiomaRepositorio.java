@@ -1,6 +1,7 @@
 package com.escom.tt.repositorio;
 
 
+import com.sun.org.apache.bcel.internal.generic.RET;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,16 +20,18 @@ public class HibernateIdiomaRepositorio implements IdiomaRepositorio {
 	private SessionFactory sf;
 
 	@Override
-	public void crearIdioma(Idioma idioma){
+	public Integer crearIdioma(Idioma idioma){
 		sf.getCurrentSession().save(idioma);
+		return idioma.getIdIdioma();
 	}
 	@Override
 	public void eliminarIdioma(Idioma idioma){
 		sf.getCurrentSession().delete(idioma);
 	}
 	@Override
-	public void actualizarIdioma(Idioma idioma){
+	public Integer actualizarIdioma(Idioma idioma){
 		sf.getCurrentSession().update(idioma);
+		return idioma.getIdIdioma();
 	}
 	@Override
 	public Idioma buscarPorId(Integer id){

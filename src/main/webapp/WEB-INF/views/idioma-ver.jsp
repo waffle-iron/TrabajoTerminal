@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -49,6 +50,12 @@
 
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row">
+					<c:if test="${actualizado}">
+						<h1 class="text-success"><strong>Datos actualizados</strong></h1>
+					</c:if>
+					<c:if test="${creado}">
+                        <h1 class="text-success"><strong>Se ha creado un nuevo idioma</strong></h1>
+					</c:if>
 					<div class="col-md-12">
 						<h1> ID: ${idioma.idIdioma} </h1>
 						<h1> NOMBRE: ${idioma.nombre} </h1>
