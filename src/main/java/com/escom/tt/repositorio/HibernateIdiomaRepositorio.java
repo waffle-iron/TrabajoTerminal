@@ -1,6 +1,5 @@
 package com.escom.tt.repositorio;
 
-
 import com.sun.org.apache.bcel.internal.generic.RET;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Repository()
-@Transactional
+@Repository() // lo mandas al contenedor de spring y lo haces un bean 
+@Transactional // para transaccion declarativa , podemos utilizar las transacciones para abrir y cerrar seciones
 public class HibernateIdiomaRepositorio implements IdiomaRepositorio {
 
 	@Autowired

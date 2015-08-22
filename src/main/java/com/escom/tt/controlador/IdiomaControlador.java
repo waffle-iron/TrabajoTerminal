@@ -28,7 +28,7 @@ public class IdiomaControlador {
 	@RequestMapping(value="/idioma/guardar", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute("idioma") @Valid Idioma idioma, BindingResult validacion, Model modelo) {
 		String ruta = null;
-
+		
 		if (validacion.hasErrors()){
 			modelo.addAttribute("idioma", idioma);
 			ruta = "idioma-crear";

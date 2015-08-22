@@ -5,7 +5,6 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
-
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -58,7 +57,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Registrar nuevo idioma
+                                <i class="fa fa-gift"></i>Registrar nuevo estado
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -73,8 +72,8 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/idioma/guardar" var="urlIdiomaGuardar" />
-                            <form:form action="${urlIdiomaGuardar}" method="post" commandName="idioma" >
+                            <c:url value="/estado/guardar" var="urlEstadoGuardar" />
+                            <form:form action="${urlEstadoGuardar}" method="post" commandName="estado" >
                                 <div class="form-body">
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Nombre *: </label>
