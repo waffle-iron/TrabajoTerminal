@@ -5,6 +5,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
+
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -73,6 +74,7 @@
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
                             <c:url value="/estado/guardar" var="urlEstadoGuardar" />
+                            
                             <form:form action="${urlEstadoGuardar}" method="post" commandName="estado" >
                                 <div class="form-body">
                                     <div class="form-group">
@@ -83,8 +85,8 @@
                                                 <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-
-                                    </div>
+									</div>
+                                    
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">

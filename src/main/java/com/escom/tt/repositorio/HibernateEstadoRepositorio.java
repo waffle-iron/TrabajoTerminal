@@ -1,15 +1,15 @@
 package com.escom.tt.repositorio;
 
 
-import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.escom.tt.modelo.Estado;
-import com.escom.tt.modelo.Idioma;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository
 @Transactional
@@ -50,7 +50,7 @@ public class HibernateEstadoRepositorio implements EstadoRepositorio {
 	@Override
 	public Estado buscarPorId(Integer id){
 		Estado estado = null;
-		estado = (Estado)sf.getCurrentSession().get(Idioma.class, id);
+		estado = (Estado)sf.getCurrentSession().get(Estado.class, id);
 		return estado;
 	}
 	

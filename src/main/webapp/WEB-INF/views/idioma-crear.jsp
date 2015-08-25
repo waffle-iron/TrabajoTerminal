@@ -74,6 +74,7 @@
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
                             <c:url value="/idioma/guardar" var="urlIdiomaGuardar" />
+                            
                             <form:form action="${urlIdiomaGuardar}" method="post" commandName="idioma" >
                                 <div class="form-body">
                                     <div class="form-group">

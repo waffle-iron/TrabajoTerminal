@@ -1,6 +1,5 @@
 package com.escom.tt.repositorio;
 
-import com.sun.org.apache.bcel.internal.generic.RET;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
