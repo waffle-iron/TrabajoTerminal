@@ -58,7 +58,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Registrar nuevo idioma
+                                <i class="fa fa-gift"></i>Editar estado
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -73,14 +73,14 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/idioma/guardar" var="urlIdiomaGuardar" />
-                            
-                            <form:form action="${urlIdiomaGuardar}" method="post" commandName="idioma" >
+                            <c:url value="/estado/guardarCambios" var="urlEstadoGuardar" />
+                            <form:form action="${urlEstadoGuardar}" method="post" commandName="estado" >
                                 <div class="form-body">
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Nombre *: </label>
                                         <div class="col-md-4">
                                             <div class="input-icon right">
+                                                <form:hidden path="idEstado" />
                                                 <form:input path="nombre" cssClass="form-control"/>
                                                 <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
                                             </div>
@@ -91,7 +91,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="btn green">Crear</button>
+                                            <button type="submit" class="btn green">Guardar Cambios</button>
                                             <button type="button" class="btn default">Cancelar</button>
                                         </div>
                                     </div>

@@ -58,7 +58,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Registrar nuevo idioma
+                                <i class="fa fa-gift"></i>Registrar nuevo estado
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -73,9 +73,9 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/idioma/guardar" var="urlIdiomaGuardar" />
+                            <c:url value="/estado/guardar" var="urlEstadoGuardar" />
                             
-                            <form:form action="${urlIdiomaGuardar}" method="post" commandName="idioma" >
+                            <form:form action="${urlEstadoGuardar}" method="post" commandName="estado" >
                                 <div class="form-body">
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Nombre *: </label>
@@ -85,8 +85,8 @@
                                                 <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-
-                                    </div>
+									</div>
+                                    
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">
