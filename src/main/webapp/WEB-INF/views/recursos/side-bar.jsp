@@ -9,12 +9,12 @@
         <ul class="page-sidebar-menu " data-keep-expanded="false"
             data-auto-scroll="true" data-slide-speed="200">
 
-            <li class="start ${ruta == '/trabajoterminal-1.0/+ñkjb vh cbklmñ,{mlcghfxcgbknñm{,mlb ' ?  'active open' : ' '}"><a href="${contexto}"> <i
+            <li class="start ${ruta == contexto ?  'active open' : ' '}"><a href="${contexto}"> <i
                     class="icon-home"></i> <span class="title">INICIO</span>
             </a></li>
 
-            <li class="${( ruta == '/trabajoterminal-1.0/nivel'
-                        || ruta == '/trabajoterminal-1.0/nivel/crear' ) ?  'active' : ' '}">
+            <li class="${ ( ruta == (contexto += '/nivel')
+                        || ruta == (contexto += '/nivel/crear') ) ?  'active' : ' '}">
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Nivel</span> <span
                     class="arrow ${( ruta == '/trabajoterminal-1.0/nivel'
