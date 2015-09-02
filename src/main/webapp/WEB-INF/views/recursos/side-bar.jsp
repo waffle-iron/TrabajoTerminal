@@ -35,6 +35,26 @@
 				</ul>
 			</li>
 <!-- .............................................................................................................. -->
+<!-- .............................................................................................................. -->
+			<li
+				class="${( ruta == '/trabajoterminal/palabra_clave'
+                        || ruta == '/trabajoterminal/palabra_clave/crear' ) ?  'active' : ' '}">
+				<a href="javascript:;"> <i class="icon-rocket"></i> 
+				<span class="title">Palabra clave</span> 
+				<span class="arrow ${( ruta == '/trabajoterminal/palabra_clave'
+                      				|| ruta == '/trabajoterminal/palabra_clave/crear' ) ?  'open text-success' : ' '}"></span>
+				</a>
+				<ul class="sub-menu">
+					<li class="${( ruta == '/trabajoterminal/palabra_clave' ) ?  'open' : ' '}">
+						<a href="${contexto}/palabra_clave"> Ver todos </a>
+					</li>
+					<li
+						class="${( ruta == '/trabajoterminal/palabra_clave/crear' ) ?  'open' : ' '}">
+						<a href="${contexto}/palabra_clave/crear"> Crear </a>
+					</li>
+				</ul>
+			</li>
+<!-- .............................................................................................................. -->
 
 			<li
 				class="${( ruta == '/trabajoterminal/idioma'
