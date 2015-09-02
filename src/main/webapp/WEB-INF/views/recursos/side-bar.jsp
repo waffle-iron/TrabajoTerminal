@@ -76,6 +76,27 @@
                 </ul>
             </li>
             
+            <li class="${( ruta == '/trabajoterminal/area'
+                        || ruta == '/trabajoterminal/area/crear' ) ?  'active' : ' '}">
+                <a href="javascript:;"> <i
+                    class="icon-rocket"></i> <span class="title">Area</span> <span
+                    class="arrow ${( ruta == '/trabajoterminal/area'
+                                  || ruta == '/trabajoterminal/area/crear' ) ?  'open text-success' : ' '}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="${( ruta == '/trabajoterminal/area' ) ?  'open' : ' '}">
+                        <a href="${contexto}/area">
+                            Ver todos
+                        </a>
+                    </li>
+                    <li class="${( ruta == '/trabajoterminal/area/crear' ) ?  'open' : ' '}">
+                        <a href="${contexto}/area/crear">
+                        Crear
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
 
         </ul>
         <!-- END SIDEBAR MENU -->
