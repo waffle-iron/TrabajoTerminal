@@ -103,6 +103,8 @@ public class IdiomaControlador {
 		idiomaList = idiomaRepositorio.obtenerTodos();
 
 		modelo.addAttribute("idiomas", idiomaList);
+		
+
 
 		return "idioma-todos";
 	}
