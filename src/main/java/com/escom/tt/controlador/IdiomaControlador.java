@@ -38,6 +38,7 @@ public class IdiomaControlador {
 		}
 		return ruta;
 	}
+	
 	@RequestMapping(value="/idioma/guardarCambios", method = RequestMethod.POST)
 	public String guardarCambios(@ModelAttribute("idioma") @Valid Idioma idioma, BindingResult validacion, Model modelo) {
 		String ruta = null;
