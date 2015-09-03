@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
@@ -58,7 +60,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Registrar nuevo estado
+                                <i class="fa fa-gift"></i>Editar palabra clave
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -73,25 +75,25 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/estado/guardar" var="urlEstadoGuardar" />
-                            
-                            <form:form action="${urlEstadoGuardar}" method="post" commandName="estado" >
+                            <c:url value="/palabraclave/guardarCambios" var="urlPalabraClaveGuardar" />
+                            <form:form action="${urlPalabraClaveGuardar}" method="post" commandName="palabra_clave" >
                                 <div class="form-body">
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Nombre *: </label>
                                         <div class="col-md-4">
                                             <div class="input-icon right">
+                                                <form:hidden path="idPalabrasClave" />
                                                 <form:input path="nombre" cssClass="form-control"/>
                                                 <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-									</div>
-                                    
+
+                                    </div>
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="btn green">Crear</button>
+                                            <button type="submit" class="btn green">Guardar Cambios</button>
                                             <button type="button" class="btn default">Cancelar</button>
                                         </div>
                                     </div>

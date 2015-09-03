@@ -1,13 +1,12 @@
 package com.escom.tt.repositorio;
 
+
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-
 import com.escom.tt.modelo.Idioma;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Repository() // lo mandas al contenedor de spring y lo haces un bean 
