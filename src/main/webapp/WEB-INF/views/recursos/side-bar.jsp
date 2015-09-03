@@ -19,17 +19,17 @@
 			<c:set var="contextopalabra_clave" value="${contexto.concat('/palabra_clave')}" />
 			<c:set var="contextoarea" value="${contexto.concat('/area')}" />
 			<c:set var="contextotipoproyecto" value="${contexto.concat('/tipoproyecto')}" />
-			
+
 			<c:set var="contextonivelcrear" value="${contexto.concat('/nivel/crear')}" />
 			<c:set var="contextoidiomacrear" value="${contexto.concat('/idioma/crear')}" />
 			<c:set var="contextoestadocrear" value="${contexto.concat('/estado/crear')}" />
 			<c:set var="contextopalabra_clavecrear" value="${contexto.concat('/palabra_clave/crear')}" />
 			<c:set var="contextoareacrear" value="${contexto.concat('/area/crear')}" />
 			<c:set var="contextotipoproyectocrear" value="${contexto.concat('/tipoproyecto/crear')}" />
-			
-			
-			
-			
+
+
+
+
             <li class="${ ( ruta == contextonivel ) ?  'active' : ' '}">
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Nivel</span> <span
@@ -38,7 +38,7 @@
                 <ul class="sub-menu">
                     <li class="${( ruta == contextonivel) ?  'open' : ' '}">
                         <a href="${contexto}/nivel">
-                            Ver todos 
+                            Ver todos
                         </a>
                     </li>
                     <li class="${( ruta == contextonivelcrear) ?  'open' : ' '}">
@@ -48,7 +48,7 @@
                     </li>
                 </ul>
             </li>
-            
+
             <li class="${( ruta == contextotipoproyecto
                         || ruta == contextotipoproyectocrear) ?  'active' : ' '}">
                 <a href="javascript:;"> <i
@@ -69,7 +69,7 @@
                     </li>
                 </ul>
             </li>
-            
+
             <li class="${( ruta == contextoarea
                         || ruta == contextoareacrear ) ?  'active' : ' '}">
                 <a href="javascript:;"> <i
@@ -90,7 +90,7 @@
                     </li>
                 </ul>
             </li>
-            
+
 
         </ul>
         <!-- END SIDEBAR MENU -->

@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
@@ -58,7 +60,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Registrar nuevo estado
+                                <i class="fa fa-gift"></i>Registrar nueva palabra clave
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -73,9 +75,8 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/estado/guardar" var="urlEstadoGuardar" />
-                            
-                            <form:form action="${urlEstadoGuardar}" method="post" commandName="estado" >
+                            <c:url value="/palabraclave/guardar" var="urlPalabraClaveGuardar" />
+                            <form:form action="${urlPalabraClaveGuardar}" method="post" commandName="palabra_clave" >
                                 <div class="form-body">
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Nombre *: </label>
@@ -85,8 +86,8 @@
                                                 <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-									</div>
-                                    
+
+                                    </div>
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">

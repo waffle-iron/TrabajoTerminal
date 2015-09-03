@@ -30,8 +30,6 @@ public class EstadoControlador {
 	}
 
 	
-	
-	
 //http://localhost:8080/trabajoterminal/estado/guardar
 	@RequestMapping(value="/estado/guardar", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute("estado") @Valid Estado estado, BindingResult validacion, Model modelo) {
@@ -112,8 +110,5 @@ public class EstadoControlador {
 		return "estado-todos";
 	}
 
-
-		
-	
 	
 }

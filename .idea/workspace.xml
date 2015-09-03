@@ -2,24 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d629382-9d80-4e7f-98f0-4dd08de33327" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/modelo/Area.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/AreaControlador.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/AreaRepositorio.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/HibernateAreaRepositorio.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/HibernateTipoProyectoRepositorio.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/TipoProyectoControlador.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/TipoProyectoRepositorio.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/modelo/Tipo_proyecto.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/area-crear.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/area-editar.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/area-eliminar.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/area-todos.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/area-ver.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tipoproyecto-crear.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tipoproyecto-editar.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tipoproyecto-eliminar.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tipoproyecto-todos.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tipoproyecto-ver.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/HibernatePalabraClaveRepositorio.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/modelo/Palabra_clave.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/Palabra_claveControlador.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/Palabra_claveRepositorio.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/palabra_clave-crear.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/palabra_clave-editar.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/palabra_clave-eliminar.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/palabra_clave-todos.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/palabra_clave-ver.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/EstadoControlador.java" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/EstadoControlador.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/EstadoRepositorio.java" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/EstadoRepositorio.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/HibernateEstadoRepositorio.java" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/HibernateEstadoRepositorio.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/HibernateIdiomaRepositorio.java" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/HibernateIdiomaRepositorio.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/IdiomaControlador.java" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/IdiomaControlador.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/estado-crear.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/estado-crear.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/estado-editar.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/estado-editar.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.settings/org.hibernate.eclipse.console.prefs" afterPath="$PROJECT_DIR$/.settings/org.hibernate.eclipse.console.prefs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/recursos/side-bar.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/recursos/side-bar.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -68,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/HibernateIdiomaRepositorio.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -77,8 +78,8 @@
       <file leaf-file-name="side-bar.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/recursos/side-bar.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43889844">
-              <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.46815833">
+              <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -1051,12 +1052,12 @@
       <workItem from="1440046939974" duration="925000" />
       <workItem from="1440088927322" duration="1432000" />
       <workItem from="1440706661657" duration="1823000" />
-      <workItem from="1441232606984" duration="1069000" />
+      <workItem from="1441232606984" duration="1874000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21515000" />
+    <option name="totallyTimeSpent" value="22320000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1260,6 +1261,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4345898">
           <caret line="195" column="27" selection-start-line="195" selection-start-column="27" selection-end-line="195" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1323,7 +1325,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/escom/tt/repositorio/HibernateIdiomaRepositorio.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1338,8 +1340,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/recursos/side-bar.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43889844">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.46815833">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
           <folding />
         </state>
       </provider>
