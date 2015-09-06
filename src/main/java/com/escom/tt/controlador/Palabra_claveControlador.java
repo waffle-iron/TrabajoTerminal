@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.escom.tt.modelo.PalabraClave;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.escom.tt.modelo.Palabra_clave;
 import com.escom.tt.repositorio.Palabra_claveRepositorio;
 
 @Controller
@@ -26,12 +26,12 @@ public class Palabra_claveControlador {
 //http://localhost:8080/trabajoterminal/palabra_clave/crear	
 	@RequestMapping(value="/palabra_clave/crear", method=RequestMethod.GET)
 	public String crear(Model modelo){
-		modelo.addAttribute("palabra_clave", new Palabra_clave());
+		modelo.addAttribute("palabra_clave", new PalabraClave());
 		return "palabra_clave-crear";
 	}
 	
 	@RequestMapping(value="/palabraclave/guardar", method=RequestMethod.POST)
-	public String guardar(@ModelAttribute("palabra_clave") @Valid Palabra_clave palabra_clave, BindingResult validacion, Model modelo){
+	public String guardar(@ModelAttribute("palabra_clave") @Valid PalabraClave palabra_clave, BindingResult validacion, Model modelo){
 		String ruta = null;
 		if (validacion.hasErrors()) {
 			modelo.addAttribute("palabra_clave_error", palabra_clave);
@@ -45,7 +45,7 @@ public class Palabra_claveControlador {
 	@RequestMapping(value="/palabra_clave/ver/{id:[0-9]+}")
 	public String ver( @PathVariable Integer id, Model modelo, Boolean actualizado, Boolean creado){
 		String ruta = null;
-		Palabra_clave palabra_clave = null;
+		PalabraClave palabra_clave = null;
 		palabra_clave = palabra_claveRepositorio.buscaPorId(id);
 		
 		if (palabra_clave!=null) {
@@ -62,13 +62,13 @@ public class Palabra_claveControlador {
 	
 	@RequestMapping(value="/palabra_clave")
 	public String verTodos(Model modelo){
-		List<Palabra_clave> palabras_clave = null;
+		List<PalabraClave> palabras_clave = null;
 		palabras_clave = palabra_claveRepositorio.obtenerTodos();
 		modelo.addAttribute("palabras_clave", palabras_clave);
 		return "palabra_clave-todos";
 	}
 	@RequestMapping(value="/palabraclave/guardarCambios", method=RequestMethod.POST)
-	public String guardarCambios(@ModelAttribute("palabra_clave") @Valid Palabra_clave palabra_clave, BindingResult validacion, Model modelo){
+	public String guardarCambios(@ModelAttribute("palabra_clave") @Valid PalabraClave palabra_clave, BindingResult validacion, Model modelo){
 		String ruta = null;
 		if (validacion.hasErrors()) {
 			modelo.addAttribute("palabra_clave", palabra_clave);
@@ -81,7 +81,7 @@ public class Palabra_claveControlador {
 	}
 	@RequestMapping(value="/palabra_clave/{id:[0-9]+}/editar")
 	public String editar(@PathVariable Integer id , Model modelo){
-		Palabra_clave palabra_clave = null;
+		PalabraClave palabra_clave = null;
 		String ruta = null;
 		palabra_clave=palabra_claveRepositorio.buscaPorId(id);
 		if (palabra_clave!=null) {

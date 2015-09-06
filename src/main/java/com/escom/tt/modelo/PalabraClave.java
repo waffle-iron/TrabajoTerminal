@@ -13,7 +13,7 @@ import javax.validation.constraints.Max;
 
 @Entity
 @Table(name="PALABRA_CLAVE")
-public class Palabra_clave {
+public class PalabraClave {
 
 	@Id
 	@Column(name="idPalabrasClave")

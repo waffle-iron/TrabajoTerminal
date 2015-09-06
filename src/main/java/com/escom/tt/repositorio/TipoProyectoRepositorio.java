@@ -2,17 +2,16 @@ package com.escom.tt.repositorio;
 
 import java.util.List;
 
-import com.escom.tt.modelo.Idioma;
-import com.escom.tt.modelo.Tipo_proyecto;
+import com.escom.tt.modelo.TipoProyecto;
 
 public interface TipoProyectoRepositorio {
-	 Integer crearTipoProyecto(Tipo_proyecto tipoProyecto);
+	 Integer crearTipoProyecto(TipoProyecto tipoProyecto);
 
-	    void eliminarTipoProyecto(Tipo_proyecto tipoProyecto);
+	    void eliminarTipoProyecto(TipoProyecto tipoProyecto);
 
-	    Integer actualizarTipoProyecto(Tipo_proyecto tipoProyecto);
+	    Integer actualizarTipoProyecto(TipoProyecto tipoProyecto);
 
-	    Tipo_proyecto buscarPorId(Integer id);
+	    TipoProyecto buscarPorId(Integer id);
 
-	    List<Tipo_proyecto> obtenerTodos();
+	    List<TipoProyecto> obtenerTodos();
 }

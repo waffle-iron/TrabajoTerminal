@@ -1,5 +1,7 @@
 package com.escom.tt.modelo;
 
+import org.hibernate.validator.constraints.SafeHtml;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ public class Area {
 	
 	@Column(name="nombre")
 	@NotNull
+	@SafeHtml()
 	@Size(min = 2, max = 14, message= "El nombre debe tener al menos 2 caracteres y máximo 14")
 	private String nombre;
 	
