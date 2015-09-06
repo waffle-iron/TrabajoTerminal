@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.escom.tt.modelo.Escuela;
 
-@Repository()
+@Repository
 @Transactional
 public class HibernateEscuelaRepositorio implements EscuelaRepositorio{
 
