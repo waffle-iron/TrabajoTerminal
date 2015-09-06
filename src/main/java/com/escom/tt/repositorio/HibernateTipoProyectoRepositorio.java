@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import com.escom.tt.modelo.Tipo_proyecto;
+import com.escom.tt.modelo.TipoProyecto;
 
 @Repository()
 @Transactional
@@ -16,34 +16,34 @@ public class HibernateTipoProyectoRepositorio implements TipoProyectoRepositorio
 	private SessionFactory sf;
 	
 	@Override
-	public Integer crearTipoProyecto(Tipo_proyecto tipoProyecto) {
+	public Integer crearTipoProyecto(TipoProyecto tipoProyecto) {
 		sf.getCurrentSession().save(tipoProyecto);
 		return tipoProyecto.getIdTipoProyecto();
 	}
 
 	@Override
-	public void eliminarTipoProyecto(Tipo_proyecto tipoProyecto) {
+	public void eliminarTipoProyecto(TipoProyecto tipoProyecto) {
 		sf.getCurrentSession().delete(tipoProyecto);
 		
 	}
 
 	@Override
-	public Integer actualizarTipoProyecto(Tipo_proyecto tipoProyecto) {
+	public Integer actualizarTipoProyecto(TipoProyecto tipoProyecto) {
 		sf.getCurrentSession().update(tipoProyecto);
 		return tipoProyecto.getIdTipoProyecto();
 	}
 	
 	@Override
-	public Tipo_proyecto buscarPorId(Integer id) {
-		Tipo_proyecto tipoProyecto = null; 
-		tipoProyecto = (Tipo_proyecto)sf.getCurrentSession().get(Tipo_proyecto.class, id);
+	public TipoProyecto buscarPorId(Integer id) {
+		TipoProyecto tipoProyecto = null;
+		tipoProyecto = (TipoProyecto)sf.getCurrentSession().get(TipoProyecto.class, id);
 		return tipoProyecto;
 	}
 
 	@Override
-	public List<Tipo_proyecto> obtenerTodos() {
-		List<Tipo_proyecto> tiposProyectos = null;
-		tiposProyectos = sf.getCurrentSession().createCriteria(Tipo_proyecto.class).list();
+	public List<TipoProyecto> obtenerTodos() {
+		List<TipoProyecto> tiposProyectos = null;
+		tiposProyectos = sf.getCurrentSession().createCriteria(TipoProyecto.class).list();
 		return tiposProyectos;
 	}
 
