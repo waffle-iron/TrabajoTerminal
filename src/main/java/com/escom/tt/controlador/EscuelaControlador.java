@@ -15,21 +15,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.escom.tt.modelo.Escuela;
 import com.escom.tt.modelo.Idioma;
+import com.escom.tt.repositorio.AreaRepositorio;
 import com.escom.tt.repositorio.EscuelaRepositorio;
+import com.escom.tt.repositorio.NivelRepositorio;
 
 @Controller
 public class EscuelaControlador {
 	@Autowired
 	private EscuelaRepositorio escuelaRepositorio;
 	
+	@Autowired
+	private AreaRepositorio areaRepositorio;
+	
+	@Autowired
+	private NivelRepositorio nivelRepositorio;
+	
 	@RequestMapping(value="/escuela/crear", method = RequestMethod.GET)
 	public String crear(Model modelo){
+		
+		modelo.addAttribute("areaList", areaRepositorio.obtenerTodos());
+		modelo.addAttribute("nivelList", nivelRepositorio.obtenerTodos());
 		modelo.addAttribute("escuela", new Escuela());
+		System.out.print(new Escuela());
 		return "escuela-crear";
 	}
 	
 	@RequestMapping(value="/escuela/guardar", method = RequestMethod.POST)
-	public String guardar(@ModelAttribute("escuela") @Valid Escuela escuela, BindingResult validacion, Model modelo) {
+	public String crear(@ModelAttribute("escuela") @Valid Escuela escuela, BindingResult validacion, Model modelo) {
 		String ruta = null;
 		
 		if (validacion.hasErrors()){
@@ -44,7 +56,7 @@ public class EscuelaControlador {
 //http://localhost:8080/trabajoterminal/idioma/guardarCambios
 	
 	@RequestMapping(value="/escuela/guardarCambios", method = RequestMethod.POST)
-	public String guardarCambios(@ModelAttribute("escuela") @Valid Escuela escuela, BindingResult validacion, Model modelo) {
+	public String actualizar(@ModelAttribute("escuela") @Valid Escuela escuela, BindingResult validacion, Model modelo) {
 		String ruta = null;
 
 		if (validacion.hasErrors()){
@@ -58,7 +70,7 @@ public class EscuelaControlador {
 	}
 //http://localhost:8080/trabajoterminal/idioma/NUMERO/editar
 	@RequestMapping(value="/escuela/{escuelaId:[0-9]+}/editar", method = RequestMethod.GET)
-	public String editar(@PathVariable Integer escuelaId,Model modelo) {
+	public String actualizar(@PathVariable Integer escuelaId,Model modelo) {
 		Escuela escuela = null;
 		String ruta = null;
 		escuela = escuelaRepositorio.buscarPorId(escuelaId);
@@ -109,6 +121,9 @@ public class EscuelaControlador {
 
 		return "escuela-todos";
 	}
+	
+	
+	
 }
 	
 

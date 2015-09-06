@@ -2,12 +2,7 @@ package com.escom.tt.modelo;
 
 import org.hibernate.validator.constraints.SafeHtml;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,7 +19,11 @@ public class Area {
 	@SafeHtml()
 	@Size(min = 2, max = 14, message= "El nombre debe tener al menos 2 caracteres y máximo 14")
 	private String nombre;
-	
+
+
+	@OneToMany(mappedBy = "area")
+	private Escuela escuela;
+
 	
 	public Integer getIdArea() {
 		return idArea;
@@ -45,6 +44,12 @@ public class Area {
 	public String toString(){
 		return this.idArea + "  "+ this.nombre;
 	}
-	
-	
+
+	public Escuela getEscuela() {
+		return escuela;
+	}
+
+	public void setEscuela(Escuela escuela) {
+		this.escuela = escuela;
+	}
 }
