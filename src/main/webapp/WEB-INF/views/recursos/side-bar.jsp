@@ -28,6 +28,70 @@
 			<c:set var="contextotipoproyectocrear" value="${contexto.concat('/tipoproyecto/crear')}" />
 
 
+				<li class="${( ruta == contextopalabra_clave
+                        || ruta == contextopalabra_clavecrear) ?  'active' : ' '}">
+                <a href="javascript:;"> <i
+                    class="icon-rocket"></i> <span class="title">Palabra_clave</span> <span
+                    class="arrow ${( ruta == contextopalabra_clave
+                                  || ruta == contextopalabra_clavecrear) ?  'open text-success' : ' '}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="${( ruta == contextopalabra_clave) ?  'open' : ' '}">
+                        <a href="${contexto}/palabra_clave">
+                            Ver todos
+                        </a>
+                    </li>
+                    <li class="${( ruta == contextopalabra_clavecrear ) ?  'open' : ' '}">
+                        <a href="${contexto}/palabra_clave/crear">
+                        Crear
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+			<li class="${( ruta == contextoestado
+                        || ruta == contextoestadocrear) ?  'active' : ' '}">
+                <a href="javascript:;"> <i
+                    class="icon-rocket"></i> <span class="title">Idioma</span> <span
+                    class="arrow ${( ruta == contextoestado
+                                  || ruta == contextoestadocrear) ?  'open text-success' : ' '}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="${( ruta == contextoestado) ?  'open' : ' '}">
+                        <a href="${contexto}/estado">
+                            Ver todos
+                        </a>
+                    </li>
+                    <li class="${( ruta == contextoestadocrear ) ?  'open' : ' '}">
+                        <a href="${contexto}/estado/crear">
+                        Crear
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+			<li class="${( ruta == contextoidioma
+                        || ruta == contextoidiomacrear) ?  'active' : ' '}">
+                <a href="javascript:;"> <i
+                    class="icon-rocket"></i> <span class="title">Idioma</span> <span
+                    class="arrow ${( ruta == contextoidioma
+                                  || ruta == contextoidiomacrear) ?  'open text-success' : ' '}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="${( ruta == contextoidioma) ?  'open' : ' '}">
+                        <a href="${contexto}/idioma">
+                            Ver todos
+                        </a>
+                    </li>
+                    <li class="${( ruta == contextoidiomacrear ) ?  'open' : ' '}">
+                        <a href="${contexto}/idioma/crear">
+                        Crear
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
             <li class="${ ( ruta == contextonivel ) ?  'active' : ' '}">
