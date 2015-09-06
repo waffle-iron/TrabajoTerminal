@@ -70,4 +70,12 @@ public class Escuela {
     public void setNivel(Nivel nivel) {
         this.nivel = nivel;
     }
+
+    public String getAbreviacion() {
+        return abreviacion;
+    }
+
+    public void setAbreviacion(String abreviacion) {
+        this.abreviacion = abreviacion;
+    }
 }
