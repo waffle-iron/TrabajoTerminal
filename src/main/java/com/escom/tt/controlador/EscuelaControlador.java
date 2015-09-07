@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.escom.tt.modelo.Area;
+import com.escom.tt.modelo.Nivel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +34,9 @@ public class EscuelaControlador {
 	
 	@RequestMapping(value="/escuela/crear", method = RequestMethod.GET)
 	public String crear(Model modelo){
-		
+
+		modelo.addAttribute("nivel", new Nivel());
+		modelo.addAttribute("area", new Area());
 		modelo.addAttribute("areaList", areaRepositorio.obtenerTodos());
 		modelo.addAttribute("nivelList", nivelRepositorio.obtenerTodos());
 		modelo.addAttribute("escuela", new Escuela());
@@ -40,7 +44,7 @@ public class EscuelaControlador {
 		return "escuela-crear";
 	}
 	
-	@RequestMapping(value="/escuela/guardar", method = RequestMethod.POST)
+	@RequestMapping(value="/escuela/crear", method = RequestMethod.POST)
 	public String crear(@ModelAttribute("escuela") @Valid Escuela escuela, BindingResult validacion, Model modelo) {
 		String ruta = null;
 		

@@ -70,34 +70,53 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/escuela/guardar" var="urlEscuelaGuardar" />
+                            <c:url value="/escuela/crear" var="urlEscuelaGuardar" />
                             
                             <form:form action="${urlEscuelaGuardar}" method="post" commandName="escuela" >
                                 <div class="form-body">
+
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Nombre *: </label>
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:input path="nombre" cssClass="form-control"/>
-                                                <form:input path="abreviacion" cssClass="form-control"/>
-                                                <form:select path="nivel">
-   													<form:option value="" label="--- Seleccionar ---"/>
-											    	<form:options items="${nivelList}" />
-												</form:select>
-                                                <form:select path="area">
-   													<form:option value="" label="--- Seleccionar ---"/>
-											    	<form:options items="${areaList}" />
-												</form:select>
-                                                
                                                 <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
-                                                <form:errors path="abreviacion" element="span" cssClass="help-block text-danger"/>
-                                                <form:errors path="nivel" element="span" cssClass="help-block text-danger"/>
-                                                <form:errors path="area" element="span" cssClass="help-block text-danger"/>
-                                                
                                             </div>
                                         </div>
 									</div>
-                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">ABreviación *: </label>
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:input path="abreviacion" cssClass="form-control"/>
+                                                <form:errors path="abreviacion" element="span" cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Nivel *: </label>
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:select path="nivel" cssClass="form-control">
+                                                    <form:option value="" label="--- Seleccionar ---"/>
+                                                    <form:options items="${nivelList}" />
+                                                </form:select>
+                                                <form:errors path="nivel" element="span" cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Área *: </label>
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:select path="area">
+                                                    <form:option value="-" label="Selecciona una opción"/>
+                                                    <form:options items="${areaList}"/>
+                                                </form:select>
+                                                <form:errors path="area" element="span" cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">
