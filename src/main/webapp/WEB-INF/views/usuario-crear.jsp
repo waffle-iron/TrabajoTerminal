@@ -70,9 +70,9 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/usuario/guardar" var="urlUsuarioGuardar" />
+                            <c:url value="/usuario/crear" var="urlUsuarioCrear" />
                             
-                            <form:form action="${urlUsuarioGuardar}" method="post" commandName="usuario" >
+                            <form:form action="${urlUsuarioCrear}" method="post" commandName="usuario" >
                                 <div class="form-body">
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Nombre *: </label>
@@ -89,6 +89,8 @@
                                                 <form:input path="telefono" cssClass="form-control"/>
                                                 <form:input path="sexo" cssClass="form-control"/>
                                                 <form:input path="fechaIngresoIPN" cssClass="form-control"/>
+                                                <form:input path="calificacion" cssClass="form-control"/>
+                                                <form:input path="fechaIngresoIPN" cssClass="form-control"/>
                                                 
                                                 <form:select path="escuela">
    													<form:option value="" label="--- Seleccionar ---"/>
@@ -99,8 +101,19 @@
 											    	<form:options items="${gradoList}" />
 												</form:select>
                                                 
+                                                <form:errors path="nombreUsuario" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="contraseña" element="span" cssClass="help-block text-danger"/>
                                                 <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
-                                                <form:errors path="abreviacion" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="aPaterno" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="aMaterno" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="email" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="fechaNacimiento" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="estadoCivil" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="telefono" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="sexo" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="fechaIngresoIPN" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="calificacion" element="span" cssClass="help-block text-danger"/>
+                                                
                                                 <form:errors path="escuela" element="span" cssClass="help-block text-danger"/>
                                                 <form:errors path="grado" element="span" cssClass="help-block text-danger"/>
                                                 

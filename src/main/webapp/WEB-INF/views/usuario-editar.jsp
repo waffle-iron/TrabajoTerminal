@@ -58,7 +58,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Editar escuela
+                                <i class="fa fa-gift"></i>Editar usuario
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
