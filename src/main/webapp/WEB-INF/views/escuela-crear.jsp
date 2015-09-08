@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+         pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -11,11 +11,11 @@
 <!-- BEGIN HEAD -->
 <head>
 
-<title>Trabajor terminal | archivo base</title>
-<meta content="" name="description" />
-<meta content="" name="author" />
+    <title>Trabajor terminal | archivo base</title>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
 
-<jsp:include page="recursos/estilos.jsp"></jsp:include>
+    <jsp:include page="recursos/estilos.jsp"></jsp:include>
 
 </head>
 <!-- END HEAD -->
@@ -31,25 +31,25 @@
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo">
-	<!-- BEGIN HEADER -->
-	<jsp:include page="recursos/header.jsp"></jsp:include>
-	<!-- END HEADER -->
-	<div class="clearfix"></div>
-	<!-- BEGIN CONTAINER -->
-	<div class="page-container">
-		<!-- BEGIN SIDEBAR -->
-		<jsp:include page="recursos/side-bar.jsp"></jsp:include>
-		<!-- END SIDEBAR -->
-		<!-- BEGIN CONTENT -->
-		<div class="page-content-wrapper">
-			<div class="page-content">
+<!-- BEGIN HEADER -->
+<jsp:include page="recursos/header.jsp"></jsp:include>
+<!-- END HEADER -->
+<div class="clearfix"></div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <jsp:include page="recursos/side-bar.jsp"></jsp:include>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
 
-				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="recursos/breadcrumbs.jsp"></jsp:include>
-				<!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE HEADER-->
+            <jsp:include page="recursos/breadcrumbs.jsp"></jsp:include>
+            <!-- END PAGE HEADER-->
 
-				<!-- BEGIN PAGE CONTENT-->
- <div class="row">
+            <!-- BEGIN PAGE CONTENT-->
+            <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <!-- BEGIN VALIDATION STATES-->
                     <div class="portlet box blue">
@@ -57,63 +57,72 @@
                             <div class="caption">
                                 <i class="fa fa-gift"></i>Registrar nueva escuela
                             </div>
-                            <div class="tools">
-                                <a href="javascript:;" class="collapse">
-                                </a>
-                                <a href="#portlet-config" data-toggle="modal" class="config">
-                                </a>
-                                <a href="javascript:;" class="reload">
-                                </a>
-                                <a href="javascript:;" class="remove">
-                                </a>
-                            </div>
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/escuela/crear" var="urlEscuelaGuardar" />
-                            
-                            <form:form action="${urlEscuelaGuardar}" method="post" commandName="escuela" >
+                            <c:url value="/escuela/crear" var="urlEscuelaGuardar"/>
+
+                            <form:form action="${urlEscuelaGuardar}" method="post" commandName="escuela"
+                                       cssClass="form-horizontal">
                                 <div class="form-body">
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Nombre *: </label>
+                                        <label class="control-label col-md-3">Nombre
+                                            <span class="required"> * </span>
+                                        </label>
+
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:input path="nombre" cssClass="form-control"/>
-                                                <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="nombre" element="span"
+                                                             cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-									</div>
+                                    </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">ABreviación *: </label>
+                                        <label class="control-label col-md-3">Abreviación
+                                            <span class="required"> * </span>
+                                        </label>
+
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:input path="abreviacion" cssClass="form-control"/>
-                                                <form:errors path="abreviacion" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="abreviacion" element="span"
+                                                             cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Nivel *: </label>
+                                        <label class="control-label col-md-3">Nivel
+                                            <span class="required"> * </span>
+                                        </label>
+
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:select path="nivel" cssClass="form-control">
-                                                    <form:option value="" label="--- Seleccionar ---"/>
-                                                    <form:options items="${nivelList}" />
+                                                <form:select path="nivel.idNivel" cssClass="form-control">
+                                                    <form:option value="" label="Selecciona una opción"/>
+                                                    <form:options items="${nivelList}" itemValue="idNivel"
+                                                                  itemLabel="nombre"/>
                                                 </form:select>
-                                                <form:errors path="nivel" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="nivel" element="span"
+                                                             cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Área *: </label>
+                                        <label class="control-label col-md-3">Área
+                                            <span class="required"> * </span>
+                                        </label>
+
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:select path="area">
+                                                <form:select path="area.idArea" cssClass="form-control">
                                                     <form:option value="-" label="Selecciona una opción"/>
-                                                    <form:options items="${areaList}"/>
+                                                    <form:options items="${areaList}" itemValue="idArea"
+                                                                  itemLabel="nombre"/>
                                                 </form:select>
-                                                <form:errors path="area" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="area" element="span"
+                                                             cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
                                     </div>
@@ -127,35 +136,34 @@
                                     </div>
                                 </div>
                             </form:form>
-
                         </div>
                     </div>
                     <!-- END VALIDATION STATES-->
                 </div>
             </div>
-				<!-- END PAGE CONTENT-->
-			</div>
-		</div>
-		<!-- END CONTENT -->
-	</div>
-	<!-- END CONTAINER -->
+            <!-- END PAGE CONTENT-->
+        </div>
+    </div>
+    <!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
 
-	<!-- BEGIN FOOTER -->
-	<jsp:include page="recursos/footer.jsp"></jsp:include>
-	<!-- END FOOTER -->
+<!-- BEGIN FOOTER -->
+<jsp:include page="recursos/footer.jsp"></jsp:include>
+<!-- END FOOTER -->
 
-	<!-- BEGIN JS -->
-	<jsp:include page="recursos/recursos-js.jsp"></jsp:include>
-	<!-- END JS -->
-	<script>
-		jQuery(document).ready(function() {
-			Metronic.init(); // init metronic core components
-			Layout.init(); // init current layout
-			Demo.init(); // init demo features
-		});
-	</script>
+<!-- BEGIN JS -->
+<jsp:include page="recursos/recursos-js.jsp"></jsp:include>
+<!-- END JS -->
+<script>
+    jQuery(document).ready(function () {
+        Metronic.init(); // init metronic core components
+        Layout.init(); // init current layout
+        Demo.init(); // init demo features
+    });
+</script>
 
-	<!-- END JAVASCRIPTS -->
+<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>

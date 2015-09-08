@@ -26,7 +26,7 @@ public class Escuela {
 
     @Column(name="nombre")
     @NotNull
-    @Size(min = 2, max = 14, message= "EL nombre debe tener al menos 2 caracteres y máximo 14")
+    @Size(min = 2, max = 65, message= "EL nombre debe tener al menos 2 caracteres y máximo 14")
     private String nombre;
 
     @ManyToOne
@@ -77,5 +77,16 @@ public class Escuela {
 
     public void setAbreviacion(String abreviacion) {
         this.abreviacion = abreviacion;
+    }
+
+    @Override
+    public String toString() {
+        return "Escuela{" +
+                "id=" + id +
+                ", abreviacion='" + abreviacion + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", area=" + area +
+                ", nivel=" + nivel +
+                '}';
     }
 }

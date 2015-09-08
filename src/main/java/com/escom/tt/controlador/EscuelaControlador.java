@@ -35,29 +35,27 @@ public class EscuelaControlador {
 	@RequestMapping(value="/escuela/crear", method = RequestMethod.GET)
 	public String crear(Model modelo){
 
-		modelo.addAttribute("nivel", new Nivel());
-		modelo.addAttribute("area", new Area());
 		modelo.addAttribute("areaList", areaRepositorio.obtenerTodos());
 		modelo.addAttribute("nivelList", nivelRepositorio.obtenerTodos());
 		modelo.addAttribute("escuela", new Escuela());
-		System.out.print(new Escuela());
+
 		return "escuela-crear";
 	}
 	
 	@RequestMapping(value="/escuela/crear", method = RequestMethod.POST)
 	public String crear(@ModelAttribute("escuela") @Valid Escuela escuela, BindingResult validacion, Model modelo) {
 		String ruta = null;
-		
+
 		if (validacion.hasErrors()){
 			modelo.addAttribute("escuela", escuela);
 			ruta = "escuela-crear";
 		}else{
 			Integer id = escuelaRepositorio.crearEscuela(escuela);
-			ruta = "redirect:/idioma/ver/" + escuela.getId()+ "/?creado=true";
+			ruta = "redirect:/escuela/ver/" + escuela.getId()+ "/?creado=true";
 		}
 		return ruta;
 	}
-//http://localhost:8080/trabajoterminal/idioma/guardarCambios
+
 	
 	@RequestMapping(value="/escuela/guardarCambios", method = RequestMethod.POST)
 	public String actualizar(@ModelAttribute("escuela") @Valid Escuela escuela, BindingResult validacion, Model modelo) {
@@ -72,7 +70,7 @@ public class EscuelaControlador {
 		}
 		return ruta;
 	}
-//http://localhost:8080/trabajoterminal/idioma/NUMERO/editar
+
 	@RequestMapping(value="/escuela/{escuelaId:[0-9]+}/editar", method = RequestMethod.GET)
 	public String actualizar(@PathVariable Integer escuelaId,Model modelo) {
 		Escuela escuela = null;
@@ -80,6 +78,8 @@ public class EscuelaControlador {
 		escuela = escuelaRepositorio.buscarPorId(escuelaId);
 
 		if (escuela != null) {
+			modelo.addAttribute("areaList", areaRepositorio.obtenerTodos());
+			modelo.addAttribute("nivelList", nivelRepositorio.obtenerTodos());
 			modelo.addAttribute("escuela", escuela);
 			ruta = "escuela-editar";
 		}
@@ -88,7 +88,7 @@ public class EscuelaControlador {
 
 		return ruta;
 	}
-//http://localhost:8080/trabajoterminal/idioma/ver/NUMERO
+
 	@RequestMapping(value="/escuela/ver/{escuelaId:[0-9]+}")
 	public String ver(@PathVariable Integer escuelaId, Model modelo, Boolean actualizado, Boolean creado) {
 		String ruta = null;
@@ -105,23 +105,32 @@ public class EscuelaControlador {
 
 		return ruta;
 	}
-//http://localhost:8080/trabajoterminal/idioma/eliminar/idioma
+
 	@RequestMapping(value="/escuela/eliminar/{escuelaId:[0-9]+}")
 	public String eliminar(@PathVariable Integer escuelaId, Model modelo) {
+		Boolean eliminado;
+		Escuela escuela = null;
+		escuela = escuelaRepositorio.buscarPorId(escuelaId);
 
-		escuelaRepositorio.eliminarEscuela(escuelaRepositorio.buscarPorId(escuelaId));
-		modelo.addAttribute("mensaje", "Se ha eliminado la escuela");
-		return "escuela-eliminar";
+		if(escuela != null){
+			escuelaRepositorio.eliminarEscuela(escuela);
+			eliminado = true;
+		}else{
+			eliminado = false;
+		}
+
+		return "redirect:/escuela?eliminado=" + eliminado;
 	}
-//http://localhost:8080/trabajoterminal/idioma/
+
 	@RequestMapping(value="/escuela")
-	public String verTodos(Model modelo) {
+	public String verTodos(Model modelo,Boolean eliminado) {
 
 		List<Escuela> escuelaList = null;
 
 		escuelaList = escuelaRepositorio.obtenerTodos();
 
-		modelo.addAttribute("escuela", escuelaList);
+		modelo.addAttribute("escuelasList", escuelaList);
+		modelo.addAttribute("eliminado", eliminado);
 
 		return "escuela-todos";
 	}

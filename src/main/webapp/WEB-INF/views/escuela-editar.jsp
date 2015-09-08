@@ -58,68 +58,92 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Editar escuela
+                                <i class="fa fa-gift"></i>Editar Escuela
                             </div>
-                            <div class="tools">
-                                <a href="javascript:;" class="collapse">
-                                </a>
-                                <a href="#portlet-config" data-toggle="modal" class="config">
-                                </a>
-                                <a href="javascript:;" class="reload">
-                                </a>
-                                <a href="javascript:;" class="remove">
-                                </a>
-                            </div>
+
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/escuela/guardarCambios" var="urlEscuelaGuardar" />
-                            <form:form action="${urlEscuelaGuardar}" method="post" commandName="estado" >
+                            <c:url value="/escuela/guardarCambios" var="urlEscuelaGuardar"/>
+
+                            <form:form action="${urlEscuelaGuardar}" method="post" commandName="escuela"
+                                       cssClass="form-horizontal">
                                 <div class="form-body">
+                                    <form:hidden path="id" />
+
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Nombre *: </label>
+                                        <label class="control-label col-md-3">Nombre
+                                            <span class="required"> * </span>
+                                        </label>
+
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:hidden path="idEscuela" />
                                                 <form:input path="nombre" cssClass="form-control"/>
-                                                <form:input path="abreviacion" cssClass="form-control"/>
-                                                 <form:select path="nivel">
-   													<form:option value="" label="--- Seleccionar ---"/>
-											    	<form:options items="${nivelList}" />
-												</form:select>
-                                                <form:select path="area">
-   													<form:option value="" label="--- Seleccionar ---"/>
-											    	<form:options items="${areaList}" />
-												</form:select>
-                                                
-                                                <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
-                                                <form:errors path="abreviacion" element="span" cssClass="help-block text-danger"/>
-                                                <form:errors path="nivel" element="span" cssClass="help-block text-danger"/>
-                                                <form:errors path="area" element="span" cssClass="help-block text-danger"/>
-                                                
-                                                
-                                                
+                                                <form:errors path="nombre" element="span"
+                                                             cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Abreviación
+                                            <span class="required"> * </span>
+                                        </label>
 
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:input path="abreviacion" cssClass="form-control"/>
+                                                <form:errors path="abreviacion" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Nivel
+                                            <span class="required"> * </span>
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:select path="nivel.idNivel" cssClass="form-control">
+                                                    <form:options items="${nivelList}" itemValue="idNivel"
+                                                                  itemLabel="nombre"/>
+                                                </form:select>
+                                                <form:errors path="nivel" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Área
+                                            <span class="required"> * </span>
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:select path="area.idArea" cssClass="form-control">
+                                                    <form:options items="${areaList}" itemValue="idArea"
+                                                                  itemLabel="nombre"/>
+                                                </form:select>
+                                                <form:errors path="area" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="btn green">Guardar Cambios</button>
+                                            <button type="submit" class="btn green">Guardar cambios</button>
                                             <button type="button" class="btn default">Cancelar</button>
                                         </div>
                                     </div>
                                 </div>
                             </form:form>
-
                         </div>
                     </div>
                     <!-- END VALIDATION STATES-->
                 </div>
             </div>
-
             <!-- END PAGE CONTENT-->
         </div>
     </div>
