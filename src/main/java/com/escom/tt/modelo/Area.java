@@ -1,6 +1,6 @@
 package com.escom.tt.modelo;
 
-import org.hibernate.validator.constraints.SafeHtml;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
