@@ -19,33 +19,32 @@ public class HibernateEscuelaRepositorio implements EscuelaRepositorio{
 	@Override
 	public Integer crearEscuela(Escuela escuela) {
 		sf.getCurrentSession().save(escuela);
-		return null; 
+		return escuela.getId();
 	}
 
 	@Override
 	public void eliminarEscuela(Escuela escuela) {
 		sf.getCurrentSession().delete(escuela);
-		
 	}
 
 	@Override
 	public Integer actualizarEscuela(Escuela escuela) {
 		sf.getCurrentSession().update(escuela);
-		return null;
+		return escuela.getId();
 	}		
 
 	@Override
 	public Escuela buscarPorId(Integer id) {
 		Escuela escuela = null;
 		escuela = (Escuela) sf.getCurrentSession().get(Escuela.class, id);
-		return null;
+		return escuela;
 	}
 
 	@Override
 	public List<Escuela> obtenerTodos() {
 		List<Escuela> escuelas=null;
 		escuelas = sf.getCurrentSession().createCriteria(Escuela.class).list();
-		return null;
+		return escuelas;
 	}
 
 }

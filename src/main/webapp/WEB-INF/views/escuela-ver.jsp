@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url value="/" var="contexto"/>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -56,14 +57,56 @@
 					<c:if test="${creado}">
                         <h1 class="text-success"><strong>Se ha creado una nueva escuela</strong></h1>
 					</c:if>
-					<div class="col-md-12">
-						<h1> ID: ${escuela.idEscuela} </h1>
-						<h1> NOMBRE: ${escuela.nombre} </h1>
-						<h1> NOMBRE: ${escuela.abreviacion} </h1>
-						<h1> NOMBRE: ${escuela.nivel} </h1>
-						<h1> NOMBRE: ${escuela.area} </h1>
-						
-						
+					<div class="col-md-8 col-md-offset-2">
+						<div class="portlet blue-hoki box">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-cogs"></i>Información de la Escuela
+								</div>
+								<div class="actions">
+									<a href="${contexto}escuela/${escuela.id}/editar" class="btn btn-default btn-sm">
+										<i class="fa fa-pencil"></i> Editar </a>
+									<a href="${contexto}escuela/eliminar/${escuela.id}/" class="btn btn-default btn-sm">
+										<i class="fa fa-pencil"></i> Eliminar </a>
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Nombre:
+									</div>
+									<div class="col-md-7 value">
+										${escuela.nombre}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Abreviación:
+									</div>
+									<div class="col-md-7 value">
+										${escuela.abreviacion}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Área:
+									</div>
+									<div class="col-md-7 value">
+										${escuela.area.nombre}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Nivel
+									</div>
+									<div class="col-md-7 value">
+										${escuela.nivel.nombre}
+									</div>
+								</div>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
 				<!-- END PAGE CONTENT-->
