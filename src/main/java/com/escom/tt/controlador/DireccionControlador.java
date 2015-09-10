@@ -29,7 +29,7 @@ public class DireccionControlador {
 		
 	}
 	
-	@RequestMapping(value = "/direccion/crear", method = RequestMethod.POST)
+	@RequestMapping(value = "/direccion/guardar", method = RequestMethod.POST)
 	public String crear (@ModelAttribute("direccion") @Valid Direccion direccion, BindingResult validacion, Model modelo){
 		String ruta = null;
 		if (validacion.hasErrors()){
@@ -104,7 +104,7 @@ public class DireccionControlador {
 
 		direccionList = direccionRepositorio.obtenerTodos();
 
-		modelo.addAttribute("direccion", direccionList);
+		modelo.addAttribute("direcciones", direccionList);
 
 		return "direccion-todos";
 	}

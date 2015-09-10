@@ -19,7 +19,7 @@ public class Direccion {
 	@Id
 	@Column(name= "idDireccion")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer idDireccion;
 	
 	@Column(name="calle")
 	@NotNull
@@ -28,7 +28,6 @@ public class Direccion {
 	
 	@Column(name="numero")
 	@NotNull
-	@Size(min =2, max = 14, message = "el numero no debe ser null")
 	private Integer numero;
 	
 	@Column(name = "colonia")
@@ -42,11 +41,11 @@ public class Direccion {
 	private String estado;
 		
 	public Integer getId() {
-		return id;
+		return idDireccion;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.idDireccion = id;
 	}
 
 	public String getCalle() {
