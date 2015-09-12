@@ -1,6 +1,7 @@
 package com.escom.tt.modelo;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,15 +10,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.mapping.Set;
+
 
 @Entity
 @Table(name="USUARIO")
 public class Usuario {
+
+	public List<Correo> getCorreos() {
+		return correos;
+	}
+
+	public void setCorreos(List<Correo> correos) {
+		this.correos = correos;
+	}
 
 	@Id
 	@Column(name="idUsuarios")
@@ -91,6 +104,13 @@ public class Usuario {
 	@NotNull(message="Se necesita un grado para el registro")
 	private Grado grado;
 
+	@OneToMany(mappedBy = "usuarioEmisor")
+	private List<Correo> correos;
+	
+	
+	
+
+	 
 	public Integer getIdUsuarios() {
 		return idUsuarios;
 	}
