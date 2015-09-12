@@ -29,8 +29,17 @@ public class Grado {
 	private String nombre;
 
 	@OneToMany(mappedBy="grado")
-	private List<Grado> grados;
+	private List<Usuario> usuarios;
 	
+	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 	public Integer getIdGrado() {
 		return idGrado;
 	}

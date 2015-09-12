@@ -26,62 +26,59 @@ public class Usuario {
 	
 	@Column(name="nombreUsuario")
 	@NotNull
-	@Size(min=2,max=15,message="El nombre de usuario debe tener al menos 2 caracteres y maximo 15")
+	@Size(min=5,max=45,message="El nombre de usuario debe tener al menos 5 caracteres y maximo 45")
 	private String nombreUsuario;
 	
 	@Column(name="contraseña")
 	@NotNull
-	@Size(min=3,max=8, message="La contraseña debe tener por lo menos 3 caracteres y maximo 8")
+	@Size(min=5,max=45,message="El nombre de la contraseña debe tener al menos 5 caracteres y maximo 45")
 	private String contraseña;
 	
 	@Column(name="nombres")
 	@NotNull
-	@Size(min=3, max=8, message="Los nombres no deben contener menos de 3 caracteres y no mas de 20 ")
+	@Size(min=5,max=45,message="Los nombres deben tener al menos 5 caracteres y maximo 45")
 	private String nombres;
 	
 	@Column(name="aPaterno")
 	@NotNull
-	@Size(min=3,max=8,message="El apellido paterno debe contener por lo menos 2 caracteres y maximo 12")
+	@Size(min=5,max=45,message="El apellido paterno debe tener al menos 5 caracteres y maximo 45")
 	private String aPaterno;
 	
 	@Column(name="aMaterno")
 	@NotNull
-	@Size(min=3,max=8,message="El apellido materno debe contener por lo menos 2 caracteres y maximo 12")
+	@Size(min=5,max=45,message="El apellido materno debe tener al menos 5 caracteres y maximo 45")
 	private String aMaterno;
 	
 	@Column(name="email")
 	@NotNull
-	@Size(min=3,max=8,message="El email debe contener por lo menos 2 caracteres y maximo 20")
+	@Size(min=5,max=45,message="El email debe tener al menos 5 caracteres y maximo 45")
 	private String email;
 	
 	@Column(name="fechaNacimiento")
 	@NotNull
-	@Size(min=3,max=8,message="La fecha 2 caracteres y maximo 20")
 	private Date fechaNacimiento;
 	
 	@Column(name="estadoCivil")
 	@NotNull
-	@Size(min=3,max=8,message="El estado civil debe contener minimo 3 caracteres y maximo 10")
+	@Size(min=5,max=45,message="El estado civil debe tener al menos 5 caracteres y maximo 45")
 	private String estadoCivil;
 
 	@Column(name="telefono")
 	@NotNull
-	@Size(min=3,max=8,message="El telefono debe contener minimo 8 caracteres y maximo 13")
+	@Size(min=5,max=45,message="El telefono debe tener al menos 5 caracteres y maximo 45")
 	private String telefono;
 
 	@Column(name="sexo")
 	@NotNull
-	@Size(min=3,max=8,message="El sexo...")
+	@Size(min=1)
 	private String sexo;
 	
 	@Column(name="fechaIngresoIPN")
 	@NotNull
-	@Size(min=3,max=8,message="Escribir la fecha en el formato indicado...")
 	private Date fechaIngresoIPN;
 	
 	@Column(name="calificacion")
 	@NotNull
-	@Size(min=1,max=8,message="Escribe la calificación como se indica...")
 	private Integer calificacion;
 	
 	@ManyToOne
