@@ -2,11 +2,13 @@ package com.escom.tt.modelo;
 
 
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
+/**	
  * Created by darcusfenix on 9/6/15.
  */
 
@@ -39,6 +41,9 @@ public class Escuela {
     @NotNull(message = "Se necesita un nivel para este registro")
     private Nivel nivel;
 
+    @OneToMany(mappedBy="escuela")
+    private List<Usuario> usuarios;
+    
     public Integer getId() {
         return id;
     }
