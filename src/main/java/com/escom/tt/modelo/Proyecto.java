@@ -55,7 +55,7 @@ public class Proyecto {
     private Estado estado;
 
     @OneToOne
-    @JoinColumn(name="estado")
+    @JoinColumn(name="coordinador")
     @NotNull(message = "Se necesita un Coordinador de proyecto")
     private Usuario coordinador;
 

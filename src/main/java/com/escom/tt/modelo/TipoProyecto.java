@@ -21,7 +21,7 @@ public class TipoProyecto {
     @Size(min = 2, max = 24, message = "El nombre debe tener al menos 2 caracteres y máximo 14")
     private String  nombre;
 
-	@OneToMany(mappedBy = "tipoProyecto")
+	@OneToMany(mappedBy = "coordinador")
 	private List<Proyecto> proyectos;
     
 	
