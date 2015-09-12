@@ -70,21 +70,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tt`.`DIRECCION`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `tt`.`DIRECCION` ;
-
-CREATE  TABLE IF NOT EXISTS `tt`.`DIRECCION` (
-  `idDireccion` INT NOT NULL AUTO_INCREMENT ,
-  `calle` VARCHAR(45) NULL ,
-  `numero` INT NULL ,
-  `colonia` VARCHAR(45) NULL ,
-  `estado` VARCHAR(45) NULL ,
-  PRIMARY KEY (`idDireccion`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `tt`.`USUARIO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `tt`.`USUARIO` ;
@@ -105,11 +90,9 @@ CREATE  TABLE IF NOT EXISTS `tt`.`USUARIO` (
   `calificacion` INT NULL ,
   `escuela` INT NOT NULL ,
   `grado` INT NOT NULL ,
-  `direccion` INT NOT NULL ,
   PRIMARY KEY (`idUsuarios`) ,
   INDEX `fk_Usuario_Escuela1_idx` (`escuela` ASC) ,
   INDEX `fk_Usuario_Grado_academico1_idx` (`grado` ASC) ,
-  INDEX `fk_USUARIO_DIRECCION1_idx` (`direccion` ASC) ,
   CONSTRAINT `fk_Usuario_Escuela1`
     FOREIGN KEY (`escuela` )
     REFERENCES `tt`.`ESCUELA` (`idEscuela` )
@@ -118,11 +101,6 @@ CREATE  TABLE IF NOT EXISTS `tt`.`USUARIO` (
   CONSTRAINT `fk_Usuario_Grado_academico1`
     FOREIGN KEY (`grado` )
     REFERENCES `tt`.`GRADO_ACADEMICO` (`idGrado_academico` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_USUARIO_DIRECCION1`
-    FOREIGN KEY (`direccion` )
-    REFERENCES `tt`.`DIRECCION` (`idDireccion` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -369,6 +347,28 @@ CREATE  TABLE IF NOT EXISTS `tt`.`INVITACION` (
   CONSTRAINT `fk_INVITACION_USUARIO_COLABORADOR_PROYECTO1`
     FOREIGN KEY (`usuario` , `proyecto` )
     REFERENCES `tt`.`USUARIO_COLABORADOR_PROYECTO` (`Usuario_idUsuarios` , `Proyecto_idProyectos` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `tt`.`DIRECCION`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `tt`.`DIRECCION` ;
+
+CREATE  TABLE IF NOT EXISTS `tt`.`DIRECCION` (
+  `idDireccion` INT NOT NULL AUTO_INCREMENT ,
+  `calle` VARCHAR(45) NULL ,
+  `numero` INT NULL ,
+  `colonia` VARCHAR(45) NULL ,
+  `estado` VARCHAR(45) NULL ,
+  `usuario` INT NOT NULL ,
+  PRIMARY KEY (`idDireccion`) ,
+  INDEX `fk_DIRECCION_USUARIO1_idx` (`usuario` ASC) ,
+  CONSTRAINT `fk_DIRECCION_USUARIO1`
+    FOREIGN KEY (`usuario` )
+    REFERENCES `tt`.`USUARIO` (`idUsuarios` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

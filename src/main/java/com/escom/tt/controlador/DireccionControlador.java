@@ -29,7 +29,7 @@ public class DireccionControlador {
 		
 	}
 	
-	@RequestMapping(value = "/direccion/guardar", method = RequestMethod.POST)
+	@RequestMapping(value = "/direccion/crear", method = RequestMethod.POST)
 	public String crear (@ModelAttribute("direccion") @Valid Direccion direccion, BindingResult validacion, Model modelo){
 		String ruta = null;
 		if (validacion.hasErrors()){
@@ -37,9 +37,9 @@ public class DireccionControlador {
 			ruta = "direccion-crear";
 		}else {
 			Integer id = direccionRepositorio.crearDireccion(direccion);
-			ruta = "redirect:/direccion/ver/" + direccion.getId()+"/?creado = true";
+			ruta = "redirect:/direccion/ver/" + direccion.getId()+"/?creado=true";
 		}
-		return null;
+		return ruta;
 		
 	}
 	@RequestMapping(value="/direccion/guardarCambios", method = RequestMethod.POST)

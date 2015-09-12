@@ -75,8 +75,8 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/direccion/crear" var="urlDireccionCrear" />
-                            <form:form action="${urlDireccionCrear}" method="post" commandName="direccion" >
+                            <c:url value="/direccion/guardar" var="urlDireccionGuardar" />
+                            <form:form action="${urlDireccionGuardar}" method="post" commandName="direccion" >
                                 <div class="form-body">
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Calle *: </label>

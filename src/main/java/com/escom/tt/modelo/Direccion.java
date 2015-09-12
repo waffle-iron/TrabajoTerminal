@@ -1,6 +1,7 @@
 package com.escom.tt.modelo;
 
 import javax.annotation.Generated;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -39,6 +41,10 @@ public class Direccion {
 	@NotNull
 	@Size(min =2, max = 14, message = "el estado debe tener al menos 2 caracteres y máximo 14")
 	private String estado;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Usuario usuario;
 		
 	public Integer getId() {
 		return idDireccion;
