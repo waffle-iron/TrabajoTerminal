@@ -1,6 +1,6 @@
 package com.escom.tt.modelo;
 
-import org.hibernate.validator.constraints.SafeHtml;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,7 +20,7 @@ public class Area {
 	@Size(min = 2, max = 14, message= "El nombre debe tener al menos 2 caracteres y máximo 14")
 	private String nombre;
 
-
+	
 	@OneToMany(mappedBy = "area")
 	private List<Escuela> escuelas;
 
