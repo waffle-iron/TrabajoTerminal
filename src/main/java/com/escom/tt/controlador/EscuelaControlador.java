@@ -134,9 +134,9 @@ public class EscuelaControlador {
 
 		return "escuela-todos";
 	}
-	
-	
-	
+
+
+
 }
 	
 

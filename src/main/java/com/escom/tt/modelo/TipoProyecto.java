@@ -3,6 +3,7 @@ package com.escom.tt.modelo;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * Created by yayo__000 on 27/08/2015.*/
@@ -18,7 +19,10 @@ public class TipoProyecto {
     @Column(name = "nombre")
     @NotNull
     @Size(min = 2, max = 24, message = "El nombre debe tener al menos 2 caracteres y máximo 14")
-    private String  nombre; 
+    private String  nombre;
+
+	@OneToMany(mappedBy = "tipoProyecto")
+	private List<Proyecto> proyectos;
     
 	
 	public Integer getIdTipoProyecto() {
