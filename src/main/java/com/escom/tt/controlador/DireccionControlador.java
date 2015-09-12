@@ -37,9 +37,9 @@ public class DireccionControlador {
 			ruta = "direccion-crear";
 		}else {
 			Integer id = direccionRepositorio.crearDireccion(direccion);
-			ruta = "redirect:/direccion/ver/" + direccion.getId()+"/?creado = true";
+			ruta = "redirect:/direccion/ver/" + direccion.getId()+"/?creado=true";
 		}
-		return null;
+		return ruta;
 		
 	}
 	@RequestMapping(value="/direccion/guardarCambios", method = RequestMethod.POST)
@@ -104,7 +104,7 @@ public class DireccionControlador {
 
 		direccionList = direccionRepositorio.obtenerTodos();
 
-		modelo.addAttribute("direccion", direccionList);
+		modelo.addAttribute("direcciones", direccionList);
 
 		return "direccion-todos";
 	}
