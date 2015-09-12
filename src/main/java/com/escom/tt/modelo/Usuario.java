@@ -83,6 +83,9 @@ public class Usuario {
 	@JoinColumn(name="grado")
 	@NotNull(message="Se necesita un grado para el registro")
 	private Grado grado;
+	
+	@OneToMany(mappedBy="colaborador")
+    private List<ColaboradorProyectoID> colaboradorProyectos;
 
 	@OneToMany(mappedBy = "estado")
 	private List<Proyecto> proyectos;

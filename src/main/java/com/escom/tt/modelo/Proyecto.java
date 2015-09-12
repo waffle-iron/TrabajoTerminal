@@ -5,7 +5,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.ws.rs.DefaultValue;
+
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by darcusfenix on 9/12/15.
@@ -58,6 +60,9 @@ public class Proyecto {
     @JoinColumn(name="coordinador")
     @NotNull(message = "Se necesita un Coordinador de proyecto")
     private Usuario coordinador;
+    
+    @OneToMany(mappedBy="proyecto")
+    private List<ColaboradorProyectoID> colaboradoresProyecto;
 
     public Integer getIdProyecto() {
         return idProyecto;
