@@ -31,7 +31,6 @@ public class Usuario {
 	
 	@Column(name="contraseña")
 	@NotNull
-	@Size(min=3,max=8, message="La contraseña debe tener por lo menos 3 caracteres y maximo 8")
 	private String contraseña;
 	
 	@Column(name="nombres")
@@ -56,7 +55,6 @@ public class Usuario {
 	
 	@Column(name="fechaNacimiento")
 	@NotNull
-	@Size(min=3,max=8,message="La fecha 2 caracteres y maximo 20")
 	private Date fechaNacimiento;
 	
 	@Column(name="estadoCivil")
@@ -76,12 +74,10 @@ public class Usuario {
 	
 	@Column(name="fechaIngresoIPN")
 	@NotNull
-	@Size(min=3,max=8,message="Escribir la fecha en el formato indicado...")
 	private Date fechaIngresoIPN;
 	
 	@Column(name="calificacion")
 	@NotNull
-	@Size(min=1,max=8,message="Escribe la calificación como se indica...")
 	private Integer calificacion;
 	
 	@ManyToOne
