@@ -35,5 +35,7 @@ public class Idioma {
 	@Override
 	public String toString() {
 		return this.idIdioma + " " + this.nombre;
+		
+		
 	}
 }
