@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d629382-9d80-4e7f-98f0-4dd08de33327" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/modelo/Correo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/direccion-crear.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/direccion-editar.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/direccion-eliminar.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/direccion-todos.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/direccion-ver.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/base.png" afterPath="$PROJECT_DIR$/db/base.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/db-final.mwb.bak" afterPath="$PROJECT_DIR$/db/db-final.mwb.bak" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/db-final.mwb" afterPath="$PROJECT_DIR$/db/db-final.mwb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/escom/tt/modelo/Direccion.java" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/modelo/Direccion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/DireccionControlador.java" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/DireccionControlador.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/escom/tt/modelo/Usuario.java" afterPath="$PROJECT_DIR$/src/main/java/com/escom/tt/modelo/Usuario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/db.sql" afterPath="$PROJECT_DIR$/db/db.sql" />
     </list>
     <ignored path="trabajoterminal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,8 +48,8 @@
       <file leaf-file-name="EscuelaControlador.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/EscuelaControlador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71794873">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6122449">
+              <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -943,12 +931,12 @@
       <workItem from="1441567145632" duration="702000" />
       <workItem from="1441573998266" duration="2727000" />
       <workItem from="1441582584053" duration="2887000" />
-      <workItem from="1442088033315" duration="94000" />
+      <workItem from="1442088033315" duration="420000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31100000" />
+    <option name="totallyTimeSpent" value="31426000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -961,7 +949,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="743" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -975,7 +963,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24924242" sideWeight="0.4710145" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24924242" sideWeight="0.4710145" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.51932365" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1378,8 +1366,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/escom/tt/controlador/EscuelaControlador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71794873">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6122449">
+          <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
           <folding />
         </state>
       </provider>
