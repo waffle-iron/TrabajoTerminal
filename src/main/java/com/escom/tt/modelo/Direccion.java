@@ -1,6 +1,7 @@
 package com.escom.tt.modelo;
 
 import javax.annotation.Generated;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,10 +18,12 @@ import javax.validation.constraints.Size;
 @Table(name = "direccion")
 public class Direccion {
 	
+	
+
 	@Id
 	@Column(name= "idDireccion")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer idDireccion;
 	
 	@Column(name="calle")
 	@NotNull
@@ -28,7 +32,6 @@ public class Direccion {
 	
 	@Column(name="numero")
 	@NotNull
-	@Size(min =2, max = 14, message = "el numero no debe ser null")
 	private Integer numero;
 	
 	@Column(name = "colonia")
@@ -40,13 +43,17 @@ public class Direccion {
 	@NotNull
 	@Size(min =2, max = 14, message = "el estado debe tener al menos 2 caracteres y máximo 14")
 	private String estado;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Usuario usuario;
 		
 	public Integer getId() {
-		return id;
+		return idDireccion;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.idDireccion = id;
 	}
 
 	public String getCalle() {
@@ -79,5 +86,13 @@ public class Direccion {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }
