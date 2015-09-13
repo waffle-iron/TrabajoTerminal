@@ -4,14 +4,14 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Embeddable
+//@Embeddable
 public class ColaboradorProyectoID{
 	
-	@ManyToOne
-	@JoinColumn(name = "Usuario_idUsuarios")
+	//@ManyToOne
+	//@JoinColumn(name = "Usuario_idUsuarios")
 	private Usuario colaborador;
-	@ManyToOne
-	@JoinColumn(name = "Proyecto_idProyectos")
+	//@ManyToOne
+	//@JoinColumn(name = "Proyecto_idProyectos")
 	private Proyecto proyecto;
 	public Usuario getColaborador() {
 		return colaborador;
@@ -25,8 +25,5 @@ public class ColaboradorProyectoID{
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
 	}
-	
-	
-	
-	
+
 }
