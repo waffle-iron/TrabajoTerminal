@@ -11,9 +11,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
 
-@Entity
-@Table(name = "usuario_colaborador_proyecto")
+//@Entity
+//@Table(name = "usuario_colaborador_proyecto")
 public class ColaboradorProyecto {
-	@EmbeddedId
+	//@EmbeddedId
 	ColaboradorProyectoID c;
 }

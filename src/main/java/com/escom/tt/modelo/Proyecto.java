@@ -61,8 +61,8 @@ public class Proyecto {
     @NotNull(message = "Se necesita un Coordinador de proyecto")
     private Usuario coordinador;
     
-    @OneToMany(mappedBy="proyecto")
-    private List<ColaboradorProyectoID> colaboradoresProyecto;
+   // @OneToMany(mappedBy="proyecto")
+    //private List<ColaboradorProyectoID> colaboradoresProyecto;
 
     public Integer getIdProyecto() {
         return idProyecto;

@@ -16,7 +16,7 @@ public class Tarea {
 	@Column(name = "idTarea")
 	private Integer idTarea;
 	
-	private ColaboradorProyecto colaboradorProyecto;
+	//private ColaboradorProyecto colaboradorProyecto;
 
 	public Integer getIdTarea() {
 		return idTarea;
@@ -25,7 +25,7 @@ public class Tarea {
 	public void setIdTarea(Integer idTarea) {
 		this.idTarea = idTarea;
 	}
-
+	/*
 	public ColaboradorProyecto getColaboradorProyecto() {
 		return colaboradorProyecto;
 	}
@@ -34,6 +34,6 @@ public class Tarea {
 		this.colaboradorProyecto = colaboradorProyecto;
 	}
 	
-	
+	*/
 
 }
