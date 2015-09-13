@@ -118,7 +118,7 @@ public class UsuarioControlador {
 
 		usuarioList = usuarioRepositorio.obtenerTodos();
 
-		modelo.addAttribute("usuario", usuarioList);
+		modelo.addAttribute("usuarios", usuarioList);
 
 		return "usuario-todos";
 	}
