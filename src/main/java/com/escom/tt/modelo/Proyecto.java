@@ -61,8 +61,8 @@ public class Proyecto {
     @NotNull(message = "Se necesita un Coordinador de proyecto")
     private Usuario coordinador;
     
-    @OneToMany(mappedBy="proyecto")
-    private List<ColaboradorProyectoID> colaboradoresProyecto;
+    @OneToMany(mappedBy="compositekey.idProyecto")
+    private List<ColaboradorProyecto> colaboradorProyectos;
 
     public Integer getIdProyecto() {
         return idProyecto;
@@ -142,5 +142,13 @@ public class Proyecto {
 
     public void setCoordinador(Usuario coordinador) {
         this.coordinador = coordinador;
+    }
+
+    public List<ColaboradorProyecto> getColaboradorProyectos() {
+        return colaboradorProyectos;
+    }
+
+    public void setColaboradorProyectos(List<ColaboradorProyecto> colaboradorProyectos) {
+        this.colaboradorProyectos = colaboradorProyectos;
     }
 }

@@ -1,19 +1,25 @@
 package com.escom.tt.modelo;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.lang.model.element.Name;
+import javax.persistence.*;
 
 import org.hibernate.annotations.NaturalId;
 
+import java.io.Serializable;
+
 @Entity
-@Table(name = "usuario_colaborador_proyecto")
+@Table(name = "USUARIO_COLABORADOR_PROYECTO")
 public class ColaboradorProyecto {
-	@EmbeddedId
-	ColaboradorProyectoID c;
+
+    @EmbeddedId
+    private ColaboradorProyectoPK compositekey;
+
+    public ColaboradorProyectoPK getCompositekey() {
+        return compositekey;
+    }
+
+    public void setCompositekey(ColaboradorProyectoPK compositekey) {
+        this.compositekey = compositekey;
+    }
 }
+

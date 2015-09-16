@@ -122,9 +122,10 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "usuarioEmisor")
 	private List<Correo> correos;
-	
-	
-	
+
+
+	@OneToMany(mappedBy="compositekey.idUsuario")
+	private List<ColaboradorProyecto> ColaboradorProyectos;
 
 	 
 	public Integer getIdUsuarios() {
@@ -246,7 +247,12 @@ public class Usuario {
 	public void setGrado(Grado grado) {
 		this.grado = grado;
 	}
-	
-	
-	
+
+	public List<ColaboradorProyecto> getColaboradorProyectos() {
+		return ColaboradorProyectos;
+	}
+
+	public void setColaboradorProyectos(List<ColaboradorProyecto> colaboradorProyectos) {
+		ColaboradorProyectos = colaboradorProyectos;
+	}
 }

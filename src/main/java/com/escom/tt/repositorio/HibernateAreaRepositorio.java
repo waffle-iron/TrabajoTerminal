@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.escom.tt.modelo.Area;
 
-@Repository()
+@Repository
 @Transactional
 public class HibernateAreaRepositorio implements AreaRepositorio {
 	@Autowired
