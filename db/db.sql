@@ -82,14 +82,14 @@ CREATE  TABLE IF NOT EXISTS `tt`.`USUARIO` (
   `aPaterno` VARCHAR(45) NULL ,
   `aMaterno` VARCHAR(45) NULL ,
   `email` VARCHAR(45) NULL ,
-  `fechaNacimiento` DATE NULL ,
+  `fechaNacimiento` VARCHAR(45) NULL ,
   `estadoCivil` VARCHAR(45) NULL ,
   `telefono` VARCHAR(45) NULL ,
   `sexo` VARCHAR(45) NULL ,
-  `fechaIngresoIPN` DATE NULL ,
-  `calificacion` INT NULL ,
+  `fechaIngresoIPN` VARCHAR(45) NULL ,
   `escuela` INT NOT NULL ,
   `grado` INT NOT NULL ,
+  `Evaluacion` INT NULL ,
   PRIMARY KEY (`idUsuarios`) ,
   INDEX `fk_Usuario_Escuela1_idx` (`escuela` ASC) ,
   INDEX `fk_Usuario_Grado_academico1_idx` (`grado` ASC) ,
@@ -136,17 +136,17 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `tt`.`PROYECTO` ;
 
 CREATE  TABLE IF NOT EXISTS `tt`.`PROYECTO` (
-  `idProyecto` INT NOT NULL AUTO_INCREMENT ,
+  `idProyectos` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(45) NULL ,
   `descripcion` LONGTEXT NULL ,
-  `fechaInicio` DATE NULL ,
-  `fechaFin` DATE NULL ,
-  `privado` TINYINT(1) NULL DEFAULT 0 ,
-  `avance` VARCHAR(45) NULL ,
-  `tipo` INT NOT NULL ,
-  `estado` INT NOT NULL ,
+  `fechaInicio` VARCHAR(45) NULL ,
+  `fechaFin` VARCHAR(45) NULL ,
   `coordinador` INT NOT NULL ,
-  PRIMARY KEY (`idProyecto`) ,
+  `privado` TINYINT(1) NULL DEFAULT 0 ,
+  `tipo` INT NOT NULL ,
+  `avance` VARCHAR(45) NULL ,
+  `estado` INT NOT NULL ,
+  PRIMARY KEY (`idProyectos`) ,
   INDEX `fk_Proyecto_Usuario1_idx` (`coordinador` ASC) ,
   INDEX `fk_Proyecto_TipoProyecto1_idx` (`tipo` ASC) ,
   INDEX `fk_Proyecto_Estado1_idx` (`estado` ASC) ,
@@ -198,7 +198,7 @@ CREATE  TABLE IF NOT EXISTS `tt`.`USUARIO_COLABORADOR_PROYECTO` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Usuario_has_Proyecto_Proyecto1`
     FOREIGN KEY (`Proyecto_idProyectos` )
-    REFERENCES `tt`.`PROYECTO` (`idProyecto` )
+    REFERENCES `tt`.`PROYECTO` (`idProyectos` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -289,7 +289,7 @@ CREATE  TABLE IF NOT EXISTS `tt`.`AREA_HAS_PROYECTO` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Area_has_Proyecto_Proyecto1`
     FOREIGN KEY (`Proyecto_idProyectos` )
-    REFERENCES `tt`.`PROYECTO` (`idProyecto` )
+    REFERENCES `tt`.`PROYECTO` (`idProyectos` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -325,7 +325,7 @@ CREATE  TABLE IF NOT EXISTS `tt`.`PALABRA_CLAVE_HAS_PROYECTO` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_PalabrasClave_has_Proyecto_Proyecto1`
     FOREIGN KEY (`Proyecto_idProyectos` )
-    REFERENCES `tt`.`PROYECTO` (`idProyecto` )
+    REFERENCES `tt`.`PROYECTO` (`idProyectos` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -338,7 +338,7 @@ DROP TABLE IF EXISTS `tt`.`INVITACION` ;
 
 CREATE  TABLE IF NOT EXISTS `tt`.`INVITACION` (
   `idInvitacion` INT NOT NULL AUTO_INCREMENT ,
-  `fecha` DATE NULL ,
+  `fecha` VARCHAR(45) NULL ,
   `estado` INT NULL ,
   `usuario` INT NOT NULL ,
   `proyecto` INT NOT NULL ,
@@ -381,8 +381,8 @@ DROP TABLE IF EXISTS `tt`.`Correo` ;
 
 CREATE  TABLE IF NOT EXISTS `tt`.`Correo` (
   `idCorreo` INT NOT NULL ,
-  `Asunto` VARCHAR(45) NULL ,
-  `Contenido` VARCHAR(200) NULL ,
+  `NombreCorreo` VARCHAR(45) NULL ,
+  `ContenidoCorreo` VARCHAR(200) NULL ,
   `EMISOR` INT NOT NULL ,
   `RECEPTOR` INT NOT NULL ,
   PRIMARY KEY (`idCorreo`) ,
