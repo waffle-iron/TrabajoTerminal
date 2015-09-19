@@ -9,7 +9,7 @@ import java.util.List;
  * Created by yayo__000 on 27/08/2015.*/
 
 @Entity
-@Table(name = "tipo_proyecto")
+@Table(name = "TIPO_PROYECTO")
 public class TipoProyecto {
 	@Id
     @Column(name = "idTipoProyecto")

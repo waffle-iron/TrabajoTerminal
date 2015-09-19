@@ -45,6 +45,8 @@ public class ProyectoControlador {
 
         if (validacion.hasErrors()){
             modelo.addAttribute("proyecto", proyecto);
+            modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
+            modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
             ruta = "proyecto-crear";
         }else{
             Integer id = proyectoRepositorio.crear(proyecto);
