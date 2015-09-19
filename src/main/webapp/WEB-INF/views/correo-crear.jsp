@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -60,93 +55,77 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Registrar una nueva direccion
-                            </div>
-                            <div class="tools">
-                                <a href="javascript:;" class="collapse">
-                                </a>
-                                <a href="#portlet-config" data-toggle="modal" class="config">
-                                </a>
-                                <a href="javascript:;" class="reload">
-                                </a>
-                                <a href="javascript:;" class="remove">
-                                </a>
+                                <i class="fa fa-gift"></i>Registrar un correo
                             </div>
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/direccion/crear" var="urlDireccionCrear" />
-                            <form:form action="${urlDireccionCrear}" method="post" commandName="direccion" >
-                                <div class="form-body">
-                                
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Calle
-                                        	<span class="required"> * </span>
-                                        </label>
-                                        
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="calle" cssClass="form-control"/>
-                                                <form:errors path="calle" element="span" 
-                                                			cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Numero <span class="required"> * </span> </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="numero" cssClass="form-control"/>
-                                                <form:errors path="numero" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">    
-                                        <label class="control-label col-md-3">Colonia <span class="required"> * </span> </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="colonia" cssClass="form-control"/>
-                                                <form:errors path="colonia" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>    
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Estado <span class="required"> * </span>  </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="estado" cssClass="form-control"/>
-                                                <form:errors path="estado" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
+                            <c:url value="/correo/crear" var="urlCorreoGuardar"/>
 
-                                    </div>
-                                    
-                                    
+                            <form:form action="${urlCorreoGuardar}" method="post" commandName="correo"
+                                       cssClass="form-horizontal">
+                                <div class="form-body">
+
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Usuario
+                                        <label class="control-label col-md-3">Asunto
                                             <span class="required"> * </span>
                                         </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:select path="usuario.idUsuario" cssClass="form-control">
-                                                    <form:option value="" label="Selecciona una opción"/>
-                                                    <form:options items="${usuarioList}" itemValue="idUsuario"
-                                                                  itemLabel="nombre"/>
-                                                </form:select>
-                                                <form:errors path="usuario" element="span"
+                                                <form:input path="Asunto" cssClass="form-control"/>
+                                                <form:errors path="Asunto" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    
-                                    
-                                    
-                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Contenido
+                                            <span class="required"> * </span>
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:input path="contenido" cssClass="form-control"/>
+                                                <form:errors path="contenido" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Emisor
+                                            <span class="required"> * </span>
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:select path="usuarioEmisorList.idUsuario" cssClass="form-control">
+                                                    <form:option value="" label="Selecciona una opción"/>
+                                                    <form:options items="${usuarioEmisorList}" itemValue="idUsuario"
+                                                                  itemLabel="nombreUsuario"/>
+                                                </form:select>
+                                                <form:errors path="usuarioEmisorList" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Receptor
+                                            <span class="required"> * </span>
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:select path="usuarioReceptorList.idUsuario" cssClass="form-control">
+                                                    <form:option value="-" label="Selecciona una opción"/>
+                                                    <form:options items="${usuarioReceptorList}" itemValue="idUsuario"
+                                                                  itemLabel="nombreUsuario"/>
+                                                </form:select>
+                                                <form:errors path="usuarioReceptorList" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">
@@ -157,13 +136,11 @@
                                     </div>
                                 </div>
                             </form:form>
-
                         </div>
                     </div>
                     <!-- END VALIDATION STATES-->
                 </div>
             </div>
-
             <!-- END PAGE CONTENT-->
         </div>
     </div>

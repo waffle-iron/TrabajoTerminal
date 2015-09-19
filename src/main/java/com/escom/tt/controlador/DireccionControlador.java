@@ -16,14 +16,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.escom.tt.modelo.Direccion;
 import com.escom.tt.modelo.Escuela;
 import com.escom.tt.repositorio.DireccionRepositorio;
+import com.escom.tt.repositorio.UsuarioRepositorio;
 
 @Controller
 public class DireccionControlador {
 	@Autowired
 	private DireccionRepositorio direccionRepositorio;
 	
+	@Autowired
+	private UsuarioRepositorio usuarioRepositorio;
+	
 	@RequestMapping(value="/direccion/crear", method = RequestMethod.GET)
 	public String crear(Model modelo){
+		modelo.addAttribute("usuarioList", usuarioRepositorio.obtenerTodos());
 		modelo.addAttribute("direccion", new Direccion());
 		return "direccion-crear";
 		
@@ -55,7 +60,7 @@ public class DireccionControlador {
 		}
 		return ruta;
 	}
-//http://localhost:8080/trabajoterminal/idioma/NUMERO/editar
+
 	@RequestMapping(value="/direccion/{direccionId:[0-9]+}/editar", method = RequestMethod.GET)
 	public String actualizar(@PathVariable Integer direccionId,Model modelo) {
 		Direccion direccion = null;
@@ -71,7 +76,7 @@ public class DireccionControlador {
 
 		return ruta;
 	}
-//http://localhost:8080/trabajoterminal/idioma/ver/NUMERO
+//
 	@RequestMapping(value="/direccion/ver/{direccionId:[0-9]+}")
 	public String ver(@PathVariable Integer direccionId, Model modelo, Boolean actualizado, Boolean creado) {
 		String ruta = null;
@@ -88,10 +93,11 @@ public class DireccionControlador {
 
 		return ruta;
 	}
-//http://localhost:8080/trabajoterminal/idioma/eliminar/idioma
+
 	@RequestMapping(value="/direccion/eliminar/{escuelaId:[0-9]+}")
 	public String eliminar(@PathVariable Integer direccionId, Model modelo) {
-
+			
+		
 		direccionRepositorio.eliminarDireccion(direccionRepositorio.buscarPorId(direccionId));
 		modelo.addAttribute("mensaje", "Se ha eliminado la escuela");
 		return "direccion-eliminar";
