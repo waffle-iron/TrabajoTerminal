@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -60,7 +65,7 @@
                                             <span class="required"> * </span>
                                         </label>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:input path="nombre" cssClass="form-control"/>
                                                 <form:errors path="nombre" element="span"
@@ -74,9 +79,9 @@
                                             <span class="required"> * </span>
                                         </label>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-7">
                                             <div class="input-icon right">
-                                                <form:textarea  path="descripcion" cssClass="form-control  "/>
+                                                <form:textarea  path="descripcion" cssClass="form-control"/>
                                                 <form:errors path="descripcion" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
@@ -88,7 +93,7 @@
                                             <span class="required"> * </span>
                                         </label>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:input path="fechaInicio" cssClass="form-control"/>
                                                 <form:errors path="fechaInicio" element="span"
@@ -102,7 +107,7 @@
                                             <span class="required"> * </span>
                                         </label>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:input path="fechaFin" cssClass="form-control"/>
                                                 <form:errors path="fechaFin" element="span"
@@ -116,7 +121,7 @@
                                             <span class="required"> * </span>
                                         </label>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:input path="avance" cssClass="form-control"/>
                                                 <form:errors path="avance" element="span"
@@ -130,14 +135,14 @@
                                             <span class="required"> * </span>
                                         </label>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:select path="tipoProyecto.idTipoProyecto" cssClass="form-control">
                                                     <form:option value="-" label="Selecciona una opción"/>
                                                     <form:options items="${tipoProyectoList}" itemValue="idTipoProyecto"
                                                                   itemLabel="nombre"/>
                                                 </form:select>
-                                                <form:errors path="nivel" element="span"
+                                                <form:errors path="tipoProyecto" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
@@ -148,18 +153,37 @@
                                             <span class="required"> * </span>
                                         </label>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:select path="estado.idEstado" cssClass="form-control">
                                                     <form:option value="-" label="Selecciona una opción"/>
                                                     <form:options items="${estadoList}" itemValue="idEstado"
                                                                   itemLabel="nombre"/>
                                                 </form:select>
-                                                <form:errors path="area" element="span"
+                                                <form:errors path="estado" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Coordinador
+                                            <span class="required"> * </span>
+                                        </label>
+
+                                        <div class="col-md-7">
+                                            <div class="input-icon right">
+                                                <form:select path="coordinador.idUsuarios" cssClass="form-control">
+                                                    <form:option value="-" label="Selecciona una opción"/>
+                                                    <form:options items="${cordinadorList}" itemValue="idUsuarios"
+                                                                  itemLabel="nombreUsuario"/>
+                                                </form:select>
+                                                <form:errors path="coordinador" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">

@@ -4,6 +4,7 @@ import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.repositorio.EstadoRepositorio;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.TipoProyectoRepositorio;
+import com.escom.tt.repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,14 +29,16 @@ public class ProyectoControlador {
     private TipoProyectoRepositorio tipoProyectoRepositorio;
     @Autowired
     private EstadoRepositorio estadoRepositorio;
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.GET)
     public String crear(Model modelo){
 
         modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
         modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
+        modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
         modelo.addAttribute("proyecto", new Proyecto());
-
         return "proyecto-crear";
     }
 
@@ -47,6 +50,7 @@ public class ProyectoControlador {
             modelo.addAttribute("proyecto", proyecto);
             modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
             modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
+            modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
             ruta = "proyecto-crear";
         }else{
             Integer id = proyectoRepositorio.crear(proyecto);

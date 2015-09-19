@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 
@@ -53,25 +53,28 @@
 
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
-                <div class="col-md-8 col-md-offset-2 ">
+                <div class="col-md-8 col-md-offset-2">
                     <!-- BEGIN VALIDATION STATES-->
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Registrar nuevo usuario
+                                <i class="fa fa-gift"></i>Editar Usuario
                             </div>
 
                         </div>
-                        <div class="portlet-body form ">
+                        <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/usuario/crear" var="urlUsuarioGuardar"/>
+                            <c:url value="/usuario/guardarCambios" var="urlUsuarioGuardar"/>
 
                             <form:form action="${urlUsuarioGuardar}" method="post" commandName="usuario"
                                        cssClass="form-horizontal">
                                 <div class="form-body">
+                                    <form:hidden path="idUsuarios" />
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Nombre *: </label>
+                                        <label class="control-label col-md-3">Nombre
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
@@ -81,9 +84,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Contraseña *: </label>
+                                        <label class="control-label col-md-3">Contraseña
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
@@ -93,9 +97,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Nombres *: </label>
+                                        <label class="control-label col-md-3">Nombres
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
@@ -105,9 +110,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Apellido Paterno *: </label>
+                                        <label class="control-label col-md-3">Apellido paterno
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
@@ -117,9 +123,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Apellido Materno *: </label>
+                                        <label class="control-label col-md-3">Apellido materno
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
@@ -129,9 +136,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Email *: </label>
+                                        <label class="control-label col-md-3">Email
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
@@ -141,9 +149,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">fecha Nacimiento *: </label>
+                                        <label class="control-label col-md-3">Fecha de nacimiento
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
@@ -153,9 +162,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Estado Civil: </label>
+                                        <label class="control-label col-md-3">Estado civil
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
@@ -165,21 +175,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Sexo: </label>
-
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="sexo" cssClass="form-control"/>
-                                                <form:errors path="sexo" element="span"
-                                                             cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Telefono: </label>
+                                        <label class="control-label col-md-3">Telefono
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
@@ -189,9 +188,23 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Fecha de Ingreso </label>
+                                        <label class="control-label col-md-3">Sexo
+                                            <span class="required"> * </span>
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:input path="sexo" cssClass="form-control"/>
+                                                <form:errors path="sexo" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Fecha ingreso del IPN
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
@@ -201,23 +214,20 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Evaluacion </label>
+                                        <label class="control-label col-md-3">Calificación
+                                            <span class="required"> * </span>
+                                        </label>
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:input path="evaluacion" cssClass="form-control"/>
-                                                <form:errors path="evaluacion" element="span"
+                                                <form:input path="Evaluacion" cssClass="form-control"/>
+                                                <form:errors path="Evaluacion" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
                                     </div>
-
-
-                                    <!-- -------------------------------------------------------------------------------------------- -->
-
-
+                                                                        
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Grado
                                             <span class="required"> * </span>
@@ -226,7 +236,6 @@
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:select path="grado.idGrado" cssClass="form-control">
-                                                    <form:option value="" label="Selecciona una opción"/>
                                                     <form:options items="${gradoList}" itemValue="idGrado"
                                                                   itemLabel="nombre"/>
                                                 </form:select>
@@ -235,9 +244,9 @@
                                             </div>
                                         </div>
                                     </div>
+										
 
-
-                                    <div class="form-group">
+									<div class="form-group">
                                         <label class="control-label col-md-3">Escuela
                                             <span class="required"> * </span>
                                         </label>
@@ -245,7 +254,6 @@
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:select path="escuela.id" cssClass="form-control">
-                                                    <form:option value="" label="Selecciona una opción"/>
                                                     <form:options items="${escuelaList}" itemValue="id"
                                                                   itemLabel="nombre"/>
                                                 </form:select>
@@ -255,18 +263,16 @@
                                         </div>
                                     </div>
 
-
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="btn green">Crear</button>
+                                            <button type="submit" class="btn green">Guardar cambios</button>
                                             <button type="button" class="btn default">Cancelar</button>
                                         </div>
                                     </div>
                                 </div>
                             </form:form>
-
                         </div>
                     </div>
                     <!-- END VALIDATION STATES-->

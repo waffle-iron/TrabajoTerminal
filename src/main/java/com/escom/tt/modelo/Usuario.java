@@ -4,77 +4,61 @@ import java.util.Date;
 import java.util.List;
 
 
+
 import javax.persistence.*;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.mapping.Set;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
 @Table(name="USUARIO")
 public class Usuario {
 
-	public List<Correo> getCorreos() {
-		return correos;
-	}
-
-	public void setCorreos(List<Correo> correos) {
-		this.correos = correos;
-	}
 
 	@Id
 	@Column(name="idUsuarios")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idUsuarios;
-	
+
 	@Column(name="nombreUsuario")
 	@NotNull
 	@Size(min=5,max=45,message="El nombre de usuario debe tener al menos 5 caracteres y maximo 45")
 	private String nombreUsuario;
-	
+
 	@Column(name="contraseña")
 	@NotNull
 	@Size(min=5,max=45,message="El nombre de la contraseña debe tener al menos 5 caracteres y maximo 45")
 	private String contraseña;
-	
+
 	@Column(name="nombres")
 	@NotNull
 	@Size(min=5,max=45,message="Los nombres deben tener al menos 5 caracteres y maximo 45")
 	private String nombres;
-	
+
 	@Column(name="aPaterno")
 	@NotNull
 	@Size(min=5,max=45,message="El apellido paterno debe tener al menos 5 caracteres y maximo 45")
 	private String aPaterno;
-	
+
 	@Column(name="aMaterno")
 	@NotNull
 	@Size(min=5,max=45,message="El apellido materno debe tener al menos 5 caracteres y maximo 45")
 	private String aMaterno;
-	
+
 	@Column(name="email")
 	@NotNull
 	@Size(min=5,max=45,message="El email debe tener al menos 5 caracteres y maximo 45")
 	private String email;
-	
+
 	@Column(name="fechaNacimiento")
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fechaNacimiento;
-	
+
 	@Column(name="estadoCivil")
 	@NotNull
 	@Size(min=5,max=45,message="El estado civil debe tener al menos 5 caracteres y maximo 45")
@@ -82,32 +66,35 @@ public class Usuario {
 
 	@Column(name="telefono")
 	@NotNull
-	@Size(min=5,max=45,message="El telefono debe tener al menos 5 caracteres y maximo 45")
+	@Size(min=10,message="El telefono debe tener al menos 10 digitos")
 	private String telefono;
 
 	@Column(name="sexo")
 	@NotNull
 	@Size(min=1)
 	private String sexo;
-	
+
 	@Column(name="fechaIngresoIPN")
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fechaIngresoIPN;
-	
-	@Column(name="calificacion")
+
+
+	@Column(name="Evaluacion")
 	@NotNull
-	private Integer calificacion;
-	
+	private Integer evaluacion;
+
+
 	@ManyToOne
 	@JoinColumn(name="escuela")
 	@NotNull(message="Se necesita una escuela para el registro")
 	private Escuela escuela;
-	
+
 	@ManyToOne
 	@JoinColumn(name="grado")
 	@NotNull(message="Se necesita un grado para el registro")
 	private Grado grado;
-	
+
 
 	@OneToMany(mappedBy = "estado")
 	private List<Proyecto> proyectos;
@@ -124,10 +111,20 @@ public class Usuario {
 	private List<Correo> correos;
 
 
+	public Integer getEvaluacion() {
+		return evaluacion;
+	}
+
+	public void setEvaluacion(Integer evaluacion) {
+		this.evaluacion = evaluacion;
+	}
+
+
+
 	@OneToMany(mappedBy="compositekey.idUsuario")
 	private List<ColaboradorProyecto> ColaboradorProyectos;
 
-	 
+
 	public Integer getIdUsuarios() {
 		return idUsuarios;
 	}
@@ -171,6 +168,7 @@ public class Usuario {
 	public String getaMaterno() {
 		return aMaterno;
 	}
+
 
 	public void setaMaterno(String aMaterno) {
 		this.aMaterno = aMaterno;
@@ -224,14 +222,6 @@ public class Usuario {
 		this.fechaIngresoIPN = fechaIngresoIPN;
 	}
 
-	public Integer getCalificacion() {
-		return calificacion;
-	}
-
-	public void setCalificacion(Integer calificacion) {
-		this.calificacion = calificacion;
-	}
-
 	public Escuela getEscuela() {
 		return escuela;
 	}
@@ -248,11 +238,13 @@ public class Usuario {
 		this.grado = grado;
 	}
 
-	public List<ColaboradorProyecto> getColaboradorProyectos() {
-		return ColaboradorProyectos;
+	public List<Correo> getCorreos() {
+		return correos;
 	}
 
-	public void setColaboradorProyectos(List<ColaboradorProyecto> colaboradorProyectos) {
-		ColaboradorProyectos = colaboradorProyectos;
+	public void setCorreos(List<Correo> correos) {
+		this.correos = correos;
 	}
+
+
 }

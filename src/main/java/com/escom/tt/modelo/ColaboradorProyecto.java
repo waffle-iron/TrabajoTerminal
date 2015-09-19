@@ -11,15 +11,14 @@ import java.io.Serializable;
 @Table(name = "USUARIO_COLABORADOR_PROYECTO")
 public class ColaboradorProyecto {
 
-    @EmbeddedId
-    private ColaboradorProyectoPK compositekey;
+	@EmbeddedId
+	private ColaboradorProyectoPK compositekey;
 
-    public ColaboradorProyectoPK getCompositekey() {
-        return compositekey;
-    }
+	public ColaboradorProyectoPK getCompositekey() {
+		return compositekey;
+	}
 
-    public void setCompositekey(ColaboradorProyectoPK compositekey) {
-        this.compositekey = compositekey;
-    }
+	public void setCompositekey(ColaboradorProyectoPK compositekey) {
+		this.compositekey = compositekey;
+	}
 }
-

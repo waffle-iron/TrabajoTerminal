@@ -60,7 +60,7 @@ public class Proyecto {
     @JoinColumn(name="coordinador")
     @NotNull(message = "Se necesita un Coordinador de proyecto")
     private Usuario coordinador;
-    
+
     @OneToMany(mappedBy="compositekey.idProyecto")
     private List<ColaboradorProyecto> colaboradorProyectos;
 
@@ -151,4 +151,7 @@ public class Proyecto {
     public void setColaboradorProyectos(List<ColaboradorProyecto> colaboradorProyectos) {
         this.colaboradorProyectos = colaboradorProyectos;
     }
+
+
+
 }
