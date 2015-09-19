@@ -166,18 +166,10 @@
 										Calificacion
 									</div>
 									<div class="col-md-7 value">
-										${usuario.calificacion}
+										${usuario.evaluacion}
 									</div>
 								</div>
 								
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Escuela
-									</div>
-									<div class="col-md-7 value">
-										${usuario.escuela.nombre}
-									</div>
-								</div>
 								<div class="row static-info">
 									<div class="col-md-5 name">
 										Grado
@@ -186,6 +178,17 @@
 										${usuario.grado.nombre}
 									</div>
 								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Escuela
+									</div>
+									<div class="col-md-7 value">
+										${usuario.escuela.nombre}
+									</div>
+								</div>
+								
+								
+								
 							</div>
 						</div>
 

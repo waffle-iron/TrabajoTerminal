@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.escom.tt.modelo.Area;
-import com.escom.tt.modelo.Escuela;
-import com.escom.tt.modelo.Grado;
-import com.escom.tt.modelo.Nivel;
 import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.EscuelaRepositorio;
 import com.escom.tt.repositorio.GradoRepositorio;
@@ -40,8 +36,6 @@ public class UsuarioControlador {
 	public String crear(Model modelo){
 
 		modelo.addAttribute("usuario", new Usuario());
-		modelo.addAttribute("escuela", new Escuela());
-		modelo.addAttribute("grado", new Grado());
 		modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
 		modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
 		return "usuario-crear";
@@ -81,6 +75,9 @@ public class UsuarioControlador {
 
 		if (usuario != null) {
 			modelo.addAttribute("usuario", usuario);
+			modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
+			modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
+			
 			ruta = "usuario-editar";
 		}
 		else
@@ -118,7 +115,7 @@ public class UsuarioControlador {
 
 		usuarioList = usuarioRepositorio.obtenerTodos();
 
-		modelo.addAttribute("usuarios", usuarioList);
+		modelo.addAttribute("usuarioList", usuarioList);
 
 		return "usuario-todos";
 	}

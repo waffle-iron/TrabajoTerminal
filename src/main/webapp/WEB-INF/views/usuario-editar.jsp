@@ -69,7 +69,7 @@
                             <form:form action="${urlUsuarioGuardar}" method="post" commandName="usuario"
                                        cssClass="form-horizontal">
                                 <div class="form-body">
-                                    <form:hidden path="id" />
+                                    <form:hidden path="idUsuarios" />
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Nombre
@@ -78,8 +78,8 @@
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:input path="usuario" cssClass="form-control"/>
-                                                <form:errors path="usuario" element="span"
+                                                <form:input path="nombreUsuario" cssClass="form-control"/>
+                                                <form:errors path="nombreUsuario" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
@@ -91,8 +91,8 @@
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:input path="contrasena" cssClass="form-control"/>
-                                                <form:errors path="contrasena" element="span"
+                                                <form:input path="contraseña" cssClass="form-control"/>
+                                                <form:errors path="contraseña" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
@@ -221,36 +221,22 @@
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:input path="calificacion" cssClass="form-control"/>
-                                                <form:errors path="calificacion" element="span"
+                                                <form:input path="Evaluacion" cssClass="form-control"/>
+                                                <form:errors path="Evaluacion" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
                                     </div>
                                                                         
-                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Escuela
-                                            <span class="required"> * </span>
-                                        </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:select path="escuela.idEscuela" cssClass="form-control">
-                                                    <form:options items="${escuelaList}" itemValue="idEscuela"
-                                                                  itemLabel="nombre"/>
-                                                </form:select>
-                                                <form:errors path="escuela" element="span"
-                                                             cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Grado
                                             <span class="required"> * </span>
                                         </label>
+
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:select path="grado.idGrado_academico" cssClass="form-control">
-                                                    <form:options items="${gradoList}" itemValue="idGrado_academico"
+                                                <form:select path="grado.idGrado" cssClass="form-control">
+                                                    <form:options items="${gradoList}" itemValue="idGrado"
                                                                   itemLabel="nombre"/>
                                                 </form:select>
                                                 <form:errors path="grado" element="span"
@@ -258,22 +244,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Dirección
+										
+
+									<div class="form-group">
+                                        <label class="control-label col-md-3">Escuela
                                             <span class="required"> * </span>
                                         </label>
+
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:select path="direccion.idDireccion" cssClass="form-control">
-                                                    <form:options items="${direccionList}" itemValue="idDireccion"
+                                                <form:select path="escuela.id" cssClass="form-control">
+                                                    <form:options items="${escuelaList}" itemValue="id"
                                                                   itemLabel="nombre"/>
                                                 </form:select>
-                                                <form:errors path="direccion" element="span"
+                                                <form:errors path="escuela" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">

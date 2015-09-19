@@ -130,7 +130,7 @@
                                     </thead>
                                     <tbody>
 
-                                    <c:forEach items="${usuariosList}" var="usuario">
+                                    <c:forEach items="${usuarioList}" var="usuario">
                                         <tr>
                                             <td>
                                                 <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
@@ -194,18 +194,18 @@
                                             </td>
                                             <td>
                                                 <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
-                                                    ${usuario.calificacion}
+                                                    ${usuario.evaluacion}
                                                 </a>
                                             </td>
 
                                             <td>
-                                                <a href="${contexto}escuela/ver/${usuario.escuela.idEscuela}">
-                                                    ${usuario.escuela.nombre}
+                                                <a href="${contexto}grado/ver/${usuario.grado.idGrado}">
+                                                    ${usuario.grado.nombre}
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="${contexto}grado/ver/${usuario.grado.idGrado_academico}">
-                                                    ${usuario.grado.nombre}
+                                                <a href="${contexto}escuela/ver/${usuario.escuela.id}">
+                                                    ${usuario.escuela.nombre}
                                                 </a>
                                             </td>
                                             

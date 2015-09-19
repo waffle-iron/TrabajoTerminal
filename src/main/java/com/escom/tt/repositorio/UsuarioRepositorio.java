@@ -15,5 +15,7 @@ public interface UsuarioRepositorio {
 	public abstract Usuario buscarPorId(Integer id);
 
 	public abstract List<Usuario> obtenerTodos();
+	
+	
 
 }
