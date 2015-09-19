@@ -4,38 +4,21 @@ import java.util.Date;
 import java.util.List;
 
 
+
 import javax.persistence.*;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.mapping.Set;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
 @Table(name="USUARIO")
 public class Usuario {
 
-	public List<Correo> getCorreos() {
-		return correos;
-	}
-
-	public void setCorreos(List<Correo> correos) {
-		this.correos = correos;
-	}
-
+	
 	@Id
 	@Column(name="idUsuarios")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -73,6 +56,7 @@ public class Usuario {
 	
 	@Column(name="fechaNacimiento")
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fechaNacimiento;
 	
 	@Column(name="estadoCivil")
@@ -82,7 +66,7 @@ public class Usuario {
 
 	@Column(name="telefono")
 	@NotNull
-	@Size(min=5,max=45,message="El telefono debe tener al menos 5 caracteres y maximo 45")
+	@Size(min=10,message="El telefono debe tener al menos 10 digitos")
 	private String telefono;
 
 	@Column(name="sexo")
@@ -92,11 +76,14 @@ public class Usuario {
 	
 	@Column(name="fechaIngresoIPN")
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")	
 	private Date fechaIngresoIPN;
 	
-	@Column(name="calificacion")
+	
+	@Column(name="Evaluacion")
 	@NotNull
-	private Integer calificacion;
+	private Integer evaluacion;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="escuela")
@@ -124,7 +111,14 @@ public class Usuario {
 	private List<Correo> correos;
 	
 	
-	
+	public Integer getEvaluacion() {
+		return evaluacion;
+	}
+
+	public void setEvaluacion(Integer evaluacion) {
+		this.evaluacion = evaluacion;
+	}
+
 
 	 
 	public Integer getIdUsuarios() {
@@ -171,6 +165,7 @@ public class Usuario {
 		return aMaterno;
 	}
 
+	
 	public void setaMaterno(String aMaterno) {
 		this.aMaterno = aMaterno;
 	}
@@ -223,14 +218,6 @@ public class Usuario {
 		this.fechaIngresoIPN = fechaIngresoIPN;
 	}
 
-	public Integer getCalificacion() {
-		return calificacion;
-	}
-
-	public void setCalificacion(Integer calificacion) {
-		this.calificacion = calificacion;
-	}
-
 	public Escuela getEscuela() {
 		return escuela;
 	}
@@ -247,6 +234,13 @@ public class Usuario {
 		this.grado = grado;
 	}
 	
-	
+	public List<Correo> getCorreos() {
+		return correos;
+	}
+
+	public void setCorreos(List<Correo> correos) {
+		this.correos = correos;
+	}
+
 	
 }

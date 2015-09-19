@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -49,182 +52,223 @@
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
- <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet box blue">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="fa fa-gift"></i>Registrar nuevo usuario
-                            </div>
-                            <div class="tools">
-                                <a href="javascript:;" class="collapse">
-                                </a>
-                                <a href="#portlet-config" data-toggle="modal" class="config">
-                                </a>
-                                <a href="javascript:;" class="reload">
-                                </a>
-                                <a href="javascript:;" class="remove">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portlet-body form">
-                            <!-- BEGIN FORM-->
-                            <c:url value="/usuario/crear" var="urlUsuarioGuardar" />
-                            
-                            <form:form action="${urlUsuarioGuardar}" method="post" commandName="usuario" >
-                                <div class="form-body">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 ">
+						<!-- BEGIN VALIDATION STATES-->
+						<div class="portlet box blue">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-gift"></i>Registrar nuevo usuario
+								</div>
+								
+							</div>
+							<div class="portlet-body form ">
+								<!-- BEGIN FORM-->
+								<c:url value="/usuario/crear" var="urlUsuarioGuardar" />
 
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Nombre *: </label>
+								<form:form action="${urlUsuarioGuardar}" method="post" commandName="usuario" cssClass="form-horizontal">
+									<div class="form-body">
+
+										<div class="form-group">
+											<label class="control-label col-md-3">Nombre *: </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="nombreUsuario" cssClass="form-control" />
+													<form:errors path="nombreUsuario" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">Contraseña *: </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="contraseña" cssClass="form-control" />
+													<form:errors path="contraseña" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">Nombres *: </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="nombres" cssClass="form-control" />
+													<form:errors path="nombres" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">Apellido Paterno *: </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="aPaterno" cssClass="form-control" />
+													<form:errors path="aPaterno" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">Apellido Materno *: </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="aMaterno" cssClass="form-control" />
+													<form:errors path="aMaterno" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">Email *: </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="email" cssClass="form-control" />
+													<form:errors path="email" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">fecha	Nacimiento *: </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="fechaNacimiento" cssClass="form-control" />
+													<form:errors path="fechaNacimiento" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">Estado Civil: </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="estadoCivil" cssClass="form-control" />
+													<form:errors path="estadoCivil" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">Sexo: </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="sexo" cssClass="form-control" />
+													<form:errors path="sexo" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">Telefono: </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="telefono" cssClass="form-control" />
+													<form:errors path="telefono" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">Fecha de Ingreso </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="fechaIngresoIPN" cssClass="form-control" />
+													<form:errors path="fechaIngresoIPN" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+  										
+										<div class="form-group">
+											<label class="control-label col-md-3">Evaluacion </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<form:input path="evaluacion" cssClass="form-control" />
+													<form:errors path="evaluacion" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>				
+										
+				
+<!-- -------------------------------------------------------------------------------------------- -->										
+			
+										
+									<div class="form-group">
+                                        <label class="control-label col-md-3">Grado
+                                            <span class="required"> * </span>
+                                        </label>
+
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:input path="nombre" cssClass="form-control"/>
-                                                <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
+                                                <form:select path="grado.idGrado" cssClass="form-control">
+                                                    <form:option value="" label="Selecciona una opción"/>
+                                                    <form:options items="${gradoList}" itemValue="idGrado"
+                                                                  itemLabel="nombre"/>
+                                                </form:select>
+                                                <form:errors path="grado" element="span"
+                                                             cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
+                                    </div>
+										
+
+									<div class="form-group">
+                                        <label class="control-label col-md-3">Escuela
+                                            <span class="required"> * </span>
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:select path="escuela.id" cssClass="form-control">
+                                                    <form:option value="" label="Selecciona una opción"/>
+                                                    <form:options items="${escuelaList}" itemValue="id"
+                                                                  itemLabel="nombre"/>
+                                                </form:select>
+                                                <form:errors path="escuela" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+	
+	
+
+										
+										
+										
+										
+										
+										
+
+
+
 									</div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Contraseña *: </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="contraseña" cssClass="form-control"/>
-                                                <form:errors path="contraseña" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Nombres *: </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="nombres" cssClass="form-control"/>
-                                                <form:errors path="nombres" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Apellido Paterno *: </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="aPaterno" cssClass="form-control"/>
-                                                <form:errors path="aPaterno" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Apellido Materno *: </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="aMaterno" cssClass="form-control"/>
-                                                <form:errors path="aMaterno" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Email *: </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="email" cssClass="form-control"/>
-                                                <form:errors path="email" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">fecha Nacimiento *: </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="fechaNacimiento" cssClass="form-control"/>
-                                                <form:errors path="fechaNacimiento" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Estado Civil: </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="estadoCivil" cssClass="form-control"/>
-                                                <form:errors path="estadoCivil" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Telefono: </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="telefono" cssClass="form-control"/>
-                                                <form:errors path="telefono" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Sexo </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="sexo" cssClass="form-control"/>
-                                                <form:errors path="sexo" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Fecha de Ingreso </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="fechaIngresoIPN" cssClass="form-control"/>
-                                                <form:errors path="fechaIngresoIPN" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Calificacion </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:input path="calificacion" cssClass="form-control"/>
-                                                <form:errors path="calificacion" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-offset-3 col-md-9">
+												<button type="submit" class="btn green">Crear</button>
+												<button type="button" class="btn default">Cancelar</button>
+											</div>
+										</div>
+									</div>
+								</form:form>
 
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Escuela *: </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:select path="escuela" cssClass="form-control">
-                                                    <form:option value="" label="--- Seleccionar ---"/>
-                                                    <form:options items="${escuelaList}" />
-                                                </form:select>
-                                                <form:errors path="escuela" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Grado: </label>
-                                        <div class="col-md-4">
-                                            <div class="input-icon right">
-                                                <form:select path="grado">
-                                                    <form:option value="-" label="Selecciona una opción"/>
-                                                    <form:options items="${gradoList}"/>
-                                                </form:select>
-                                                <form:errors path="grado" element="span" cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-actions">
-                                    <div class="row">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="btn green">Crear</button>
-                                            <button type="button" class="btn default">Cancelar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form:form>
-
-                        </div>
-                    </div>
-                    <!-- END VALIDATION STATES-->
-                </div>
-            </div>
+							</div>
+							</div>
+						<!-- END VALIDATION STATES-->
+					</div>
+				</div>
 				<!-- END PAGE CONTENT-->
 			</div>
 		</div>
