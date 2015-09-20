@@ -64,12 +64,12 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/escuela/guardarCambios" var="urlEscuelaGuardar"/>
+                            <c:url value="/correo/guardarCambios" var="urlCorreoGuardar"/>
 
-                            <form:form action="${urlEscuelaGuardar}" method="post" commandName="escuela"
+                            <form:form action="${urlCorreoGuardar}" method="post" commandName="correo"
                                        cssClass="form-horizontal">
                                 <div class="form-body">
-                                    <form:hidden path="id" />
+                                    <form:hidden path="idCorreo" />
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Asunto
@@ -106,11 +106,11 @@
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:select path="usuarioReceptorList.idUsuario" cssClass="form-control">
+                                                <form:select path="usuarioReceptor.idUsuarios" cssClass="form-control">
                                                     <form:options items="${usuarioReceptorList}" itemValue="idUsuarios"
                                                                   itemLabel="nombreUsuario"/>
                                                 </form:select>
-                                                <form:errors path="usuarioReceptorList" element="span"
+                                                <form:errors path="usuarioReceptor" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
@@ -122,11 +122,11 @@
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:select path="usuarioEmisorList.idUsuarios" cssClass="form-control">
+                                                <form:select path="usuarioEmisor.idUsuarios" cssClass="form-control">
                                                     <form:options items="${usuarioEmisorList}" itemValue="idUsuarios"
                                                                   itemLabel="nombreUsuario"/>
                                                 </form:select>
-                                                <form:errors path="usuarioEmisorList" element="span"
+                                                <form:errors path="usuarioEmisor" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>

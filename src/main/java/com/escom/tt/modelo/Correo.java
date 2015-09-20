@@ -22,9 +22,6 @@ public class Correo {
 	
 
 	
-
-
-
 	@Id
 	@Column(name="idCorreo")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,6 +48,7 @@ public class Correo {
 	@JoinColumn(name="RECEPTOR")
 	private Usuario usuarioReceptor;
     
+
 	public Integer getIdCorreo() {
 		return idCorreo;
 	}
@@ -90,5 +88,4 @@ public class Correo {
 	public void setUsuarioReceptor(Usuario usuarioReceptor) {
 		this.usuarioReceptor = usuarioReceptor;
 	}
-
 }

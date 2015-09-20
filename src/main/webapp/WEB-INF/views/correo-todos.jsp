@@ -105,11 +105,6 @@
                                             </td>
                                             <td>
                                                 <a href="${contexto}correo/ver/${correo.idCorreo}">
-                                                    ${correo.nombreUsuario}
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="${contexto}correo/ver/${correo.idCorreo}">
                                                     ${correo.asunto}
                                                 </a>
                                             </td>
@@ -118,17 +113,18 @@
                                                     ${correo.contenido}
                                                 </a>
                                             </td>
-                                            
+                                                                                        
                                             <td>
                                                 <a href="${contexto}usuario/ver/${correo.usuarioReceptor.idUsuarios}">
-                                                    ${correo.area.nombre}
+                                                    ${correo.usuarioReceptor.nombreUsuario}
                                                 </a>
                                             </td>
-                                            <td>
-                                                <a href="${contexto}usuario/ver/${correo.usuarioEmisor.idUsuarios}">
-                                                    ${correo.nivel.nombre}
+                                             <td>
+                                                <a href="${contexto}usuario/ver/${correo.usuarioReceptor.idUsuarios}">
+                                                    ${correo.usuarioEmisor.nombreUsuario}
                                                 </a>
                                             </td>
+                                                                                        
                                         </tr>
                                     </c:forEach>
                                     </tbody>

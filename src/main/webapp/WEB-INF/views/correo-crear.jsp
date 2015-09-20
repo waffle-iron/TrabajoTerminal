@@ -99,12 +99,12 @@
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:select path="usuarioEmisorList.idUsuario" cssClass="form-control">
+                                                <form:select path="usuarioEmisor.idUsuarios" cssClass="form-control">
                                                     <form:option value="" label="Selecciona una opción"/>
-                                                    <form:options items="${usuarioEmisorList}" itemValue="idUsuario"
+                                                    <form:options items="${usuarioEmisorList}" itemValue="idUsuarios"
                                                                   itemLabel="nombreUsuario"/>
                                                 </form:select>
-                                                <form:errors path="usuarioEmisorList" element="span"
+                                                <form:errors path="usuarioEmisor" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
@@ -116,12 +116,12 @@
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:select path="usuarioReceptorList.idUsuario" cssClass="form-control">
+                                                <form:select path="usuarioReceptor.idUsuarios" cssClass="form-control">
                                                     <form:option value="-" label="Selecciona una opción"/>
-                                                    <form:options items="${usuarioReceptorList}" itemValue="idUsuario"
+                                                    <form:options items="${usuarioReceptorList}" itemValue="idUsuarios"
                                                                   itemLabel="nombreUsuario"/>
                                                 </form:select>
-                                                <form:errors path="usuarioReceptorList" element="span"
+                                                <form:errors path="usuarioReceptor" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>

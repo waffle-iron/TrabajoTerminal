@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url value="/" var="contexto"/>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -54,11 +55,66 @@
 						<h1 class="text-success"><strong>Datos actualizados</strong></h1>
 					</c:if>
 					<c:if test="${creado}">
-                        <h1 class="text-success"><strong>Se ha creado un nuevo direccion</strong></h1>
+                        <h1 class="text-success"><strong>Se ha creado una nueva direccion</strong></h1>
 					</c:if>
-					<div class="col-md-12">
-						<h1> ID: ${direccion.idDireccion} </h1>
-						<h1> NOMBRE: ${direccion.nombre} </h1>
+					<div class="col-md-8 col-md-offset-2">
+						<div class="portlet blue-hoki box">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-cogs"></i>Información de la direccion
+								</div>
+								<div class="actions">
+									<a href="${contexto}direccion/${direccion.idDireccion}/editar" class="btn btn-default btn-sm">
+										<i class="fa fa-pencil"></i> Editar </a>
+									<a href="${contexto}direccion/eliminar/${direccion.idDireccion}/" class="btn btn-default btn-sm">
+										<i class="fa fa-pencil"></i> Eliminar </a>
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Calle:
+									</div>
+									<div class="col-md-7 value">
+										${direccion.calle}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Numero:
+									</div>
+									<div class="col-md-7 value">
+										${direccion.numero}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Colonia:
+									</div>
+									<div class="col-md-7 value">
+										${direccion.colonia}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Estado:
+									</div>
+									<div class="col-md-7 value">
+										${direccion.estado}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Usuario:
+									</div>
+									<div class="col-md-7 value">
+										${direccion.usuario.nombreUsuario}
+									</div>
+								</div>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
 				<!-- END PAGE CONTENT-->

@@ -85,7 +85,7 @@ public class CorreoControlador {
 		return ruta;
 	}
 	
-	@RequestMapping(value="/correo/ver/{escuelaId:[0-9]+}")
+	@RequestMapping(value="/correo/ver/{correoId:[0-9]+}")
 	public String ver(@PathVariable Integer correoId, Model modelo, Boolean actualizado, Boolean creado) {
 		String ruta = null;
 		Correo correo= null;

@@ -132,10 +132,10 @@
 
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:select path="usuario.idUsuario" cssClass="form-control">
+                                                <form:select path="usuario.idUsuarios" cssClass="form-control">
                                                     <form:option value="" label="Selecciona una opción"/>
-                                                    <form:options items="${usuarioList}" itemValue="idUsuario"
-                                                                  itemLabel="nombre"/>
+                                                    <form:options items="${usuarioList}" itemValue="idUsuarios"
+                                                                  itemLabel="nombreUsuario"/>
                                                 </form:select>
                                                 <form:errors path="usuario" element="span"
                                                              cssClass="help-block text-danger"/>
