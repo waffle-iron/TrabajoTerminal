@@ -26,42 +26,42 @@ public class Usuario {
 	
 	@Column(name="nombreUsuario")
 	@NotNull
-	@Size(min=5,max=45,message="El nombre de usuario debe tener al menos 5 caracteres y maximo 45")
+	@Size(min=1,max=45,message="El nombre de usuario debe tener al menos 5 caracteres y maximo 45")
 	private String nombreUsuario;
 	
 	@Column(name="contraseña")
 	@NotNull
-	@Size(min=5,max=45,message="El nombre de la contraseña debe tener al menos 5 caracteres y maximo 45")
+	@Size(min=1,max=45,message="El nombre de la contraseña debe tener al menos 5 caracteres y maximo 45")
 	private String contraseña;
 	
 	@Column(name="nombres")
 	@NotNull
-	@Size(min=5,max=45,message="Los nombres deben tener al menos 5 caracteres y maximo 45")
+	@Size(min=1,max=45,message="Los nombres deben tener al menos 5 caracteres y maximo 45")
 	private String nombres;
 	
 	@Column(name="aPaterno")
 	@NotNull
-	@Size(min=5,max=45,message="El apellido paterno debe tener al menos 5 caracteres y maximo 45")
+	@Size(min=1,max=45,message="El apellido paterno debe tener al menos 5 caracteres y maximo 45")
 	private String aPaterno;
 	
 	@Column(name="aMaterno")
 	@NotNull
-	@Size(min=5,max=45,message="El apellido materno debe tener al menos 5 caracteres y maximo 45")
+	@Size(min=1,max=45,message="El apellido materno debe tener al menos 5 caracteres y maximo 45")
 	private String aMaterno;
 	
 	@Column(name="email")
 	@NotNull
-	@Size(min=5,max=45,message="El email debe tener al menos 5 caracteres y maximo 45")
+	@Size(min=1,max=45,message="El email debe tener al menos 5 caracteres y maximo 45")
 	private String email;
 	
 	@Column(name="fechaNacimiento")
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date fechaNacimiento;
 	
 	@Column(name="estadoCivil")
 	@NotNull
-	@Size(min=5,max=45,message="El estado civil debe tener al menos 5 caracteres y maximo 45")
+	@Size(min=1,max=45,message="El estado civil debe tener al menos 5 caracteres y maximo 45")
 	private String estadoCivil;
 
 	@Column(name="telefono")
@@ -98,6 +98,20 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "estado")
 	private List<Proyecto> proyectos;
+	
+	@ManyToMany
+	@JoinTable(name="usuario_has_idiomas",
+				joinColumns={@JoinColumn(name="Usuarios_idUsuarios")},
+				inverseJoinColumns={@JoinColumn(name="Idiomas_idIdiomas")})
+	private List<Idioma> idiomas;
+
+	public List<Idioma> getIdiomas() {
+		return idiomas;
+	}
+
+	public void setIdiomas(List<Idioma> idiomas) {
+		this.idiomas = idiomas;
+	}
 
 	public List<Proyecto> getProyectos() {
 		return proyectos;

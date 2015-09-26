@@ -139,7 +139,7 @@
 											<label class="control-label col-md-3">fecha	Nacimiento *: </label>
 											<div class="col-md-4">
 												<div class="input-icon right">
-													<form:input path="fechaNacimiento" cssClass="form-control" />
+													<form:input path="fechaNacimiento" cssClass="form-control" type="date" />
 													<form:errors path="fechaNacimiento" element="span"
 														cssClass="help-block text-danger" />
 												</div>
