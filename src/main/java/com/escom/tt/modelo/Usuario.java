@@ -98,7 +98,7 @@ public class Usuario {
 	private Grado grado;
 
 
-	@OneToMany(mappedBy = "coordinador",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "coordinador",fetch=FetchType.LAZY)
 	@Fetch(FetchMode.SELECT)
 	private List<Proyecto> proyectos;
 
@@ -110,7 +110,8 @@ public class Usuario {
 		this.proyectos = proyectos;
 	}
 
-	@OneToMany(mappedBy = "usuarioEmisor")
+	@OneToMany(mappedBy = "usuarioEmisor",fetch=FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	private List<Correo> correos;
 
 
@@ -124,7 +125,7 @@ public class Usuario {
 
 
 
-	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
 	@Fetch(FetchMode.SELECT)
 	private List<ColaboradorProyecto> colaboradorProyectos;
 
@@ -257,5 +258,25 @@ public class Usuario {
 		this.correos = correos;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Usuario{" +
+				"idUsuarios=" + idUsuarios +
+				", nombreUsuario='" + nombreUsuario + '\'' +
+				", contraseña='" + contraseña + '\'' +
+				", nombres='" + nombres + '\'' +
+				", aPaterno='" + aPaterno + '\'' +
+				", aMaterno='" + aMaterno + '\'' +
+				", email='" + email + '\'' +
+				", fechaNacimiento=" + fechaNacimiento +
+				", estadoCivil='" + estadoCivil + '\'' +
+				", telefono='" + telefono + '\'' +
+				", sexo='" + sexo + '\'' +
+				", fechaIngresoIPN=" + fechaIngresoIPN +
+				", evaluacion=" + evaluacion +
+				", escuela=" + escuela +
+				", grado=" + grado +
+				", correos=" + correos +
+				'}';
+	}
 }

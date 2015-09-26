@@ -27,10 +27,13 @@ public class ProyectoControlador {
 
     @Autowired
     private ProyectoRepositorio proyectoRepositorio;
+
     @Autowired
     private TipoProyectoRepositorio tipoProyectoRepositorio;
+
     @Autowired
     private EstadoRepositorio estadoRepositorio;
+
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
@@ -67,6 +70,9 @@ public class ProyectoControlador {
         String ruta = null;
 
         if (validacion.hasErrors()){
+            modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
+            modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
+            modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
             modelo.addAttribute("proyecto", proyecto);
             ruta = "proyecto/proyecto-editar";
         }else{
@@ -83,6 +89,9 @@ public class ProyectoControlador {
         proyecto = proyectoRepositorio.buscarPorId(proyectoId);
 
         if (proyecto != null) {
+            modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
+            modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
+            modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
             modelo.addAttribute("proyecto", proyecto);
             ruta = "proyecto/proyecto-editar";
         }

@@ -2,6 +2,7 @@ package com.escom.tt.modelo;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.enterprise.inject.Default;
 import javax.persistence.*;
@@ -36,10 +37,12 @@ public class Proyecto {
 
     @Column(name="fechaInicio")
     @NotNull(message = "La fecha de inicio debe ser obligatorio")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaInicio;
 
     @Column(name="fechaFin")
     @NotNull(message = "La fecha de fin debe ser obligatorio")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaFin;
 
     @Column(name = "privado")

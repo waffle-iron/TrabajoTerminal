@@ -93,4 +93,11 @@ public class ColaboradorProyecto {
 		this.usuario = usuario;
 	}
 
+	@Override
+	public String toString() {
+		return "ColaboradorProyecto{" +
+				"id=" + id +
+				", usuario=" + usuario +
+				'}';
+	}
 }
