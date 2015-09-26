@@ -18,6 +18,15 @@
 	rel="stylesheet" type="text/css" />
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN THEME STYLES -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/global/plugins/select2/select2.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
+<link href="${pageContext.request.contextPath}/resources/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
+
+
 <link
 	href="${pageContext.request.contextPath}/resources/global/css/components-rounded.css"
 	id="style_components" rel="stylesheet" type="text/css" />
@@ -31,5 +40,11 @@
 	rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/tema/css/custom.css"
 	rel="stylesheet" type="text/css" />
+<!-- BEGIN THEME STYLES DE PERFIL -->	
+
+
+<!-- END GLOBAL MANDATORY STYLES PERFIL -->
+
+	
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />

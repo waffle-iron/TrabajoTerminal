@@ -120,6 +120,23 @@ public class UsuarioControlador {
 		return "usuario-todos";
 	}
 	
+	@RequestMapping(value="/usuario/perfil/{usuarioId:[0-9]+}")
+	public String verMiPerfil(@PathVariable Integer usuarioId, Model modelo, Boolean actualizado, Boolean creado) {
+		String ruta = null;
+		Usuario usuario= null;
+
+		usuario = usuarioRepositorio.buscarPorId(usuarioId);
+		if (usuario != null) {
+			modelo.addAttribute("usuario", usuario);
+			modelo.addAttribute("actualizado", actualizado);
+			modelo.addAttribute("creado", creado);
+			ruta = "usuario-perfil";
+		}else
+			ruta = "redirect:/usuario";
+
+		return ruta;
+	}
+	
 
 	
 
