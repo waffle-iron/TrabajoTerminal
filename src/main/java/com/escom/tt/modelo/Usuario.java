@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.mapping.Set;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -121,7 +123,8 @@ public class Usuario {
 
 
 
-	@OneToMany(mappedBy="compositekey.idUsuario")
+	@OneToMany(mappedBy="compositekey.idUsuario",fetch=FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
 	private List<ColaboradorProyecto> ColaboradorProyectos;
 
 
