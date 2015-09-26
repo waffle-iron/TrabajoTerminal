@@ -39,7 +39,7 @@ public class ProyectoControlador {
         modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
         modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
         modelo.addAttribute("proyecto", new Proyecto());
-        return "proyecto-crear";
+        return "proyecto/proyecto-crear";
     }
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.POST)
@@ -51,7 +51,7 @@ public class ProyectoControlador {
             modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
             modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
             modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
-            ruta = "proyecto-crear";
+            ruta = "proyecto/proyecto-crear";
         }else{
             Integer id = proyectoRepositorio.crear(proyecto);
             ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()+ "/?creado=true";
@@ -66,7 +66,7 @@ public class ProyectoControlador {
 
         if (validacion.hasErrors()){
             modelo.addAttribute("proyecto", proyecto);
-            ruta = "proyecto-editar";
+            ruta = "proyecto/proyecto-editar";
         }else{
             Integer id = proyectoRepositorio.actualizar(proyecto);
             ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto() + "/?actualizado=true";
@@ -82,7 +82,7 @@ public class ProyectoControlador {
 
         if (proyecto != null) {
             modelo.addAttribute("proyecto", proyecto);
-            ruta = "proyecto-editar";
+            ruta = "proyecto/proyecto-editar";
         }
         else
             ruta = "redirect:/proyecto";
@@ -100,7 +100,7 @@ public class ProyectoControlador {
             modelo.addAttribute("proyecto", proyecto);
             modelo.addAttribute("actualizado", actualizado);
             modelo.addAttribute("creado", creado);
-            ruta = "proyecto-ver";
+            ruta = "proyecto/proyecto-ver";
         }else
             ruta = "redirect:/proyecto";
 
@@ -133,7 +133,7 @@ public class ProyectoControlador {
         modelo.addAttribute("proyectosList", proyectoList);
         modelo.addAttribute("eliminado", eliminado);
 
-        return "proyecto-todos";
+        return "proyecto/proyecto-todos";
     }
 
 }
