@@ -1,5 +1,7 @@
 package com.escom.tt.modelo;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,7 +20,12 @@ public class Idioma {
 	@Size(min = 2, max = 14, message = "El nombre debe tener al menos 2 caracteres y máximo 14")
 	private String nombre;
 	
+	@ManyToMany(mappedBy="idiomas")
+	private List<Usuario> usuarios;
+	
+	
 	public Integer getIdIdioma() {
+		
 		return idIdioma;
 	}
 	public void setIdIdioma(Integer idIdioma) {
