@@ -1,5 +1,8 @@
 package com.escom.tt.modelo;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.enterprise.inject.Default;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -61,7 +64,8 @@ public class Proyecto {
     @NotNull(message = "Se necesita un Coordinador de proyecto")
     private Usuario coordinador;
 
-    @OneToMany(mappedBy="compositekey.idProyecto")
+    @OneToMany(mappedBy="compositekey.idProyecto",fetch=FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     private List<ColaboradorProyecto> colaboradorProyectos;
 
     public Integer getIdProyecto() {
