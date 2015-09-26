@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.escom.tt.modelo.Area;
-import com.escom.tt.modelo.Nivel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.escom.tt.modelo.Escuela;
-import com.escom.tt.modelo.Idioma;
 import com.escom.tt.repositorio.AreaRepositorio;
 import com.escom.tt.repositorio.EscuelaRepositorio;
 import com.escom.tt.repositorio.NivelRepositorio;
@@ -39,7 +36,7 @@ public class EscuelaControlador {
 		modelo.addAttribute("nivelList", nivelRepositorio.obtenerTodos());
 		modelo.addAttribute("escuela", new Escuela());
 
-		return "escuela-crear";
+		return "escuela/escuela-crear";
 	}
 	
 	@RequestMapping(value="/escuela/crear", method = RequestMethod.POST)
@@ -48,7 +45,7 @@ public class EscuelaControlador {
 
 		if (validacion.hasErrors()){
 			modelo.addAttribute("escuela", escuela);
-			ruta = "escuela-crear";
+			ruta = "escuela/escuela-crear";
 		}else{
 			Integer id = escuelaRepositorio.crearEscuela(escuela);
 			ruta = "redirect:/escuela/ver/" + escuela.getId()+ "/?creado=true";
@@ -63,7 +60,7 @@ public class EscuelaControlador {
 
 		if (validacion.hasErrors()){
 			modelo.addAttribute("escuela", escuela);
-			ruta = "escuela-editar";
+			ruta = "escuela/escuela-editar";
 		}else{
 			Integer id = escuelaRepositorio.actualizarEscuela(escuela);
 			ruta = "redirect:/escuela/ver/" + escuela.getId() + "/?actualizado=true";
@@ -81,7 +78,7 @@ public class EscuelaControlador {
 			modelo.addAttribute("areaList", areaRepositorio.obtenerTodos());
 			modelo.addAttribute("nivelList", nivelRepositorio.obtenerTodos());
 			modelo.addAttribute("escuela", escuela);
-			ruta = "escuela-editar";
+			ruta = "escuela/escuela-editar";
 		}
 		else
 			ruta = "redirect:/escuela";
@@ -99,7 +96,7 @@ public class EscuelaControlador {
 			modelo.addAttribute("escuela", escuela);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
-			ruta = "escuela-ver";
+			ruta = "escuela/escuela-ver";
 		}else
 			ruta = "redirect:/escuela";
 
@@ -132,7 +129,7 @@ public class EscuelaControlador {
 		modelo.addAttribute("escuelasList", escuelaList);
 		modelo.addAttribute("eliminado", eliminado);
 
-		return "escuela-todos";
+		return "escuela/escuela-todos";
 	}
 
 

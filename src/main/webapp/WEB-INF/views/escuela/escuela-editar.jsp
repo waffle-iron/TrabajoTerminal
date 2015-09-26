@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -15,7 +18,7 @@
     <meta content="" name="description"/>
     <meta content="" name="author"/>
 
-    <jsp:include page="recursos/estilos.jsp"></jsp:include>
+    <jsp:include page="../recursos/estilos.jsp"></jsp:include>
 
 </head>
 <!-- END HEAD -->
@@ -32,20 +35,20 @@
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo">
 <!-- BEGIN HEADER -->
-<jsp:include page="recursos/header.jsp"></jsp:include>
+<jsp:include page="../recursos/header.jsp"></jsp:include>
 <!-- END HEADER -->
 <div class="clearfix"></div>
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
     <!-- BEGIN SIDEBAR -->
-    <jsp:include page="recursos/side-bar.jsp"></jsp:include>
+    <jsp:include page="../recursos/side-bar.jsp"></jsp:include>
     <!-- END SIDEBAR -->
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
         <div class="page-content">
 
             <!-- BEGIN PAGE HEADER-->
-            <jsp:include page="recursos/breadcrumbs.jsp"></jsp:include>
+            <jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
             <!-- END PAGE HEADER-->
 
             <!-- BEGIN PAGE CONTENT-->
@@ -55,16 +58,18 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Registrar nueva escuela
+                                <i class="fa fa-gift"></i>Editar Escuela
                             </div>
+
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/escuela/crear" var="urlEscuelaGuardar"/>
+                            <c:url value="/escuela/guardarCambios" var="urlEscuelaGuardar"/>
 
                             <form:form action="${urlEscuelaGuardar}" method="post" commandName="escuela"
                                        cssClass="form-horizontal">
                                 <div class="form-body">
+                                    <form:hidden path="id" />
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Nombre
@@ -100,7 +105,6 @@
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:select path="nivel.idNivel" cssClass="form-control">
-                                                    <form:option value="" label="Selecciona una opción"/>
                                                     <form:options items="${nivelList}" itemValue="idNivel"
                                                                   itemLabel="nombre"/>
                                                 </form:select>
@@ -117,7 +121,6 @@
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:select path="area.idArea" cssClass="form-control">
-                                                    <form:option value="-" label="Selecciona una opción"/>
                                                     <form:options items="${areaList}" itemValue="idArea"
                                                                   itemLabel="nombre"/>
                                                 </form:select>
@@ -130,7 +133,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="btn green">Crear</button>
+                                            <button type="submit" class="btn green">Guardar cambios</button>
                                             <button type="button" class="btn default">Cancelar</button>
                                         </div>
                                     </div>
@@ -149,11 +152,11 @@
 <!-- END CONTAINER -->
 
 <!-- BEGIN FOOTER -->
-<jsp:include page="recursos/footer.jsp"></jsp:include>
+<jsp:include page="../recursos/footer.jsp"></jsp:include>
 <!-- END FOOTER -->
 
 <!-- BEGIN JS -->
-<jsp:include page="recursos/recursos-js.jsp"></jsp:include>
+<jsp:include page="../recursos/recursos-js.jsp"></jsp:include>
 <!-- END JS -->
 <script>
     jQuery(document).ready(function () {

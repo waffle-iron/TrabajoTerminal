@@ -29,7 +29,7 @@ public class TareaControlador {
 
         modelo.addAttribute("tarea", new Tarea());
 
-        return "tarea-crear";
+        return "tarea/tarea-crear";
     }
 
     @RequestMapping(value="/tarea/crear", method = RequestMethod.POST)
@@ -38,7 +38,7 @@ public class TareaControlador {
 
         if (validacion.hasErrors()){
             modelo.addAttribute("tarea", tarea);
-            ruta = "tarea-crear";
+            ruta = "tarea/tarea-crear";
         }else{
             Integer id = tareaRepositorio.crear(tarea);
             ruta = "redirect:/tarea/ver/" + tarea.getIdTarea()+ "/?creado=true";
@@ -53,7 +53,7 @@ public class TareaControlador {
 
         if (validacion.hasErrors()){
             modelo.addAttribute("tarea", tarea);
-            ruta = "tarea-editar";
+            ruta = "tarea/tarea-editar";
         }else{
             Integer id = tareaRepositorio.actualizar(tarea);
             ruta = "redirect:/tarea/ver/" + tarea.getIdTarea() + "/?actualizado=true";
@@ -69,7 +69,7 @@ public class TareaControlador {
 
         if (tarea != null) {
             modelo.addAttribute("tarea", tarea);
-            ruta = "tarea-editar";
+            ruta = "tarea/tarea-editar";
         }
         else
             ruta = "redirect:/tarea";
@@ -87,7 +87,7 @@ public class TareaControlador {
             modelo.addAttribute("tarea", tarea);
             modelo.addAttribute("actualizado", actualizado);
             modelo.addAttribute("creado", creado);
-            ruta = "tarea-ver";
+            ruta = "tarea/tarea-ver";
         }else
             ruta = "redirect:/tarea";
 
@@ -120,6 +120,6 @@ public class TareaControlador {
         modelo.addAttribute("tareasList", tareaList);
         modelo.addAttribute("eliminado", eliminado);
 
-        return "tarea-todos";
+        return "tarea/tarea-todos";
     }
 }
