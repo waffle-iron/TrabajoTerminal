@@ -1,6 +1,8 @@
 package com.escom.tt.controlador;
 
+import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Proyecto;
+import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.EstadoRepositorio;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.TipoProyectoRepositorio;
@@ -132,6 +134,17 @@ public class ProyectoControlador {
 
         modelo.addAttribute("proyectosList", proyectoList);
         modelo.addAttribute("eliminado", eliminado);
+
+        return "proyecto/proyecto-todos";
+    }
+
+    @RequestMapping(value="/proyecto/test-add-colaborador")
+    public String addColaborador(Model modelo,Boolean eliminado) {
+
+        Usuario usuario = usuarioRepositorio.buscarPorId(1);
+        Proyecto proyecto = proyectoRepositorio.buscarPorId(1);
+        ColaboradorProyecto colaboradorProyecto = new ColaboradorProyecto(proyecto, usuario);
+        proyectoRepositorio.addColaborador(colaboradorProyecto);
 
         return "proyecto/proyecto-todos";
     }

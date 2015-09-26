@@ -18,19 +18,12 @@ public class Tarea {
 	private Integer avance;
 	private Date fechaEntrega;
 
+	/*
 	@ManyToOne
 	@JoinColumns({
-			@JoinColumn(name = "usuario", referencedColumnName = "idUsuario"),
-			@JoinColumn(name = "proyecto", referencedColumnName = "idProyecto") })
+			@JoinColumn(name = "usuario", referencedColumnName = "Usuario_idUsuarios"),
+			@JoinColumn(name = "proyecto", referencedColumnName = "Proyecto_idProyectos") })
 	private ColaboradorProyecto colaboradorProyecto;
-
-	public Integer getIdTarea() {
-		return idTarea;
-	}
-
-	public void setIdTarea(Integer idTarea) {
-		this.idTarea = idTarea;
-	}
 
 	public ColaboradorProyecto getColaboradorProyecto() {
 		return colaboradorProyecto;
@@ -38,6 +31,15 @@ public class Tarea {
 
 	public void setColaboradorProyecto(ColaboradorProyecto colaboradorProyecto) {
 		this.colaboradorProyecto = colaboradorProyecto;
+	}
+	*/
+
+	public Integer getIdTarea() {
+		return idTarea;
+	}
+
+	public void setIdTarea(Integer idTarea) {
+		this.idTarea = idTarea;
 	}
 
 	public String getTitulo() {
@@ -80,16 +82,4 @@ public class Tarea {
 		this.fechaEntrega = fechaEntrega;
 	}
 
-	@Override
-	public String toString() {
-		return "Tarea{" +
-				"idTarea=" + idTarea +
-				", titulo='" + titulo + '\'' +
-				", estado=" + estado +
-				", descripcion='" + descripcion + '\'' +
-				", avance=" + avance +
-				", fechaEntrega=" + fechaEntrega +
-				", colaboradorProyecto=" + colaboradorProyecto +
-				'}';
-	}
 }

@@ -64,9 +64,18 @@ public class Proyecto {
     @NotNull(message = "Se necesita un Coordinador de proyecto")
     private Usuario coordinador;
 
-    @OneToMany(mappedBy="compositekey.idProyecto",fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="proyecto",fetch=FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
     private List<ColaboradorProyecto> colaboradorProyectos;
+
+
+    public List<ColaboradorProyecto> getColaboradorProyectos() {
+        return colaboradorProyectos;
+    }
+
+    public void setColaboradorProyectos(List<ColaboradorProyecto> colaboradorProyectos) {
+        this.colaboradorProyectos = colaboradorProyectos;
+    }
 
     public Integer getIdProyecto() {
         return idProyecto;
@@ -148,14 +157,20 @@ public class Proyecto {
         this.coordinador = coordinador;
     }
 
-    public List<ColaboradorProyecto> getColaboradorProyectos() {
-        return colaboradorProyectos;
+    @Override
+    public String toString() {
+        return "Proyecto{" +
+                "idProyecto=" + idProyecto +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechaInicio=" + fechaInicio +
+                ", fechaFin=" + fechaFin +
+                ", privado=" + privado +
+                ", avance=" + avance +
+                ", tipoProyecto=" + tipoProyecto +
+                ", estado=" + estado +
+                ", coordinador=" + coordinador +
+                ", colaboradorProyectos=" + colaboradorProyectos +
+                '}';
     }
-
-    public void setColaboradorProyectos(List<ColaboradorProyecto> colaboradorProyectos) {
-        this.colaboradorProyectos = colaboradorProyectos;
-    }
-
-
-
 }

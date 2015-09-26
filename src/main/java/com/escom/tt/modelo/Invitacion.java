@@ -18,10 +18,11 @@ public class Invitacion {
     private Date fecha;
     private Integer estado;
 
+
     @ManyToOne
     @JoinColumns({
-            @JoinColumn(name = "usuario", referencedColumnName = "idUsuario"),
-            @JoinColumn(name = "proyecto", referencedColumnName = "idProyecto") })
+            @JoinColumn(name = "usuario", referencedColumnName = "Usuario_idUsuarios"),
+            @JoinColumn(name = "proyecto", referencedColumnName = "Proyecto_idProyectos") })
     private ColaboradorProyecto colaboradorProyecto;
 
     public ColaboradorProyecto getColaboradorProyecto() {
@@ -31,6 +32,7 @@ public class Invitacion {
     public void setColaboradorProyecto(ColaboradorProyecto colaboradorProyecto) {
         this.colaboradorProyecto = colaboradorProyecto;
     }
+
 
     public Integer getIdInvitacion() {
         return idInvitacion;
@@ -54,5 +56,15 @@ public class Invitacion {
 
     public void setEstado(Integer estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Invitacion{" +
+                "idInvitacion=" + idInvitacion +
+                ", fecha=" + fecha +
+                ", estado=" + estado +
+                ", colaboradorProyecto=" + colaboradorProyecto +
+                '}';
     }
 }

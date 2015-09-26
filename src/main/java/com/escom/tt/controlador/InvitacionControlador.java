@@ -29,7 +29,7 @@ public class InvitacionControlador {
 
         modelo.addAttribute("invitacion", new Invitacion());
 
-        return "invitacion-crear";
+        return "invitacion/invitacion-crear";
     }
 
     @RequestMapping(value="/invitacion/crear", method = RequestMethod.POST)
@@ -120,7 +120,7 @@ public class InvitacionControlador {
         modelo.addAttribute("invitacionsList", invitacionList);
         modelo.addAttribute("eliminado", eliminado);
 
-        return "invitacion-todos";
+        return "invitacion/invitacion-todos";
     }
 
 }
