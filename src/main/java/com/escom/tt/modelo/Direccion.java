@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,6 +18,10 @@ import javax.validation.constraints.Size;
 @Table(name = "direccion")
 public class Direccion {
 	
+	
+
+	
+
 	
 
 	@Id
@@ -44,16 +48,16 @@ public class Direccion {
 	@Size(min =2, max = 14, message = "el estado debe tener al menos 2 caracteres y máximo 14")
 	private String estado;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn
+	@OneToOne()
+	@JoinColumn(name="usuario")
 	private Usuario usuario;
 		
-	public Integer getId() {
+	public Integer getIdDireccion() {
 		return idDireccion;
 	}
 
-	public void setId(Integer id) {
-		this.idDireccion = id;
+	public void setIdDireccion(Integer idDireccion) {
+		this.idDireccion = idDireccion;
 	}
 
 	public String getCalle() {
@@ -95,4 +99,13 @@ public class Direccion {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
+	@Override
+	public String toString() {
+		return "Direccion [idDireccion=" + idDireccion + ", calle=" + calle
+				+ ", numero=" + numero + ", colonia=" + colonia + ", estado="
+				+ estado + ", usuario=" + usuario + "]";
+	}
+	
+	
 }

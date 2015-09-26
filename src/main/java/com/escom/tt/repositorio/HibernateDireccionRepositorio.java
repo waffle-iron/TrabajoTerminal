@@ -20,7 +20,7 @@ public class HibernateDireccionRepositorio implements DireccionRepositorio{
 	@Override
 	public Integer crearDireccion(Direccion direccion) {
 		sf.getCurrentSession().save(direccion);
-		return direccion.getId();
+		return direccion.getIdDireccion();
 	}
 
 	@Override
@@ -32,13 +32,15 @@ public class HibernateDireccionRepositorio implements DireccionRepositorio{
 	@Override
 	public Integer actualizarDireccion(Direccion direccion) {
 		sf.getCurrentSession().update(direccion);
-		return direccion.getId();
+		return direccion.getIdDireccion();
 	}
 
 	@Override
 	public Direccion buscarPorId(Integer id) {
 		Direccion direccion = null;
 		direccion = (Direccion)	sf.getCurrentSession().get(Direccion.class, id);
+		
+		
 		return direccion;
 	}
 

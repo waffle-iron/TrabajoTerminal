@@ -15,15 +15,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.escom.tt.modelo.Direccion;
 import com.escom.tt.modelo.Escuela;
+import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.DireccionRepositorio;
+import com.escom.tt.repositorio.UsuarioRepositorio;
 
 @Controller
 public class DireccionControlador {
 	@Autowired
 	private DireccionRepositorio direccionRepositorio;
 	
+	@Autowired
+	private UsuarioRepositorio usuarioRepositorio;
+	
 	@RequestMapping(value="/direccion/crear", method = RequestMethod.GET)
 	public String crear(Model modelo){
+		modelo.addAttribute("usuarioList", usuarioRepositorio.obtenerTodos());
 		modelo.addAttribute("direccion", new Direccion());
 		return "direccion-crear";
 		
@@ -37,7 +43,7 @@ public class DireccionControlador {
 			ruta = "direccion-crear";
 		}else {
 			Integer id = direccionRepositorio.crearDireccion(direccion);
-			ruta = "redirect:/direccion/ver/" + direccion.getId()+"/?creado=true";
+			ruta = "redirect:/direccion/ver/" + direccion.getIdDireccion()+"/?creado=true";
 		}
 		return ruta;
 		
@@ -45,17 +51,20 @@ public class DireccionControlador {
 	@RequestMapping(value="/direccion/guardarCambios", method = RequestMethod.POST)
 	public String actualizar(@ModelAttribute("direccion") @Valid Direccion direccion, BindingResult validacion, Model modelo) {
 		String ruta = null;
-
+		System.err.println(direccion+"antes");
 		if (validacion.hasErrors()){
 			modelo.addAttribute("direccion", direccion);
 			ruta = "direccion-editar";
+			System.err.println(direccion+"con erreres");
 		}else{
 			Integer id = direccionRepositorio.actualizarDireccion(direccion);
-			ruta = "redirect:/direccion/ver/" + direccion.getId() + "/?actualizado=true";
+			ruta = "redirect:/direccion/ver/" + direccion.getIdDireccion() + "/?actualizado=true";
+			
+			System.err.println(direccion+"todo estabien");
 		}
 		return ruta;
 	}
-//http://localhost:8080/trabajoterminal/idioma/NUMERO/editar
+
 	@RequestMapping(value="/direccion/{direccionId:[0-9]+}/editar", method = RequestMethod.GET)
 	public String actualizar(@PathVariable Integer direccionId,Model modelo) {
 		Direccion direccion = null;
@@ -63,7 +72,8 @@ public class DireccionControlador {
 		direccion= direccionRepositorio.buscarPorId(direccionId);
 
 		if (direccion!= null) {
-			modelo.addAttribute("escuela", direccion);
+			modelo.addAttribute("usuarioList", usuarioRepositorio.obtenerTodos());
+			modelo.addAttribute("direccion", direccion);
 			ruta = "direccion-editar";
 		}
 		else
@@ -71,7 +81,7 @@ public class DireccionControlador {
 
 		return ruta;
 	}
-//http://localhost:8080/trabajoterminal/idioma/ver/NUMERO
+//
 	@RequestMapping(value="/direccion/ver/{direccionId:[0-9]+}")
 	public String ver(@PathVariable Integer direccionId, Model modelo, Boolean actualizado, Boolean creado) {
 		String ruta = null;
@@ -82,18 +92,20 @@ public class DireccionControlador {
 			modelo.addAttribute("direccion", direccion);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
+			System.err.println(direccion);
 			ruta = "direccion-ver";
 		}else
 			ruta = "redirect:/direccion";
 
 		return ruta;
 	}
-//http://localhost:8080/trabajoterminal/idioma/eliminar/idioma
-	@RequestMapping(value="/direccion/eliminar/{escuelaId:[0-9]+}")
-	public String eliminar(@PathVariable Integer direccionId, Model modelo) {
 
+	@RequestMapping(value="/direccion/eliminar/{direccionId:[0-9]+}")
+	public String eliminar(@PathVariable Integer direccionId, Model modelo) {
+			
+		
 		direccionRepositorio.eliminarDireccion(direccionRepositorio.buscarPorId(direccionId));
-		modelo.addAttribute("mensaje", "Se ha eliminado la escuela");
+		modelo.addAttribute("mensaje", "Se ha eliminado la direccion");
 		return "direccion-eliminar";
 	}
 //http://localhost:8080/trabajoterminal/idioma/

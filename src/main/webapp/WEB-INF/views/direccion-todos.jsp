@@ -51,16 +51,99 @@
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
-				<div class="row">
-					<div class="col-md-12">
-						<ul>
-						<c:forEach items="${direcciones}" var="direccion">
-							<li>ID: ${direccion.idDireccion} ## NOMBRE: ${direccion.nombre} <a href="${contexto}/direccion/${direccion.idDireccion}/editar">EDITAR</a> ******* <a href="${contexto}/direccion/eliminar/${direccion.idDireccion}">ELIMINAR</a></li>
-						</c:forEach>
-						</ul>
-					</div>
-				</div>
-				<!-- END PAGE CONTENT-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h2><b class="text-success">
+                        <c:if test="${eliminado}">
+                            La direccion ha sido eliminada
+                        </c:if>
+                        <c:if test="${!eliminado}">
+                            No existe la direccion
+                        </c:if>
+                    </b></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-shopping-cart"></i>direccion
+                            </div>
+
+                        </div>
+                        <div class="portlet-body">
+                            <div class="table-scrollable">
+                                <table class="table table-striped table-bordered table-advance table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <i class="fa fa-briefcase"></i> id
+                                        </th>
+                                        <th class="hidden-xs">
+                                            <i class="fa fa-question"></i> Calle
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-bookmark"></i> Numero
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-bookmark"></i> Colonia
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-bookmark"></i> Estado
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-bookmark"></i> Usuario
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <c:forEach items="${direcciones}" var="direccion">
+                                        <tr>
+                                            <td>
+                                                <a href="${contexto}direccion/ver/${direccion.idDireccion}">
+                                                    ${direccion.idDireccion}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="${contexto}direccion/ver/${direccion.idDireccion}">
+                                                    ${direccion.calle}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="${contexto}direccion/ver/${direccion.idDireccion}">
+                                                    ${direccion.numero}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="${contexto}direccion/ver/${direccion.idDireccion}">
+                                                    ${direccion.colonia}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="${contexto}direccion/ver/${direccion.idDireccion}">
+                                                    ${direccion.estado}
+                                                </a>
+                                            </td>
+                                                                                   
+                                            
+                                            <td>
+                                                <a href="${contexto}direccion/ver/${direccion.usuario.idUsuarios}">
+                                                    ${direccion.usuario.nombreUsuario}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END SAMPLE TABLE PORTLET-->
+
+                </div>
+            </div>
 			</div>
 		</div>
 		<!-- END CONTENT -->

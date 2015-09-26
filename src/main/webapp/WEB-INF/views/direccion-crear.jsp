@@ -75,35 +75,46 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/direccion/guardar" var="urlDireccionGuardar" />
-                            <form:form action="${urlDireccionGuardar}" method="post" commandName="direccion" >
+                            <c:url value="/direccion/crear" var="urlDireccionCrear" />
+                            <form:form action="${urlDireccionCrear}" method="post" commandName="direccion" >
                                 <div class="form-body">
+                                
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Calle *: </label>
+                                        <label class="control-label col-md-3">Calle
+                                        	<span class="required"> * </span>
+                                        </label>
+                                        
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:input path="calle" cssClass="form-control"/>
-                                                <form:errors path="calle" element="span" cssClass="help-block text-danger"/>
+                                                <form:errors path="calle" element="span" 
+                                                			cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-                                        
-                                        <label class="control-label col-md-3">Numero *: </label>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Numero <span class="required"> * </span> </label>
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:input path="numero" cssClass="form-control"/>
                                                 <form:errors path="numero" element="span" cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-                                        
-                                        <label class="control-label col-md-3">Colonia*: </label>
+                                    </div>
+                                    
+                                    <div class="form-group">    
+                                        <label class="control-label col-md-3">Colonia <span class="required"> * </span> </label>
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:input path="colonia" cssClass="form-control"/>
                                                 <form:errors path="colonia" element="span" cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-                                        
-                                        <label class="control-label col-md-3">estado*: </label>
+                                    </div>    
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Estado <span class="required"> * </span>  </label>
                                         <div class="col-md-4">
                                             <div class="input-icon right">
                                                 <form:input path="estado" cssClass="form-control"/>
@@ -112,6 +123,30 @@
                                         </div>
 
                                     </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Usuario
+                                            <span class="required"> * </span>
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:select path="usuario.idUsuarios" cssClass="form-control">
+                                                    <form:option value="" label="Selecciona una opción"/>
+                                                    <form:options items="${usuarioList}" itemValue="idUsuarios"
+                                                                  itemLabel="nombreUsuario"/>
+                                                </form:select>
+                                                <form:errors path="usuario" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">

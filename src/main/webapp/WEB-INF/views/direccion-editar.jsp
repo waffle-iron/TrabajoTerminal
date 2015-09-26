@@ -75,25 +75,84 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <c:url value="/direccion/guardarCambios" var="urlDireccionGuardar" />
-                            <form:form action="${urlDireccionGuardar}" method="post" commandName="Direccion" >
+                            <c:url value="/direccion/guardarCambios" var="urlDireccionEditar" />
+                            <form:form action="${urlDireccionEditar}" method="post" commandName="direccion" >
                                 <div class="form-body">
+                                <form:hidden path="idDireccion" />
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Nombre *: </label>
+                                        <label class="control-label col-md-3">Calle
+                                        	<span class="required"> * </span>
+                                        </label>
+                                        
                                         <div class="col-md-4">
                                             <div class="input-icon right">
-                                                <form:hidden path="idDireccion" />
-                                                <form:input path="nombre" cssClass="form-control"/>
-                                                <form:errors path="nombre" element="span" cssClass="help-block text-danger"/>
+                                                
+                                                <form:input path="calle" cssClass="form-control"/>
+                                                <form:errors path="calle" element="span" 
+                                                			cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Numero <span class="required"> * </span> </label>
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:input path="numero" cssClass="form-control"/>
+                                                <form:errors path="numero" element="span" cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">    
+                                        <label class="control-label col-md-3">Colonia <span class="required"> * </span> </label>
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:input path="colonia" cssClass="form-control"/>
+                                                <form:errors path="colonia" element="span" cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Estado <span class="required"> * </span>  </label>
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:input path="estado" cssClass="form-control"/>
+                                                <form:errors path="estado" element="span" cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
 
                                     </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Usuario
+                                            <span class="required"> * </span>
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <form:select path="usuario.idUsuarios" cssClass="form-control">
+                                                    <form:option value="" label="Selecciona una opción"/>
+                                                    <form:options items="${usuarioList}" itemValue="idUsuarios"
+                                                                  itemLabel="nombreUsuario"/>
+                                                </form:select>
+                                                <form:errors path="usuario" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="btn green">Guardar Cambios</button>
+                                            <button type="submit" class="btn green">Crear</button>
                                             <button type="button" class="btn default">Cancelar</button>
                                         </div>
                                     </div>

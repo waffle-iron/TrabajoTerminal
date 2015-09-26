@@ -19,3 +19,18 @@
 <script src="${pageContext.request.contextPath}/resources/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/tema/scripts/layout.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/tema/scripts/demo.js" type="text/javascript"></script>
+
+<!-- BEGIN THEME PAGE PERFIL-->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/table-advanced.js"></script>
+
+
+
+<!-- END THEME PAGE PERFIL-->
+
