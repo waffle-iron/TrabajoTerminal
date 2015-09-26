@@ -1,5 +1,6 @@
 package com.escom.tt.repositorio;
 
+import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Proyecto;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,12 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
         List<Proyecto> proyectos = null;
         proyectos = sf.getCurrentSession().createCriteria(Proyecto.class).list();
         return proyectos;
+    }
+
+    @Override
+    public ColaboradorProyecto addColaborador(ColaboradorProyecto colaboradorProyecto) {
+        sf.getCurrentSession().save(colaboradorProyecto);
+        return colaboradorProyecto;
     }
 
 }

@@ -98,7 +98,8 @@ public class Usuario {
 	private Grado grado;
 
 
-	@OneToMany(mappedBy = "estado")
+	@OneToMany(mappedBy = "coordinador",fetch=FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	private List<Proyecto> proyectos;
 
 	public List<Proyecto> getProyectos() {
@@ -123,10 +124,17 @@ public class Usuario {
 
 
 
-	@OneToMany(mappedBy="compositekey.idUsuario",fetch=FetchType.EAGER)
-    @Fetch(FetchMode.SELECT)
-	private List<ColaboradorProyecto> ColaboradorProyectos;
+	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
+	private List<ColaboradorProyecto> colaboradorProyectos;
 
+	public List<ColaboradorProyecto> getColaboradorProyectos() {
+		return colaboradorProyectos;
+	}
+
+	public void setColaboradorProyectos(List<ColaboradorProyecto> colaboradorProyectos) {
+		this.colaboradorProyectos = colaboradorProyectos;
+	}
 
 	public Integer getIdUsuarios() {
 		return idUsuarios;

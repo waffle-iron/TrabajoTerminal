@@ -19,27 +19,27 @@
 <meta content="" name="description" />
 <meta content="" name="author" />
 
-<jsp:include page="recursos/estilos.jsp"></jsp:include>
+<jsp:include page="../recursos/estilos.jsp"></jsp:include>
 
 </head>
 
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo">
 	<!-- BEGIN HEADER -->
-	<jsp:include page="recursos/header.jsp"></jsp:include>
+	<jsp:include page="../recursos/header.jsp"></jsp:include>
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
-		<jsp:include page="recursos/side-bar.jsp"></jsp:include>
+		<jsp:include page="../recursos/side-bar.jsp"></jsp:include>
 		<!-- END SIDEBAR -->
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="recursos/breadcrumbs.jsp"></jsp:include>
+				<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
@@ -58,11 +58,11 @@
 	<!-- END CONTAINER -->
 
 	<!-- BEGIN FOOTER -->
-	<jsp:include page="recursos/footer.jsp"></jsp:include>
+	<jsp:include page="../recursos/footer.jsp"></jsp:include>
 	<!-- END FOOTER -->
 
 	<!-- BEGIN JS -->
-	<jsp:include page="recursos/recursos-js.jsp"></jsp:include>
+	<jsp:include page="../recursos/recursos-js.jsp"></jsp:include>
 	<!-- END JS -->
 	<script>
 		jQuery(document).ready(function() {
