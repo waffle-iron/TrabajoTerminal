@@ -38,7 +38,7 @@ public class InvitacionControlador {
 
         if (validacion.hasErrors()){
             modelo.addAttribute("invitacion", invitacion);
-            ruta = "invitacion-crear";
+            ruta = "invitacion/invitacion-crear";
         }else{
             Integer id = invitacionRepositorio.crear(invitacion);
             ruta = "redirect:/invitacion/ver/" + invitacion.getIdInvitacion()+ "/?creado=true";
@@ -53,7 +53,7 @@ public class InvitacionControlador {
 
         if (validacion.hasErrors()){
             modelo.addAttribute("invitacion", invitacion);
-            ruta = "invitacion-editar";
+            ruta = "invitacion/invitacion-editar";
         }else{
             Integer id = invitacionRepositorio.actualizar(invitacion);
             ruta = "redirect:/invitacion/ver/" + invitacion.getIdInvitacion() + "/?actualizado=true";
@@ -69,7 +69,7 @@ public class InvitacionControlador {
 
         if (invitacion != null) {
             modelo.addAttribute("invitacion", invitacion);
-            ruta = "invitacion-editar";
+            ruta = "invitacion/invitacion-editar";
         }
         else
             ruta = "redirect:/invitacion";
@@ -87,7 +87,7 @@ public class InvitacionControlador {
             modelo.addAttribute("invitacion", invitacion);
             modelo.addAttribute("actualizado", actualizado);
             modelo.addAttribute("creado", creado);
-            ruta = "invitacion-ver";
+            ruta = "invitacion/invitacion-ver";
         }else
             ruta = "redirect:/invitacion";
 

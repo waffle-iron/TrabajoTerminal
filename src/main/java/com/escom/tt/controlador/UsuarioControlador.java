@@ -38,7 +38,7 @@ public class UsuarioControlador {
 		modelo.addAttribute("usuario", new Usuario());
 		modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
 		modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
-		return "usuario-crear";
+		return "usuario/usuario-crear";
 	}
 	@RequestMapping(value="/usuario/crear", method = RequestMethod.POST)
 	public String crear(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult validacion, Model modelo) {
@@ -46,7 +46,7 @@ public class UsuarioControlador {
 		
 		if (validacion.hasErrors()){
 			modelo.addAttribute("usuario", usuario);
-			ruta = "usuario-crear";
+			ruta = "usuario/usuario-crear";
 		}else{
 			Integer id = usuarioRepositorio.crearUsuario(usuario);
 			ruta = "redirect:/usuario/ver/" + usuario.getIdUsuarios()+ "/?creado=true";
@@ -60,7 +60,7 @@ public class UsuarioControlador {
 
 		if (validacion.hasErrors()){
 			modelo.addAttribute("usuario", usuario);
-			ruta = "usuario-editar";
+			ruta = "usuario/usuario-editar";
 		}else{
 			Integer id = usuarioRepositorio.actualizarUsuario(usuario);
 			ruta = "redirect:/usuario/ver/" + usuario.getIdUsuarios() + "/?actualizado=true";
@@ -78,7 +78,7 @@ public class UsuarioControlador {
 			modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
 			modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
 			
-			ruta = "usuario-editar";
+			ruta = "usuario/usuario-editar";
 		}
 		else
 			ruta = "redirect:/usuario";
@@ -95,7 +95,7 @@ public class UsuarioControlador {
 			modelo.addAttribute("usuario", usuario);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
-			ruta = "usuario-ver";
+			ruta = "usuario/usuario-ver";
 		}else
 			ruta = "redirect:/usuario";
 
@@ -106,7 +106,7 @@ public class UsuarioControlador {
 
 		usuarioRepositorio.eliminarUsuario(usuarioRepositorio.buscarPorId(usuarioId));
 		modelo.addAttribute("mensaje", "Se ha eliminado el usuario");
-		return "usuario-eliminar";
+		return "usuario/usuario-eliminar";
 	}
 	@RequestMapping(value="/usuario")
 	public String verTodos(Model modelo) {
@@ -117,7 +117,7 @@ public class UsuarioControlador {
 
 		modelo.addAttribute("usuarioList", usuarioList);
 
-		return "usuario-todos";
+		return "usuario/usuario-todos";
 	}
 	
 	@RequestMapping(value="/usuario/perfil/{usuarioId:[0-9]+}")
@@ -130,7 +130,7 @@ public class UsuarioControlador {
 			modelo.addAttribute("usuario", usuario);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
-			ruta = "usuario-perfil";
+			ruta = "usuario/usuario-perfil";
 		}else
 			ruta = "redirect:/usuario";
 

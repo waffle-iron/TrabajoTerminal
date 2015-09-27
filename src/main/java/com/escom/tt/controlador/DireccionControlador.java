@@ -31,7 +31,7 @@ public class DireccionControlador {
 	public String crear(Model modelo){
 		modelo.addAttribute("usuarioList", usuarioRepositorio.obtenerTodos());
 		modelo.addAttribute("direccion", new Direccion());
-		return "direccion-crear";
+		return "direccion/direccion-crear";
 		
 	}
 	
@@ -40,7 +40,7 @@ public class DireccionControlador {
 		String ruta = null;
 		if (validacion.hasErrors()){
 			modelo.addAttribute("direccion", direccion);
-			ruta = "direccion-crear";
+			ruta = "direccion/direccion-crear";
 		}else {
 			Integer id = direccionRepositorio.crearDireccion(direccion);
 			ruta = "redirect:/direccion/ver/" + direccion.getIdDireccion()+"/?creado=true";
@@ -54,7 +54,7 @@ public class DireccionControlador {
 		System.err.println(direccion+"antes");
 		if (validacion.hasErrors()){
 			modelo.addAttribute("direccion", direccion);
-			ruta = "direccion-editar";
+			ruta = "direccion/direccion-editar";
 			System.err.println(direccion+"con erreres");
 		}else{
 			Integer id = direccionRepositorio.actualizarDireccion(direccion);
@@ -74,7 +74,7 @@ public class DireccionControlador {
 		if (direccion!= null) {
 			modelo.addAttribute("usuarioList", usuarioRepositorio.obtenerTodos());
 			modelo.addAttribute("direccion", direccion);
-			ruta = "direccion-editar";
+			ruta = "direccion/direccion-editar";
 		}
 		else
 			ruta = "redirect:/direccion";
@@ -93,7 +93,7 @@ public class DireccionControlador {
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
 			System.err.println(direccion);
-			ruta = "direccion-ver";
+			ruta = "direccion/direccion-ver";
 		}else
 			ruta = "redirect:/direccion";
 
@@ -106,7 +106,7 @@ public class DireccionControlador {
 		
 		direccionRepositorio.eliminarDireccion(direccionRepositorio.buscarPorId(direccionId));
 		modelo.addAttribute("mensaje", "Se ha eliminado la direccion");
-		return "direccion-eliminar";
+		return "direccion/direccion-eliminar";
 	}
 //http://localhost:8080/trabajoterminal/idioma/
 	@RequestMapping(value="/direccion")
@@ -118,7 +118,7 @@ public class DireccionControlador {
 
 		modelo.addAttribute("direcciones", direccionList);
 
-		return "direccion-todos";
+		return "direccion/direccion-todos";
 	}
 
 }

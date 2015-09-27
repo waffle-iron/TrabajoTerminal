@@ -26,7 +26,7 @@ public class GradoControlador {
 		@RequestMapping(value="/grado/crear", method = RequestMethod.GET)
 		public String crear(Model modelo) {
 			modelo.addAttribute("grado", new Grado());
-			return "grado-crear";
+			return "grado/grado-crear";
 		}
 	//http://localhost:8080/trabajoterminal/grado/guardar
 		@RequestMapping(value="/grado/guardar", method = RequestMethod.POST)
@@ -35,7 +35,7 @@ public class GradoControlador {
 			
 			if (validacion.hasErrors()){
 				modelo.addAttribute("grado", grado);
-				ruta = "grado-crear";
+				ruta = "grado/grado-crear";
 			}else{
 				Integer id = gradoRepositorio.crearGrado(grado);
 				ruta = "redirect:/grado/ver/" + grado.getIdGrado()+ "/?creado=true";
@@ -50,7 +50,7 @@ public class GradoControlador {
 
 			if (validacion.hasErrors()){
 				modelo.addAttribute("grado", grado);
-				ruta = "grado-editar";
+				ruta = "grado/grado-editar";
 			}else{
 				Integer id = gradoRepositorio.actualizarGrado(grado);
 				ruta = "redirect:/grado/ver/" + grado.getIdGrado() + "/?actualizado=true";
@@ -66,7 +66,7 @@ public class GradoControlador {
 
 			if (grado != null) {
 				modelo.addAttribute("grado", grado);
-				ruta = "grado-editar";
+				ruta = "grado/grado-editar";
 			}
 			else
 				ruta = "redirect:/grado";
@@ -84,7 +84,7 @@ public class GradoControlador {
 				modelo.addAttribute("grado", grado);
 				modelo.addAttribute("actualizado", actualizado);
 				modelo.addAttribute("creado", creado);
-				ruta = "grado-ver";
+				ruta = "grado/grado-ver";
 			}else
 				ruta = "redirect:/grado";
 
@@ -96,7 +96,7 @@ public class GradoControlador {
 
 			gradoRepositorio.eliminarGrado(gradoRepositorio.buscarPorId(gradoId));
 			modelo.addAttribute("mensaje", "Se ha eliminado el grado");
-			return "grado-eliminar";
+			return "grado/grado-eliminar";
 		}
 	//http://localhost:8080/trabajoterminal/grado/
 		@RequestMapping(value="/grado")
@@ -108,6 +108,6 @@ public class GradoControlador {
 
 			modelo.addAttribute("grados", gradoList);
 
-			return "grado-todos";
+			return "grado/grado-todos";
 		}
 }

@@ -23,7 +23,7 @@ public class IdiomaControlador {
 	@RequestMapping(value="/idioma/crear", method = RequestMethod.GET)
 	public String crear(Model modelo) {
 		modelo.addAttribute("idioma", new Idioma());
-		return "idioma-crear";
+		return "idioma/idioma-crear";
 	}
 //http://localhost:8080/trabajoterminal/idioma/guardar
 	@RequestMapping(value="/idioma/guardar", method = RequestMethod.POST)
@@ -32,7 +32,7 @@ public class IdiomaControlador {
 		
 		if (validacion.hasErrors()){
 			modelo.addAttribute("idioma", idioma);
-			ruta = "idioma-crear";
+			ruta = "idioma/idioma-crear";
 		}else{
 			Integer id = idiomaRepositorio.crearIdioma(idioma);
 			ruta = "redirect:/idioma/ver/" + idioma.getIdIdioma()+ "/?creado=true";
@@ -47,7 +47,7 @@ public class IdiomaControlador {
 
 		if (validacion.hasErrors()){
 			modelo.addAttribute("idioma", idioma);
-			ruta = "idioma-editar";
+			ruta = "idioma/idioma-editar";
 		}else{
 			Integer id = idiomaRepositorio.actualizarIdioma(idioma);
 			ruta = "redirect:/idioma/ver/" + idioma.getIdIdioma() + "/?actualizado=true";
@@ -63,7 +63,7 @@ public class IdiomaControlador {
 
 		if (idioma != null) {
 			modelo.addAttribute("idioma", idioma);
-			ruta = "idioma-editar";
+			ruta = "idioma/idioma-editar";
 		}
 		else
 			ruta = "redirect:/idioma";
@@ -81,7 +81,7 @@ public class IdiomaControlador {
 			modelo.addAttribute("idioma", idioma);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
-			ruta = "idioma-ver";
+			ruta = "idioma/idioma-ver";
 		}else
 			ruta = "redirect:/idioma";
 
@@ -93,7 +93,7 @@ public class IdiomaControlador {
 
 		idiomaRepositorio.eliminarIdioma(idiomaRepositorio.buscarPorId(idiomaId));
 		modelo.addAttribute("mensaje", "Se ha eliminado el idioma");
-		return "idioma-eliminar";
+		return "idioma/idioma-eliminar";
 	}
 //http://localhost:8080/trabajoterminal/idioma/
 	@RequestMapping(value="/idioma")
@@ -105,6 +105,6 @@ public class IdiomaControlador {
 
 		modelo.addAttribute("idiomas", idiomaList);
 
-		return "idioma-todos";
+		return "idioma/idioma-todos";
 	}
 }

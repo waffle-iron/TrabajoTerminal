@@ -57,7 +57,7 @@ public class Usuario {
 	private String email;
 
 	@Column(name="fechaNacimiento")
-	@NotNull
+	@NotNull(message = "La fecha de nacimiento debe ser obligatoria")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date fechaNacimiento;
 
@@ -77,8 +77,8 @@ public class Usuario {
 	private String sexo;
 
 	@Column(name="fechaIngresoIPN")
-	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotNull(message = "La fecha de ingreso debe ser obligatoria")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date fechaIngresoIPN;
 
 

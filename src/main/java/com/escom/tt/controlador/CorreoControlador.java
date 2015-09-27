@@ -36,7 +36,7 @@ public class CorreoControlador {
 		modelo.addAttribute("usuarioEmisorList", usuarioRepositorioEmisor.obtenerTodos());
 		modelo.addAttribute("correo", new Correo());
 
-		return "correo-crear";
+		return "correo/correo-crear";
 	}
 	
 	@RequestMapping(value="/correo/crear", method = RequestMethod.POST)
@@ -45,7 +45,7 @@ public class CorreoControlador {
 
 		if (validacion.hasErrors()){
 			modelo.addAttribute("correo", correo);
-			ruta = "correo-crear";
+			ruta = "correo/correo-crear";
 		}else{
 			Integer id = correoRepositorio.crearCorreo(correo);
 			ruta = "redirect:/correo/ver/" + correo.getIdCorreo()+ "/?creado=true";
@@ -59,7 +59,7 @@ public class CorreoControlador {
 
 		if (validacion.hasErrors()){
 			modelo.addAttribute("correo", correo);
-			ruta = "correo-editar";
+			ruta = "correo/correo-editar";
 		}else{
 			Integer id = correoRepositorio.actualizarCorreo(correo);
 			ruta = "redirect:/correo/ver/" + correo.getIdCorreo() + "/?actualizado=true";
@@ -77,7 +77,7 @@ public class CorreoControlador {
 			modelo.addAttribute("usuarioReceptorList", usuarioRepositorioReceptor.obtenerTodos());
 			modelo.addAttribute("usuarioEmisorList", usuarioRepositorioEmisor.obtenerTodos());
 			modelo.addAttribute("correo", correo);
-			ruta = "correo-editar";
+			ruta = "correo/correo-editar";
 		}
 		else
 			ruta = "redirect:/correo";
@@ -95,7 +95,7 @@ public class CorreoControlador {
 			modelo.addAttribute("correo", correo);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
-			ruta = "correo-ver";
+			ruta = "correo/correo-ver";
 		}else
 			ruta = "redirect:/correo";
 
@@ -128,7 +128,7 @@ public class CorreoControlador {
 		modelo.addAttribute("correosList", correoList);
 		modelo.addAttribute("eliminado", eliminado);
 
-		return "correo-todos";
+		return "correo/correo-todos";
 	}
 
 

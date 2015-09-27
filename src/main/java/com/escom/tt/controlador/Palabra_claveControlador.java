@@ -27,7 +27,7 @@ public class Palabra_claveControlador {
 	@RequestMapping(value="/palabra_clave/crear", method=RequestMethod.GET)
 	public String crear(Model modelo){
 		modelo.addAttribute("palabra_clave", new PalabraClave());
-		return "palabra_clave-crear";
+		return "palabra_clave/palabra_clave-crear";
 	}
 	
 	@RequestMapping(value="/palabraclave/guardar", method=RequestMethod.POST)
@@ -35,7 +35,7 @@ public class Palabra_claveControlador {
 		String ruta = null;
 		if (validacion.hasErrors()) {
 			modelo.addAttribute("palabra_clave_error", palabra_clave);
-			ruta = "palabra_clave-crear";
+			ruta = "palabra_clave/palabra_clave-crear";
 		} else {
 			Integer id=palabra_claveRepositorio.crear(palabra_clave);
 			ruta = "redirect:/palabra_clave/ver/"+palabra_clave.getIdPalabrasClave()+"?creado=true";
@@ -52,7 +52,7 @@ public class Palabra_claveControlador {
 			modelo.addAttribute("palabra_clave", palabra_clave);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
-			ruta = "palabra_clave-ver";
+			ruta = "palabra_clave/palabra_clave-ver";
 		} else {
 			ruta = "redirect:/palabra_clave";
 		}
@@ -65,14 +65,14 @@ public class Palabra_claveControlador {
 		List<PalabraClave> palabras_clave = null;
 		palabras_clave = palabra_claveRepositorio.obtenerTodos();
 		modelo.addAttribute("palabras_clave", palabras_clave);
-		return "palabra_clave-todos";
+		return "palabra_clave/palabra_clave-todos";
 	}
 	@RequestMapping(value="/palabraclave/guardarCambios", method=RequestMethod.POST)
 	public String guardarCambios(@ModelAttribute("palabra_clave") @Valid PalabraClave palabra_clave, BindingResult validacion, Model modelo){
 		String ruta = null;
 		if (validacion.hasErrors()) {
 			modelo.addAttribute("palabra_clave", palabra_clave);
-			ruta="palabra_clave-editar";
+			ruta="palabra_clave/palabra_clave-editar";
 		} else {
 			Integer id=palabra_claveRepositorio.actualizar(palabra_clave);
 			return "redirect:/palabra_clave/ver/"+palabra_clave.getIdPalabrasClave()+"/?actualizado=true" ;
@@ -86,7 +86,7 @@ public class Palabra_claveControlador {
 		palabra_clave=palabra_claveRepositorio.buscaPorId(id);
 		if (palabra_clave!=null) {
 			modelo.addAttribute("palabra_clave", palabra_clave);
-			ruta="palabra_clave-editar";
+			ruta="palabra_clave/palabra_clave-editar";
 		} else {
 			ruta="redirect:/palabra_clave";
 		}
@@ -99,7 +99,7 @@ public class Palabra_claveControlador {
 		palabra_claveRepositorio.eliminar(palabra_claveRepositorio.buscaPorId(Id));
 		modelo.addAttribute("mensaje", "Se ha eliminado la palabra clave");
 		
-		return "palabra_clave-eliminar";
+		return "palabra_clave/palabra_clave-eliminar";
 	}
 
 }

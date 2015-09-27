@@ -25,7 +25,7 @@ public class TipoProyectoControlador {
 	@RequestMapping(value="/tipoproyecto/crear", method = RequestMethod.GET)
 	public String crear(Model modelo){
 		modelo.addAttribute("tipoproyecto", new TipoProyecto());
-		return "tipoproyecto-crear";
+		return "tipoproyecto/tipoproyecto-crear";
 	}
 	
 	@RequestMapping(value="/tipoproyecto/guardar", method = RequestMethod.POST)
@@ -33,7 +33,7 @@ public class TipoProyectoControlador {
 		String ruta = null;
 		 if (validacion.hasErrors()){
 			 modelo.addAttribute("tipoproyecto", tipoProyecto);
-			 ruta = "tipoproyecto-crear";
+			 ruta = "tipoproyecto/tipoproyecto-crear";
 		 }else{
 			 Integer id = tipoProyectoRepositorio.crearTipoProyecto(tipoProyecto);
 			 ruta = "redirect:/tipoproyecto/ver/" + tipoProyecto.getIdTipoProyecto() + "/?creado=true";
@@ -46,7 +46,7 @@ public class TipoProyectoControlador {
 		String ruta = null;
 		if (validacion.hasErrors()){
 			modelo.addAttribute("tipoproyecto", tipoProyecto);
-			ruta = "idioma-editar";
+			ruta = "tipoproyecto/tipoproyecto-editar";
 		}else{
 			Integer id = tipoProyectoRepositorio.actualizarTipoProyecto(tipoProyecto);
 			ruta = "redirect:/tipoproyecto/ver/" + tipoProyecto.getIdTipoProyecto() +"/?actualizado=true";
@@ -64,7 +64,7 @@ public class TipoProyectoControlador {
 		
 		if (tipoProyecto!=null){
 			modelo.addAttribute("tipoproyecto", tipoProyecto);
-			ruta = "tipoproyecto-editar";
+			ruta = "tipoproyecto/tipoproyecto-editar";
 		}
 		
 		else{
@@ -84,7 +84,7 @@ public class TipoProyectoControlador {
 			modelo.addAttribute("tipoproyecto", tipoProyecto);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
-			ruta = "tipoproyecto-ver";
+			ruta = "tipoproyecto/tipoproyecto-ver";
 		}else{
 			ruta = "redirect:/tipoproyecto";
 		}
@@ -96,7 +96,7 @@ public class TipoProyectoControlador {
 		
 		tipoProyectoRepositorio.eliminarTipoProyecto(tipoProyectoRepositorio.buscarPorId(tipoProyectoId));
 		modelo.addAttribute("mensaje", "Se ha eliminado el idioma");
-		return "idioma-eliminar";
+		return "tipoproyecto/tipoproyecto-eliminar";
 	}
 	
 	@RequestMapping(value="/tipoproyecto")
@@ -104,7 +104,7 @@ public class TipoProyectoControlador {
 		List<TipoProyecto> tipoProyectoList = null;
 		tipoProyectoList = tipoProyectoRepositorio.obtenerTodos();
 		modelo.addAttribute("tiposproyecto", tipoProyectoList);
-		return "tipoproyecto-todos";
+		return "tipoproyecto/tipoproyecto-todos";
 	}
 	
 	

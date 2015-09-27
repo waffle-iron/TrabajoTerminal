@@ -28,12 +28,12 @@ public class Correo {
 	private Integer idCorreo;
 	
 	
-	@Column(name="Asunto")
+	@Column(name="NombreCorreo")
 	@NotNull(message = "este campo no debe estar vacio")
 	@Size(min = 1, max =  45, message =" el asunto debe tener al menos un caracter y maximo 45")
 	private String asunto;
 	
-	@Column(name="Contenido")
+	@Column(name="ContenidoCorreo")
 	@NotNull(message = "este campo no debe estar vacio")
 	@Size(min = 1, max =  255, message =" el asunto debe tener al menos un caracter y maximo 255")
 	private String contenido;
@@ -47,7 +47,6 @@ public class Correo {
 	@OneToOne
 	@JoinColumn(name="RECEPTOR")
 	private Usuario usuarioReceptor;
-    
 
 	public Integer getIdCorreo() {
 		return idCorreo;
@@ -88,4 +87,7 @@ public class Correo {
 	public void setUsuarioReceptor(Usuario usuarioReceptor) {
 		this.usuarioReceptor = usuarioReceptor;
 	}
-}
+    
+
+	
+	}

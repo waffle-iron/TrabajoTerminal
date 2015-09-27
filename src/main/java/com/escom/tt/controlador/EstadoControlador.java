@@ -26,7 +26,7 @@ public class EstadoControlador {
 	@RequestMapping(value="/estado/crear", method = RequestMethod.GET)
 	public String crear(Model modelo) {
 		modelo.addAttribute("estado", new Estado());
-		return "estado-crear";
+		return "estado/estado-crear";
 	}
 
 	
@@ -37,7 +37,7 @@ public class EstadoControlador {
 		String ruta = null;		
 		if (validacion.hasErrors()){
 			modelo.addAttribute("estado", estado);
-			ruta = "estado-crear";
+			ruta = "estado/estado-crear";
 		}else{
 			Integer id = estadoRepositorio.crearEstado(estado);
 			ruta = "redirect:/estado/ver/" + estado.getIdEstado() + "/?creado=true";
@@ -51,7 +51,7 @@ public class EstadoControlador {
 
 			if (validacion.hasErrors()){
 				modelo.addAttribute("estado", estado);
-				ruta = "estado-editar";
+				ruta = "estado/estado-editar";
 			}else{
 				Integer id = estadoRepositorio.actualizarEstado(estado);
 				ruta = "redirect:/estado/ver/" + estado.getIdEstado() + "/?actualizado=true";
@@ -67,7 +67,7 @@ public class EstadoControlador {
 
 		if (estado != null) {
 			modelo.addAttribute("estado", estado);
-			ruta = "estado-editar";
+			ruta = "estado/estado-editar";
 		}
 		else
 			ruta = "redirect:/estado";
@@ -85,7 +85,7 @@ public class EstadoControlador {
 			modelo.addAttribute("estado", estado);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
-			ruta = "estado-ver";
+			ruta = "estado/estado-ver";
 		}else
 			ruta = "redirect:/estado";
 
@@ -97,7 +97,7 @@ public class EstadoControlador {
 
 		estadoRepositorio.eliminarEstado(estadoRepositorio.buscarPorId(estadoId));
 		modelo.addAttribute("mensaje", "Se ha eliminado el estado");
-		return "estado-eliminar";
+		return "estado/estado-eliminar";
 	}
 //http://localhost:8080/trabajoterminal/estado
 	@RequestMapping(value="/estado")
@@ -107,7 +107,7 @@ public class EstadoControlador {
 		estadoList = estadoRepositorio.obtenerTodos();
 		modelo.addAttribute("estados", estadoList);
 
-		return "estado-todos";
+		return "estado/estado-todos";
 	}
 
 	

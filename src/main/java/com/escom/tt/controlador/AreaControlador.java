@@ -25,7 +25,7 @@ public class AreaControlador {
 	@RequestMapping(value = "/area/crear", method = RequestMethod.GET)
 	public String crearArea(Model modelo){
 		modelo.addAttribute("area", new Area());
-		return "area-crear";
+		return "area/area-crear";
 	}
 	
 	@RequestMapping(value = "/area/guardar", method = RequestMethod.POST)
@@ -33,7 +33,7 @@ public class AreaControlador {
 		String ruta = null;
 		if (validacion.hasErrors()){
 			modelo.addAttribute("area", area);
-			ruta = "area-crear";
+			ruta = "area/area-crear";
 		}else{
 			Integer id = areaRepositorio.crearArea(area);
 			ruta = "redirect:/area/ver/" + area.getIdArea()+ "/?creado=true";
@@ -47,7 +47,7 @@ public class AreaControlador {
 		String ruta = null;
 		if (validacion.hasErrors()){
 			modelo.addAttribute("area", area);
-			ruta = "area-editar";
+			ruta = "area/area-editar";
 		}else{
 			Integer id = areaRepositorio.actualizarArea(area);
 			ruta = "redirect:/area/ver/"+ area.getIdArea()+ "/?actualizado=true";
@@ -65,7 +65,7 @@ public class AreaControlador {
 		System.out.println(area.getNombre()+"***********"+area.getIdArea());
 		if (area!=null){
 			modelo.addAttribute("area", area);
-			ruta = "area-editar";
+			ruta = "area/area-editar";
 		}else{
 			ruta = "redirect:/area";
 		}
@@ -82,7 +82,7 @@ public class AreaControlador {
 			modelo.addAttribute("area", area);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
-			ruta = "area-ver";
+			ruta = "area/area-ver";
 		}else {
 			ruta = "redirect:/area";
 		}
@@ -93,7 +93,7 @@ public class AreaControlador {
 	public String eliminar (@PathVariable Integer areaId, Model modelo){
 		areaRepositorio.eliminarArea(areaRepositorio.buscarPorId(areaId));
 		modelo.addAttribute("mensaje", "El area ha sido eliminado");
-		return "area-eliminar";
+		return "area/area-eliminar";
 	}
 	
 	@RequestMapping(value = "/area")
@@ -101,7 +101,7 @@ public class AreaControlador {
 		List<Area> areas= null;
 		areas = areaRepositorio.obtenerTodos();
 		modelo.addAttribute("areas", areas);
-		return "area-todos";
+		return "area/area-todos";
 		
 	}
 	

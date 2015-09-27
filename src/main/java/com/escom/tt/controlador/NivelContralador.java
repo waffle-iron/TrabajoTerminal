@@ -26,7 +26,7 @@ public class NivelContralador {
 	@RequestMapping(value="/nivel/crear", method = RequestMethod.GET)
 	public String crear(Model modelo){
 		modelo.addAttribute("nivel", new Nivel());
-		return "nivel-crear";
+		return "nivel/nivel-crear";
 	}
 	
 	@RequestMapping(value="/nivel/guardar", method = RequestMethod.POST)
@@ -34,6 +34,7 @@ public class NivelContralador {
 		String ruta = null;
 		if (validacion.hasErrors()){
 			modelo.addAttribute("nivel", nivel);
+			ruta = "nivel/nivel-crear";
 		}else{
 			Integer id = nivelRepositorio.crearNivel(nivel);
 			ruta = "redirect:/nivel/ver/" + nivel.getIdNivel() + "/?creado=true";
@@ -47,7 +48,7 @@ public class NivelContralador {
 		
 		if (validacion.hasErrors()){
 			modelo.addAttribute("nivel", nivel);
-			ruta = "nivel-editar";
+			ruta = "nivel/nivel-editar";
 		}else{
 			Integer id = nivelRepositorio.actualizarNivel(nivel);
 			ruta = "redirect:/nivel/ver/" + nivel.getIdNivel() + "/?actualizado=true";
@@ -64,7 +65,7 @@ public class NivelContralador {
 		
 		if (nivel !=null){
 			modelo.addAttribute("nivel", nivel);
-			ruta = "nivel-editar";
+			ruta = "nivel/nivel-editar";
 		}else{
 			ruta = "redirect:/nivel";
 		}
@@ -83,7 +84,7 @@ public class NivelContralador {
 			modelo.addAttribute("nivel", nivel);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
-			ruta = "nivel-ver";
+			ruta = "nivel/nivel-ver";
 		}else{
 			ruta = "redirect:/nivel";
 		}
@@ -94,7 +95,7 @@ public class NivelContralador {
 	public String eliminar (@PathVariable Integer nivelId, Model modelo){
 		nivelRepositorio.eliminarNivel(nivelRepositorio.buscarPorId(nivelId));
 		modelo.addAttribute("mensaje", "se ha eliminado el nivel");
-		return "nivel-eliminar";
+		return "nivel/nivel-eliminar";
 		
 	}
 	@RequestMapping(value = "/nivel")
@@ -102,7 +103,7 @@ public class NivelContralador {
 		List<Nivel> niveles = null;
 		niveles= nivelRepositorio.obtenerTodos();
 		modelo.addAttribute("niveles", niveles);
-		return "nivel-todos";
+		return "nivel/nivel-todos";
 				
 	}
 }
