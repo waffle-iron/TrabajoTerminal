@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="trabajoterminal:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="trabajoterminal-1.0.war">
-      <element id="artifact" artifact-name="trabajoterminal:war exploded" />
-    </root>
-  </artifact>
-</component>

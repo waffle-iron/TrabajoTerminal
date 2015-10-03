@@ -4,5 +4,4 @@ target
 !.settings/.jsdtscope
 .project
 .classpath
-.idea
-.idea/workspace.xml
+.idea/
