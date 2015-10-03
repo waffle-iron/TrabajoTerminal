@@ -15,14 +15,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "direccion")
+@Table(name = "DIRECCION")
 public class Direccion {
-	
-	
 
-	
-
-	
 
 	@Id
 	@Column(name= "idDireccion")
@@ -48,7 +43,8 @@ public class Direccion {
 	@Size(min =2, max = 14, message = "el estado debe tener al menos 2 caracteres y máximo 14")
 	private String estado;
 	
-	@OneToOne()
+	@OneToOne
+	@NotNull
 	@JoinColumn(name="usuario")
 	private Usuario usuario;
 		
