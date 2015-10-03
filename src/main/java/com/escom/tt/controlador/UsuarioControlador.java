@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.EscuelaRepositorio;
 import com.escom.tt.repositorio.GradoRepositorio;
@@ -31,6 +32,8 @@ public class UsuarioControlador {
 
 	@Autowired
 	private GradoRepositorio gradoRepositorio;
+	
+	
 
 	@RequestMapping(value="/usuario/crear", method = RequestMethod.GET)
 	public String crear(Model modelo){
@@ -123,11 +126,14 @@ public class UsuarioControlador {
 	@RequestMapping(value="/usuario/perfil/{usuarioId:[0-9]+}")
 	public String verMiPerfil(@PathVariable Integer usuarioId, Model modelo, Boolean actualizado, Boolean creado) {
 		String ruta = null;
-		Usuario usuario= null;
-
+		Usuario usuario= null; 
+		List<Proyecto> proyectosList = null;
 		usuario = usuarioRepositorio.buscarPorId(usuarioId);
+		
+		
 		if (usuario != null) {
 			modelo.addAttribute("usuario", usuario);
+			//modelo.addAttribute("proyectosList", proyectosList)
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
 			ruta = "usuario-perfil";

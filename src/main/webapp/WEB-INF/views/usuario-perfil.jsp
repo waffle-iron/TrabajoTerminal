@@ -153,8 +153,7 @@
 									<div class="portlet box blue-madison">
 										<div class="portlet-title">
 											<div class="caption">
-												<i class="fa fa-globe"></i>Responsive Table With Expandable
-												details
+												<i class="fa fa-globe"></i>Proyectos
 											</div>
 											<div class="tools">
 												<a href="javascript:;" class="reload"> </a> <a
@@ -166,11 +165,11 @@
 												id="sample_3">
 												<thead>
 													<tr>
-														<th>Rendering engine</th>
-														<th>Browser</th>
-														<th>Platform(s)</th>
-														<th>Engine version</th>
-														<th>CSS grade</th>
+														<th>Nombre del proyecto</th>
+														<th>Descripcion</th>
+														<th>Fecha de Inicio</th>
+														<th>Fecha de Fin</th>
+														<th>Coordinador</th>
 													</tr>
 												</thead>
 												<tbody>
