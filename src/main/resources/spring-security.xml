@@ -1,11 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:security="http://www.springframework.org/schema/security"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/security  http://www.springframework.org/schema/security/spring-security-4.0.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
     <security:http use-expressions="true">
@@ -13,15 +9,29 @@
         <security:form-login login-page="/login"
                              authentication-failure-url="/login?valido=false"
                              login-processing-url="/autentificar" username-parameter="email"
-                             password-parameter="password" default-target-url="/blog/1"/>
+                             password-parameter="password" default-target-url="/"/>
 
         <security:logout logout-url="/logout"
                          logout-success-url="/login" delete-cookies="JSESSIONID"/>
 
+
         <security:access-denied-handler error-page="/error-403"/>
 
-        <security:intercept-url pattern="/escuela/**"
-                                access="hasAnyRole('ROLE_ADMIN','ROLE_EDITOR')" />
+        <security:intercept-url pattern="/area/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/busqueda/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/correo/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/estado/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/direccion/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/escuela/**" access="hasAnyRole('ROLE_COLABORADOR')"/>
+        <security:intercept-url pattern="/grado/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/idioma/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/invitacion/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/nivel/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/palabra_clave/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/proyecto/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/tarea/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/tipoproyecto/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/usuario/**" access="hasAnyRole('ROLE_ADMIN')"/>
 
     </security:http>
 
@@ -35,6 +45,5 @@
 
         </security:authentication-provider>
     </security:authentication-manager>
-    <security:global-method-security secured-annotations="enabled" jsr250-annotations="enabled"
-                                     authentication-manager-ref="authenticationManager"/>
+    <security:global-method-security secured-annotations="enabled"/>
 </beans>

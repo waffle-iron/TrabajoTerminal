@@ -1,15 +1,7 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url value="/" var="contexto"/>
+
 <!DOCTYPE html>
-<!--
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
-Version: 4.1.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -33,9 +25,11 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="${pageContext.request.contextPath}/resources/global/plugins/simple-line-icons/simple-line-icons.min.css"
           rel="stylesheet"
           type="text/css"/>
-    <link href="${pageContext.request.contextPath}/resources/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+    <link href="${pageContext.request.contextPath}/resources/global/plugins/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet"
           type="text/css"/>
-    <link href="${pageContext.request.contextPath}/resources/global/plugins/uniform/css/uniform.default.css" rel="stylesheet"
+    <link href="${pageContext.request.contextPath}/resources/global/plugins/uniform/css/uniform.default.css"
+          rel="stylesheet"
           type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL STYLES -->
@@ -75,23 +69,31 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGIN -->
 <div class="content">
-    <!-- BEGIN LOGIN FORM -->
-    <form class="login-form" action="index.html" method="post">
+
+
+    <c:url value="/autentificar" var="rutaAutentificar"/>
+    <!--  dsasgegfsadgsgf
+    -->
+    <form class="login-form" action="${rutaAutentificar}" method="POST">
         <h3 class="form-title">Login to your account</h3>
 
-        <div class="alert alert-danger display-hide">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+        <div class="alert alert-danger <c:if test="${valido == null}">display-hide</c:if>">
             <button class="close" data-close="alert"></button>
-			<span>
-			Enter any username and password. </span>
+                <c:if test="${valido == false}">
+                    <h3 style="color: #FFFFFF">Usuario o password incorrectos!!</h3>
+
+                </c:if>
         </div>
         <div class="form-group">
             <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <label class="control-label visible-ie8 visible-ie9">Username</label>
+            <label class="control-label visible-ie8 visible-ie9">email</label>
 
             <div class="input-icon">
                 <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username"
-                       name="username"/>
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="email"
+                       name="email"/>
             </div>
         </div>
         <div class="form-group">
@@ -103,76 +105,17 @@ License: You must have a valid license purchased only from themeforest(the above
                        name="password"/>
             </div>
         </div>
+
         <div class="form-actions">
-            <label class="checkbox">
-                <input type="checkbox" name="remember" value="1"/> Remember me </label>
             <button type="submit" class="btn blue pull-right">
                 Login <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
-        <div class="login-options">
-            <h4>Or login with</h4>
-            <ul class="social-icons">
-                <li>
-                    <a class="facebook" data-original-title="facebook" href="javascript:;">
-                    </a>
-                </li>
-                <li>
-                    <a class="twitter" data-original-title="Twitter" href="javascript:;">
-                    </a>
-                </li>
-                <li>
-                    <a class="googleplus" data-original-title="Goole Plus" href="javascript:;">
-                    </a>
-                </li>
-                <li>
-                    <a class="linkedin" data-original-title="Linkedin" href="javascript:;">
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="forget-password">
-            <h4>Forgot your password ?</h4>
-
-            <p>
-                no worries, click <a href="javascript:;" id="forget-password">
-                here </a>
-                to reset your password.
-            </p>
-        </div>
-        <div class="create-account">
-            <p>
-                Don't have an account yet ?&nbsp; <a href="javascript:;" id="register-btn">
-                Create an account </a>
-            </p>
-        </div>
     </form>
     <!-- END LOGIN FORM -->
-    <!-- BEGIN FORGOT PASSWORD FORM -->
-    <form class="forget-form" action="index.html" method="post">
-        <h3>Forget Password ?</h3>
 
-        <p>
-            Enter your e-mail address below to reset your password.
-        </p>
 
-        <div class="form-group">
-            <div class="input-icon">
-                <i class="fa fa-envelope"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email"
-                       name="email"/>
-            </div>
-        </div>
-        <div class="form-actions">
-            <button type="button" id="back-btn" class="btn">
-                <i class="m-icon-swapleft"></i> Back
-            </button>
-            <button type="submit" class="btn blue pull-right">
-                Submit <i class="m-icon-swapright m-icon-white"></i>
-            </button>
-        </div>
-    </form>
-    <!-- END FORGOT PASSWORD FORM -->
+
     <!-- BEGIN REGISTRATION FORM -->
     <form class="register-form" action="index.html" method="post">
         <h3>Sign Up</h3>
@@ -522,13 +465,16 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="${pageContext.request.contextPath}/resources/global/plugins/excanvas.min.js"></script>
 <![endif]-->
 <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/resources/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/global/plugins/jquery-migrate.min.js"
+        type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/global/plugins/bootstrap/js/bootstrap.min.js"
         type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.blockui.min.js"
+        type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/global/plugins/uniform/jquery.uniform.min.js"
         type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.cokie.min.js"
+        type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery-validation/js/jquery.validate.min.js"
@@ -550,7 +496,7 @@ License: You must have a valid license purchased only from themeforest(the above
     jQuery(document).ready(function () {
         Metronic.init(); // init metronic core components
         Layout.init(); // init current layout
-        Login.init();
+       // Login.init();
         Demo.init();
         // init background slide images
         $.backstretch([
