@@ -32,24 +32,31 @@ public class UsuarioControlador {
 	@Autowired
 	private GradoRepositorio gradoRepositorio;
 
-	@RequestMapping(value="/usuario/crear", method = RequestMethod.GET)
-	public String crear(Model modelo){
+	@RequestMapping(value="/registro", method = RequestMethod.GET)
+	public String registrarse(Model modelo){
 
 		modelo.addAttribute("usuario", new Usuario());
 		modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
 		modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
-		return "usuario/usuario-crear";
+		return "registro";
 	}
 	@RequestMapping(value="/usuario/crear", method = RequestMethod.POST)
 	public String crear(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult validacion, Model modelo) {
 		String ruta = null;
 		
 		if (validacion.hasErrors()){
+			System.err.println(validacion.getAllErrors());
 			modelo.addAttribute("usuario", usuario);
-			ruta = "usuario/usuario-crear";
+			modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
+			modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
+			ruta = "registro";
 		}else{
+			usuario.setEvaluacion(10);
+			usuario.setActivo(true);
+			usuario.setRol("ROL_ADMIN");
 			Integer id = usuarioRepositorio.crearUsuario(usuario);
-			ruta = "redirect:/usuario/ver/" + usuario.getIdUsuarios()+ "/?creado=true";
+			System.err.println("NO HUBO ERRORES");
+			ruta = "redirect:/login/?creado=true";
 		}
 		return ruta;
 	}
