@@ -95,7 +95,7 @@
             <div class="input-icon">
                 <i class="fa fa-user"></i>
                 <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="email"
-                       name="email"/>
+                       name="email" value="juancvfenix@gmail.com"/>
             </div>
         </div>
         <div class="form-group">
@@ -104,7 +104,7 @@
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
                 <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password"
-                       name="password"/>
+                       name="password" value="123"/>
             </div>
         </div>
 

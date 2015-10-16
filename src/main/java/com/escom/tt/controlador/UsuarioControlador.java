@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -53,7 +54,14 @@ public class UsuarioControlador {
 		}else{
 			usuario.setEvaluacion(10);
 			usuario.setActivo(true);
-			usuario.setRol("ROL_ADMIN");
+			usuario.setRol("ROLE_ADMIN");
+
+			/*
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			String encript = passwordEncoder.encode("123");
+			usuario.setPassword(encript);
+			*/
+
 			Integer id = usuarioRepositorio.crearUsuario(usuario);
 			System.err.println("NO HUBO ERRORES");
 			ruta = "redirect:/login/?creado=true";

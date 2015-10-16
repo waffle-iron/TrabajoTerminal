@@ -33,7 +33,7 @@ public class Usuario {
 
 	@Column(name="password")
 	@NotNull
-	@Size(min=1,max=45,message="El nombre de la contraseña debe tener al menos 5 caracteres y maximo 45")
+
 	private String password;
 
 	@Column(name="nombres")
@@ -140,8 +140,6 @@ public class Usuario {
 	public void setEvaluacion(Integer evaluacion) {
 		this.evaluacion = evaluacion;
 	}
-
-
 
 	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
 	@Fetch(FetchMode.SELECT)
