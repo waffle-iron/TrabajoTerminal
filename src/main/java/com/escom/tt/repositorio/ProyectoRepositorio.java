@@ -20,4 +20,5 @@ public interface ProyectoRepositorio {
     List<Proyecto> obtenerTodos();
 
     ColaboradorProyecto addColaborador(ColaboradorProyecto colaboradorProyecto);
+    ColaboradorProyecto getColaborador(ColaboradorProyecto colaboradorProyecto);
 }

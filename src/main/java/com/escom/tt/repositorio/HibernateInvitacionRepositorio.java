@@ -1,6 +1,9 @@
 package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.Invitacion;
+import com.escom.tt.modelo.Usuario;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,7 +23,21 @@ public class HibernateInvitacionRepositorio implements InvitacionRepositorio {
 
     @Override
     public Integer crear(Invitacion invitacion) {
-        sf.getCurrentSession().save(invitacion);
+        Session sesion = null;
+
+        try {
+            sesion = sf.getCurrentSession();
+            sesion.save(invitacion);
+        }catch (HibernateException he){
+            System.err.println(he.getMessage());
+            sesion = sf.openSession();
+            sesion.beginTransaction();
+            sesion.save(invitacion);
+            sesion.getTransaction().commit();
+            sesion.flush();
+            sesion.clear();
+            sesion.close();
+        }
         return invitacion.getIdInvitacion();
     }
 

@@ -2,6 +2,7 @@ package com.escom.tt.repositorio;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,7 +36,10 @@ public class HibernateUsuarioRepositorio implements UsuarioRepositorio {
 	@Override
 	public Usuario buscarPorId(Integer id) {
 		Usuario usuario = null;
-		usuario = (Usuario) sf.getCurrentSession().get(Usuario.class, id);
+		Session sesion = sf.getCurrentSession();
+		usuario = (Usuario) sesion.get(Usuario.class, id);
+		sesion.flush();
+		sesion.clear();
 		return usuario;
 	}
 	
