@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -40,8 +41,6 @@ public class ProyectoControlador {
     @Autowired
     private InvitacionRepositorio invitacionRepositorio;
 
-    @Autowired
-    private ColaboradorProyectoRepositorio colaboradorProyectoRepositorio;
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.GET)
     public String crear(Model modelo){
@@ -169,26 +168,36 @@ public class ProyectoControlador {
         String ruta = null;
         Proyecto proyecto= null;
         Usuario usuarioAInvitar = null;
+        List<ColaboradorProyecto> colaboradores = null;
 
         proyecto = proyectoRepositorio.buscarPorId(proyectoId);
-
         usuarioAInvitar = usuarioRepositorio.buscarPorId(invitarUsuario);
 
         // valida que el coordinador sea el mismo de la sesión
-        if (proyecto != null && principal.getName().equals(proyecto.getCoordinador().getEmail())) {
+        if (proyecto != null && principal.getName().equals(proyecto.getCoordinador().getEmail()) ) {
 
-            ColaboradorProyecto colaboradorProyecto  = new ColaboradorProyecto();
-            colaboradorProyecto.setProyecto(proyecto);
-            colaboradorProyecto.setUsuario(usuarioAInvitar);
-            colaboradorProyectoRepositorio.crear(colaboradorProyecto);
-
-
+            ColaboradorProyecto colaboradorProyecto = new ColaboradorProyecto(proyecto, usuarioAInvitar);
             Invitacion invitacion = new Invitacion();
             invitacion.setEstado(1);
             invitacion.setFecha(new Date());
             invitacion.setColaboradorProyecto(colaboradorProyecto);
 
+            //valida si el usuario ya está como colaborador
+            colaboradores = proyecto.getColaboradorProyectos();
+            boolean estaColaborador = false;
+            for(Iterator<ColaboradorProyecto> colaborador = colaboradores.iterator(); colaborador.hasNext(); ) {
+                if(colaborador.next().getUsuario().getIdUsuarios() == invitarUsuario){
+                    modelo.addAttribute("mensaje", "el usuario ya está como colaborador en el proyecto");
+                    estaColaborador = true;
+                }
+            }
+
+            if(!estaColaborador){
+                proyectoRepositorio.addColaborador(colaboradorProyecto);
+            }
+
             invitacionRepositorio.crear(invitacion);
+
 
             ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto() + "?invitado=true";
         }else
