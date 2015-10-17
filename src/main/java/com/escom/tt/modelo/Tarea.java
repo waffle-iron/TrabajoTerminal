@@ -23,13 +23,13 @@ public class Tarea {
 	@JoinColumns({
 			@JoinColumn(name = "usuario", referencedColumnName = "Usuario_idUsuarios"),
 			@JoinColumn(name = "proyecto", referencedColumnName = "Proyecto_idProyectos") })
-	private ColaboradorProyecto colaboradorProyecto;
+	private ColaboradorProyectoRepositorio colaboradorProyecto;
 
-	public ColaboradorProyecto getColaboradorProyecto() {
+	public ColaboradorProyectoRepositorio getColaboradorProyecto() {
 		return colaboradorProyecto;
 	}
 
-	public void setColaboradorProyecto(ColaboradorProyecto colaboradorProyecto) {
+	public void setColaboradorProyecto(ColaboradorProyectoRepositorio colaboradorProyecto) {
 		this.colaboradorProyecto = colaboradorProyecto;
 	}
 	*/

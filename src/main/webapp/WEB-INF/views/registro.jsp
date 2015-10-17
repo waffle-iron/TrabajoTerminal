@@ -1,6 +1,7 @@
 <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c"        uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring"   uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="fmt"      uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:url value="/" var="contexto"/>
 
 <!DOCTYPE html>
@@ -72,55 +73,137 @@
 <!-- BEGIN LOGIN -->
 <div class="content">
 
+    <!-- BEGIN REGISTRATION FORM -->
+    <c:url value="/usuario/crear" var="urlUsuarioGuardar"/>
+    <form:form action="${urlUsuarioGuardar}" method="post" commandName="usuario" cssClass="form-horizontal">
+        <h3>Registro</h3>
 
-    <c:url value="/autentificar" var="rutaAutentificar"/>
-    <!--  dsasgegfsadgsgf
-    -->
-    <form class="login-form" action="${rutaAutentificar}" method="POST">
-        <h3 class="form-title">Login to your account</h3>
+        <p>
+            Ingresa tus datos:
+        </p>
 
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Usuario</label>
+            <div class="input-icon">
+                <i class="fa fa-font"></i>
+                <form:input path="nombreUsuario" cssClass="form-control placeholder-no-fix"  placeholder="Usuario" />
+                <form:errors path="nombreUsuario" element="span" cssClass="help-block text-danger" />
+            </div>
+        </div>
 
-        <div class="alert alert-danger <c:if test="${valido == null}">display-hide</c:if>">
-            <button class="close" data-close="alert"></button>
-                <c:if test="${valido == false}">
-                    <h3 style="color: #FFFFFF">Usuario o password incorrectos!!</h3>
-
-                </c:if>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Nombre (s)</label>
+            <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <form:input path="nombres" cssClass="form-control placeholder-no-fix"  placeholder="Nombre" />
+                <form:errors path="nombres" element="span" cssClass="help-block text-danger" />
+            </div>
         </div>
         <div class="form-group">
-            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">Apellido Paterno</label>
+            <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <form:input path="aPaterno" cssClass="form-control placeholder-no-fix"  placeholder="Apellido Paterno" />
+                <form:errors path="aPaterno" element="span" cssClass="help-block text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Apellido Materno</label>
+            <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <form:input path="aMaterno" cssClass="form-control placeholder-no-fix"  placeholder="Apellido Materno" />
+                <form:errors path="aMaterno" element="span" cssClass="help-block text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">email</label>
-
             <div class="input-icon">
-                <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="email"
-                       name="email" value="juancvfenix@gmail.com"/>
+                <i class="fa fa-envelope"></i>
+                <form:input path="email" cssClass="form-control placeholder-no-fix"  placeholder="Correo" />
+                <form:errors path="email" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Password</label>
-
+            <label class="control-label visible-ie8 visible-ie9">telefono</label>
             <div class="input-icon">
-                <i class="fa fa-lock"></i>
-                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password"
-                       name="password" value="123"/>
+                <i class="fa fa-envelope"></i>
+                <form:input path="telefono" cssClass="form-control placeholder-no-fix" type="tel" />
+                <form:errors path="telefono" element="span" cssClass="help-block text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">fechaNacimiento</label>
+            <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <form:input path="fechaNacimiento" cssClass="form-control placeholder-no-fix" type="date"/>
+                <form:errors path="fechaNacimiento" element="span" cssClass="help-block text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">fechaIngresoIPN</label>
+            <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <form:input path="fechaIngresoIPN" cssClass="form-control placeholder-no-fix" type="date"  />
+                <form:errors path="fechaIngresoIPN" element="span" cssClass="help-block text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">estadoCivil</label>
+            <div class="input-icon">
+                <form:checkbox path="estadoCivil" value="Soltero" cssClass="form-control placeholder-no-fix"/>Soltero
+                <form:checkbox path="estadoCivil" value="Casado" cssClass="form-control placeholder-no-fix"/>Casado
+                <form:errors path="estadoCivil" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">sexo</label>
+            <div class="input-icon">
+                <form:checkbox path="sexo" value="Masculino" cssClass="form-control placeholder-no-fix"/>Masculino
+                <form:checkbox path="sexo" value="Femenino" cssClass="form-control placeholder-no-fix"/>Femenino
+                <form:errors path="sexo" element="span" cssClass="help-block text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">escuela</label>
+
+            <form:select path="escuela.id" cssClass="select2 form-control" id="select2_sample4">
+                <form:option value="" label="Selecciona una opción"/>
+                <form:options items="${escuelaList}" itemValue="id"
+                              itemLabel="nombre"/>
+            </form:select>
+            <form:errors path="escuela" element="span" cssClass="help-block text-danger"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">grado</label>
+            <form:select path="grado.idGrado"  cssClass="select2 form-control" id="select2_sample4">
+                <form:option value="" label="Selecciona una opción"/>
+                <form:options items="${gradoList}" itemValue="idGrado" itemLabel="nombre"/>
+            </form:select>
+            <form:errors path="grado" element="span" cssClass="help-block text-danger"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">password</label>
+            <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <form:input path="password" cssClass="form-control placeholder-no-fix" placeholder="password" />
+                <form:errors path="password" element="span" cssClass="help-block text-danger" />
+            </div>
+        </div>
         <div class="form-actions">
             <button type="submit" class="btn blue pull-right">
-                Login <i class="m-icon-swapright m-icon-white"></i>
+                Registrarse <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                Don't have an account yet ?&nbsp; <a href="${contexto}registro" id="register-btn">
-                Create an account </a>
+                Ya tienes una cuenta <a href="${contexto}login" id="register-btn">
+                Iniciar Sesión </a>
             </p>
         </div>
-    </form>
-    <!-- END LOGIN FORM -->
+    </form:form>
+    <!-- END REGISTRATION FORM -->
 </div>
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->

@@ -2,6 +2,7 @@ package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Proyecto;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -40,7 +41,10 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
     @Override
     public Proyecto buscarPorId(Integer id) {
         Proyecto proyecto = null;
-        proyecto = (Proyecto) sf.getCurrentSession().get(Proyecto.class, id);
+        Session sesion = sf.getCurrentSession();
+        proyecto = (Proyecto) sesion.get(Proyecto.class, id);
+        sesion.flush();
+        sesion.clear();
         return proyecto;
     }
 
@@ -48,13 +52,28 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
     public List<Proyecto> obtenerTodos() {
         List<Proyecto> proyectos = null;
         proyectos = sf.getCurrentSession().createCriteria(Proyecto.class).list();
+        sf.getCurrentSession().flush();
         return proyectos;
     }
 
     @Override
     public ColaboradorProyecto addColaborador(ColaboradorProyecto colaboradorProyecto) {
-        sf.getCurrentSession().save(colaboradorProyecto);
+        Session sesion = sf.getCurrentSession();
+        sesion.save(colaboradorProyecto);
+        sesion.flush();
+        sesion.clear();
         return colaboradorProyecto;
+    }
+
+    @Override
+    public ColaboradorProyecto getColaborador(ColaboradorProyecto colaboradorProyecto) {
+        ColaboradorProyecto cp = null;
+        Session sesion = sf.getCurrentSession();
+        cp = (ColaboradorProyecto) sesion.get(ColaboradorProyecto.class, colaboradorProyecto.getId());
+        sesion.flush();
+        sesion.clear();
+        return cp;
+
     }
 
 }
