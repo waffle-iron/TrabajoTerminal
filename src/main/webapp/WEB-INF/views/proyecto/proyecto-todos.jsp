@@ -45,10 +45,7 @@
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row">
 
-					<pre>
-						${tarea}
-					</pre>
-
+					
 				</div>
 				<!-- END PAGE CONTENT-->
 			</div>

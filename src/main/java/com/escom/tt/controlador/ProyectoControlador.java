@@ -7,6 +7,7 @@ import com.escom.tt.repositorio.EstadoRepositorio;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.TipoProyectoRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -38,12 +41,13 @@ public class ProyectoControlador {
     private UsuarioRepositorio usuarioRepositorio;
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.GET)
-    public String crear(Model modelo){
+    public String crear(Principal principal, Model modelo){
 
         modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
         modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
         modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
         modelo.addAttribute("proyecto", new Proyecto());
+        modelo.addAttribute("nombre",principal.getName());
         return "proyecto/proyecto-crear";
     }
 
