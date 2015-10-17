@@ -25,6 +25,7 @@ public class PaginaControlador {
 
         if (principal != null) {
             model.addAttribute("nombre",principal.getName());
+            System.err.println(principal);
         }
         return "index";
 

@@ -17,7 +17,7 @@
 
         <security:access-denied-handler error-page="/error-403"/>
 
-        <security:intercept-url pattern="/area/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/area/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_COLABORADOR')"/>
         <security:intercept-url pattern="/busqueda/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/correo/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/estado/**" access="hasAnyRole('ROLE_ADMIN')"/>
