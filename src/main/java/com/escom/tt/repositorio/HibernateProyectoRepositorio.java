@@ -62,6 +62,11 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
         return colaboradorProyecto;
     }
 
+    // Recuerda que hibernate está orientado a objetos.
+    // Hay varias formas, está como yo le hice de mandar el usuario.
+    // O mandando el id, pero dentro buscar el usuario.
+    // En en la restricción siempre debe estar un obejto cuando hay una relación, este ejemplo: PROYECTO-USUARIO
+    // si ves en el otro que hice para buscar por correo, no es relación
 	@Override
 	public List<Proyecto> buscarPorCoordinador(Usuario coordinador) {
 		List<Proyecto> proyectos = null;
