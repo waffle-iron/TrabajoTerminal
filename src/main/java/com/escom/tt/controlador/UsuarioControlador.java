@@ -1,5 +1,6 @@
 package com.escom.tt.controlador;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.EscuelaRepositorio;
 import com.escom.tt.repositorio.GradoRepositorio;
+import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
 
 
@@ -31,6 +34,9 @@ public class UsuarioControlador {
 
 	@Autowired
 	private GradoRepositorio gradoRepositorio;
+	
+	@Autowired
+	private ProyectoRepositorio proyectoRepositorio;
 
 	@RequestMapping(value="/usuario/crear", method = RequestMethod.GET)
 	public String crear(Model modelo){
@@ -121,13 +127,22 @@ public class UsuarioControlador {
 	}
 	
 	@RequestMapping(value="/usuario/perfil/{usuarioId:[0-9]+}")
-	public String verMiPerfil(@PathVariable Integer usuarioId, Model modelo, Boolean actualizado, Boolean creado) {
+	public String verMiPerfil(@PathVariable Integer usuarioId, Principal principal, Model modelo, Boolean actualizado, Boolean creado) {
 		String ruta = null;
 		Usuario usuario= null;
-
+		String nombre = principal.getName();
+		System.out.println(nombre);
+		
+		List<Proyecto> proyectos=null;
+		
+		
+		proyectos = proyectoRepositorio.buscarPorCoordinador(usuarioId);
+		System.out.println(proyectos);
 		usuario = usuarioRepositorio.buscarPorId(usuarioId);
+		System.out.println(usuario);
 		if (usuario != null) {
 			modelo.addAttribute("usuario", usuario);
+			modelo.addAttribute("proyectos", proyectos);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
 			ruta = "usuario/usuario-perfil";
