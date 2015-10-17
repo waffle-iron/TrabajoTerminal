@@ -126,19 +126,21 @@ public class UsuarioControlador {
 		return "usuario/usuario-todos";
 	}
 	
-	@RequestMapping(value="/usuario/perfil/{usuarioId:[0-9]+}")
-	public String verMiPerfil(@PathVariable Integer usuarioId, Principal principal, Model modelo, Boolean actualizado, Boolean creado) {
+	@RequestMapping(value="/usuario/perfil")
+	public String verMiPerfil(Principal principal, Model modelo, Boolean actualizado, Boolean creado) {
 		String ruta = null;
 		Usuario usuario= null;
 		String nombre = principal.getName();
 		System.out.println(nombre);
 		
 		List<Proyecto> proyectos=null;
-		
-		
-		proyectos = proyectoRepositorio.buscarPorCoordinador(usuarioId);
+
+		System.err.println(principal);
+		// así logramos traer la información del usuario que está en la sesión
+		usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+		proyectos = proyectoRepositorio.buscarPorCoordinador(usuario);
 		System.out.println(proyectos);
-		usuario = usuarioRepositorio.buscarPorId(usuarioId);
+
 		System.out.println(usuario);
 		if (usuario != null) {
 			modelo.addAttribute("usuario", usuario);

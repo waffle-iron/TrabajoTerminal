@@ -22,5 +22,5 @@ public interface ProyectoRepositorio {
 
     ColaboradorProyecto addColaborador(ColaboradorProyecto colaboradorProyecto);
     
-    List<Proyecto> buscarPorCoordinador(Integer usuario);
+    List<Proyecto> buscarPorCoordinador(Usuario coordinador);
 }

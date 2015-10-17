@@ -3,7 +3,9 @@ package com.escom.tt.repositorio;
 import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Proyecto;
 
+import com.escom.tt.modelo.Usuario;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,12 +63,12 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
     }
 
 	@Override
-	public List<Proyecto> buscarPorCoordinador(Integer idCoordinador) {
+	public List<Proyecto> buscarPorCoordinador(Usuario coordinador) {
 		List<Proyecto> proyectos = null;
-		
-		
-		Criteria criteria = sf.getCurrentSession().createCriteria(Proyecto.class);
-		criteria.add(Restrictions.eq("coordinador", idCoordinador));
+		Session session = sf.getCurrentSession();
+
+		Criteria criteria = session.createCriteria(Proyecto.class);
+		criteria.add(Restrictions.eq("coordinador", coordinador));
 		proyectos = criteria.list();
 		System.out.println("termino consulta de proyectos");
 		return proyectos;

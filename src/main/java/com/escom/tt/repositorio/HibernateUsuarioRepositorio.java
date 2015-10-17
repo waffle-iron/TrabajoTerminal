@@ -2,7 +2,10 @@ package com.escom.tt.repositorio;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,12 +23,20 @@ public class HibernateUsuarioRepositorio implements UsuarioRepositorio {
 	@Override
 	public Integer crearUsuario(Usuario usuario) {
 		sf.getCurrentSession().save(usuario);
-		return usuario.getIdUsuarios(); 
+		return usuario.getIdUsuarios();
+	}
+	@Override
+	public Usuario buscarPorCorreo(String correo) {
+		Usuario usuario = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Usuario.class).add(Restrictions.eq("email", correo));
+		usuario = (Usuario)criteria.uniqueResult();
+		return usuario;
 	}
 	@Override
 	public void eliminarUsuario(Usuario usuario) {
 		sf.getCurrentSession().delete(usuario);
-		
+
 	}
 	@Override
 	public Integer actualizarUsuario(Usuario usuario) {
