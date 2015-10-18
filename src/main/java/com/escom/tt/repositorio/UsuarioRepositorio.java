@@ -19,6 +19,7 @@ public interface UsuarioRepositorio {
 	public abstract List<Usuario> obtenerTodos();
 
 	Usuario buscarPorCorreo(String correo);
-	
+
+	Usuario buscarPorCorreoORNombreUsuario(String correoUsuario);
 
 }

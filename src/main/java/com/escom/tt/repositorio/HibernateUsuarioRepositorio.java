@@ -34,6 +34,16 @@ public class HibernateUsuarioRepositorio implements UsuarioRepositorio {
 		return usuario;
 	}
 	@Override
+	public Usuario buscarPorCorreoORNombreUsuario(String correoUsuario) {
+		Usuario usuario = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Usuario.class);
+		// SE APLICA LA CONDICIÓN OR, SI ES IGUAL AL EMAIL O NOMBRE DE USUARIO
+		criteria.add(Restrictions.or(Restrictions.eq("email", correoUsuario), Restrictions.eq("nombreUsuario", correoUsuario)));
+		usuario = (Usuario)criteria.uniqueResult();
+		return usuario;
+	}
+	@Override
 	public void eliminarUsuario(Usuario usuario) {
 		sf.getCurrentSession().delete(usuario);
 		
