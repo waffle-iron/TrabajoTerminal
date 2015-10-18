@@ -1,5 +1,6 @@
 package com.escom.tt.controlador;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.EscuelaRepositorio;
 import com.escom.tt.repositorio.GradoRepositorio;
+import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
 
 
@@ -32,6 +35,9 @@ public class UsuarioControlador {
 
 	@Autowired
 	private GradoRepositorio gradoRepositorio;
+	
+	@Autowired
+	private ProyectoRepositorio proyectoRepositorio;
 
 	@RequestMapping(value="/registro", method = RequestMethod.GET)
 	public String registrarse(Model modelo){
@@ -40,6 +46,14 @@ public class UsuarioControlador {
 		modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
 		modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
 		return "registro";
+	}
+	@RequestMapping(value="/usuario/crear", method = RequestMethod.GET)
+	public String crear(Model modelo){
+
+		modelo.addAttribute("usuario", new Usuario());
+		modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
+		modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
+		return "usuario/usuario-crear";
 	}
 	@RequestMapping(value="/usuario/crear", method = RequestMethod.POST)
 	public String crear(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult validacion, Model modelo) {
@@ -135,14 +149,25 @@ public class UsuarioControlador {
 		return "usuario/usuario-todos";
 	}
 	
-	@RequestMapping(value="/usuario/perfil/{usuarioId:[0-9]+}")
-	public String verMiPerfil(@PathVariable Integer usuarioId, Model modelo, Boolean actualizado, Boolean creado) {
+	@RequestMapping(value="/usuario/perfil")
+	public String verMiPerfil(Principal principal, Model modelo, Boolean actualizado, Boolean creado) {
 		String ruta = null;
 		Usuario usuario= null;
+		String nombre = principal.getName();
+		System.out.println(nombre);
+		
+		List<Proyecto> proyectos=null;
 
-		usuario = usuarioRepositorio.buscarPorId(usuarioId);
+		System.err.println(principal);
+		// así logramos traer la información del usuario que está en la sesión
+		usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+		proyectos = proyectoRepositorio.buscarPorCoordinador(usuario);
+		System.out.println(proyectos);
+
+		System.out.println(usuario);
 		if (usuario != null) {
 			modelo.addAttribute("usuario", usuario);
+			modelo.addAttribute("proyectos", proyectos);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
 			ruta = "usuario/usuario-perfil";

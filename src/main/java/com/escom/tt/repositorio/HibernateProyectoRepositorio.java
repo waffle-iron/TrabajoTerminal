@@ -2,8 +2,12 @@ package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Proyecto;
+
+import com.escom.tt.modelo.Usuario;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,16 +56,12 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
     public List<Proyecto> obtenerTodos() {
         List<Proyecto> proyectos = null;
         proyectos = sf.getCurrentSession().createCriteria(Proyecto.class).list();
-        sf.getCurrentSession().flush();
         return proyectos;
     }
 
     @Override
     public ColaboradorProyecto addColaborador(ColaboradorProyecto colaboradorProyecto) {
-        Session sesion = sf.getCurrentSession();
-        sesion.save(colaboradorProyecto);
-        sesion.flush();
-        sesion.clear();
+        sf.getCurrentSession().save(colaboradorProyecto);
         return colaboradorProyecto;
     }
 
@@ -75,5 +75,22 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
         return cp;
 
     }
+
+    // Recuerda que hibernate está orientado a objetos.
+    // Hay varias formas, está como yo le hice de mandar el usuario.
+    // O mandando el id, pero dentro buscar el usuario.
+    // En en la restricción siempre debe estar un obejto cuando hay una relación, este ejemplo: PROYECTO-USUARIO
+    // si ves en el otro que hice para buscar por correo, no es relación
+	@Override
+	public List<Proyecto> buscarPorCoordinador(Usuario coordinador) {
+		List<Proyecto> proyectos = null;
+		Session session = sf.getCurrentSession();
+
+		Criteria criteria = session.createCriteria(Proyecto.class);
+		criteria.add(Restrictions.eq("coordinador", coordinador));
+		proyectos = criteria.list();
+		System.out.println("termino consulta de proyectos");
+		return proyectos;
+	}
 
 }

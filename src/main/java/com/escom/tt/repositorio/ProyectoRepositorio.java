@@ -2,6 +2,7 @@ package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Proyecto;
+import com.escom.tt.modelo.Usuario;
 
 import java.util.List;
 
@@ -20,5 +21,7 @@ public interface ProyectoRepositorio {
     List<Proyecto> obtenerTodos();
 
     ColaboradorProyecto addColaborador(ColaboradorProyecto colaboradorProyecto);
+    
+    List<Proyecto> buscarPorCoordinador(Usuario coordinador);
     ColaboradorProyecto getColaborador(ColaboradorProyecto colaboradorProyecto);
 }

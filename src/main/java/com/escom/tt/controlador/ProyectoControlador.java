@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -163,18 +160,55 @@ public class ProyectoControlador {
         return "proyecto/proyecto-todos";
     }
 
-    @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/invitar/{invitarUsuario:[0-9]+}", method = RequestMethod.GET)
-    public String invitar(@PathVariable Integer proyectoId,@PathVariable Integer invitarUsuario, Model modelo, Boolean invitado, Principal principal) {
-        String ruta = null;
+    @RequestMapping(value="/proyecto/invitar", method = RequestMethod.GET)
+    public String invitar(Model modelo, Principal principal, Integer error) {
+        Usuario usuario = null;
+        List<Proyecto> misProyectos = null;
+        String mensaje = null;
+
+        usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+        misProyectos = proyectoRepositorio.buscarPorCoordinador(usuario);
+
+        if (misProyectos != null)
+            modelo.addAttribute("misProyectos", misProyectos);
+        else
+            modelo.addAttribute("mensaje", "No tienes proyectos aun");
+        modelo.addAttribute("error", error);
+        return "proyecto/proyecto-invitar";
+    }
+
+    @RequestMapping(value="/proyecto/crearInvitacion", method = RequestMethod.GET)
+    public String crearInvitacion(@RequestParam(required = true) String correoUsuario,
+                          @RequestParam(required = true) Integer proyectoId,
+                          Model modelo, Principal principal) {
+
         Proyecto proyecto= null;
         Usuario usuarioAInvitar = null;
-        List<ColaboradorProyecto> colaboradores = null;
+        boolean estaColaborador = false;
+        Integer error = 4;
+
+        if (correoUsuario == null || proyectoId == null)
+            return "redirect:/proyecto/invitar?error=" + error;
+
 
         proyecto = proyectoRepositorio.buscarPorId(proyectoId);
-        usuarioAInvitar = usuarioRepositorio.buscarPorId(invitarUsuario);
+        usuarioAInvitar = usuarioRepositorio.buscarPorCorreoORNombreUsuario(correoUsuario);
+
+        // no existe el usuario
+        if (usuarioAInvitar == null)
+            error = 1;
 
         // valida que el coordinador sea el mismo de la sesión
-        if (proyecto != null && principal.getName().equals(proyecto.getCoordinador().getEmail()) ) {
+        if (proyecto != null
+                && usuarioAInvitar != null
+                && principal.getName().equals(proyecto.getCoordinador().getEmail()) ) {
+
+            //valida si el usuario ya está como colaborador
+            for(Iterator<ColaboradorProyecto> colaborador = proyecto.getColaboradorProyectos().iterator(); colaborador.hasNext(); )
+                if(colaborador.next().getUsuario().getIdUsuarios() == usuarioAInvitar.getIdUsuarios()){
+                    error = 2;
+                    estaColaborador = true;
+                }
 
             ColaboradorProyecto colaboradorProyecto = new ColaboradorProyecto(proyecto, usuarioAInvitar);
             Invitacion invitacion = new Invitacion();
@@ -182,28 +216,14 @@ public class ProyectoControlador {
             invitacion.setFecha(new Date());
             invitacion.setColaboradorProyecto(colaboradorProyecto);
 
-            //valida si el usuario ya está como colaborador
-            colaboradores = proyecto.getColaboradorProyectos();
-            boolean estaColaborador = false;
-            for(Iterator<ColaboradorProyecto> colaborador = colaboradores.iterator(); colaborador.hasNext(); ) {
-                if(colaborador.next().getUsuario().getIdUsuarios() == invitarUsuario){
-                    modelo.addAttribute("mensaje", "el usuario ya está como colaborador en el proyecto");
-                    estaColaborador = true;
-                }
-            }
-
-            if(!estaColaborador){
+            if(!estaColaborador)
                 proyectoRepositorio.addColaborador(colaboradorProyecto);
-            }
 
             invitacionRepositorio.crear(invitacion);
+            error = 3;
+        }
 
-
-            ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto() + "?invitado=true";
-        }else
-            ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto() + "?invitado=false";
-
-        return ruta;
+        return "redirect:/proyecto/invitar?error=" + error;
     }
 
 }

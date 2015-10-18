@@ -104,7 +104,7 @@
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
                 <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password"
-                       name="password" value="123"/>
+                       name="password" value="dsasgegfsadgsgf"/>
             </div>
         </div>
 
@@ -120,7 +120,7 @@
             </p>
         </div>
     </form>
-    <!-- END LOGIN FORM -->
+    <!-- END REGISTRATION FORM -->
 </div>
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
