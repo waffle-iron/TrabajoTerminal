@@ -57,7 +57,7 @@ public class ProyectoControlador {
     }
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.POST)
-    public String crear(@ModelAttribute("proyecto") @Valid Proyecto proyecto, BindingResult validacion, Model modelo) {
+    public String crear(@ModelAttribute("proyecto") @Valid Proyecto proyecto, BindingResult validacion, Model modelo, Principal principal) {
         String ruta = null;
 
         if (validacion.hasErrors()){
@@ -65,9 +65,12 @@ public class ProyectoControlador {
             modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
             modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
             modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
+            modelo.addAttribute("nombre",principal.getName());
+
             ruta = "proyecto/proyecto-crear";
         }else{
             Integer id = proyectoRepositorio.crear(proyecto);
+            modelo.addAttribute("nombre",principal.getName());
             ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()+ "/?creado=true";
         }
         return ruta;
@@ -75,7 +78,7 @@ public class ProyectoControlador {
 
 
     @RequestMapping(value="/proyecto/guardarCambios", method = RequestMethod.POST)
-    public String actualizar(@ModelAttribute("proyecto") @Valid Proyecto proyecto, BindingResult validacion, Model modelo) {
+    public String actualizar(@ModelAttribute("proyecto") @Valid Proyecto proyecto, BindingResult validacion, Model modelo, Principal principal) {
         String ruta = null;
 
         if (validacion.hasErrors()){
@@ -83,16 +86,18 @@ public class ProyectoControlador {
             modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
             modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
             modelo.addAttribute("proyecto", proyecto);
+            modelo.addAttribute("nombre",principal.getName());
             ruta = "proyecto/proyecto-editar";
         }else{
             Integer id = proyectoRepositorio.actualizar(proyecto);
+            modelo.addAttribute("nombre",principal.getName());            
             ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto() + "/?actualizado=true";
         }
         return ruta;
     }
 
     @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/editar", method = RequestMethod.GET)
-    public String actualizar(@PathVariable Integer proyectoId,Model modelo) {
+    public String actualizar(@PathVariable Integer proyectoId,Model modelo, Principal principal) {
         Proyecto proyecto = null;
         String ruta = null;
         proyecto = proyectoRepositorio.buscarPorId(proyectoId);
@@ -102,6 +107,7 @@ public class ProyectoControlador {
             modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
             modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
             modelo.addAttribute("proyecto", proyecto);
+            modelo.addAttribute("nombre",principal.getName());
             ruta = "proyecto/proyecto-editar";
         }
         else
@@ -111,7 +117,7 @@ public class ProyectoControlador {
     }
 
     @RequestMapping(value="/proyecto/ver/{proyectoId:[0-9]+}")
-    public String ver(@PathVariable Integer proyectoId, Model modelo, Boolean actualizado, Boolean creado) {
+    public String ver(@PathVariable Integer proyectoId, Model modelo, Boolean actualizado, Boolean creado, Principal principal) {
         String ruta = null;
         Proyecto proyecto= null;
 
@@ -120,6 +126,7 @@ public class ProyectoControlador {
             modelo.addAttribute("proyecto", proyecto);
             modelo.addAttribute("actualizado", actualizado);
             modelo.addAttribute("creado", creado);
+            modelo.addAttribute("nombre",principal.getName());            
             ruta = "proyecto/proyecto-ver";
         }else
             ruta = "redirect:/proyecto";
@@ -128,7 +135,7 @@ public class ProyectoControlador {
     }
 
     @RequestMapping(value="/proyecto/eliminar/{proyectoId:[0-9]+}")
-    public String eliminar(@PathVariable Integer proyectoId, Model modelo) {
+    public String eliminar(@PathVariable Integer proyectoId, Model modelo, Principal principal) {
         Boolean eliminado;
         Proyecto proyecto = null;
         proyecto = proyectoRepositorio.buscarPorId(proyectoId);
@@ -144,7 +151,7 @@ public class ProyectoControlador {
     }
 
     @RequestMapping(value="/proyecto")
-    public String verTodos(Model modelo,Boolean eliminado) {
+    public String verTodos(Model modelo,Boolean eliminado, Principal principal) {
 
         List<Proyecto> proyectoList = null;
 
@@ -152,7 +159,7 @@ public class ProyectoControlador {
 
         modelo.addAttribute("proyectosList", proyectoList);
         modelo.addAttribute("eliminado", eliminado);
-
+        modelo.addAttribute("nombre",principal.getName());
         return "proyecto/proyecto-todos";
     }
 
