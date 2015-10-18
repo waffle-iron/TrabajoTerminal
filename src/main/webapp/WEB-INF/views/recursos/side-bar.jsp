@@ -39,6 +39,8 @@
 			<c:set var="contextoinvitacioncrear" value="${contexto.concat('/invitacion/crear')}" />
 			<c:set var="contextousuariocrear" value="${contexto.concat('/usuario/crear')}" />
 
+            <c:set var="contextoproyectoInvitar" value="${contexto.concat('/proyecto/invitar')}" />
+
 
 			<li class="${( ruta == contextopalabra_clave
                         || ruta == contextopalabra_clavecrear) ?  'active' : ' '}">
@@ -191,7 +193,7 @@
             <li class="${( ruta == contextodireccion
                         || ruta == contextodireccioncrear ) ?  'active' : ' '}">
                 <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Dirección</span> <span
+                    class="icon-rocket"></i> <span class="title">Direcciï¿½n</span> <span
                     class="arrow ${( ruta == contextodireccion
                                   || ruta == contextodireccioncrear) ?  'open text-success' : ' '}"></span>
                 </a>
@@ -273,7 +275,8 @@
             </li>
             
             <li class="${( ruta == contextoproyecto
-                        || ruta == contextoproyectocrear ) ?  'active' : ' '}">
+                        || ruta == contextoproyectocrear
+                        || ruta == contextoproyectoInvitar) ?  'active' : ' '}">
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Proyecto</span> <span
                     class="arrow ${( ruta == contextoproyecto
@@ -288,6 +291,11 @@
                     <li class="${( ruta == contextoproyectocrear ) ?  'open' : ' '}">
                         <a href="${contexto}/proyecto/crear">
                         Crear
+                        </a>
+                    </li>
+                    <li class="${( ruta == contextoproyectoInvitar ) ?  'open' : ' '}">
+                        <a href="${contexto}/proyecto/invitar">
+                            Invitar
                         </a>
                     </li>
                 </ul>
