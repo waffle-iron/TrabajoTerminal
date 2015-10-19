@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:url value="/" var="contexto"/>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url value="/" var="contexto" />
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -50,75 +51,169 @@
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
-				<!-- Resultados de la BUsqueda -->
+				<div class="row-fluid span12"></div>
+				<div class="row">${error}</div>
+				<c:url value="/busqueda/bus" var="urlBusquedaBus" />
+			
+
+
+				<c:url value="/busqueda/bus" var="urlBusquedaBus" />
+				<!-- BEGIN FORM-->
+				<form:form action="${urlBusquedaBus}" method="get" commandName="cadena" >
+					<div class="form-body">
+						<div class="form-group">
+							<form:input path="cadenaBuscada" cssClass="form-control input-sm" placeholder="Search..." />
+							<form:errors path="cadenaBuscada" element="span" cssClass="help-block text-danger" />
+						</div>
+					</div>
+					<button type="submit" class="btn green">Buscar</button>
+					<button type="button" class="btn default">Cancelar</button>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2"></div>
+					</div>
+				</form:form>
+				<div class="row span12">
+					<div class="col-md-8 col-md-offset-2"></div>
+				</div>
 				
-				<!-- BEGIN EXAMPLE TABLE PORTLET-->
-					<div class="portlet box red-intense">
+ <!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet box red">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-globe"></i>Show/Hide Columns
+								<i class="fa fa-cogs"></i>Simple Table
 							</div>
-							<div class="actions">
-								<div class="btn-group">
-									<a class="btn default" href="javascript:;" data-toggle="dropdown">
-									Columns <i class="fa fa-angle-down"></i>
-									</a>
-									<div id="sample_4_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
-										<label><input type="checkbox" checked data-column="0">Rendering engine</label>
-										<label><input type="checkbox" checked data-column="1">Browser</label>
-										<label><input type="checkbox" checked data-column="2">Platform(s)</label>
-										<label><input type="checkbox" checked data-column="3">Engine version</label>
-										<label><input type="checkbox" checked data-column="4">CSS grade</label>
-									</div>
-								</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
 							</div>
 						</div>
 						<div class="portlet-body">
-							<table class="table table-striped table-bordered table-hover" id="sample_4">
-							<thead>
-							<tr>
-								<th>
-									 Rendering engine
-								</th>
-								<th>
-									 Browser
-								</th>
-								<th class="hidden-xs">
-									 Platform(s)
-								</th>
-								<th class="hidden-xs">
-									 Engine version
-								</th>
-								<th class="hidden-xs">
-									 CSS grade
-								</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Nintendo DS browser
-								</td>
-								<td>
-									 Nintendo DS
-								</td>
-								<td>
-									 8.5
-								</td>
-								<td>
-									 C/A<sup>1</sup>
-								</td>
-							</tr>
-							</tbody>
-							</table>
+							<div class="table-scrollable">
+								<table class="table table-hover">
+								<thead>
+								<tr>
+									<th>
+										 Proyecto
+									</th>
+									<th>
+										 Descripcion
+									</th>
+									<th>
+										Tipo de Proyecto
+									</th>
+									<th>
+										 Usuario
+									</th>
+									<th>
+										 
+									</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>
+										 ${proyecto.nombre}
+									</td>
+									<td>
+										${proyecto.descripcion}
+									</td>
+									<td>
+										${proyecto.tipoProyecto}
+									</td>
+									<td>
+										 ${proyecto.estado}
+										 
+									</td>
+									<td>
+										<a href="${contexto}/usuario/ver/${proyecto.coordinador.idUsuarios}" class="btn default btn-xs green-stripe">${proyecto.coordinador.nombres}</a>
+										 
+										 
+									</td>
+								</tr>
+												</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
-								
-										
+					<!-- END SAMPLE TABLE PORTLET-->
+                	
+					<!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-bell-o"></i>Mis Proyectos
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-scrollable">
+								<table class="table table-striped table-bordered table-advance table-hover">
+								<thead>
+								<tr>
+									<th>
+										<i class="fa fa-bars"></i> Proyecto
+									</th>
+									<th class="hidden-xs">
+										<i class="fa fa-user"></i> Usuario
+									</th>
+									<th>
+										<i class="fa fa-edit"></i> Acciones
+									</th>
+									<th>
+										<i class=""></i> Acciones
+									</th>
+								</tr>
+								</thead>
+								<tbody>
+								<c:forEach items="${proyectosList}" var="proyecto">
+						
+								<tr>
+									<td class="highlight">
+										<div class="success">
+										</div>
+										<a href="javascript:;">
+										${proyecto.idProyecto} </a>
+									</td>
+									<td class="hidden-xs">
+										${proyecto.nombre}
+									</td>
+									<td>
+										<a href="${contexto}/proyecto/${proyecto.idProyecto}/editar" class="btn default btn-xs purple">
+										<i class="fa fa-edit"></i> Edit </a>
+									</td>
+									<td>
+										<a href="${contexto}/proyecto/eliminar/${proyecto.idProyecto}" class="btn default btn-xs black">
+										<i class="fa fa-trash-o"></i> Delete </a>
+									</td>
+									
+								</tr>
+							</c:forEach>
+								</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- END SAMPLE TABLE PORTLET-->
+					
 				
+
+
+
 				<!-- END PAGE CONTENT-->
 			</div>
 		</div>
