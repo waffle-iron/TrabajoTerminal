@@ -3,16 +3,18 @@ package com.escom.tt.repositorio;
 import java.util.List;
 
 import com.escom.tt.modelo.Escuela;
+import org.springframework.security.access.annotation.Secured;
 
 public interface EscuelaRepositorio {
-	  Integer crearEscuela(Escuela escuela);
+    Integer crearEscuela(Escuela escuela);
 
-	    void eliminarEscuela(Escuela escuela);
+    void eliminarEscuela(Escuela escuela);
 
-	    Integer actualizarEscuela(Escuela escuela);
+    Integer actualizarEscuela(Escuela escuela);
 
-	    Escuela buscarPorId(Integer id);
+    @Secured("ROLE_TELLER")
+    Escuela buscarPorId(Integer id);
 
-	    List<Escuela> obtenerTodos();
+    List<Escuela> obtenerTodos();
 
 }

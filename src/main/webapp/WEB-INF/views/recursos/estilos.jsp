@@ -27,6 +27,9 @@
 <link href="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
 
 
+<link href="http://www.keenthemes.com/preview/metronic/theme/assets/admin/pages/css/login-soft.css">
+
+
 <link
 	href="${pageContext.request.contextPath}/resources/global/css/components-rounded.css"
 	id="style_components" rel="stylesheet" type="text/css" />

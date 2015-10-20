@@ -31,7 +31,7 @@ public class Usuario {
 	@Size(min=1,max=45,message="El nombre de usuario debe tener al menos 5 caracteres y maximo 45")
 	private String nombreUsuario;
 
-	@Column(name="contraseña")
+	@Column(name="password")
 	@NotNull
 	@Size(min=1,max=45,message="El nombre de la contraseña debe tener al menos 5 caracteres y maximo 45")
 	private String contraseña;

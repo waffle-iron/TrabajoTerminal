@@ -303,7 +303,7 @@
 					<li class="dropdown dropdown-user dropdown-dark"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
 						data-hover="dropdown" data-close-others="true"> <span
-							class="username username-hide-on-mobile"> Nick </span> <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+							class="username username-hide-on-mobile"> ${nombre} </span> <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
 							<img alt="" class="img-circle"
 							src="${context}/resources/tema/img/avatar9.jpg" />
 					</a>
@@ -324,8 +324,7 @@
 							<li><a href="extra_lock.html"> <i class="icon-lock"></i>
 									Lock Screen
 							</a></li>
-							<li><a href="login.html"> <i class="icon-key"></i> Log
-									Out
+							<li><a href="${context}/logout"> <i class="icon-key"></i> Salir
 							</a></li>
 						</ul></li>
 					<!-- END USER LOGIN DROPDOWN -->
