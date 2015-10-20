@@ -43,13 +43,51 @@
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
-				<div class="row">
+				<!-- SIDEBAR MENU -->
+								<div class="profile-usermenu">
+									<ul class="nav">
+										<li class="active">
 
-					<pre>
-						${proyecto}
-					</pre>
 
-				</div>
+											<h2 class="profile-desc-title">Nombre del proyecto:</h2>
+											${proyecto.nombre}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Descripción:</h2>
+											${proyecto.descripcion}
+										</li>
+										<li>
+											<h2 class="profile-desc-title">Fecha de Inicio:</h2> ${proyecto.fechaInicio}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Fecha de Fin:</h2>
+											${proyecto.fechaFin}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Tipo:</h2>
+											${proyecto.tipoProyecto.nombre}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Coordinador:</h2>
+											${proyecto.coordinador.nombres}
+										</li>
+										<li>
+
+											
+
+
+									</ul>
+								</div>
+								<!-- END MENU -->
+							</div>
+
+
+
+						</div>
 				<!-- END PAGE CONTENT-->
 			</div>
 		</div>
