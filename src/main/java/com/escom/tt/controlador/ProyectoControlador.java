@@ -1,9 +1,6 @@
 package com.escom.tt.controlador;
 
-import com.escom.tt.modelo.ColaboradorProyecto;
-import com.escom.tt.modelo.Invitacion;
-import com.escom.tt.modelo.Proyecto;
-import com.escom.tt.modelo.Usuario;
+import com.escom.tt.modelo.*;
 import com.escom.tt.repositorio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +34,9 @@ public class ProyectoControlador {
 
     @Autowired
     private InvitacionRepositorio invitacionRepositorio;
+
+    @Autowired
+    private TareaRepositorio tareaRepositorio;
 
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.GET)
@@ -158,6 +158,80 @@ public class ProyectoControlador {
         proyectoRepositorio.addColaborador(colaboradorProyecto);
 
         return "proyecto/proyecto-todos";
+    }
+
+    @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/colaboradores", method = RequestMethod.GET)
+    public String mostrarColaboradores(@PathVariable Integer proyectoId, Model modelo, Principal principal) {
+        Usuario usuario = null;
+        Proyecto miProyecto = null;
+
+        usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+        miProyecto = proyectoRepositorio.buscarPorId(proyectoId);
+
+        if (miProyecto != null && !miProyecto.getCoordinador().getEmail().equals(usuario.getEmail()))
+            return "redirect:/logout";
+
+        modelo.addAttribute("miProyecto", miProyecto);
+;
+        return "proyecto/proyecto-colaboradores";
+    }
+
+    @RequestMapping(value="/proyecto/asignar-tarea", method = RequestMethod.POST)
+    public String asignarTarea(@ModelAttribute("tarea") @Valid Tarea tarea, BindingResult validacion, Model modelo, Principal principal) {
+        Usuario coordinador = null;
+        Usuario usuarioTarea = null;
+        Proyecto miProyecto = null;
+        String ruta = "";
+
+
+        miProyecto = proyectoRepositorio.buscarPorId(tarea.getColaboradorProyecto().getProyecto().getIdProyecto());
+        usuarioTarea = usuarioRepositorio.buscarPorId(tarea.getColaboradorProyecto().getUsuario().getIdUsuarios());
+        coordinador = miProyecto.getCoordinador();
+
+        tarea.setEstado(1);
+        tarea.setAvance(1);
+        tarea.setFechaEntrega(new Date());
+        tarea.setColaboradorProyecto(new ColaboradorProyecto(miProyecto,usuarioTarea));
+
+        if (miProyecto == null || !miProyecto.getCoordinador().getEmail().equals(coordinador.getEmail()))
+            ruta = "redirect:/";
+
+        if (validacion.hasErrors()){
+            modelo.addAttribute("tarea", tarea);
+            ruta = "redirect:/proyecto/"+miProyecto.getIdProyecto()+"/asignar-tarea/"+usuarioTarea.getIdUsuarios()+"?creado=false";
+        }else{
+            tareaRepositorio.crear(tarea);
+            ruta = "redirect:/proyecto/"+miProyecto.getIdProyecto()+"/asignar-tarea/"+usuarioTarea.getIdUsuarios()+"?creado=true";
+        }
+
+        return ruta;
+    }
+    @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/asignar-tarea/{colaboradorId:[0-9]+}", method = RequestMethod.GET)
+    public String asignarTarea(@PathVariable Integer proyectoId,@PathVariable Integer colaboradorId, Model modelo, Principal principal, boolean creado) {
+        Usuario coordinador = null;
+        Usuario usuarioTarea = null;
+        Proyecto miProyecto = null;
+        Tarea tarea = null;
+        String ruta = "";
+
+        coordinador = usuarioRepositorio.buscarPorCorreo(principal.getName());
+        usuarioTarea = usuarioRepositorio.buscarPorId(colaboradorId);
+        miProyecto = proyectoRepositorio.buscarPorId(proyectoId);
+
+        if (miProyecto == null || !miProyecto.getCoordinador().getEmail().equals(coordinador.getEmail()))
+            ruta = "redirect:/";
+
+        for(Iterator<ColaboradorProyecto> colaborador = miProyecto.getColaboradorProyectos().iterator(); colaborador.hasNext(); )
+            if(colaborador.next().getUsuario().getIdUsuarios() == colaboradorId){
+                tarea = new Tarea();
+                tarea.setColaboradorProyecto(new ColaboradorProyecto(miProyecto, usuarioTarea));
+                modelo.addAttribute("tarea", tarea);
+                //modelo.addAttribute("colaborador", colaborador.next().getUsuario().getNombreUsuario());
+                ruta = "proyecto/proyecto-tarea";
+                break;
+            }
+        modelo.addAttribute("creado", creado);
+        return ruta;
     }
 
     @RequestMapping(value="/proyecto/invitar", method = RequestMethod.GET)

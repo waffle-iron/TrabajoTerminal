@@ -47,8 +47,6 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
         Proyecto proyecto = null;
         Session sesion = sf.getCurrentSession();
         proyecto = (Proyecto) sesion.get(Proyecto.class, id);
-        sesion.flush();
-        sesion.clear();
         return proyecto;
     }
 
@@ -70,10 +68,7 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
         ColaboradorProyecto cp = null;
         Session sesion = sf.getCurrentSession();
         cp = (ColaboradorProyecto) sesion.get(ColaboradorProyecto.class, colaboradorProyecto.getId());
-        sesion.flush();
-        sesion.clear();
         return cp;
-
     }
 
     // Recuerda que hibernate está orientado a objetos.
