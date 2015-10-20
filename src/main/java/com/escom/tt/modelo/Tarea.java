@@ -1,6 +1,10 @@
 package com.escom.tt.modelo;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -14,11 +18,12 @@ public class Tarea {
 
 	private String titulo;
 	private Integer estado;
+	@Length(max = 50, message = "La descripción no debe rebasar los 200 caracteres")
+	@NotNull(message = "La descripcón es obligatoria")
 	private String descripcion;
 	private Integer avance;
 	private Date fechaEntrega;
 
-	/*
 	@ManyToOne
 	@JoinColumns({
 			@JoinColumn(name = "usuario", referencedColumnName = "Usuario_idUsuarios"),
@@ -32,7 +37,6 @@ public class Tarea {
 	public void setColaboradorProyecto(ColaboradorProyecto colaboradorProyecto) {
 		this.colaboradorProyecto = colaboradorProyecto;
 	}
-	*/
 
 	public Integer getIdTarea() {
 		return idTarea;
@@ -82,4 +86,16 @@ public class Tarea {
 		this.fechaEntrega = fechaEntrega;
 	}
 
+	@Override
+	public String toString() {
+		return "Tarea{" +
+				"idTarea=" + idTarea +
+				", titulo='" + titulo + '\'' +
+				", estado=" + estado +
+				", descripcion='" + descripcion + '\'' +
+				", avance=" + avance +
+				", fechaEntrega=" + fechaEntrega +
+				", colaboradorProyecto=" + colaboradorProyecto +
+				'}';
+	}
 }
