@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:url value="/" var="contexto"/>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url value="/" var="contexto" />
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -50,16 +51,42 @@
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
-				<!-- Resultados de la BUsqueda -->
+				<div class="row-fluid span12"></div>
+				<div class="row">${error}</div>
+				<c:url value="/busqueda/bus" var="urlBusquedaBus" />
+			
+
+
+				<c:url value="/busqueda/bus" var="urlBusquedaBus" />
+				<!-- BEGIN FORM-->
+				<form:form action="${urlBusquedaBus}" method="get" commandName="cadena" >
+					<div class="form-body">
+						<div class="form-group">
+							<form:input path="cadenaBuscada" cssClass="form-control input-sm" placeholder="Search..." />
+							<form:errors path="cadenaBuscada" element="span" cssClass="help-block text-danger" />
+						</div>
+					</div>
+					<button type="submit" class="btn green">Buscar</button>
+					<button type="button" class="btn default">Cancelar</button>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2"></div>
+					</div>
+				</form:form>
+				<div class="row span12">
+					<div class="col-md-8 col-md-offset-2"></div>
+				</div>
 				
-				<!-- END EXAMPLE TABLE PORTLET-->
-					<!-- BEGIN EXAMPLE TABLE PORTLET-->
-					<div class="portlet box blue-madison">
+ <!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet box red">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-globe"></i>Responsive Table With Expandable details
+								<i class="fa fa-cogs"></i>Simple Table
 							</div>
 							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
 								<a href="javascript:;" class="reload">
 								</a>
 								<a href="javascript:;" class="remove">
@@ -67,766 +94,126 @@
 							</div>
 						</div>
 						<div class="portlet-body">
-							<table class="table table-striped table-bordered table-hover" id="sample_3">
-							<thead>
-							<tr>
-								<th>
-									 Rendering engine
-								</th>
-								<th>
-									 Browser
-								</th>
-								<th>
-									 Platform(s)
-								</th>
-								<th>
-									 Engine version
-								</th>
-								<th>
-									 CSS grade
-								</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-								<td>
-									 Trident
-								</td>
-								<td>
-									 Internet Explorer 4.0
-								</td>
-								<td>
-									 Win 95+
-								</td>
-								<td>
-									 4
-								</td>
-								<td>
-									 X
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Trident
-								</td>
-								<td>
-									 Internet Explorer 5.0
-								</td>
-								<td>
-									 Win 95+
-								</td>
-								<td>
-									 5
-								</td>
-								<td>
-									 C
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Trident
-								</td>
-								<td>
-									 Internet Explorer 5.5
-								</td>
-								<td>
-									 Win 95+
-								</td>
-								<td>
-									 5.5
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Trident
-								</td>
-								<td>
-									 Internet Explorer 6
-								</td>
-								<td>
-									 Win 98+
-								</td>
-								<td>
-									 6
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Trident
-								</td>
-								<td>
-									 Internet Explorer 7
-								</td>
-								<td>
-									 Win XP SP2+
-								</td>
-								<td>
-									 7
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Trident
-								</td>
-								<td>
-									 AOL browser (AOL desktop)
-								</td>
-								<td>
-									 Win XP
-								</td>
-								<td>
-									 6
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Firefox 1.0
-								</td>
-								<td>
-									 Win 98+ / OSX.2+
-								</td>
-								<td>
-									 1.7
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Firefox 1.5
-								</td>
-								<td>
-									 Win 98+ / OSX.2+
-								</td>
-								<td>
-									 1.8
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Firefox 2.0
-								</td>
-								<td>
-									 Win 98+ / OSX.2+
-								</td>
-								<td>
-									 1.8
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Firefox 3.0
-								</td>
-								<td>
-									 Win 2k+ / OSX.3+
-								</td>
-								<td>
-									 1.9
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Camino 1.0
-								</td>
-								<td>
-									 OSX.2+
-								</td>
-								<td>
-									 1.8
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Camino 1.5
-								</td>
-								<td>
-									 OSX.3+
-								</td>
-								<td>
-									 1.8
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Netscape 7.2
-								</td>
-								<td>
-									 Win 95+ / Mac OS 8.6-9.2
-								</td>
-								<td>
-									 1.7
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Netscape Browser 8
-								</td>
-								<td>
-									 Win 98SE+
-								</td>
-								<td>
-									 1.7
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Netscape Navigator 9
-								</td>
-								<td>
-									 Win 98+ / OSX.2+
-								</td>
-								<td>
-									 1.8
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Mozilla 1.0
-								</td>
-								<td>
-									 Win 95+ / OSX.1+
-								</td>
-								<td>
-									 1
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Mozilla 1.1
-								</td>
-								<td>
-									 Win 95+ / OSX.1+
-								</td>
-								<td>
-									 1.1
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Mozilla 1.2
-								</td>
-								<td>
-									 Win 95+ / OSX.1+
-								</td>
-								<td>
-									 1.2
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Mozilla 1.3
-								</td>
-								<td>
-									 Win 95+ / OSX.1+
-								</td>
-								<td>
-									 1.3
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Mozilla 1.4
-								</td>
-								<td>
-									 Win 95+ / OSX.1+
-								</td>
-								<td>
-									 1.4
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Mozilla 1.5
-								</td>
-								<td>
-									 Win 95+ / OSX.1+
-								</td>
-								<td>
-									 1.5
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Mozilla 1.6
-								</td>
-								<td>
-									 Win 95+ / OSX.1+
-								</td>
-								<td>
-									 1.6
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Mozilla 1.7
-								</td>
-								<td>
-									 Win 98+ / OSX.1+
-								</td>
-								<td>
-									 1.7
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Mozilla 1.8
-								</td>
-								<td>
-									 Win 98+ / OSX.1+
-								</td>
-								<td>
-									 1.8
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Seamonkey 1.1
-								</td>
-								<td>
-									 Win 98+ / OSX.2+
-								</td>
-								<td>
-									 1.8
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Gecko
-								</td>
-								<td>
-									 Epiphany 2.20
-								</td>
-								<td>
-									 Gnome
-								</td>
-								<td>
-									 1.8
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Webkit
-								</td>
-								<td>
-									 Safari 1.2
-								</td>
-								<td>
-									 OSX.3
-								</td>
-								<td>
-									 125.5
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Webkit
-								</td>
-								<td>
-									 Safari 1.3
-								</td>
-								<td>
-									 OSX.3
-								</td>
-								<td>
-									 312.8
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Webkit
-								</td>
-								<td>
-									 Safari 2.0
-								</td>
-								<td>
-									 OSX.4+
-								</td>
-								<td>
-									 419.3
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Webkit
-								</td>
-								<td>
-									 Safari 3.0
-								</td>
-								<td>
-									 OSX.4+
-								</td>
-								<td>
-									 522.1
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Webkit
-								</td>
-								<td>
-									 OmniWeb 5.5
-								</td>
-								<td>
-									 OSX.4+
-								</td>
-								<td>
-									 420
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Webkit
-								</td>
-								<td>
-									 iPod Touch / iPhone
-								</td>
-								<td>
-									 iPod
-								</td>
-								<td>
-									 420.1
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Webkit
-								</td>
-								<td>
-									 S60
-								</td>
-								<td>
-									 S60
-								</td>
-								<td>
-									 413
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Opera 7.0
-								</td>
-								<td>
-									 Win 95+ / OSX.1+
-								</td>
-								<td>
-									 -
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Opera 7.5
-								</td>
-								<td>
-									 Win 95+ / OSX.2+
-								</td>
-								<td>
-									 -
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Opera 8.0
-								</td>
-								<td>
-									 Win 95+ / OSX.2+
-								</td>
-								<td>
-									 -
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Opera 8.5
-								</td>
-								<td>
-									 Win 95+ / OSX.2+
-								</td>
-								<td>
-									 -
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Opera 9.0
-								</td>
-								<td>
-									 Win 95+ / OSX.3+
-								</td>
-								<td>
-									 -
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Opera 9.2
-								</td>
-								<td>
-									 Win 88+ / OSX.3+
-								</td>
-								<td>
-									 -
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Opera 9.5
-								</td>
-								<td>
-									 Win 88+ / OSX.3+
-								</td>
-								<td>
-									 -
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Opera for Wii
-								</td>
-								<td>
-									 Wii
-								</td>
-								<td>
-									 -
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Nokia N800
-								</td>
-								<td>
-									 N800
-								</td>
-								<td>
-									 -
-								</td>
-								<td>
-									 A
-								</td>
-							</tr>
-							<tr>
-								<td>
-									 Presto
-								</td>
-								<td>
-									 Nintendo DS browser
-								</td>
-								<td>
-									 Nintendo DS
-								</td>
-								<td>
-									 8.5
-								</td>
-								<td>
-									 C/A<sup>1</sup>
-								</td>
-							</tr>
-							</tbody>
-							</table>
+							<div class="table-scrollable">
+								<table class="table table-hover">
+								<thead>
+								<tr>
+									<th>
+										 Proyecto
+									</th>
+									<th>
+										 Descripcion
+									</th>
+									<th>
+										Tipo de Proyecto
+									</th>
+									<th>
+										 Usuario
+									</th>
+									<th>
+										 
+									</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>
+										 ${proyecto.nombre}
+									</td>
+									<td>
+										${proyecto.descripcion}
+									</td>
+									<td>
+										${proyecto.tipoProyecto}
+									</td>
+									<td>
+										 ${proyecto.estado}
+										 
+									</td>
+									<td>
+										<a href="${contexto}/usuario/ver/${proyecto.coordinador.idUsuarios}" class="btn default btn-xs green-stripe">${proyecto.coordinador.nombres}</a>
+										 
+										 
+									</td>
+								</tr>
+												</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
-					<!-- END EXAMPLE TABLE PORTLET-->
+					<!-- END SAMPLE TABLE PORTLET-->
+                	
+					<!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-bell-o"></i>Mis Proyectos
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-scrollable">
+								<table class="table table-striped table-bordered table-advance table-hover">
+								<thead>
+								<tr>
+									<th>
+										<i class="fa fa-bars"></i> Proyecto
+									</th>
+									<th class="hidden-xs">
+										<i class="fa fa-user"></i> Usuario
+									</th>
+									<th>
+										<i class="fa fa-edit"></i> Acciones
+									</th>
+									<th>
+										<i class=""></i> Acciones
+									</th>
+								</tr>
+								</thead>
+								<tbody>
+								<c:forEach items="${proyectosList}" var="proyecto">
+						
+								<tr>
+									<td class="highlight">
+										<div class="success">
+										</div>
+										<a href="javascript:;">
+										${proyecto.idProyecto} </a>
+									</td>
+									<td class="hidden-xs">
+										${proyecto.nombre}
+									</td>
+									<td>
+										<a href="${contexto}/proyecto/${proyecto.idProyecto}/editar" class="btn default btn-xs purple">
+										<i class="fa fa-edit"></i> Edit </a>
+									</td>
+									<td>
+										<a href="${contexto}/proyecto/eliminar/${proyecto.idProyecto}" class="btn default btn-xs black">
+										<i class="fa fa-trash-o"></i> Delete </a>
+									</td>
+									
+								</tr>
+							</c:forEach>
+								</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- END SAMPLE TABLE PORTLET-->
+					
 				
-										
-				
+
+
+
 				<!-- END PAGE CONTENT-->
 			</div>
 		</div>

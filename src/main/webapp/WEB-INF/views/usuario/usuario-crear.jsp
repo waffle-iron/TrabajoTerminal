@@ -83,8 +83,8 @@
 											<label class="control-label col-md-3">Contraseña *: </label>
 											<div class="col-md-4">
 												<div class="input-icon right">
-													<form:input path="contraseña" cssClass="form-control" />
-													<form:errors path="contraseña" element="span"
+													<form:input path="password" cssClass="form-control" />
+													<form:errors path="password" element="span"
 														cssClass="help-block text-danger" />
 												</div>
 											</div>

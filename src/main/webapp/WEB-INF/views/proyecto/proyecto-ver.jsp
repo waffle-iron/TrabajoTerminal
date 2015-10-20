@@ -43,13 +43,32 @@
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
+				
+
 				<div class="row">
-
-					<pre>
-						${proyecto}
-					</pre>
-
+				<c:if test="${actualizado}">
+						<h1 class="text-success"><strong>Datos actualizados</strong></h1>
+					</c:if>
+					<c:if test="${creado}">
+                        <h1 class="text-success"><strong>Se ha creado un nuevo proyecto</strong></h1>
+					</c:if>
+					<div class="col-md-12">
+						<h1> ID: ${proyecto.idProyecto} </h1>
+						<h1> NOMBRE: ${proyecto.nombre} </h1>
+						<h2> DESCRIPCIÓN: ${proyecto.descripcion} </h2>
+						<h2> FECHA INICIO: ${proyecto.fechaInicio} </h2>
+						<h2> FECHA FIN: ${proyecto.fechaFin} </h2>
+						<h2> AVANCE: ${proyecto.avance} </h2>
+						<h2> TIPO DE PROYECTO: ${proyecto.tipoProyecto} </h2>
+						<h2> ESTADO DE PROYECTO: ${proyecto.estado} </h2>
+						<h2> COOLABORADOR: ${proyecto.coordinador.nombres} </h2>
+						
+					</div>	
+				
 				</div>
+					
+					
+				
 				<!-- END PAGE CONTENT-->
 			</div>
 		</div>
