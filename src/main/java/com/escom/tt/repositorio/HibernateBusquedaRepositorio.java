@@ -1,5 +1,7 @@
 package com.escom.tt.repositorio;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,6 +33,36 @@ public class HibernateBusquedaRepositorio implements BusquedaRepositorio    {
 		proyecto = (Proyecto)criteria2.uniqueResult();
 		return proyecto;		
 	}
+
+	
+	@Override
+	public List<Proyecto> buscarPorCoordinador(Usuario coordinador) {
+
+		List<Proyecto> proyectos = null;
+		Session session = sf.getCurrentSession();
+
+		Criteria criteria = session.createCriteria(Proyecto.class);
+		criteria.add(Restrictions.eq("coordinador", coordinador));
+		proyectos = criteria.list();
+		System.out.println("termino consulta de proyectos");
+		return proyectos;
+
+	}
+
+
+	@Override
+	public Usuario buscarPorEmail(String proyectoUsuario) {
+		Session session = sf.getCurrentSession();
+		Usuario usuario = null;
+		Criteria criteria1 = session.createCriteria(Usuario.class).add(Restrictions.eq("email", proyectoUsuario));
+		usuario = (Usuario)criteria1.uniqueResult();
+		
+		
+		return usuario;
+	}
+
+	
+	
 
 	
 }

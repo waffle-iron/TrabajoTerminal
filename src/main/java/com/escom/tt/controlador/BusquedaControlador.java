@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import com.escom.tt.modelo.CadenaBusqueda;
 import com.escom.tt.modelo.Proyecto;
@@ -38,7 +39,8 @@ public class BusquedaControlador {
 //		return "ResultadosBusqueda";			
 //	}
 	@RequestMapping(value = "/busqueda/bus", method=RequestMethod.GET)
-	public String resultadoBusqueda(@ModelAttribute("cadena") @Valid CadenaBusqueda cadenaBusqueda, BindingResult validacion, Model modelo){
+	public String resultadoBusqueda(@ModelAttribute("cadena") @Valid CadenaBusqueda cadenaBusqueda, BindingResult validacion, Model modelo, Principal principal){
+		String nombreUsuario=principal.getName();
 		Proyecto proyecto = null;
         String ruta = null;
 

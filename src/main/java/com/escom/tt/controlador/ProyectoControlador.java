@@ -7,6 +7,8 @@ import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.validation.Valid;
 
@@ -43,6 +46,11 @@ public class ProyectoControlador {
 
     @Autowired
     private InvitacionRepositorio invitacionRepositorio;
+    
+    @Autowired    
+    private BusquedaRepositorio busquedaRepositorio;
+    
+    
 
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.GET)
@@ -152,14 +160,23 @@ public class ProyectoControlador {
 
     @RequestMapping(value="/proyecto")
     public String verTodos(Model modelo,Boolean eliminado, Principal principal) {
+    	
+    	
+    	String email= principal.getName();
+    	
+    	List<Proyecto> proyectosDeCoordinador = null;
+    	Usuario usuarioTemp=busquedaRepositorio.buscarPorEmail(email);
+    	proyectosDeCoordinador=busquedaRepositorio.buscarPorCoordinador(usuarioTemp);
+    	
+        //List<Proyecto> proyectoList = null;
+        //proyectoList = proyectoRepositorio.obtenerTodos();
 
-        List<Proyecto> proyectoList = null;
-
-        proyectoList = proyectoRepositorio.obtenerTodos();
-
-        modelo.addAttribute("proyectosList", proyectoList);
+        modelo.addAttribute("proyectosList", proyectosDeCoordinador);
         modelo.addAttribute("eliminado", eliminado);
         modelo.addAttribute("nombre",principal.getName());
+        modelo.addAttribute("idd",email);
+        
+        
         return "proyecto/proyecto-todos";
     }
 

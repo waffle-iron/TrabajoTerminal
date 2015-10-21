@@ -54,9 +54,8 @@
 				<div class="row-fluid span12"></div>
 				<div class="row">${error}</div>
 				<c:url value="/busqueda/bus" var="urlBusquedaBus" />
-			
-
-
+				
+				
 				<c:url value="/busqueda/bus" var="urlBusquedaBus" />
 				<!-- BEGIN FORM-->
 				<form:form action="${urlBusquedaBus}" method="get" commandName="cadena" >
