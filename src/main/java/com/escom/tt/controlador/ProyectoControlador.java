@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,7 +56,10 @@ public class ProyectoControlador {
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.GET)
     public String crear(Principal principal, Model modelo){
-
+    	Usuario coordinador =  null;
+    	String email=principal.getName();
+    	coordinador = busquedaRepositorio.buscarPorEmail(email);
+    	modelo.addAttribute("coordinadorX",coordinador.getIdUsuarios());
         modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
         modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
         modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
@@ -66,9 +70,14 @@ public class ProyectoControlador {
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.POST)
     public String crear(@ModelAttribute("proyecto") @Valid Proyecto proyecto, BindingResult validacion, Model modelo, Principal principal) {
-        String ruta = null;
+        String ruta = null;    	
+        
 
         if (validacion.hasErrors()){
+        	List<ObjectError> error= validacion.getAllErrors();
+        	for (ObjectError objectError : error) {
+				System.out.println(objectError);
+			}
             modelo.addAttribute("proyecto", proyecto);
             modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
             modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
@@ -77,8 +86,11 @@ public class ProyectoControlador {
 
             ruta = "proyecto/proyecto-crear";
         }else{
-            Integer id = proyectoRepositorio.crear(proyecto);
-            modelo.addAttribute("nombre",principal.getName());
+//****************************************************************************          
+        	
+//***************************************************************************
+        	proyectoRepositorio.crear(proyecto);
+
             ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()+ "/?creado=true";
         }
         return ruta;
@@ -134,7 +146,10 @@ public class ProyectoControlador {
             modelo.addAttribute("proyecto", proyecto);
             modelo.addAttribute("actualizado", actualizado);
             modelo.addAttribute("creado", creado);
-            modelo.addAttribute("nombre",principal.getName());            
+            modelo.addAttribute("nombre",principal.getName());
+        	modelo.addAttribute("proyecto",proyecto);
+            modelo.addAttribute("nombre",principal.getName());
+
             ruta = "proyecto/proyecto-ver";
         }else
             ruta = "redirect:/proyecto";

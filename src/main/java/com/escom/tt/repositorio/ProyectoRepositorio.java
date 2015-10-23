@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ProyectoRepositorio {
     Integer crear(Proyecto proyecto);
-
+    
     void eliminar(Proyecto proyecto);
 
     Integer actualizar(Proyecto proyecto);

@@ -61,7 +61,7 @@
 						<h2> AVANCE: ${proyecto.avance} </h2>
 						<h2> TIPO DE PROYECTO: ${proyecto.tipoProyecto} </h2>
 						<h2> ESTADO DE PROYECTO: ${proyecto.estado} </h2>
-						<h2> COOLABORADOR: ${proyecto.coordinador.nombres} </h2>
+						<h2> COORDINADOR: ${proyecto.coordinador.nombres} </h2>
 						
 					</div>	
 				
