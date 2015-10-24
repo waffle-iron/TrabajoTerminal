@@ -41,7 +41,7 @@ public class BusquedaControlador {
         if (validacion.hasErrors()){
             ruta = "ResultadosBusqueda";
         }else {
-        	
+        	// HOLA SLACK
         	String cadenaObtenida=cadenaBusqueda.getCadenaBuscada();
         	System.out.println("********************************"+cadenaObtenida);
         	proyecto = busquedaRepositorio.buscarPorProyectoORNombreUsuario(cadenaObtenida);
