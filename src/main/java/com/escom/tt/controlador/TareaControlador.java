@@ -76,10 +76,19 @@ public class TareaControlador {
             modelo.addAttribute("tarea", tarea);
             ruta = "tarea/tarea-editar";
         }else{
-            System.err.println("NO ERRORES");
+            System.err.println(tarea);
+            System.err.println("/n");
+            System.err.println("PORYECTO::::::::::" + tarea.getColaboradorProyecto().getProyecto());
+            System.err.println("USUARIO::::::::::" + tarea.getColaboradorProyecto().getUsuario());
+            System.err.println("/n");
+
             proyecto = proyectoRepositorio.buscarPorId(tarea.getColaboradorProyecto().getProyecto().getIdProyecto());
             usuario = usuarioRepositorio.buscarPorId(tarea.getColaboradorProyecto().getUsuario().getIdUsuarios());
+
             colaboradorProyecto = new ColaboradorProyecto(proyecto, usuario);
+            System.err.println("\n");
+            System.err.println(colaboradorProyecto);
+            System.err.println("\n");
             //tarea.getColaboradorProyecto().setProyecto(proyecto);
             //tarea.getColaboradorProyecto().setUsuario(usuario);
             tarea.setColaboradorProyecto(colaboradorProyecto);

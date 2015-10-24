@@ -141,7 +141,7 @@ public class Usuario {
 		this.evaluacion = evaluacion;
 	}
 
-	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
 	private List<ColaboradorProyecto> colaboradorProyectos;
 
