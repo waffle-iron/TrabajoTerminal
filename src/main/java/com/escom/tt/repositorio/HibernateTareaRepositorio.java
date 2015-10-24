@@ -58,8 +58,9 @@ public class HibernateTareaRepositorio implements TareaRepositorio {
         List<Tarea> tareas = null;
         Session session = sf.getCurrentSession();
         Criteria criteria = session.createCriteria(Tarea.class);
-        criteria.add(Restrictions.eq("proyecto", colaboradorProyecto.getProyecto()));
-        tareas = criteria.list();
+        Criteria criteriaPK = criteria.createCriteria("colaboradorProyecto");
+        criteriaPK.add(Restrictions.eq("proyecto", colaboradorProyecto.getProyecto()));
+        tareas = criteriaPK.list();
         return tareas;
     }
 }

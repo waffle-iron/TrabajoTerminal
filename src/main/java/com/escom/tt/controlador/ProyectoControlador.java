@@ -301,11 +301,12 @@ public class ProyectoControlador {
     }
     @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/tareas-asignadas", method = RequestMethod.GET)
     public String tareasAsignadas(@PathVariable Integer proyectoId, Model modelo, Principal principal) {
-        System.err.println("ABC");
-
         List<Tarea> tareaList = null;
-        tareaList = tareaRepositorio.obtenerPorProyecto(new ColaboradorProyecto(proyectoRepositorio.buscarPorId(proyectoId),new Usuario()));
-        System.err.println(tareaList);
+        Proyecto proyecto = null;
+        proyecto = proyectoRepositorio.buscarPorId(proyectoId);
+        // valida que el coordinador sea el mismo de la sesión
+        if (proyecto != null && principal.getName().equals(proyecto.getCoordinador().getEmail()) )
+            tareaList = tareaRepositorio.obtenerPorProyecto(new ColaboradorProyecto(proyecto));
         modelo.addAttribute("tareasList", tareaList);
         return "proyecto/proyecto-tareas";
     }

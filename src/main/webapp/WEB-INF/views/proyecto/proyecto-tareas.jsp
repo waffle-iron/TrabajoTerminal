@@ -61,55 +61,49 @@
                                             #
                                         </th>
                                         <th>
-                                            Nombre de Usuario
+                                            Título
                                         </th>
                                         <th>
-                                            Nombre (s)
+                                            Estado
                                         </th>
                                         <th>
-                                            Apellido Paterno
+                                            Avance
                                         </th>
                                         <th>
-                                            Apellido Materno
+                                            Fecha de Asignación
                                         </th>
                                         <th>
-                                            Correo electrónico
+                                            Usuario asignaado
                                         </th>
                                         <th>
-                                            Teléfono
-                                        </th>
-                                        <th>
-                                            Asignar Tarea
+
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${miProyecto.colaboradorProyectos}" var="colaborador" varStatus="loop">
+                                    <c:forEach items="${tareasList}" var="tarea" varStatus="loop">
                                         <tr>
                                             <td>
                                                 ${loop.index + 1}
                                             </td>
                                             <td>
-                                                ${colaborador.usuario.nombreUsuario}
+                                                ${tarea.titulo}
                                             </td>
                                             <td>
-                                                ${colaborador.usuario.nombres}
+                                                ${tarea.estado}
                                             </td>
                                             <td>
-                                                ${colaborador.usuario.nombres}
+                                                ${tarea.avance}
                                             </td>
                                             <td>
-                                                ${colaborador.usuario.nombres}
+                                                ${tarea.fechaEntrega}
                                             </td>
                                             <td>
-                                                ${colaborador.usuario.email}
+                                                ${tarea.colaboradorProyecto.usuario.nombres} ${tarea.colaboradorProyecto.usuario.aPaterno}
                                             </td>
                                             <td>
-                                                ${colaborador.usuario.telefono}
-                                            </td>
-                                            <td>
-                                                <a href="${contexto}/proyecto/${miProyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs purple">
-                                                    <i class="fa fa-edit"></i> Asignar </a>
+                                                <a href="${contexto}/tarea/${tarea.idTarea}/editar" class="btn default btn-xs purple">
+                                                    <i class="fa fa-edit"></i> editar </a>
                                             </td>
                                         </tr>
                                     </c:forEach>
