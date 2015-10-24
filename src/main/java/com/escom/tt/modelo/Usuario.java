@@ -142,6 +142,7 @@ public class Usuario {
 	}
 
 	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
+	//wqdbgfn
 	@Fetch(FetchMode.SELECT)
 	private List<ColaboradorProyecto> colaboradorProyectos;
 
