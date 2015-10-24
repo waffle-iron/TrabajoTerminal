@@ -57,7 +57,8 @@
 				
 				
 				<c:url value="/busqueda/bus" var="urlBusquedaBus" />
-				<!-- BEGIN FORM-->
+				<!-- BEGIN FORM 1-->
+				<h1>Busqueda resultado unico</h1>
 				<form:form action="${urlBusquedaBus}" method="get" commandName="cadena" >
 					<div class="form-body">
 						<div class="form-group">
@@ -65,21 +66,30 @@
 							<form:errors path="cadenaBuscada" element="span" cssClass="help-block text-danger" />
 						</div>
 					</div>
+					
+					<div class="row">
 					<button type="submit" class="btn green">Buscar</button>
 					<button type="button" class="btn default">Cancelar</button>
+					</div>
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2"></div>
 					</div>
 				</form:form>
+				<div class="row"></div><div class="row"></div><div class="row"></div>
+				
+				
+				
 				<div class="row span12">
 					<div class="col-md-8 col-md-offset-2"></div>
 				</div>
+				<div class="row"></div>
+				<div class="row"></div>
 				
- <!-- BEGIN SAMPLE TABLE PORTLET-->
+ 				<!-- BEGIN SAMPLE TABLE PORTLET-->
 					<div class="portlet box red">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-cogs"></i>Simple Table
+								<i class="fa fa-cogs"></i>Resultado único
 							</div>
 							<div class="tools">
 								<a href="javascript:;" class="collapse">
@@ -140,13 +150,102 @@
 							</div>
 						</div>
 					</div>
-					<!-- END SAMPLE TABLE PORTLET-->
+					<!-- END SAMPLE TABLE PORTLET-->                                
+                	
+                	<h1>Lista resultados</h1>
+				<form:form action="${urlBusquedaBus}" method="get" commandName="cadena2" >
+					<div class="form-body">
+						<div class="form-group">
+							<form:input path="cadenaBuscada2" cssClass="form-control input-sm" placeholder="Search..." />
+							<form:errors path="cadenaBuscada2" element="span" cssClass="help-block text-danger" />
+						</div>
+					</div>
+					
+					<div class="row">
+					<button type="submit" class="btn green">Buscar</button>
+					<button type="button" class="btn default">Cancelar</button>
+					</div>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2"></div>
+					</div>
+				</form:form>
+				
+				<!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet box red">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-cogs"></i>Resultados
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-scrollable">
+								<table class="table table-hover">
+								<thead>
+								<tr>
+									<th>
+										 Proyecto
+									</th>
+									<th>
+										 Descripcion
+									</th>
+									<th>
+										Tipo de Proyecto
+									</th>
+									<th>
+										 Usuario
+									</th>
+									<th>
+										 
+									</th>
+								</tr>
+								</thead>
+								<tbody>
+								<c:forEach items="${listaObt}" var="proyectoR">
+								<tr>
+									<td>
+										 ${proyectoR.nombre}
+									</td>
+									<td>
+										${proyectoR.descripcion}
+									</td>
+									<td>
+										${proyectoR.tipoProyecto}
+									</td>
+									<td>
+										 ${proyectoR.estado}
+										 
+									</td>
+									<td>
+										<a href="${contexto}/usuario/ver/${proyectoR.coordinador.idUsuarios}" class="btn default btn-xs green-stripe">${proyectoR.coordinador.nombres}</a>
+										 
+										 
+									</td>
+								</tr>
+								</c:forEach>
+								</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- END SAMPLE TABLE PORTLET-->         
+				
+                	
                 	
 					<!-- BEGIN SAMPLE TABLE PORTLET-->
 					<div class="portlet">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-bell-o"></i>Mis Proyectos
+								<i class="fa fa-bell-o"></i>Proyectos del sistema
 							</div>
 							<div class="tools">
 								<a href="javascript:;" class="collapse">

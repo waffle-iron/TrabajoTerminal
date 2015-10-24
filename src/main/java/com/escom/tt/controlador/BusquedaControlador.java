@@ -16,6 +16,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 import com.escom.tt.modelo.CadenaBusqueda;
 import com.escom.tt.modelo.Proyecto;
+import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.BusquedaRepositorio;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 
@@ -30,34 +31,47 @@ public class BusquedaControlador {
 
 	
 	
-//	@RequestMapping(value = "/busqueda/bus", method=RequestMethod.GET)
-//	public String Busqueda(Model modelo){
-//        List<Proyecto> proyectoList = null;
-//        proyectoList = proyectoRepositorio.obtenerTodos();
-//
-//        modelo.addAttribute("proyectosList", proyectoList);                
-//		return "ResultadosBusqueda";			
-//	}
+
 	@RequestMapping(value = "/busqueda/bus", method=RequestMethod.GET)
-	public String resultadoBusqueda(@ModelAttribute("cadena") @Valid CadenaBusqueda cadenaBusqueda, BindingResult validacion, Model modelo, Principal principal){
-		String nombreUsuario=principal.getName();
+	public String resultadoBusqueda(@ModelAttribute("cadena") @Valid CadenaBusqueda cadenaBusqueda, @ModelAttribute("cadena2") @Valid CadenaBusqueda cadenaBusqueda2,BindingResult validacion, Model modelo, Principal principal){
+		//String nombreUsuario=principal.getName();
 		Proyecto proyecto = null;
         String ruta = null;
 
         if (validacion.hasErrors()){
-        	//modelo.addAttribute("error", "No fue encontrado");
             ruta = "ResultadosBusqueda";
-        }else{
-        	String cadenaObtenida=cadenaBusqueda.getCadenaBuscada();    		
-            proyecto = busquedaRepositorio.buscarPorProyectoORNombreUsuario(cadenaObtenida);            
-            modelo.addAttribute("proyecto",proyecto);
-            List<Proyecto> proyectoList = null;
+        }else {
+        	
+        	String cadenaObtenida=cadenaBusqueda.getCadenaBuscada();
+        	System.out.println("********************************"+cadenaObtenida);
+        	proyecto = busquedaRepositorio.buscarPorProyectoORNombreUsuario(cadenaObtenida);
+        	modelo.addAttribute("proyecto",proyecto);            
+       
+        	
+        	String cadenaObtenida2= cadenaBusqueda2.getCadenaBuscada2();
+        	System.out.println("********************************"+cadenaObtenida2);
+        	List<Proyecto> proyectoListCad2 = null;
+        	proyectoListCad2 = busquedaRepositorio.buscarCadenaEnProyectos(cadenaObtenida2);
+        	modelo.addAttribute("listaObt",proyectoListCad2);
+        	for (Proyecto proyecto2 : proyectoListCad2) {
+				System.out.println("*?*?*?*?*?"+proyecto2);
+			}
+			
+      
+        	List<Proyecto> proyectoList = null;    	
             proyectoList = proyectoRepositorio.obtenerTodos();
+            modelo.addAttribute("proyectosList", proyectoList);                
 
-          modelo.addAttribute("proyectosList", proyectoList);                
+        	
+        }
+            //List<Usuario> usuarioListCad2=busquedaRepositorio.buscarCadenaEnusuario(cadenaObtenida2);
+            //if (proyectoListCad2.contains(cadenaObtenida2)) {
+			//}else if(usuarioListCad2.contains(cadenaObtenida2)){
+//				modelo.addAttribute("listaObt",usuarioListCad2);
+//			}
           
             ruta = "ResultadosBusqueda";
-        }
+        
         return ruta;			
 		
 	}
