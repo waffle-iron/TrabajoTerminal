@@ -52,28 +52,29 @@
 
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row-fluid span12"></div>
-				<div class="row">${error}</div>
-
+				
 				<c:url value="/buscar" var="urlBusquedaBus" />
 
-
 				<!-- BEGIN FORM 1-->
-				<h1>Realiza una Búsqueda</h1>
+				<div class="row">
+				<div class="page-title">
+					<h1>&nbsp;Realiza una búsqueda<small> </small></h1>
+				</div>
+				
 				<form action="${urlBusquedaBus}" method="get">
+					<div class="col-md-5">
 					<div class="form-body">
 						<div class="form-group">
-							<input name="cadena" cssClass="form-control input-sm"
+							<input name="cadena" class="form-control input-sm"
 								placeholder="Search..." />
 						</div>
 					</div>
-
-					<div class="row">
-						<button type="submit" class="btn green">Buscar</button>
 					</div>
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2"></div>
-					</div>
+					<div class="col-md-2">
+						<button type="submit" class="btn blue">Buscar</button>
+					</div>					
 				</form>
+				</div>
 				<div class="row"></div>	<div class="row"></div>				
 
 				<div class="row span12">
@@ -122,14 +123,18 @@
 								<tbody>
 									<c:forEach items="${proyectos}" var="proyecto">
 										<tr>
-											<td><a
-												href="${contexto}/proyecto/${proyecto.idProyecto}/ver"
-												class="btn default btn-xs purple"> <i class="fa fa-edit"></i>
-													${proyecto.nombre}
-											</a></td>
+											<td>
+												<a href="${contexto}/proyecto/${proyecto.idProyecto}/ver" class="btn default btn-xs blue">
+												<i class="fa fa-file-audio-o"></i>
+												${proyecto.nombre} </a>																							
+											</td>
 											<td>${proyecto.descripcion}</td>
 											<td>${proyecto.estado}</td>
-											<td>${proyecto.coordinador.nombres}</td>
+											<td>
+												<a href="${contexto}/usuario/${usuario.idUsuarios}/ver" class="btn default btn-xs red">
+												<i class="fa fa-user"></i>
+												${proyecto.coordinador.nombres} </a>		
+											</td>
 											<td>${proyecto.tipoProyecto}</td>
 										</tr>
 									</c:forEach>
@@ -181,11 +186,11 @@
 								<tbody>
 									<c:forEach items="${usuarios}" var="usuario">
 										<tr>
-											<td><a
-												href="${contexto}/usuario/${usuario.idUsuarios}/ver"
-												class="btn default btn-xs purple"> <i class="fa fa-edit"></i>
-													${usuario.nombreUsuario}
-											</a></td>
+											<td>
+												<a href="${contexto}/usuario/${usuario.idUsuarios}/ver" class="btn default btn-xs red">
+												<i class="fa fa-user"></i>
+												${usuario.nombreUsuario} </a>														
+											</td>
 											<td>${usuario.nombres}</td>
 											<td>${usuario.evaluacion}</td>
 											<td>${usuario.escuela.nombre}</td>
