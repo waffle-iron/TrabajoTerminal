@@ -86,9 +86,7 @@ public class ProyectoControlador {
 
             ruta = "proyecto/proyecto-crear";
         }else{
-//****************************************************************************          
-        	
-//***************************************************************************
+
         	proyectoRepositorio.crear(proyecto);
 
             ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()+ "/?creado=true";
@@ -118,14 +116,21 @@ public class ProyectoControlador {
 
     @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/editar", method = RequestMethod.GET)
     public String actualizar(@PathVariable Integer proyectoId,Model modelo, Principal principal) {
-        Proyecto proyecto = null;
+    	Usuario coordinador =  null;
+    	String email=principal.getName();
+    	coordinador = busquedaRepositorio.buscarPorEmail(email);
+    	modelo.addAttribute("coordinadorX",coordinador.getIdUsuarios());
+        
+    	Proyecto proyecto = null;
         String ruta = null;
         proyecto = proyectoRepositorio.buscarPorId(proyectoId);
-
+        proyecto.setCoordinador(coordinador);
         if (proyecto != null) {
             modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
             modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
-            modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
+            modelo.addAttribute("coordinadorId",coordinador.getIdUsuarios());            
+//            modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
+            
             modelo.addAttribute("proyecto", proyecto);
             modelo.addAttribute("nombre",principal.getName());
             ruta = "proyecto/proyecto-editar";

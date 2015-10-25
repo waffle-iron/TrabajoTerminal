@@ -168,22 +168,35 @@
 										</div>
 									</div>
 
-									<div class="form-group">
-										<label class="control-label col-md-3">Coordinador
-											<span class="required"> * </span>
-										</label>
+<!-- 									<div class="form-group"> -->
+<!-- 										<label class="control-label col-md-3">Coordinador -->
+<!-- 											<span class="required"> * </span> -->
+<!-- 										</label> -->
 
-										<div class="col-md-7">
-											<div class="input-icon right">
-												<form:select path="coordinador.idUsuarios" cssClass="form-control">
-													<form:options items="${cordinadorList}" itemValue="idUsuarios"
-																  itemLabel="nombreUsuario"/>
-												</form:select>
-												<form:errors path="coordinador" element="span"
-															 cssClass="help-block text-danger"/>
-											</div>
-										</div>
-									</div>
+<!-- 										<div class="col-md-7"> -->
+<!-- 											<div class="input-icon right"> -->
+<%-- 												<form:select path="coordinador.idUsuarios" cssClass="form-control"> --%>
+<%-- 													<form:options items="${cordinadorList}" itemValue="idUsuarios" --%>
+<%-- 																  itemLabel="nombreUsuario"/> --%>
+<%-- 												</form:select> --%>
+<%-- 												<form:errors path="coordinador" element="span" --%>
+<%-- 															 cssClass="help-block text-danger"/> --%>
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+								<div class="form-group" >
+<!--                                         <label class="control-label col-md-3">Coordinador -->
+<!--                                             <span class="required"> * </span> -->
+<!--                                         </label> -->
+                                        <div class="col-md-7">
+                                            <div class="input-icon right">
+                                                <form:input path="coordinador.idUsuarios"  value="${coordinadorId}" type="hidden"/>
+                                                <form:errors path="coordinador" element="span"
+                                                             cssClass="help-block text-danger"/>
+                                            </div>
+                                        </div>
+                                    </div>	
+									
 
 								</div>
 								<div class="form-actions">
