@@ -2,8 +2,11 @@ package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Proyecto;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,7 +79,17 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
 
     }
 
-
+    @Override
+	public List<Proyecto>  buscarPorProyecto(String cadena) {
+		List<Proyecto> proyectos = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Proyecto.class);
+		criteria.add(Restrictions.or(
+				Restrictions.like("nombre", "%"+ cadena + "%"),
+				Restrictions.like("descripcion",  "%"+ cadena + "%")));
+		proyectos = criteria.list();
+		return proyectos;
+	}
 
 	
 

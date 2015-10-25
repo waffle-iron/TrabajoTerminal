@@ -17,5 +17,5 @@ public interface UsuarioRepositorio {
 	public abstract List<Usuario> obtenerTodos();
 	
 	
-
+	List<Usuario> buscarPorUsuario(String cadena);
 }

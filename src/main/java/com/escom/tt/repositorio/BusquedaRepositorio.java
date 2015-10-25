@@ -7,11 +7,10 @@ import com.escom.tt.modelo.Usuario;
 
 public interface BusquedaRepositorio {
 
-	Proyecto buscarPorProyectoORNombreUsuario(String proyectoUsuario);
-	List<Proyecto> buscarCadenaEnProyectos(String cadena);
+	List<Proyecto> buscarPorProyectoORNombreUsuario(String proyectoUsuario);
+	//List<Proyecto> buscarCadenaEnProyectos(String cadena);
 	List<Usuario> buscarCadenaEnusuario(String cadena);	
 	List<Proyecto> buscarPorCoordinador(Usuario coordinador);
 	Usuario buscarPorEmail(String proyectoUsuario);
-	List<Proyecto> buscarPorProyectoORNombreUsuarioLista(String proyectoUsuario);
-	
+	//List<Proyecto> buscarPorProyectoORNombreUsuarioLista(String proyectoUsuario);
 }

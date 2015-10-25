@@ -21,4 +21,5 @@ public interface ProyectoRepositorio {
 
     ColaboradorProyecto addColaborador(ColaboradorProyecto colaboradorProyecto);
     ColaboradorProyecto getColaborador(ColaboradorProyecto colaboradorProyecto);
+    List<Proyecto> buscarPorProyecto(String proyectoUsuario);
 }
