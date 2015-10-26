@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
 <div class="page-header navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
 	<div class="page-header-inner">
@@ -78,7 +79,7 @@
 							<li class="external">
 								<h3>
 									<span class="bold">12 pending</span> notifications
-								</h3> <a href="extra_profile.html">view all</a>
+								</h3> <a href="${contexto}/usuario/perfil">view all</a>
 							</li>
 							<li>
 								<ul class="dropdown-menu-list scroller" style="height: 250px;"
@@ -308,8 +309,8 @@
 							src="${context}/resources/tema/img/avatar9.jpg" />
 					</a>
 						<ul class="dropdown-menu dropdown-menu-default">
-							<li><a href="extra_profile.html"> <i class="icon-user"></i>
-									My Profile
+							<li><a href="${contexto}/usuario/perfil"> <i class="icon-user"></i>
+									Mi perfil
 							</a></li>
 							<li><a href="page_calendar.html"> <i
 									class="icon-calendar"></i> My Calendar

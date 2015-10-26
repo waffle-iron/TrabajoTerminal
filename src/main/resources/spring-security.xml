@@ -32,7 +32,8 @@
         <security:intercept-url pattern="/proyecto/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/tarea/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/tipoproyecto/**" access="hasAnyRole('ROLE_ADMIN')"/>
-        <!--<security:intercept-url pattern="/usuario/**" access="hasAnyRole('ROLE_ADMIN')"/>-->
+        <security:intercept-url pattern="/usuario/**" access="hasAnyRole('ROLE_ADMIN')"/>
+       
     </security:http>
     <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
     </bean>

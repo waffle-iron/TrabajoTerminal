@@ -5,6 +5,8 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<c:url value="/" var="contexto" />
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -46,6 +48,8 @@
 				
 
 				<div class="row">
+				
+				
 				<c:if test="${actualizado}">
 						<h1 class="text-success"><strong>Datos actualizados</strong></h1>
 					</c:if>
@@ -138,6 +142,86 @@
 
 
 					</div>
+					
+					<div class="col-md-12">
+					
+					<!-- BEGIN VALIDATION STATES-->
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i>Colaboradores de <b>${proyecto.nombre}</b>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="table-scrollable">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            Nombre de Usuario
+                                        </th>
+                                        <th>
+                                            Nombre (s)
+                                        </th>
+                                        <th>
+                                            Apellido Paterno
+                                        </th>
+                                        <th>
+                                            Apellido Materno
+                                        </th>
+                                        <th>
+                                            Correo electrónico
+                                        </th>
+                                        <th>
+                                            Teléfono
+                                        </th>
+                                        <th>
+                                            Asignar Tarea
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${proyecto.colaboradorProyectos}" var="colaborador" varStatus="loop">
+                                        <tr>
+                                            <td>
+                                            
+                                                ${loop.index + 1}
+                                            </td>
+                                            <td>
+                                                ${colaborador.usuario.nombreUsuario}
+                                            </td>
+                                            <td>
+                                                ${colaborador.usuario.nombres}
+                                            </td>
+                                            <td>
+                                                ${colaborador.usuario.aPaterno}
+                                            </td>
+                                            <td>
+                                                ${colaborador.usuario.aMaterno}
+                                            </td>
+                                            <td>
+                                                ${colaborador.usuario.email}
+                                            </td>
+                                            <td>
+                                                ${colaborador.usuario.telefono}
+                                            </td>
+                                            <td>
+                                                <a href="${contexto}proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs purple">
+                                                    <i class="fa fa-edit"></i> Asignar </a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    </div>
+                    <!-- END VALIDATION STATES-->
 					
 					
 					
