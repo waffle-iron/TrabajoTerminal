@@ -107,7 +107,7 @@ public class Usuario {
 	private List<Proyecto> proyectos;
 	
 	@ManyToMany
-	@JoinTable(name="usuario_has_idiomas",
+	@JoinTable(name="usuario_has_idomas",
 				joinColumns={@JoinColumn(name="Usuarios_idUsuarios")},
 				inverseJoinColumns={@JoinColumn(name="Idiomas_idIdiomas")})
 	private List<Idioma> idiomas;

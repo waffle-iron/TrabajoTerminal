@@ -104,12 +104,12 @@ public class UsuarioControlador {
 	}
 
 	@RequestMapping(value = "/usuario/{usuarioId:[0-9]+}/editar", method = RequestMethod.GET)
-	public String actualizar(@PathVariable Integer usuarioId, Model modelo) {
+	public String actualizar(Principal principal, @PathVariable Integer usuarioId, Model modelo) {
 		Usuario usuario = null;
 		String ruta = null;
 		usuario = usuarioRepositorio.buscarPorId(usuarioId);
 
-		if (usuario != null) {
+		if (usuario != null && usuario.getEmail().equals(principal.getName())) {
 			modelo.addAttribute("usuario", usuario);
 			modelo.addAttribute("escuelaList",
 					escuelaRepositorio.obtenerTodos());
