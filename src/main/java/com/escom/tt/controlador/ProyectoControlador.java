@@ -202,7 +202,7 @@ public class ProyectoControlador {
         tarea.setEstado(1);
         tarea.setAvance(1);
         tarea.setFechaEntrega(new Date());
-        tarea.setColaboradorProyecto(new ColaboradorProyecto(miProyecto,usuarioTarea));
+        tarea.setColaboradorProyecto(new ColaboradorProyecto(miProyecto, usuarioTarea));
 
         if (miProyecto == null || !miProyecto.getCoordinador().getEmail().equals(coordinador.getEmail()))
             ruta = "redirect:/";
@@ -310,5 +310,15 @@ public class ProyectoControlador {
 
         return "redirect:/proyecto/invitar?error=" + error;
     }
-
+    @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/tareas-asignadas", method = RequestMethod.GET)
+    public String tareasAsignadas(@PathVariable Integer proyectoId, Model modelo, Principal principal) {
+        List<Tarea> tareaList = null;
+        Proyecto proyecto = null;
+        proyecto = proyectoRepositorio.buscarPorId(proyectoId);
+        // valida que el coordinador sea el mismo de la sesión
+        if (proyecto != null && principal.getName().equals(proyecto.getCoordinador().getEmail()) )
+            tareaList = tareaRepositorio.obtenerPorProyecto(new ColaboradorProyecto(proyecto));
+        modelo.addAttribute("tareasList", tareaList);
+        return "proyecto/proyecto-tareas";
+    }
 }

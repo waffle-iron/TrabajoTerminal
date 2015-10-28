@@ -1,5 +1,6 @@
 package com.escom.tt.repositorio;
 
+import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Tarea;
 
 import java.util.List;
@@ -9,13 +10,15 @@ import java.util.List;
  */
 public interface TareaRepositorio {
 
-    public Integer crear(Tarea tarea);
+    Integer crear(Tarea tarea);
 
-    public void eliminar(Tarea tarea);
+    void eliminar(Tarea tarea);
 
-    public Integer actualizar(Tarea tarea);
+    Integer actualizar(Tarea tarea);
 
-    public Tarea buscarPorId(Integer id);
+    Tarea buscarPorId(Integer id);
 
-    public List<Tarea> obtenerTodos();
+    List<Tarea> obtenerTodos();
+
+    List<Tarea> obtenerPorProyecto(ColaboradorProyecto colaboradorProyecto);
 }
