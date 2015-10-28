@@ -55,6 +55,9 @@
 							<div class="caption">
 								<i class="fa fa-bell-o"></i>Mis Proyectos
 							</div>
+							<div>
+							<h1>${idd}</h1>
+							</div>
 							<div class="tools">
 								<a href="javascript:;" class="collapse">
 								</a>

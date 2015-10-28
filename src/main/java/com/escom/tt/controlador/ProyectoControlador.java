@@ -4,10 +4,14 @@ import com.escom.tt.modelo.*;
 import com.escom.tt.repositorio.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.validation.Valid;
 
@@ -37,6 +41,11 @@ public class ProyectoControlador {
 
     @Autowired
     private InvitacionRepositorio invitacionRepositorio;
+    
+    @Autowired    
+    private BusquedaRepositorio busquedaRepositorio;
+    
+    
 
     @Autowired
     private TareaRepositorio tareaRepositorio;
@@ -44,7 +53,10 @@ public class ProyectoControlador {
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.GET)
     public String crear(Principal principal, Model modelo){
-
+    	Usuario coordinador =  null;
+    	String email=principal.getName();
+    	coordinador = busquedaRepositorio.buscarPorEmail(email);
+    	modelo.addAttribute("coordinadorX",coordinador.getIdUsuarios());
         modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
         modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
         modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
@@ -55,9 +67,14 @@ public class ProyectoControlador {
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.POST)
     public String crear(@ModelAttribute("proyecto") @Valid Proyecto proyecto, BindingResult validacion, Model modelo, Principal principal) {
-        String ruta = null;
+        String ruta = null;    	
+        
 
         if (validacion.hasErrors()){
+        	List<ObjectError> error= validacion.getAllErrors();
+        	for (ObjectError objectError : error) {
+				System.out.println(objectError);
+			}
             modelo.addAttribute("proyecto", proyecto);
             modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
             modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
@@ -66,8 +83,9 @@ public class ProyectoControlador {
 
             ruta = "proyecto/proyecto-crear";
         }else{
-            Integer id = proyectoRepositorio.crear(proyecto);
-            modelo.addAttribute("nombre",principal.getName());
+
+        	proyectoRepositorio.crear(proyecto);
+
             ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()+ "/?creado=true";
         }
         return ruta;
@@ -95,14 +113,21 @@ public class ProyectoControlador {
 
     @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/editar", method = RequestMethod.GET)
     public String actualizar(@PathVariable Integer proyectoId,Model modelo, Principal principal) {
-        Proyecto proyecto = null;
+    	Usuario coordinador =  null;
+    	String email=principal.getName();
+    	coordinador = busquedaRepositorio.buscarPorEmail(email);
+    	modelo.addAttribute("coordinadorX",coordinador.getIdUsuarios());
+        
+    	Proyecto proyecto = null;
         String ruta = null;
         proyecto = proyectoRepositorio.buscarPorId(proyectoId);
-
+        proyecto.setCoordinador(coordinador);
         if (proyecto != null) {
             modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
             modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
-            modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
+            modelo.addAttribute("coordinadorId",coordinador.getIdUsuarios());            
+//            modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
+            
             modelo.addAttribute("proyecto", proyecto);
             modelo.addAttribute("nombre",principal.getName());
             ruta = "proyecto/proyecto-editar";
@@ -123,7 +148,10 @@ public class ProyectoControlador {
             modelo.addAttribute("proyecto", proyecto);
             modelo.addAttribute("actualizado", actualizado);
             modelo.addAttribute("creado", creado);
-            modelo.addAttribute("nombre",principal.getName());            
+            modelo.addAttribute("nombre",principal.getName());
+        	modelo.addAttribute("proyecto",proyecto);
+            modelo.addAttribute("nombre",principal.getName());
+
             ruta = "proyecto/proyecto-ver";
         }else
             ruta = "redirect:/proyecto";
@@ -149,14 +177,23 @@ public class ProyectoControlador {
 
     @RequestMapping(value="/proyecto")
     public String verTodos(Model modelo,Boolean eliminado, Principal principal) {
+    	
+    	
+    	String email= principal.getName();
+    	
+    	List<Proyecto> proyectosDeCoordinador = null;
+    	Usuario usuarioTemp=busquedaRepositorio.buscarPorEmail(email);
+    	proyectosDeCoordinador=busquedaRepositorio.buscarPorCoordinador(usuarioTemp);
+    	
+        //List<Proyecto> proyectoList = null;
+        //proyectoList = proyectoRepositorio.obtenerTodos();
 
-        List<Proyecto> proyectoList = null;
-
-        proyectoList = proyectoRepositorio.obtenerTodos();
-
-        modelo.addAttribute("proyectosList", proyectoList);
+        modelo.addAttribute("proyectosList", proyectosDeCoordinador);
         modelo.addAttribute("eliminado", eliminado);
         modelo.addAttribute("nombre",principal.getName());
+        modelo.addAttribute("idd",email);
+        
+        
         return "proyecto/proyecto-todos";
     }
 

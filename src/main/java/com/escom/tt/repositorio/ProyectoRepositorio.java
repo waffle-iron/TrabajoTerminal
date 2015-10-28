@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface ProyectoRepositorio {
     Integer crear(Proyecto proyecto);
-
+    
     void eliminar(Proyecto proyecto);
 
     Integer actualizar(Proyecto proyecto);
@@ -25,4 +25,5 @@ public interface ProyectoRepositorio {
     List<Proyecto> buscarPorCoordinador(Usuario coordinador);
 
     ColaboradorProyecto getColaborador(ColaboradorProyecto colaboradorProyecto);
+    List<Proyecto> buscarPorProyecto(String proyectoUsuario);
 }

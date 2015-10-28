@@ -53,6 +53,7 @@
                         <h1 class="text-success"><strong>Se ha creado un nuevo proyecto</strong></h1>
 					</c:if>
 					
+					
 				
 					<div class="col-md-8 col-md-offset-2">
 						<div class="portlet blue-hoki box">

@@ -43,6 +43,7 @@
             <!-- END PAGE HEADER-->
 
             <!-- BEGIN PAGE CONTENT-->
+            	
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <!-- BEGIN VALIDATION STATES-->
@@ -59,7 +60,6 @@
                             <form:form action="${urlproyectoGuardar}" method="post" commandName="proyecto"
                                        cssClass="form-horizontal">
                                 <div class="form-body">
-
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Nombre
                                             <span class="required"> * </span>
@@ -73,7 +73,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Descripción
                                             <span class="required"> * </span>
@@ -87,12 +86,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Fecha Inicio
                                             <span class="required"> * </span>
                                         </label>
-
                                         <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:input path="fechaInicio" cssClass="form-control" type="date"/>
@@ -101,7 +98,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Fecha Fin
                                             <span class="required"> * </span>
@@ -115,12 +111,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Avance
                                             <span class="required"> * </span>
                                         </label>
-
                                         <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:input path="avance" cssClass="form-control"/>
@@ -129,7 +123,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Tipo de proyecto
                                             <span class="required"> * </span>
@@ -147,12 +140,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Estado de proyecto
                                             <span class="required"> * </span>
                                         </label>
-
                                         <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:select path="estado.idEstado" cssClass="form-control">
@@ -165,25 +156,35 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Coordinador
-                                            <span class="required"> * </span>
-                                        </label>
-
+<!--                                     <div class="form-group"> -->
+<!--                                         <label class="control-label col-md-3">Coordinador -->
+<!--                                             <span class="required"> * </span> -->
+<!--                                         </label> -->
+<!--                                         <div class="col-md-7"> -->
+<!--                                             <div class="input-icon right"> -->
+<%--                                                 <form:select path="coordinador.idUsuarios" cssClass="form-control"> --%>
+<%--                                                     <form:option value="" label="Selecciona una opción"/> --%>
+<%--                                                     <form:options items="${cordinadorList}" itemValue="idUsuarios" --%>
+<%--                                                                itemLabel="nombreUsuario"/> --%>
+<%--                                               </form:select> --%>
+<%--                                                 <form:errors path="coordinador" element="span"  --%>
+<%--                                                              cssClass="help-block text-danger"/>  --%>
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+                                    <div class="form-group" >
+<!--                                         <label class="control-label col-md-3">Coordinador -->
+<!--                                             <span class="required"> * </span> -->
+<!--                                         </label> -->
                                         <div class="col-md-7">
                                             <div class="input-icon right">
-                                                <form:select path="coordinador.idUsuarios" cssClass="form-control">
-                                                    <form:option value="" label="Selecciona una opción"/>
-                                                    <form:options items="${cordinadorList}" itemValue="idUsuarios"
-                                                                  itemLabel="nombreUsuario"/>
-                                                </form:select>
+                                                <form:input path="coordinador.idUsuarios"  value="${coordinadorX}" type="hidden"/>
                                                 <form:errors path="coordinador" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-                                    </div>
-
+                                    </div>	
+									
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">

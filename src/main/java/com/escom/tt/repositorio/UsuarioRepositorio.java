@@ -17,7 +17,7 @@ public interface UsuarioRepositorio {
 	public abstract Usuario buscarPorId(Integer id);
 
 	public abstract List<Usuario> obtenerTodos();
-
+	List<Usuario> buscarPorUsuario(String cadena);
 	Usuario buscarPorCorreo(String correo);
 
 	Usuario buscarPorCorreoORNombreUsuario(String correoUsuario);

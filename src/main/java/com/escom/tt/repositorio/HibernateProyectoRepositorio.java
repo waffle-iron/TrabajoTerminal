@@ -5,6 +5,8 @@ import com.escom.tt.modelo.Proyecto;
 
 import com.escom.tt.modelo.Usuario;
 import org.hibernate.Criteria;
+
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -87,5 +89,19 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
 		System.out.println("termino consulta de proyectos");
 		return proyectos;
 	}
+
+    @Override
+	public List<Proyecto>  buscarPorProyecto(String cadena) {
+		List<Proyecto> proyectos = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Proyecto.class);
+		criteria.add(Restrictions.or(
+				Restrictions.like("nombre", "%"+ cadena + "%"),
+				Restrictions.like("descripcion",  "%"+ cadena + "%")));
+		proyectos = criteria.list();
+		return proyectos;
+	}
+
+	
 
 }
