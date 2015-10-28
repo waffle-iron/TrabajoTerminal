@@ -310,6 +310,32 @@ public class ProyectoControlador {
 
         return "redirect:/proyecto/invitar?error=" + error;
     }
+    
+    @RequestMapping(value="/proyecto/propio/{usuarioId:[0-9]+}", method = RequestMethod.GET)
+    public String consultarProyectoPropio(@PathVariable Integer usuarioId, Model modelo, Boolean actualizado, Boolean creado, Principal principal) {
+        String ruta = null;
+    	Usuario usuario = null;
+    	String nombre = principal.getName();
+        Proyecto proyecto= null;
+        String mensaje = null;
+
+        usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+        proyecto = proyectoRepositorio.buscarPorId(usuarioId);
+        
+        
+        if(proyecto.getCoordinador().getEmail().equals(usuario.getEmail())){
+        	
+        	
+        	modelo.addAttribute("proyecto", proyecto);
+        	ruta = "proyecto/proyecto-propio";
+        }else{
+        	ruta = "redirect:/";
+        }
+        
+        
+        return ruta;
+    }
+
     @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/tareas-asignadas", method = RequestMethod.GET)
     public String tareasAsignadas(@PathVariable Integer proyectoId, Model modelo, Principal principal) {
         List<Tarea> tareaList = null;

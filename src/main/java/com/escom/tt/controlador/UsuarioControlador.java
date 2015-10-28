@@ -22,8 +22,6 @@ import com.escom.tt.repositorio.GradoRepositorio;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
 
-
-
 @Controller
 public class UsuarioControlador {
 
@@ -35,46 +33,50 @@ public class UsuarioControlador {
 
 	@Autowired
 	private GradoRepositorio gradoRepositorio;
-	
+
 	@Autowired
 	private ProyectoRepositorio proyectoRepositorio;
 
-	@RequestMapping(value="/registro", method = RequestMethod.GET)
-	public String registrarse(Model modelo){
+	@RequestMapping(value = "/registro", method = RequestMethod.GET)
+	public String registrarse(Model modelo) {
 
 		modelo.addAttribute("usuario", new Usuario());
 		modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
 		modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
 		return "registro";
 	}
-	@RequestMapping(value="/usuario/crear", method = RequestMethod.GET)
-	public String crear(Model modelo){
+
+	@RequestMapping(value = "/usuario/crear", method = RequestMethod.GET)
+	public String crear(Model modelo) {
 
 		modelo.addAttribute("usuario", new Usuario());
 		modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
 		modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
 		return "usuario/usuario-crear";
 	}
-	@RequestMapping(value="/usuario/crear", method = RequestMethod.POST)
-	public String crear(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult validacion, Model modelo) {
+
+	@RequestMapping(value = "/usuario/crear", method = RequestMethod.POST)
+	public String crear(@ModelAttribute("usuario") @Valid Usuario usuario,
+			BindingResult validacion, Model modelo) {
 		String ruta = null;
-		
-		if (validacion.hasErrors()){
+
+		if (validacion.hasErrors()) {
 			System.err.println(validacion.getAllErrors());
 			modelo.addAttribute("usuario", usuario);
-			modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
+			modelo.addAttribute("escuelaList",
+					escuelaRepositorio.obtenerTodos());
 			modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
 			ruta = "registro";
-		}else{
+		} else {
 			usuario.setEvaluacion(10);
 			usuario.setActivo(true);
 			usuario.setRol("ROLE_ADMIN");
 
 			/*
-			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			String encript = passwordEncoder.encode("123");
-			usuario.setPassword(encript);
-			*/
+			 * BCryptPasswordEncoder passwordEncoder = new
+			 * BCryptPasswordEncoder(); String encript =
+			 * passwordEncoder.encode("123"); usuario.setPassword(encript);
+			 */
 
 			Integer id = usuarioRepositorio.crearUsuario(usuario);
 			System.err.println("NO HUBO ERRORES");
@@ -83,41 +85,48 @@ public class UsuarioControlador {
 		return ruta;
 	}
 
-	@RequestMapping(value="/usuario/guardarCambios", method = RequestMethod.POST)
-	public String actualizar(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult validacion, Model modelo) {
+	@RequestMapping(value = "/usuario/guardarCambios", method = RequestMethod.POST)
+	public String actualizar(@ModelAttribute("usuario") @Valid Usuario usuario,
+			BindingResult validacion, Model modelo) {
 		String ruta = null;
+		usuario.setRol("ROLE_ADMIN");
+		usuario.setIdiomas(null);
 
-		if (validacion.hasErrors()){
+		if (validacion.hasErrors()) {
 			modelo.addAttribute("usuario", usuario);
 			ruta = "usuario/usuario-editar";
-		}else{
+		} else {
 			Integer id = usuarioRepositorio.actualizarUsuario(usuario);
-			ruta = "redirect:/usuario/ver/" + usuario.getIdUsuarios() + "/?actualizado=true";
+			ruta = "redirect:/usuario/ver/" + usuario.getIdUsuarios()
+					+ "/?actualizado=true";
 		}
 		return ruta;
 	}
-	@RequestMapping(value="/usuario/{usuarioId:[0-9]+}/editar", method = RequestMethod.GET)
-	public String actualizar(@PathVariable Integer usuarioId,Model modelo) {
+
+	@RequestMapping(value = "/usuario/{usuarioId:[0-9]+}/editar", method = RequestMethod.GET)
+	public String actualizar(Principal principal, @PathVariable Integer usuarioId, Model modelo) {
 		Usuario usuario = null;
 		String ruta = null;
 		usuario = usuarioRepositorio.buscarPorId(usuarioId);
 
-		if (usuario != null) {
+		if (usuario != null && usuario.getEmail().equals(principal.getName())) {
 			modelo.addAttribute("usuario", usuario);
-			modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
+			modelo.addAttribute("escuelaList",
+					escuelaRepositorio.obtenerTodos());
 			modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
-			
+
 			ruta = "usuario/usuario-editar";
-		}
-		else
+		} else
 			ruta = "redirect:/usuario";
 
 		return ruta;
 	}
-	@RequestMapping(value="/usuario/ver/{usuarioId:[0-9]+}")
-	public String ver(@PathVariable Integer usuarioId, Model modelo, Boolean actualizado, Boolean creado) {
+
+	@RequestMapping(value = "/usuario/ver/{usuarioId:[0-9]+}")
+	public String ver(@PathVariable Integer usuarioId, Model modelo,
+			Boolean actualizado, Boolean creado) {
 		String ruta = null;
-		Usuario usuario= null;
+		Usuario usuario = null;
 
 		usuario = usuarioRepositorio.buscarPorId(usuarioId);
 		if (usuario != null) {
@@ -125,19 +134,22 @@ public class UsuarioControlador {
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
 			ruta = "usuario/usuario-ver";
-		}else
+		} else
 			ruta = "redirect:/usuario";
 
 		return ruta;
 	}
-	@RequestMapping(value="/usuario/eliminar/{usuarioId:[0-9]+}")
+
+	@RequestMapping(value = "/usuario/eliminar/{usuarioId:[0-9]+}")
 	public String eliminar(@PathVariable Integer usuarioId, Model modelo) {
 
-		usuarioRepositorio.eliminarUsuario(usuarioRepositorio.buscarPorId(usuarioId));
+		usuarioRepositorio.eliminarUsuario(usuarioRepositorio
+				.buscarPorId(usuarioId));
 		modelo.addAttribute("mensaje", "Se ha eliminado el usuario");
 		return "usuario/usuario-eliminar";
 	}
-	@RequestMapping(value="/usuario")
+
+	@RequestMapping(value = "/usuario")
 	public String verTodos(Model modelo) {
 
 		List<Usuario> usuarioList = null;
@@ -148,22 +160,36 @@ public class UsuarioControlador {
 
 		return "usuario/usuario-todos";
 	}
-	
-	@RequestMapping(value="/usuario/perfil")
-	public String verMiPerfil(Principal principal, Model modelo, Boolean actualizado, Boolean creado) {
+
+	@RequestMapping(value = "/usuario/perfil")
+	public String verMiPerfil(Principal principal, Model modelo,
+			Boolean actualizado, Boolean creado) {
 		String ruta = null;
-		Usuario usuario= null;
-		String nombre = principal.getName();
-		System.out.println(nombre);
+		Usuario usuario = null;
+		String nombre = null;
+		if (principal!= null){
+			
 		
-		List<Proyecto> proyectos=null;
+		nombre = principal.getName();
+		
+		}
+		System.out.println(nombre);
+
+		List<Proyecto> proyectos = null;
 
 		System.err.println(principal);
-		// así logramos traer la información del usuario que está en la sesión
-		usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
-		proyectos = proyectoRepositorio.buscarPorCoordinador(usuario);
-		System.out.println(proyectos);
 
+		if (nombre != null) {
+			// así logramos traer la información del usuario que está en la
+			// sesión
+			usuario = usuarioRepositorio.buscarPorCorreo(nombre);
+			proyectos = proyectoRepositorio.buscarPorCoordinador(usuario);
+			System.out.println(proyectos);
+		}
+
+		else {
+			ruta = "redirect:/";
+		}
 		System.out.println(usuario);
 		if (usuario != null) {
 			modelo.addAttribute("usuario", usuario);
@@ -171,14 +197,10 @@ public class UsuarioControlador {
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
 			ruta = "usuario/usuario-perfil";
-		}else
+		} else
 			ruta = "redirect:/usuario";
 
 		return ruta;
 	}
-	
 
-	
-
-	
 }
