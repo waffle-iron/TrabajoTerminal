@@ -41,7 +41,6 @@ public class HibernateUsuarioRepositorio implements UsuarioRepositorio {
 		criteria.add(Restrictions.or(Restrictions.eq("email", correoUsuario), Restrictions.eq("nombreUsuario", correoUsuario)));
 		usuario = (Usuario)criteria.uniqueResult();
 		return usuario;
-		return usuario.getIdUsuarios();
 	}
 
 	@Override
