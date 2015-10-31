@@ -348,24 +348,28 @@ public class ProyectoControlador {
         return "redirect:/proyecto/invitar?error=" + error;
     }
     
-    @RequestMapping(value="/proyecto/propio/{usuarioId:[0-9]+}", method = RequestMethod.GET)
-    public String consultarProyectoPropio(@PathVariable Integer usuarioId, Model modelo, Boolean actualizado, Boolean creado, Principal principal) {
-        String ruta = null;
+    @RequestMapping(value="/proyecto/propio/{proyectoId:[0-9]+}", method = RequestMethod.GET)
+    public String consultarProyectoPropio(@PathVariable Integer proyectoId, Model modelo, Boolean actualizado, Boolean creado, Principal principal) {
+        
+    	
+    	String ruta = null;
     	Usuario usuario = null;
     	String nombre = principal.getName();
         Proyecto proyecto= null;
         String mensaje = null;
-
+        
         usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
-        proyecto = proyectoRepositorio.buscarPorId(usuarioId);
+        proyecto = proyectoRepositorio.buscarPorId(proyectoId);
         
-        
+       
+        if(proyecto != null){
+       
         if(proyecto.getCoordinador().getEmail().equals(usuario.getEmail())){
         	
         	
         	modelo.addAttribute("proyecto", proyecto);
         	ruta = "proyecto/proyecto-propio";
-        }else{
+        }}else{
         	ruta = "redirect:/";
         }
         
