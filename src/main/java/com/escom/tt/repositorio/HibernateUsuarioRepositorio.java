@@ -87,5 +87,6 @@ public class HibernateUsuarioRepositorio implements UsuarioRepositorio {
 		usuarios =  criteria.list();
 		return usuarios;
 	}
+	//--
 
 }
