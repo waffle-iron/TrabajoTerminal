@@ -1,7 +1,10 @@
 package com.escom.tt.controlador;
 
+import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Invitacion;
+import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.InvitacionRepositorio;
+import com.escom.tt.repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -22,6 +26,9 @@ public class InvitacionControlador {
 
     @Autowired
     private InvitacionRepositorio invitacionRepositorio;
+
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
 
     @RequestMapping(value="/invitacion/crear", method = RequestMethod.GET)
@@ -123,4 +130,13 @@ public class InvitacionControlador {
         return "invitacion/invitacion-todos";
     }
 
+    @RequestMapping(value="/mis-invitaciones")
+    public String misInvitaciones(Principal principal, Model model) {
+        List<Invitacion> invitacionList = null;
+        ColaboradorProyecto colaboradorProyecto = null;
+        colaboradorProyecto = new ColaboradorProyecto(usuarioRepositorio.buscarPorCorreo(principal.getName()));
+        invitacionList = invitacionRepositorio.obtenerPorUsuario(colaboradorProyecto);
+        model.addAttribute("invitaciones", invitacionList);
+        return "invitacion/invitacion-propias";
+    }
 }
