@@ -181,6 +181,10 @@
                                         <th>
                                             Asignar Tarea
                                         </th>
+                                        
+                                        <th>
+                                            Eliminar Tareea
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -211,6 +215,11 @@
                                             <td>
                                                 <a href="${contexto}proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs purple">
                                                     <i class="fa fa-edit"></i> Asignar </a>
+                                            </td>        
+                                            <td>        
+                                              <a href="${contexto}/proyecto/eliminarColaborador/${proyecto.idProyecto}/${colaborador.usuario.idUsuarios}" class="btn default btn-xs black">
+											  <i class="fa fa-trash-o"></i> Delete </a>
+                                                    
                                             </td>
                                         </tr>
                                     </c:forEach>

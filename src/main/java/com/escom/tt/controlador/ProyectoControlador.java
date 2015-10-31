@@ -357,7 +357,7 @@ public class ProyectoControlador {
     	String nombre = principal.getName();
         Proyecto proyecto= null;
         String mensaje = null;
-        
+       
         usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
         proyecto = proyectoRepositorio.buscarPorId(proyectoId);
         
@@ -388,4 +388,39 @@ public class ProyectoControlador {
         modelo.addAttribute("tareasList", tareaList);
         return "proyecto/proyecto-tareas";
     }
+    
+    @RequestMapping(value="/proyecto/eliminarColaborador/{proyectoId:[0-9]+}/{usuarioId:[0-9]+}")
+    public String eliminarColaborador(@PathVariable Integer proyectoId, @PathVariable Integer usuarioId, Model modelo, Principal principal) {
+        Boolean eliminado = false;
+        Proyecto proyecto = null;
+        Usuario usuario = null;
+        String ruta = null;
+        usuario = usuarioRepositorio.buscarPorId(usuarioId);
+        
+        proyecto = proyectoRepositorio.buscarPorId(proyectoId);
+        
+        
+        if(usuario!=null && proyecto!=null){
+            ColaboradorProyecto colaboradorProyecto = new ColaboradorProyecto(proyecto, usuario);
+            		
+        eliminado = tareaRepositorio.eliminarAsignaciones(colaboradorProyecto);
+        }
+        
+        
+        if (eliminado){
+        	ruta = "redirec:/proyecto/";
+        }else{
+        	ruta = "redirec:/";
+        }
+
+        
+   
+        
+
+        
+
+        return "redirect:/proyecto?eliminado=" + eliminado;
+    }
+
+    
 }

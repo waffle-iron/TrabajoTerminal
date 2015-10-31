@@ -63,4 +63,29 @@ public class HibernateTareaRepositorio implements TareaRepositorio {
         tareas = criteriaPK.list();
         return tareas;
     }
+    @Override
+    public boolean eliminarAsignaciones(ColaboradorProyecto colaboradorProyecto){
+    	List<Tarea> tareas = null;
+    	boolean eliminado = false; 
+        Session session = sf.getCurrentSession();
+        Criteria criteria = session.createCriteria(Tarea.class);
+        
+        criteria.add(Restrictions.and(
+        		Restrictions.eq("colaboradorProyecto", colaboradorProyecto)));
+        
+        tareas= criteria.list();
+        
+        for (Tarea tarea : tareas) {
+			session.delete(tarea);
+		}
+                
+        
+        
+        eliminado = true;
+        
+        
+        
+        return eliminado;
+    }
+    
 }
