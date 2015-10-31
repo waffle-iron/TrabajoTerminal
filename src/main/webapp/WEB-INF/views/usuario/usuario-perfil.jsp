@@ -177,7 +177,7 @@
 													<c:forEach items="${proyectos}" var="proyecto" varStatus="loop">
 													<tr>
 														<td>
-														<a href="${contexto}proyecto/propio/${proyecto.idProyecto}">${loop.index + 1}</a>
+														<a href="${contexto}/proyecto/propio/${proyecto.idProyecto}">${loop.index + 1}</a>
 														</td>
 														<td>${proyecto.nombre}</td>
 														<td>${proyecto.descripcion}</td>
