@@ -392,6 +392,8 @@ public class ProyectoControlador {
     @RequestMapping(value="/proyecto/eliminarColaborador/{proyectoId:[0-9]+}/{usuarioId:[0-9]+}")
     public String eliminarColaborador(@PathVariable Integer proyectoId, @PathVariable Integer usuarioId, Model modelo, Principal principal) {
         Boolean eliminado = false;
+        Boolean eliminadoTarea = false;
+        Boolean eliminadoInvitacion = false;
         Proyecto proyecto = null;
         Usuario usuario = null;
         String ruta = null;
@@ -403,11 +405,12 @@ public class ProyectoControlador {
         if(usuario!=null && proyecto!=null){
             ColaboradorProyecto colaboradorProyecto = new ColaboradorProyecto(proyecto, usuario);
             		
-        eliminado = tareaRepositorio.eliminarAsignaciones(colaboradorProyecto);
+            eliminadoTarea = tareaRepositorio.eliminarAsignaciones(colaboradorProyecto);
+            eliminadoInvitacion = invitacionRepositorio.eliminarColaboradorProyecto(colaboradorProyecto);
         }
         
-        
-        if (eliminado){
+        eliminado = true;
+        if (eliminadoTarea && eliminadoTarea){
         	ruta = "redirec:/proyecto/";
         }else{
         	ruta = "redirec:/";
