@@ -19,5 +19,5 @@ public interface InvitacionRepositorio {
 
     List<Invitacion> obtenerTodos();
     
-    boolean eliminarColaboradorProyecto(ColaboradorProyecto colaboradorProyecto);
+    boolean eliminarInvitacionColaborador(ColaboradorProyecto colaboradorProyecto);
 }

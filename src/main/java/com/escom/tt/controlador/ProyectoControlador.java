@@ -394,6 +394,7 @@ public class ProyectoControlador {
         Boolean eliminado = false;
         Boolean eliminadoTarea = false;
         Boolean eliminadoInvitacion = false;
+        Boolean eliminadoColaboracion = false;
         Proyecto proyecto = null;
         Usuario usuario = null;
         String ruta = null;
@@ -406,11 +407,12 @@ public class ProyectoControlador {
             ColaboradorProyecto colaboradorProyecto = new ColaboradorProyecto(proyecto, usuario);
             		
             eliminadoTarea = tareaRepositorio.eliminarAsignaciones(colaboradorProyecto);
-            eliminadoInvitacion = invitacionRepositorio.eliminarColaboradorProyecto(colaboradorProyecto);
+            eliminadoInvitacion = invitacionRepositorio.eliminarInvitacionColaborador(colaboradorProyecto);
+            eliminadoColaboracion = proyectoRepositorio.eliminarInvitacionColaborador(colaboradorProyecto);
         }
         
         eliminado = true;
-        if (eliminadoTarea && eliminadoTarea){
+        if (eliminadoTarea && eliminadoTarea && eliminadoColaboracion){
         	ruta = "redirec:/proyecto/";
         }else{
         	ruta = "redirec:/";

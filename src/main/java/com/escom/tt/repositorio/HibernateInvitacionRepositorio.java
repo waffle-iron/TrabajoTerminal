@@ -58,7 +58,7 @@ public class HibernateInvitacionRepositorio implements InvitacionRepositorio {
 	}
 
 	@Override
-	public boolean eliminarColaboradorProyecto(
+	public boolean eliminarInvitacionColaborador(
 			ColaboradorProyecto colaboradorProyecto) {
 		Invitacion invitacion = null;
 		boolean eliminado = false;

@@ -26,4 +26,7 @@ public interface ProyectoRepositorio {
 
     ColaboradorProyecto getColaborador(ColaboradorProyecto colaboradorProyecto);
     List<Proyecto> buscarPorProyecto(String proyectoUsuario);
+    
+     boolean eliminarInvitacionColaborador(
+			ColaboradorProyecto colaboradorProyecto);
 }
