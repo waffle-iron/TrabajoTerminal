@@ -39,7 +39,7 @@ public class HibernateBusquedaRepositorio implements BusquedaRepositorio {
 		Session session = sf.getCurrentSession();
 		Usuario usuario = null;
 		Criteria criteria1 = session.createCriteria(Usuario.class).add(
-				Restrictions.like("nombres", proyectoUsuario));
+				Restrictions.like("nombres", proyectoUsuario)); 
 		usuario = (Usuario) criteria1.uniqueResult();
 
 		Criteria criteria2 = session.createCriteria(Proyecto.class);

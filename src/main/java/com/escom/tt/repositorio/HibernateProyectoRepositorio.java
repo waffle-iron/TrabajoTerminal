@@ -2,8 +2,9 @@ package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Proyecto;
-
+import com.escom.tt.modelo.TipoProyecto;
 import com.escom.tt.modelo.Usuario;
+
 import org.hibernate.Criteria;
 
 
@@ -101,6 +102,24 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
 		proyectos = criteria.list();
 		return proyectos;
 	}
+
+	@Override
+	public List<Proyecto> buscaTipoProyectoUsuario(int tipoProyecto,	Usuario usu) {
+		List<Proyecto> proyectos = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Proyecto.class);
+		criteria.add(Restrictions.and(
+				Restrictions.eq("tipoProyecto.idTipoProyecto", tipoProyecto),
+				Restrictions.eq("coordinador",  usu)));
+		proyectos = criteria.list();
+		return proyectos;
+		
+	}
+
+	
+    
+    
+    
 
 	
 
