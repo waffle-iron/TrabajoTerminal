@@ -69,10 +69,18 @@ public class InvitacionControlador {
     }
 
     @RequestMapping(value="/invitacion/{invitacionId:[0-9]+}/editar", method = RequestMethod.GET)
-    public String actualizar(@PathVariable Integer invitacionId,Model modelo) {
+    public String actualizar(@PathVariable Integer invitacionId,Model modelo, Principal principal) {
         Invitacion invitacion = null;
         String ruta = null;
-        invitacion = invitacionRepositorio.buscarPorId(invitacionId);
+        Usuario usuario = null;
+
+        usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+
+        if (usuario != null){
+            invitacion = invitacionRepositorio.buscarPorId(invitacionId);
+        }else{
+            ruta = "redirect:/";
+        }
 
         if (invitacion != null) {
             modelo.addAttribute("invitacion", invitacion);

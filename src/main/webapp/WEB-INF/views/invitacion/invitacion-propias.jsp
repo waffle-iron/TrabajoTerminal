@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -45,16 +45,14 @@
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
                 <p>${invitaciones == null ? 'No tienes invitaciones' : ''}</p>
-					<pre>
-                        ${invitaciones}
-                    </pre>
+
                 <div class="col-md-12">
                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
                     <div class="portlet light bordered">
                         <div class="portlet-title">
                             <div class="caption font-dark">
                                 <i class="icon-settings font-dark"></i>
-                                <span class="caption-subject bold uppercase"> Managed Table</span>
+                                <span class="caption-subject bold uppercase"> Mis Invitaciones</span>
                             </div>
                             <div class="actions">
                                 <div class="btn-group btn-group-devided" data-toggle="buttons">
@@ -106,339 +104,59 @@
                                     <th>
                                         <input type="checkbox" class="group-checkable"
                                                data-set="#sample_1 .checkboxes"/></th>
-                                    <th> Username</th>
-                                    <th> Email</th>
-                                    <th> Points</th>
-                                    <th> Joined</th>
-                                    <th> Status</th>
+                                    <th> Proyecto</th>
+                                    <th>Quien te invita</th>
+                                    <th> Fecha</th>
+                                    <th> Estado</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> shuxer</td>
-                                    <td>
-                                        <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
-                                    </td>
-                                    <td> 120</td>
-                                    <td class="center"> 12 Jan 2012</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> looper</td>
-                                    <td>
-                                        <a href="mailto:looper90@gmail.com"> looper90@gmail.com </a>
-                                    </td>
-                                    <td> 120</td>
-                                    <td class="center"> 12.12.2011</td>
-                                    <td>
-                                        <span class="label label-sm label-warning"> Suspended </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> userwow</td>
-                                    <td>
-                                        <a href="mailto:userwow@yahoo.com"> userwow@yahoo.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 12.12.2012</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> user1wow</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> userwow@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 12.12.2012</td>
-                                    <td>
-                                        <span class="label label-sm label-default"> Blocked </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> restest</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> test@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 12.12.2012</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> foopl</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 19.11.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> weep</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 19.11.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> coop</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 19.11.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> pppol</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 19.11.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> test</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 19.11.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> userwow</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> userwow@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 12.12.2012</td>
-                                    <td>
-                                        <span class="label label-sm label-default"> Blocked </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> test</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> test@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 12.12.2012</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> goop</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 12.11.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> weep</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 15.11.2011</td>
-                                    <td>
-                                        <span class="label label-sm label-default"> Blocked </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> toopl</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 16.11.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> userwow</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> userwow@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 9.12.2012</td>
-                                    <td>
-                                        <span class="label label-sm label-default"> Blocked </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> tes21t</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> test@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 14.12.2012</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> fop</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 13.11.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-warning"> Suspended </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> kop</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 17.11.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> vopl</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 19.11.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> userwow</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> userwow@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 12.12.2012</td>
-                                    <td>
-                                        <span class="label label-sm label-default"> Blocked </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> wap</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> test@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 12.12.2012</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> test</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 19.12.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> toop</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 17.12.2010</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="1"/></td>
-                                    <td> weep</td>
-                                    <td>
-                                        <a href="mailto:userwow@gmail.com"> good@gmail.com </a>
-                                    </td>
-                                    <td> 20</td>
-                                    <td class="center"> 15.11.2011</td>
-                                    <td>
-                                        <span class="label label-sm label-success"> Approved </span>
-                                    </td>
-                                </tr>
+                                <c:forEach items="${invitaciones}" var="invitacion">
+                                    <tr class="odd gradeX">
+                                        <td>
+                                            <input type="checkbox" class="checkboxes" value="1"/>
+                                        </td>
+                                        <td>
+                                            ${invitacion.colaboradorProyecto.proyecto.nombre}
+                                        </td>
+                                        <td>
+                                            ${invitacion.colaboradorProyecto.usuario.nombres} ${invitacion.colaboradorProyecto.usuario.aPaterno}
+                                        </td>
+                                        <td>
+                                            <fmt:formatDate value="${invitacion.fecha}" var="var_fechaInicio" pattern="yyyy-MM-dd" />
+                                            ${var_fechaInicio}
+                                        </td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${invitacion.estado == 1}">
+                                                    <span class="label label-sm label-warning">
+                                                        Pendiente
+                                                    </span>
+                                                </c:when>
+                                                <c:when test="${invitacion.estado == 2}">
+                                                    <span class="label label-sm label-success">
+                                                        Acepptada
+                                                    </span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span class="label label-sm label-info">
+                                                        Rechazada
+                                                    </span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${invitacion.estado == 1}">
+                                                    <a href="${contexto}invitacion/${invitacion.idInvitacion}/editar" class="label label-sm label-default">
+                                                        Mirar
+                                                    </a>
+                                                </c:when>
+                                            </c:choose>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -465,6 +183,7 @@
         Metronic.init(); // init metronic core components
         Layout.init(); // init current layout
         Demo.init(); // init demo features
+        TableAdvanced.init();
     });
 </script>
 
