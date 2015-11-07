@@ -78,8 +78,8 @@
 										<div class="col-md-7">
 											<div class="input-icon right">
 												<form:hidden path="idInvitacion" />
-												<fmt:formatDate value="${fecha}" var="var_fecha" pattern="yyyy-MM-dd" />
-												<form:input path="fecha" cssClass="form-control" type="date" value="${var_fechaInicio}" readonly="true"/>
+												<fmt:formatDate value="${fecha}" var="var_fecha" pattern="dd-MM-yyyy" />
+												<form:input path="fecha" cssClass="form-control" type="text" value="${var_fecha}" readonly="true"/>
 											</div>
 										</div>
 									</div>
@@ -91,9 +91,9 @@
 
 										<div class="col-md-7">
 											<div class="input-icon right">
-												<form:hidden  path="colaboradorProyecto.usuario.idUsuarios" />
-												<form:hidden  path="colaboradorProyecto.proyecto.idProyecto" />
-													${invitacion.colaboradorProyecto.usuario.nombres} ${invitacion.colaboradorProyecto.usuario.aPaterno}
+												<form:hidden path="colaboradorProyecto.proyecto.idProyecto"></form:hidden>
+												<form:hidden path="colaboradorProyecto.usuario.idUsuarios"></form:hidden>
+												<input class="form-control" type="text" readonly value="${invitacion.colaboradorProyecto.usuario.nombres} ${invitacion.colaboradorProyecto.usuario.aPaterno}">
 											</div>
 										</div>
 									</div>

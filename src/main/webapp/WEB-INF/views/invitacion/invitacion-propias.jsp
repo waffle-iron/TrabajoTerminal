@@ -149,7 +149,7 @@
                                         <td>
                                             <c:choose>
                                                 <c:when test="${invitacion.estado == 1}">
-                                                    <a href="${contexto}invitacion/${invitacion.idInvitacion}/editar" class="label label-sm label-default">
+                                                    <a href="${contexto}/invitacion/${invitacion.idInvitacion}/editar" class="label label-sm label-default">
                                                         Mirar
                                                     </a>
                                                 </c:when>

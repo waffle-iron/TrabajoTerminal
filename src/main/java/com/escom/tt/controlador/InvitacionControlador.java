@@ -2,8 +2,10 @@ package com.escom.tt.controlador;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Invitacion;
+import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.InvitacionRepositorio;
+import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,9 @@ public class InvitacionControlador {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
+    @Autowired
+    private ProyectoRepositorio proyectoRepositorio;
+
 
     @RequestMapping(value="/invitacion/crear", method = RequestMethod.GET)
     public String crear(Model modelo){
@@ -55,15 +60,32 @@ public class InvitacionControlador {
 
 
     @RequestMapping(value="/invitacion/guardarCambios", method = RequestMethod.POST)
-    public String actualizar(@ModelAttribute("invitacion") @Valid Invitacion invitacion, BindingResult validacion, Model modelo) {
+    public String actualizar(@ModelAttribute("invitacion") @Valid Invitacion invitacion, BindingResult validacion, Model modelo, Principal principal) {
+
         String ruta = null;
+        Usuario invitado = null;
+        Usuario usuario = null;
+        Proyecto proyecto = null;
+        ColaboradorProyecto colaboradorProyecto = null;
+
+        invitado = usuarioRepositorio.buscarPorCorreo(principal.getName());
 
         if (validacion.hasErrors()){
             modelo.addAttribute("invitacion", invitacion);
-            ruta = "invitacion/invitacion-editar";
+            ruta = "invitacion/"+invitacion.getIdInvitacion()+"/editar";
         }else{
-            Integer id = invitacionRepositorio.actualizar(invitacion);
-            ruta = "redirect:/invitacion/ver/" + invitacion.getIdInvitacion() + "/?actualizado=true";
+
+            proyecto = proyectoRepositorio.buscarPorId(invitacion.getColaboradorProyecto().getProyecto().getIdProyecto());
+            usuario = usuarioRepositorio.buscarPorId(invitacion.getColaboradorProyecto().getUsuario().getIdUsuarios());
+
+            colaboradorProyecto = new ColaboradorProyecto(proyecto, usuario);
+            invitacion.setColaboradorProyecto(colaboradorProyecto);
+
+            if (invitado.getIdUsuarios() == usuario.getIdUsuarios()){
+                invitacionRepositorio.actualizar(invitacion);
+                ruta = "redirect:/mis-invitaciones";
+            }else
+                ruta = "redirect:/";
         }
         return ruta;
     }
@@ -82,12 +104,12 @@ public class InvitacionControlador {
             ruta = "redirect:/";
         }
 
-        if (invitacion != null) {
+        if (invitacion != null && invitacion.getEstado() == 1) {
             modelo.addAttribute("invitacion", invitacion);
             ruta = "invitacion/invitacion-editar";
         }
         else
-            ruta = "redirect:/invitacion";
+            ruta = "redirect:/mis-invitaciones";
 
         return ruta;
     }
