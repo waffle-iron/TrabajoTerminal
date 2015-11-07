@@ -2,13 +2,13 @@ package com.escom.tt.modelo;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.enterprise.inject.Default;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.ws.rs.DefaultValue;
+import javax.validation.Valid;
 
 import java.util.Date;
 import java.util.List;
@@ -27,12 +27,14 @@ public class Proyecto {
     private Integer idProyecto;
 
     @Column(name="nombre")
-    @NotNull(message = "El nombre debe ser obligatorio")
+    @NotNull
+    @NotEmpty(message = "El campo nombre no puede estar vacio")
     @Size(max = 45, message="El nombre sólo debe tener un máximo de {1} caracteres")
     private String nombre;
 
     @Column(name="descripcion")
-    @NotNull(message = "El descripcion debe ser obligatorio")
+    @NotNull(message = "La descripcion debe ser obligatorio")
+    @NotEmpty(message = "El campo descripción no puede estar vacio")
     private String descripcion;
 
     @Column(name="fechaInicio")

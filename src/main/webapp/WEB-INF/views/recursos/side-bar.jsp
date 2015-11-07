@@ -42,11 +42,11 @@
 
 
 			<li class="${( ruta == contextopalabra_clave
-<%--                         || ruta == contextopalabra_clavecrear) ?  'active' : ' '}"> --%>
+                        || ruta == contextopalabra_clavecrear) ?  'active' : ' '}"> 
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Palabra_clave</span> <span
                     class="arrow ${( ruta == contextopalabra_clave
-<%--                                   || ruta == contextopalabra_clavecrear) ?  'open text-success' : ' '}"></span> --%>
+                                 || ruta == contextopalabra_clavecrear) ?  'open text-success' : ' '}"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextopalabra_clave) ?  'open' : ' '}">
@@ -64,11 +64,11 @@
 
 
 			<li class="${( ruta == contextoestado
-<%--                         || ruta == contextoestadocrear) ?  'active' : ' '}"> --%>
+                       || ruta == contextoestadocrear) ?  'active' : ' '}">
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Estado</span> <span
                     class="arrow ${( ruta == contextoestado
-<%--                                   || ruta == contextoestadocrear) ?  'open text-success' : ' '}"></span> --%>
+                                  || ruta == contextoestadocrear) ?  'open text-success' : ' '}"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextoestado) ?  'open' : ' '}">
@@ -86,11 +86,11 @@
 
 
 			<li class="${( ruta == contextoidioma
-<%--                         || ruta == contextoidiomacrear) ?  'active' : ' '}"> --%>
+                         || ruta == contextoidiomacrear) ?  'active' : ' '}"> 
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Idioma</span> <span
                     class="arrow ${( ruta == contextoidioma
-<%--                                   || ruta == contextoidiomacrear) ?  'open text-success' : ' '}"></span> --%>
+                                   || ruta == contextoidiomacrear) ?  'open text-success' : ' '}"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextoidioma) ?  'open' : ' '}">
@@ -127,11 +127,11 @@
             </li>
 
             <li class="${( ruta == contextotipoproyecto
-<%--                         || ruta == contextotipoproyectocrear) ?  'active' : ' '}"> --%>
+                         || ruta == contextotipoproyectocrear) ?  'active' : ' '}"> 
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Tipo Proyecto</span> <span
                     class="arrow ${( ruta == contextotipoproyecto
-<%--                                   || ruta == contextotipoproyectocrear) ?  'open text-success' : ' '}"></span> --%>
+                                   || ruta == contextotipoproyectocrear) ?  'open text-success' : ' '}"></span> 
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextotipoproyecto) ?  'open' : ' '}">
@@ -148,11 +148,11 @@
             </li>
 
             <li class="${( ruta == contextoarea
-<%--                         || ruta == contextoareacrear ) ?  'active' : ' '}"> --%>
+                         || ruta == contextoareacrear ) ?  'active' : ' '}"> 
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Area</span> <span
                     class="arrow ${( ruta == contextoarea
-<%--                                   || ruta == contextoareacrear) ?  'open text-success' : ' '}"></span> --%>
+                                   || ruta == contextoareacrear) ?  'open text-success' : ' '}"></span> 
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextoarea) ?  'open' : ' '}">
@@ -169,11 +169,11 @@
             </li>
 
 			<li class="${( ruta == contextocorreo
-<%--                         || ruta == contextocorreocrear ) ?  'active' : ' '}"> --%>
+                         || ruta == contextocorreocrear ) ?  'active' : ' '}"> 
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Correo</span> <span
                     class="arrow ${( ruta == contextocorreo
-<%--                                   || ruta == contextocorreocrear) ?  'open text-success' : ' '}"></span> --%>
+                                  || ruta == contextocorreocrear) ?  'open text-success' : ' '}"></span> 
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextocorreo) ?  'open' : ' '}">
@@ -190,11 +190,11 @@
             </li>
             
             <li class="${( ruta == contextodireccion
-<%--                         || ruta == contextodireccioncrear ) ?  'active' : ' '}"> --%>
+                         || ruta == contextodireccioncrear ) ?  'active' : ' '}"> 
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Direcci�n</span> <span
                     class="arrow ${( ruta == contextodireccion
-<%--                                   || ruta == contextodireccioncrear) ?  'open text-success' : ' '}"></span> --%>
+                                   || ruta == contextodireccioncrear) ?  'open text-success' : ' '}"></span> 
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextodireccion) ?  'open' : ' '}">
@@ -211,11 +211,11 @@
             </li>
             
             <li class="${( ruta == contextoescuela
-<%--                         || ruta == contextoescuelacrear ) ?  'active' : ' '}"> --%>
+                         || ruta == contextoescuelacrear ) ?  'active' : ' '}"> 
                 <a href="javascript:;"> <i
                     class="icon-rocket"></i> <span class="title">Escuela</span> <span
                     class="arrow ${( ruta == contextoescuela
-<%--                                   || ruta == contextoescuelacrear) ?  'open text-success' : ' '}"></span> --%>
+                                   || ruta == contextoescuelacrear) ?  'open text-success' : ' '}"></span> 
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextoescuela) ?  'open' : ' '}">
@@ -231,26 +231,26 @@
                 </ul>
             </li>
             
-            <li class="${( ruta == contextogrado
-<%--                         || ruta == contextogradocrear ) ?  'active' : ' '}"> --%>
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Grado</span> <span
-                    class="arrow ${( ruta == contextogrado
-<%--                                   || ruta == contextogradocrear) ?  'open text-success' : ' '}"></span> --%>
-                </a>
-                <ul class="sub-menu">
-                    <li class="${( ruta == contextogrado) ?  'open' : ' '}">
-                        <a href="${contexto}/grado">
-                            Ver todos
-                        </a>
-                    </li>
-                    <li class="${( ruta == contextogradocrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/grado/crear">
-                        Crear
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<%--             <li class="${( ruta == contextogrado --%>
+<%--                          || ruta == contextogradocrear ) ?  'active' : ' '}">  --%>
+<!--                 <a href="javascript:;"> <i -->
+<!--                     class="icon-rocket"></i> <span class="title">Grado</span> <span -->
+<%--                     class="arrow ${( ruta == contextogrado --%>
+<%--                                    || ruta == contextogradocrear) ?  'open text-success' : ' '}"></span>  --%>
+<!--                 </a> -->
+<!--                 <ul class="sub-menu"> -->
+<%--                     <li class="${( ruta == contextogrado) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/grado"> --%>
+<!--                             Ver todos -->
+<!--                         </a> -->
+<!--                     </li> -->
+<%--                     <li class="${( ruta == contextogradocrear ) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/grado/crear"> --%>
+<!--                         Crear -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </li> -->
             
             <li class="${( ruta == contextoinvitacion
                         || ruta == contextoinvitacioncrear ) ?  'active' : ' '}">

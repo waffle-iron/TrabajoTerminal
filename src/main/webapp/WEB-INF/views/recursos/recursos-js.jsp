@@ -28,7 +28,17 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
 
+
+<script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.js"></script>
+<script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.Bar.js"></script>
+
+
 <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/table-advanced.js"></script>
+<script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/scripts/charts-flotcharts.js"></script>
+<script src="${pageContext.request.contextPath}/resources/tema/assets/global/scripts/app.mim.js"></script>
+
+
 
 
 

@@ -28,4 +28,6 @@ public interface ProyectoRepositorio {
     ColaboradorProyecto getColaborador(ColaboradorProyecto colaboradorProyecto);
     List<Proyecto> buscarPorProyecto(String proyectoUsuario);
     List<Proyecto> buscaTipoProyectoUsuario(int tipoProyecto, Usuario usu);
+    List<Proyecto> buscaTipoProyecto(int tipoProyecto);
+    
 }

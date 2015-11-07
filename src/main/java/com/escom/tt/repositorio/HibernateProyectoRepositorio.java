@@ -116,6 +116,19 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
 		
 	}
 
+	@Override
+	public List<Proyecto> buscaTipoProyecto(int tipoProyecto) {
+		List<Proyecto> proyectos = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Proyecto.class);
+		criteria.add(Restrictions.eq("tipoProyecto.idTipoProyecto", tipoProyecto));
+		proyectos = criteria.list();
+		
+		return proyectos;
+	}
+	
+	
+
 	
     
     
