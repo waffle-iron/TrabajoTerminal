@@ -137,6 +137,7 @@
                 <i class="fa fa-envelope"></i>
                 <form:input path="fechaNacimiento" cssClass="form-control placeholder-no-fix" type="date"/>
                 <form:errors path="fechaNacimiento" element="span" cssClass="help-block text-danger" />
+                <div style="color:#C00;">${mensajeFechas}</div>
             </div>
         </div>
         <div class="form-group">
@@ -145,6 +146,7 @@
                 <i class="fa fa-envelope"></i>
                 <form:input path="fechaIngresoIPN" cssClass="form-control placeholder-no-fix" type="date"  />
                 <form:errors path="fechaIngresoIPN" element="span" cssClass="help-block text-danger" />
+                <div style="color:#C00;">${mensajeFechasIngreso}</div>
             </div>
         </div>
         <div class="form-group">

@@ -57,6 +57,35 @@
                         <h1 class="text-success"><strong>Se ha creado un nuevo proyecto</strong></h1>
 					</c:if>
 					
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat2 bordered">
+                                <div class="display">
+                                    <div class="number">
+                                        <h3 class="font-green-sharp">
+                                            <span data-counter="counterup" data-value="7800">0</span>
+                                            <small class="font-green-sharp">$</small>
+                                        </h3>
+                                        <small>TOTAL PROFIT</small>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="icon-pie-chart"></i>
+                                    </div>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress">
+                                        <span style="width: 76%;" class="progress-bar progress-bar-success green-sharp">
+                                            <span class="sr-only">76% progress</span>
+                                        </span>
+                                    </div>
+                                    <div class="status">
+                                        <div class="status-title"> progress </div>
+                                        <div class="status-number"> 76% </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+				
+				
 				
 					<div class="col-md-8 col-md-offset-2">
 						<div class="portlet blue-hoki box">
@@ -233,7 +262,7 @@
                     <!-- END VALIDATION STATES-->
 					
 					
-					
+					</div>
 				
 					
 				
@@ -265,7 +294,15 @@
 		
 		</script>
 		
-	</script>
+	 <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37564768-1', 'keenthemes.com');
+  ga('send', 'pageview');
+</script>
+	
 
 	<!-- END JAVASCRIPTS -->
 </body>

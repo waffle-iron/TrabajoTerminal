@@ -30,6 +30,39 @@
 
 <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/table-advanced.js"></script>
 
+<!-- estadisticas de proyecto -->
+
+		<script src="${pageContext.request.contextPath}/resources/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/daterangepicker.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/morris.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/raphael-min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.waypoints.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.counterup.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/amcharts.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/serial.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/pie.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/radar.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/light.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/patterns.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/chalk.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/ammap.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/worldLow.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/amstock.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/fullcalendar.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.flot.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.flot.resize.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.flot.categories.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.easypiechart.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.vmap.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.vmap.russia.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.vmap.world.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.vmap.europe.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.vmap.germany.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.vmap.usa.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/global/plugins/jquery.vmap.sampledata.js" type="text/javascript"></script>
+
+
 
 
 <!-- END THEME PAGE PERFIL-->

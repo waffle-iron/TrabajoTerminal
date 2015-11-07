@@ -87,7 +87,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Fecha Inicio
+                                        <label class="control-label col-md-3">Fecha de Inicio
                                             <span class="required"> * </span>
                                         </label>
                                         <div class="col-md-7">
@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Fecha Fin
+                                        <label class="control-label col-md-3">Fecha de Fin
                                             <span class="required"> * </span>
                                         </label>
 
@@ -108,21 +108,22 @@
                                                 <form:input path="fechaFin" cssClass="form-control" type="date"/>
                                                 <form:errors path="fechaFin" element="span"
                                                              cssClass="help-block text-danger"/>
+                                                <div style="color:#C00;">${mensajeFechas}</div>           
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Avance
-                                            <span class="required"> * </span>
-                                        </label>
-                                        <div class="col-md-7">
-                                            <div class="input-icon right">
-                                                <form:input path="avance" cssClass="form-control"/>
-                                                <form:errors path="avance" element="span"
-                                                             cssClass="help-block text-danger"/>
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                     <div class="form-group"> -->
+<!--                                         <label class="control-label col-md-3">Avance -->
+<!--                                             <span class="required"> * </span> -->
+<!--                                         </label> -->
+<!--                                         <div class="col-md-7"> -->
+<!--                                             <div class="input-icon right"> -->
+                                                <form:hidden path="avance" cssClass="form-control" value = "0"/>
+                                                <form:errors path="avance" element="span" cssClass="help-block text-danger"/>
+
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Tipo de proyecto
                                             <span class="required"> * </span>

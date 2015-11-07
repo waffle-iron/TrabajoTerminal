@@ -55,6 +55,7 @@ public class ProyectoControlador {
     public String crear(Principal principal, Model modelo){
     	Usuario coordinador =  null;
     	String email=principal.getName();
+    	String mensaje = "";
     	coordinador = busquedaRepositorio.buscarPorEmail(email);
     	modelo.addAttribute("coordinadorX",coordinador.getIdUsuarios());
         modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
@@ -62,31 +63,54 @@ public class ProyectoControlador {
         modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
         modelo.addAttribute("proyecto", new Proyecto());
         modelo.addAttribute("nombre",principal.getName());
+        modelo.addAttribute("mensajeFechas", mensaje);
         return "proyecto/proyecto-crear";
     }
 
     @RequestMapping(value="/proyecto/crear", method = RequestMethod.POST)
     public String crear(@ModelAttribute("proyecto") @Valid Proyecto proyecto, BindingResult validacion, Model modelo, Principal principal) {
         String ruta = null;    	
-        
+        String mensaje = null;
 
+        
         if (validacion.hasErrors()){
         	List<ObjectError> error= validacion.getAllErrors();
         	for (ObjectError objectError : error) {
 				System.out.println(objectError);
 			}
+        	
+        	
+        	proyecto.setAvance(0);
+        	
             modelo.addAttribute("proyecto", proyecto);
             modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
             modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
             modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
             modelo.addAttribute("nombre",principal.getName());
-
+            modelo.addAttribute("mensajeFechas", mensaje);
             ruta = "proyecto/proyecto-crear";
         }else{
+        	//validacion de fechas
+        	if(proyecto.getFechaFin().before(proyecto.getFechaInicio())){
+        		 mensaje = "La fecha de inicio es posterior a la de fin";
+        		 proyecto.setAvance(0);
+             	
+                 modelo.addAttribute("proyecto", proyecto);
+                 modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
+                 modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
+                 modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
+                 modelo.addAttribute("nombre",principal.getName());
+                 modelo.addAttribute("mensajeFechas", mensaje);
+                 ruta = "proyecto/proyecto-crear";
+        	}else{
+        		mensaje ="";
+        		proyectoRepositorio.crear(proyecto);
+        		ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()+ "/?creado=true";
+        	}
 
-        	proyectoRepositorio.crear(proyecto);
+        	
 
-            ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()+ "/?creado=true";
+            
         }
         return ruta;
     }
