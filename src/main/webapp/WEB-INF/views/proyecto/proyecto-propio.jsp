@@ -217,7 +217,7 @@
                                                     <i class="fa fa-edit"></i> Asignar </a>
                                             </td>        
                                             <td>        
-                                              <a href="${contexto}/proyecto/eliminarColaborador/${proyecto.idProyecto}/${colaborador.usuario.idUsuarios}" class="btn default btn-xs black">
+                                              <a href="${contexto}/proyecto/eliminarColaborador/${proyecto.idProyecto}/${colaborador.usuario.idUsuarios}" onclick="return confirmar()" class="btn default btn-xs black" >
 											  <i class="fa fa-trash-o"></i> Delete </a>
                                                     
                                             </td>
@@ -257,6 +257,14 @@
 			Layout.init(); // init current layout
 			Demo.init(); // init demo features
 		});
+
+		function confirmar(text, tez2)
+		{
+			return confirm("¿Estas seguro de que deseas quitar a este colaborador de tu proyecto? Al dejar de colaborar con el se perdera la tarea que tiene asiganada")}
+		
+		
+		</script>
+		
 	</script>
 
 	<!-- END JAVASCRIPTS -->
