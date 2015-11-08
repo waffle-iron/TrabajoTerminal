@@ -1,7 +1,9 @@
 package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
+import com.escom.tt.modelo.Grado;
 import com.escom.tt.modelo.Proyecto;
+import com.escom.tt.modelo.TipoProyecto;
 import com.escom.tt.modelo.Usuario;
 
 import java.util.List;
@@ -25,5 +27,22 @@ public interface ProyectoRepositorio {
     List<Proyecto> buscarPorCoordinador(Usuario coordinador);
 
     ColaboradorProyecto getColaborador(ColaboradorProyecto colaboradorProyecto);
+    
     List<Proyecto> buscarPorProyecto(String proyectoUsuario);
+    
+    List<Proyecto> buscaTipoProyectoUsuario(int tipoProyecto, Usuario usu);
+    
+    List<Proyecto> buscaTipoProyecto(int tipoProyecto);
+    
+    List<Proyecto> obtenerTodosProyectosPorGradoMedSUp();
+    
+    List<Proyecto> obtenerTodosProyectosPorGradoSUp();
+    
+    
+    
+  
+    
+    
+    
+    
 }

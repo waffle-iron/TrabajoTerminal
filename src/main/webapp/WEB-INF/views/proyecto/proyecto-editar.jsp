@@ -50,7 +50,7 @@
 					<div class="portlet box blue">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-gift"></i>Registrar nueva proyecto
+								<i class="fa fa-list-alt"></i>Modifica proyecto
 							</div>
 						</div>
 						<div class="portlet-body form">

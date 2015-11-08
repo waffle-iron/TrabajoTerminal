@@ -20,7 +20,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="USUARIO")
 public class Usuario {
 
-
+	public Usuario(){
+		
+	}
+	public Usuario(Grado grado){
+		this.grado = grado;
+	}
+	
+	
 	@Id
 	@Column(name="idUsuarios")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
