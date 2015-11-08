@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.escom.tt.modelo.CadenaBusqueda;
+import com.escom.tt.modelo.Grado;
 import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Usuario;
+import com.escom.tt.repositorio.GradoRepositorio;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
 
@@ -25,6 +27,10 @@ public class EstadisticasControlador {
 
 	@Autowired
 	ProyectoRepositorio proyectoRepositorio;
+	@Autowired
+	UsuarioRepositorio usuarioRepositorio;
+	@Autowired	
+	GradoRepositorio gradoRepositorio;
 	
 	@RequestMapping(value = "/estadisticas", method = RequestMethod.GET)
 	public String resultadoBusqueda(Model modelo) {
@@ -69,12 +75,35 @@ public class EstadisticasControlador {
 		int totalProy = listProyTodos.size();
 		modelo.addAttribute("totalProy", totalProy);
 		
+		List<Usuario> listUsuTodos = null;
+		listUsuTodos = usuarioRepositorio.obtenerTodos();
+		int totalUsuarios = listUsuTodos.size();
+		modelo.addAttribute("totalUsuarios", totalUsuarios);
 		
-		modelo.addAttribute("Dato1", 90);
-		modelo.addAttribute("Dato2", 80);
-		modelo.addAttribute("Dato3", 70);
-		modelo.addAttribute("Dato4", 60);
-		modelo.addAttribute("Dato5", 50);
+		List<Grado> listaGradoAcadMS = null;
+		listaGradoAcadMS = gradoRepositorio.buscaGradoAcademico("Medio Superior");
+		int totalUsuariosMedioSuperior = listaGradoAcadMS .size();
+		modelo.addAttribute("totalUsuariosMedioSuperior", totalUsuariosMedioSuperior);
+		
+		List<Grado> listaGradoAcadS = null;
+		listaGradoAcadS = gradoRepositorio.buscaGradoAcademico("Superior");
+		int totalUsuariosSuperior = listaGradoAcadS .size();
+		modelo.addAttribute("totalUsuariosSuperior", totalUsuariosSuperior);
+		
+		List<Proyecto> proyectosPorGradoMedSup = null;
+		proyectosPorGradoMedSup = proyectoRepositorio.obtenerTodosProyectosPorGradoMedSUp();
+		int totalProyectosPorGradoMedSup = proyectosPorGradoMedSup.size();
+		modelo.addAttribute("totalProyectosPorGradoMedSup", totalProyectosPorGradoMedSup);
+		
+		List<Proyecto> proyectosPorGradoSup = null;
+		proyectosPorGradoSup = proyectoRepositorio.obtenerTodosProyectosPorGradoSUp();
+		int totalProyectosPorGradoSup = proyectosPorGradoSup.size();
+		modelo.addAttribute("totalProyectosPorGradoSup", totalProyectosPorGradoSup);
+		
+		
+		
+		
+		
 		
 
 		return "estadisticas";

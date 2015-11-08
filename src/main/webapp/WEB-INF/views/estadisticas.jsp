@@ -51,261 +51,359 @@
 				<jsp:include page="recursos/breadcrumbs.jsp"></jsp:include>
 				<!-- END PAGE HEADER-->
 
-				<!-- BEGIN PAGE CONTENT-->
-				<div class="col-md-9">
-					<!-- BEGIN TODO SIDEBAR -->
-					<div class="todo-ui">
-						<div class="todo-sidebar">
-							<div class="portlet light bordered">
-								<div class="portlet-title">
-									<div class="caption" data-toggle="collapse"
-										data-target=".todo-project-list-content">
-										<div class="blog-single-head">
-											<h1 class="blog-single-head-title">Proyectos registrados
-												en el sistema</h1>
-										</div>
-									</div>
-									<div class="actions">
-										<div class="btn-group">
-											<a
-												class="btn green btn-circle btn-outline btn-sm todo-projects-config"
-												href="javascript:;" data-toggle="dropdown"
-												data-hover="dropdown" data-close-others="true"> <i
-												class="icon-settings"></i> &nbsp; <i
-												class="fa fa-angle-down"></i>
-											</a>
-											<ul class="dropdown-menu pull-right">
-												<li><a href=""> Ver </a></li>
-												<li class="divider"></li>
-											</ul>
-										</div>
-									</div>
+				<!-- BEGIN SUPERIOR -->
 
 
-									<div>
-										<input type="hidden" id="mult" value="${TamlistProyMult}">
-										<input type="hidden" id="prog" value="${TamlistProyProg}">
-										<input type="hidden" id="prop" value="${TamlistProyProp}">
-										<input type="hidden" id="indi" value="${TamlistProyInd}">
-										<input type="hidden" id="red" value="${TamlistProyRed}">
-										<input type="hidden" id="inno" value="${TamlistProyInv}">
-										<input type="hidden" id="TT" value="${TamlistProyTT}">
-									</div>
 
-									<!-- BEGIN BASIC CHART PORTLET-->
-									<div style="width: 80%">
-										<canvas id="canvas" height="650" width="800"></canvas>
-									</div>
 
-									<script>
-										var mult = document.getElementById("mult").value;
-										var prog = document.getElementById("prog").value;
-										var prop = document.getElementById("prop").value;
-										var indi = document.getElementById("indi").value;
-										var red = document.getElementById("red").value;
-										var inno = document.getElementById("inno").value;
-										var TT = document.getElementById("TT").value;
-										
-										
-										var randomScalingFactor = function() {
-											return Math
-													.round(Math.random() * 100)
-										};
-
-										var barChartData = {
-											labels : [ "Multidisciplinario", "Programa Especial",
-													"Propuesta de Estudio", "Proyecto individual", "Proyecto de red",
-													"Proyecto de innovación", "Trabajo terminal" ],
-											datasets : [
-													{
-														fillColor : "rgba(220,220,220,0.5)",
-														strokeColor : "rgba(220,220,220,0.8)",
-														highlightFill : "rgba(220,220,220,0.75)",
-														highlightStroke : "rgba(220,220,220,1)",
-														data : [
-																randomScalingFactor(),
-																randomScalingFactor(),
-																randomScalingFactor(),
-																randomScalingFactor(),
-																randomScalingFactor(),
-																randomScalingFactor(),
-																randomScalingFactor() ]
-													},
-													{
-														fillColor : "rgba(151,187,205,0.5)",
-														strokeColor : "rgba(151,187,205,0.8)",
-														highlightFill : "rgba(151,187,205,0.75)",
-														highlightStroke : "rgba(151,187,205,1)",
-														data : [
-																mult,
-																prog,
-																prop,
-																indi,
-																red,
-																inno,
-																TT 
-																 ]
-													} ]
-
-										}
-										window.onload = function() {
-											var ctx = document.getElementById(
-													"canvas").getContext("2d");
-											window.myBar = new Chart(ctx).Bar(
-													barChartData, {
-														responsive : true
-													});
-										}
-									</script>
-
-								</div>
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat blue">
+							<div class="visual">
+								<i class="fa fa-comments"></i>
 							</div>
-
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup">${totalProy}</span>
+								</div>
+								<div class="desc">Total de proyectos</div>
+							</div>
+							<a class="more" href="javascript:;"> View more <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
 						</div>
-						<!-- END TODO SIDEBAR -->
-
 					</div>
-				</div>
-				<div class="col-md-3">
-					<!-- BEGIN TODO SIDEBAR -->
-					<div class="todo-ui">
-						<div class="todo-sidebar">
-							<div class="portlet light bordered">
-								<div class="portlet-title">
-									<div class="caption" data-toggle="collapse"
-										data-target=".todo-project-list-content">
-										<span class="caption-subject font-green-sharp bold uppercase">Tipos
-											de Proyectos </span> <span
-											class="caption-helper visible-sm-inline-block visible-xs-inline-block">click
-											to view project list</span>
-									</div>
-
-								</div>
-								<div class="portlet-body todo-project-list-content">
-									<div class="todo-project-list">
-										<table>
-											<thead>
-											</thead>
-											<tbody>
-
-
-												<tr>
-													<td class="highlight" height=30>
-														<li><a href="javascript:;"> Multidisciplinario </a></li>
-													</td>
-													<td><span class="badge badge-success">
-															${TamlistProyMult} </span></td>
-												</tr>
-												<tr>
-													<td class="highlight" height=30>
-														<li><a href="javascript:;"> Programa Especial </a></li>
-													</td>
-													<td><span class="badge badge-success">
-															${TamlistProyProg} </span></td>
-												</tr>
-												<tr>
-													<td class="highlight" height=30>
-														<li><a href="javascript:;"> Propuesta de estudio
-														</a></li>
-													</td>
-													<td><span class="badge badge-success">
-															${TamlistProyProp} </span></td>
-												</tr>
-												<tr>
-													<td class="highlight" height=30>
-														<li><a href="javascript:;"> Proyecto individual </a></li>
-													</td>
-													<td><span class="badge badge-success">
-															${TamlistProyInd} </span></td>
-												</tr>
-												<tr>
-													<td class="highlight" height=30>
-														<li><a href="javascript:;"> Proyecto de Red </a></li>
-													</td>
-													<td><span class="badge badge-success">
-															${TamlistProyRed} </span></td>
-												</tr>
-												<tr>
-													<td class="highlight" height=30>
-														<li><a href="javascript:;"> Proyecto de
-																innovación </a></li>
-													</td>
-													<td><span class="badge badge-success">
-															${TamlistProyInv} </span></td>
-												</tr>
-												<tr>
-													<td class="highlight" height=30>
-														<li><a href="javascript:;"> Trabajo Terminal </a></li>
-													</td>
-													<td><span class="badge badge-success">
-															${TamlistProyTT} </span></td>
-												</tr>
-
-												<!-- 														<tr>															 -->
-												<!-- 															<td class="highlight" height=30 > -->
-												<!-- 																<li><a href="javascript:;"> Otros  -->
-												<!-- 																</a></li>	 -->
-												<!-- 															</td> -->
-												<!-- 															<td> -->
-												<%-- 																<span class="badge badge-warning"> ${tamProOtros} </span> --%>
-												<!-- 															</td> -->
-												<!-- 														</tr> -->
-												<tr>
-													<td class="highlight" height=30>
-														<li>Total</li>
-													</td>
-													<td><span class="badge badge-danger">
-															${totalProy} </span></td>
-
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat green">
+							<div class="visual">
+								<i class="fa fa-shopping-cart"></i>
 							</div>
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup">
+										${totalProyectosPorGradoMedSup}</span>
+								</div>
+								<div class="desc">Proyectos registrados en nivel medio
+									superior</div>
+							</div>
+							<a class="more" href="javascript:;"> View more <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat purple">
+							<div class="visual">
+								<i class="fa fa-globe"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									+ <span data-counter="counterup"></span>
+									${totalProyectosPorGradoSup}
+								</div>
+								<div class="desc">Proyectos registrados en nivel superior</div>
+							</div>
+							<a class="more" href="javascript:;"> View more <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+
+				</div>
+				<!-- END SUPERIOR -->
+
+				<div class="row">
+					<!-- BEGIN PAGE CONTENT-->
+					<div class="col-md-8">
+						<!-- BEGIN TODO SIDEBAR -->
+						<div class="todo-ui">
+							<div class="todo-sidebar">
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption" data-toggle="collapse"
+											data-target=".todo-project-list-content">
+											<div class="blog-single-head">
+												<h1 class="blog-single-head-title">Proyectos
+													registrados en el sistema</h1>
+											</div>
+										</div>
+										<div class="actions">
+											<div class="btn-group">
+												<a
+													class="btn green btn-circle btn-outline btn-sm todo-projects-config"
+													href="javascript:;" data-toggle="dropdown"
+													data-hover="dropdown" data-close-others="true"> <i
+													class="icon-settings"></i> &nbsp; <i
+													class="fa fa-angle-down"></i>
+												</a>
+												<ul class="dropdown-menu pull-right">
+													<li><a href=""> Ver </a></li>
+													<li class="divider"></li>
+												</ul>
+											</div>
+										</div>
+
+
+										<div>
+											<input type="hidden" id="mult" value="${TamlistProyMult}">
+											<input type="hidden" id="prog" value="${TamlistProyProg}">
+											<input type="hidden" id="prop" value="${TamlistProyProp}">
+											<input type="hidden" id="indi" value="${TamlistProyInd}">
+											<input type="hidden" id="red" value="${TamlistProyRed}">
+											<input type="hidden" id="inno" value="${TamlistProyInv}">
+											<input type="hidden" id="TT" value="${TamlistProyTT}">
+										</div>
+
+										<!-- BEGIN BASIC CHART PORTLET-->
+										<div style="width: 80%">
+											<canvas id="canvas" height="650" width="800"></canvas>
+										</div>
+										<!--  Aqui comienza el script  -->
+
+									</div>
+								</div>
+
+							</div>
+							<!-- END TODO SIDEBAR -->
 
 						</div>
-						<!-- END TODO SIDEBAR -->
+					</div>
+					<div class="col-md-4">
+						<!-- BEGIN TODO SIDEBAR -->
+						<div class="todo-ui">
+							<div class="todo-sidebar">
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption" data-toggle="collapse"
+											data-target=".todo-project-list-content">
+											<span class="caption-subject font-green-sharp bold uppercase">Tipos
+												de Proyectos </span> <span
+												class="caption-helper visible-sm-inline-block visible-xs-inline-block">click
+												to view project list</span>
+										</div>
 
+									</div>
+									<div class="portlet-body todo-project-list-content">
+										<div class="todo-project-list">
+											<table>
+												<thead>
+												</thead>
+												<tbody>
+
+
+													<tr>
+														<td class="highlight" height=30>
+															<li><a href="javascript:;"> Multidisciplinario </a></li>
+														</td>
+														<td><span class="badge badge-success">
+																${TamlistProyMult} </span></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="highlight" height=30>
+															<li><a href="javascript:;"> Programa Especial </a></li>
+														</td>
+														<td><span class="badge badge-success">
+																${TamlistProyProg} </span></td>
+													</tr>
+													<tr>
+														<td class="highlight" height=30>
+															<li><a href="javascript:;"> Propuesta de estudio
+															</a></li>
+														</td>
+														<td><span class="badge badge-success">
+																${TamlistProyProp} </span></td>
+													</tr>
+													<tr>
+														<td class="highlight" height=30>
+															<li><a href="javascript:;"> Proyecto individual
+															</a></li>
+														</td>
+														<td><span class="badge badge-success">
+																${TamlistProyInd} </span></td>
+													</tr>
+													<tr>
+														<td class="highlight" height=30>
+															<li><a href="javascript:;"> Proyecto de Red </a></li>
+														</td>
+														<td><span class="badge badge-success">
+																${TamlistProyRed} </span></td>
+													</tr>
+													<tr>
+														<td class="highlight" height=30>
+															<li><a href="javascript:;"> Proyecto de
+																	innovación </a></li>
+														</td>
+														<td><span class="badge badge-success">
+																${TamlistProyInv} </span></td>
+													</tr>
+													<tr>
+														<td class="highlight" height=30>
+															<li><a href="javascript:;"> Trabajo Terminal </a></li>
+														</td>
+														<td><span class="badge badge-success">
+																${TamlistProyTT} </span></td>
+													</tr>
+													<tr>
+														<td class="highlight" height=30>
+															<li>Total</li>
+														</td>
+														<td><span class="badge badge-danger">
+																${totalProy} </span></td>
+
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!-- END TODO SIDEBAR -->
+
+						</div>
 					</div>
 				</div>
 
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat red">
+							<div class="visual">
+								<i class="fa fa-bar-chart-o"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup">${totalUsuarios}</span>
+								</div>
+								<div class="desc">Usuarios</div>
+							</div>
+							<a class="more" href="javascript:;"> View more <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat green">
+							<div class="visual">
+								<i class="fa fa-shopping-cart"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									<i class="icon-users"><span data-counter="counterup">
+											${totalUsuariosMedioSuperior}</span></i>
+								</div>
+								<div class="desc">Usuarios nivel medio superior</div>
+							</div>
+							<a class="more" href="javascript:;"> View more <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat purple">
+							<div class="visual">
+								<i class="fa fa-globe"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									+ <span data-counter="counterup"></span><i class="icon-users">
+										${totalUsuariosSuperior} </i>
+								</div>
+								<div class="desc">Usuarios nivel superior</div>
+							</div>
+							<a class="more" href="javascript:;"> View more <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!-- BEGIN PAGE CONTENT-->
+					<div class="col-md-10">
+						<!-- BEGIN TODO SIDEBAR -->
+						<div class="todo-ui">
+							<div class="todo-sidebar">
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption" data-toggle="collapse"
+											data-target=".todo-project-list-content">
+											<div class="blog-single-head">
+												<h1 class="blog-single-head-title">Proyectos por
+													escuelas</h1>
+											</div>
+										</div>
+										<div class="actions">
+											<div class="btn-group">
+												<a
+													class="btn green btn-circle btn-outline btn-sm todo-projects-config"
+													href="javascript:;" data-toggle="dropdown"
+													data-hover="dropdown" data-close-others="true"> <i
+													class="icon-settings"></i> &nbsp; <i
+													class="fa fa-angle-down"></i>
+												</a>
+												<ul class="dropdown-menu pull-right">
+													<li><a href=""> Ver </a></li>
+													<li class="divider"></li>
+												</ul>
+											</div>
+										</div>
+
+
+										<div>
+											<%-- 										<input type="hidden" id="mult" value="${TamlistProyMult}"> --%>
+											<%-- 										<input type="hidden" id="prog" value="${TamlistProyProg}"> --%>
+											<%-- 										<input type="hidden" id="prop" value="${TamlistProyProp}"> --%>
+											<%-- 										<input type="hidden" id="indi" value="${TamlistProyInd}"> --%>
+											<%-- 										<input type="hidden" id="red" value="${TamlistProyRed}"> --%>
+											<%-- 										<input type="hidden" id="inno" value="${TamlistProyInv}"> --%>
+											<%-- 										<input type="hidden" id="TT" value="${TamlistProyTT}"> --%>
+										</div>
+
+										<!-- BEGIN BASIC CHART PORTLET-->
+
+										<div style="width: 30%">
+											<canvas id="canva" height="450" width="450"></canvas>
+										</div>
+
+
+
+									</div>
+								</div>
+
+							</div>
+							<!-- END TODO SIDEBAR -->
+
+						</div>
 
 
 
 
 
-			</div>
-		</div>
 
 
 
-		<!-- END PAGE CONTENT-->
-	</div>
-	</div>
-	<!-- END CONTENT -->
-	</div>
-	<!-- END CONTAINER -->
 
-	<!-- BEGIN FOOTER -->
-	<jsp:include page="recursos/footer.jsp"></jsp:include>
-	<!-- END FOOTER -->
+						<!-- END PAGE CONTENT-->
+						<!-- END CONTENT -->
+						<!-- END CONTAINER -->
 
-	<!-- BEGIN JS -->
-	<jsp:include page="recursos/recursos-js.jsp"></jsp:include>
-	<!-- END JS -->
-	<script>
-		jQuery(document).ready(function() {
-			Metronic.init(); // init metronic core components
-			Layout.init(); // init current layout
-			Demo.init(); // init demo features
-			TableAdvanced.init();
-			ChartsFlotcharts.init();
+						<!-- BEGIN FOOTER -->
+						<jsp:include page="recursos/footer.jsp"></jsp:include>
+						<!-- END FOOTER -->
 
-		});
-	</script>
+						<!-- BEGIN JS -->
+						<jsp:include page="recursos/recursos-js.jsp"></jsp:include>
+						<!-- END JS -->
+						<script>
+							jQuery(document).ready(function() {
+								Metronic.init(); // init metronic core components
+								Layout.init(); // init current layout
+								Demo.init(); // init demo features		
+								PrograGraficas.init();
+							});
+						</script>
 
-	<!-- END JAVASCRIPTS -->
+						<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>

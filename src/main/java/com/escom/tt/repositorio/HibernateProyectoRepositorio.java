@@ -1,6 +1,7 @@
 package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
+import com.escom.tt.modelo.Grado;
 import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.TipoProyecto;
 import com.escom.tt.modelo.Usuario;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -126,11 +128,47 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
 		
 		return proyectos;
 	}
-	
-	
+
+	@Override
+	public List<Proyecto> obtenerTodosProyectosPorGradoMedSUp() {
+		List<Proyecto> proyectos = null;
+        proyectos = sf.getCurrentSession().createCriteria(Proyecto.class).list();
+        List<Proyecto> proyectosPorGrado = new ArrayList();
+        for (Proyecto proyecto : proyectos) {
+        	if (proyecto.getCoordinador().getGrado().getIdGrado()==1) {
+				proyectosPorGrado.add(proyecto);
+			}
+			
+		}
+        return proyectosPorGrado;
+		
+	}
+
+	@Override
+	public List<Proyecto> obtenerTodosProyectosPorGradoSUp() {
+		
+		List<Proyecto> proyectos = null;
+        proyectos = sf.getCurrentSession().createCriteria(Proyecto.class).list();
+        List<Proyecto> proyectosPorGrado = new ArrayList();
+        for (Proyecto proyecto : proyectos) {
+        	if (proyecto.getCoordinador().getGrado().getIdGrado()==2) {
+				proyectosPorGrado.add(proyecto);
+			}
+			
+		}
+        for (Proyecto proyecto : proyectosPorGrado) {
+			System.out.println("------------------"+proyecto.getIdProyecto());
+		}
+        return proyectosPorGrado;
+	}
 
 	
-    
+	
+	
+   
+	
+
+		
     
     
 

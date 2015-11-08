@@ -2,7 +2,10 @@ package com.escom.tt.repositorio;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,6 +63,17 @@ public class HibernateGradoRepositorio implements GradoRepositorio {
 		List<Grado> grados= null;
 		grados = sf.getCurrentSession().createCriteria(Grado.class).list();
 		return grados;
+	}
+
+	@Override
+	public List<Grado> buscaGradoAcademico(String nombreGrado) {
+		
+			List<Grado> gradoAcad = null;
+			Session session = sf.getCurrentSession();
+			Criteria criteria = session.createCriteria(Grado.class);
+			criteria.add(Restrictions.eq("nombre", nombreGrado));
+			gradoAcad = criteria.list();
+			return gradoAcad;			
 	}
 	
 	
