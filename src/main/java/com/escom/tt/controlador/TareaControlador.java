@@ -69,28 +69,16 @@ public class TareaControlador {
 
         coordinador = usuarioRepositorio.buscarPorCorreo(principal.getName());
 
-
-
         if (validacion.hasErrors()){
-            System.err.println("HUBO ERRORES");
             modelo.addAttribute("tarea", tarea);
             ruta = "tarea/tarea-editar";
         }else{
-            System.err.println(tarea);
-            System.err.println("/n");
-            System.err.println("PORYECTO::::::::::" + tarea.getColaboradorProyecto().getProyecto());
-            System.err.println("USUARIO::::::::::" + tarea.getColaboradorProyecto().getUsuario());
-            System.err.println("/n");
 
             proyecto = proyectoRepositorio.buscarPorId(tarea.getColaboradorProyecto().getProyecto().getIdProyecto());
             usuario = usuarioRepositorio.buscarPorId(tarea.getColaboradorProyecto().getUsuario().getIdUsuarios());
 
             colaboradorProyecto = new ColaboradorProyecto(proyecto, usuario);
-            System.err.println("\n");
-            System.err.println(colaboradorProyecto);
-            System.err.println("\n");
-            //tarea.getColaboradorProyecto().setProyecto(proyecto);
-            //tarea.getColaboradorProyecto().setUsuario(usuario);
+
             tarea.setColaboradorProyecto(colaboradorProyecto);
             if (tarea.getColaboradorProyecto().getProyecto().getCoordinador().getIdUsuarios() == coordinador.getIdUsuarios()){
                 System.err.println("ES EL COORDINADOR");
