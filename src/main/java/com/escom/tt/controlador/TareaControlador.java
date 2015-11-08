@@ -7,6 +7,7 @@ import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.TareaRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+
 import java.security.Principal;
 import java.util.List;
 
@@ -26,146 +28,157 @@ import java.util.List;
 @Controller
 public class TareaControlador {
 
-    @Autowired
-    private TareaRepositorio tareaRepositorio;
+	@Autowired
+	private TareaRepositorio tareaRepositorio;
 
-    @Autowired
-    private UsuarioRepositorio usuarioRepositorio;
+	@Autowired
+	private UsuarioRepositorio usuarioRepositorio;
 
-    @Autowired
-    private ProyectoRepositorio proyectoRepositorio;
+	@Autowired
+	private ProyectoRepositorio proyectoRepositorio;
 
+	@RequestMapping(value = "/tarea/crear", method = RequestMethod.GET)
+	public String crear(Model modelo) {
 
-    @RequestMapping(value="/tarea/crear", method = RequestMethod.GET)
-    public String crear(Model modelo){
+		modelo.addAttribute("tarea", new Tarea());
 
-        modelo.addAttribute("tarea", new Tarea());
+		return "tarea/tarea-crear";
+	}
 
-        return "tarea/tarea-crear";
-    }
+	@RequestMapping(value = "/tarea/crear", method = RequestMethod.POST)
+	public String crear(@ModelAttribute("tarea") @Valid Tarea tarea,
+			BindingResult validacion, Model modelo) {
+		String ruta = null;
 
-    @RequestMapping(value="/tarea/crear", method = RequestMethod.POST)
-    public String crear(@ModelAttribute("tarea") @Valid Tarea tarea, BindingResult validacion, Model modelo) {
-        String ruta = null;
+		if (validacion.hasErrors()) {
+			modelo.addAttribute("tarea", tarea);
+			ruta = "tarea/tarea-crear";
+		} else {
+			tarea.setAvance(0);
+			Integer id = tareaRepositorio.crear(tarea);
+			
+			ruta = "redirect:/tarea/ver/" + tarea.getIdTarea()
+					+ "/?creado=true";
+		}
+		return ruta;
+	}
 
-        if (validacion.hasErrors()){
-            modelo.addAttribute("tarea", tarea);
-            ruta = "tarea/tarea-crear";
-        }else{
-            Integer id = tareaRepositorio.crear(tarea);
-            ruta = "redirect:/tarea/ver/" + tarea.getIdTarea()+ "/?creado=true";
-        }
-        return ruta;
-    }
+	@RequestMapping(value = "/tarea/guardarCambios", method = RequestMethod.POST)
+	public String actualizar(@ModelAttribute("tarea") @Valid Tarea tarea,
+			BindingResult validacion, Model modelo, Principal principal) {
+		String ruta = null;
+		Usuario coordinador = null;
+		Usuario usuario = null;
+		Proyecto proyecto = null;
+		ColaboradorProyecto colaboradorProyecto = null;
+		List<Tarea> tareas = null;
+		coordinador = usuarioRepositorio.buscarPorCorreo(principal.getName());
+		Integer avanceTotal = 0;
 
+		if (validacion.hasErrors()) {
+			System.err.println("HUBO ERRORES");
+			modelo.addAttribute("tarea", tarea);
+			ruta = "tarea/tarea-editar";
+		} else {
 
-    @RequestMapping(value="/tarea/guardarCambios", method = RequestMethod.POST)
-    public String actualizar(@ModelAttribute("tarea") @Valid Tarea tarea, BindingResult validacion, Model modelo, Principal principal) {
-        String ruta = null;
-        Usuario coordinador = null;
-        Usuario usuario = null;
-        Proyecto proyecto = null;
-        ColaboradorProyecto colaboradorProyecto = null;
+			proyecto = proyectoRepositorio.buscarPorId(tarea
+					.getColaboradorProyecto().getProyecto().getIdProyecto());
+			usuario = usuarioRepositorio.buscarPorId(tarea
+					.getColaboradorProyecto().getUsuario().getIdUsuarios());
 
-        coordinador = usuarioRepositorio.buscarPorCorreo(principal.getName());
+			colaboradorProyecto = new ColaboradorProyecto(proyecto, usuario);
+			tareas = tareaRepositorio.obtenerPorProyecto(colaboradorProyecto);
+			int contadorTarea = 0;
+			for (Tarea tareaTemporal : tareas) {
 
+				avanceTotal = +tarea.getAvance();
+				contadorTarea++;
+			}
+			Integer avance = (avanceTotal * 100) / (contadorTarea * 100);
 
+			proyecto.setAvance(avance);
+			tarea.setColaboradorProyecto(colaboradorProyecto);
+			if (tarea.getColaboradorProyecto().getProyecto().getCoordinador()
+					.getIdUsuarios() == coordinador.getIdUsuarios()) {
+				System.err.println("ES EL COORDINADOR");
+				System.err.println("TAREA [1]: " + tarea);
+				Integer id = tareaRepositorio.actualizar(tarea);
+				Integer idProyecto = proyectoRepositorio.actualizar(proyecto);
+				ruta = "redirect:/proyecto/propio/"
+						+ tarea.getColaboradorProyecto().getProyecto()
+								.getIdProyecto();
+			} else
+				ruta = "redirect:/";
+		}
+		return ruta;
+	}
 
-        if (validacion.hasErrors()){
-            System.err.println("HUBO ERRORES");
-            modelo.addAttribute("tarea", tarea);
-            ruta = "tarea/tarea-editar";
-        }else{
-            System.err.println(tarea);
-            System.err.println("/n");
-            System.err.println("PORYECTO::::::::::" + tarea.getColaboradorProyecto().getProyecto());
-            System.err.println("USUARIO::::::::::" + tarea.getColaboradorProyecto().getUsuario());
-            System.err.println("/n");
+	@RequestMapping(value = "/tarea/{tareaId:[0-9]+}/editar", method = RequestMethod.GET)
+	public String actualizar(@PathVariable Integer tareaId, Model modelo,
+			Principal principal) {
+		Tarea tarea = null;
+		String ruta = null;
+		Usuario usuario = null;
+		usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
 
-            proyecto = proyectoRepositorio.buscarPorId(tarea.getColaboradorProyecto().getProyecto().getIdProyecto());
-            usuario = usuarioRepositorio.buscarPorId(tarea.getColaboradorProyecto().getUsuario().getIdUsuarios());
+		tarea = tareaRepositorio.buscarPorId(tareaId);
 
-            colaboradorProyecto = new ColaboradorProyecto(proyecto, usuario);
-            System.err.println("\n");
-            System.err.println(colaboradorProyecto);
-            System.err.println("\n");
-            //tarea.getColaboradorProyecto().setProyecto(proyecto);
-            //tarea.getColaboradorProyecto().setUsuario(usuario);
-            tarea.setColaboradorProyecto(colaboradorProyecto);
-            if (tarea.getColaboradorProyecto().getProyecto().getCoordinador().getIdUsuarios() == coordinador.getIdUsuarios()){
-                System.err.println("ES EL COORDINADOR");
-                System.err.println("TAREA [1]: " + tarea);
-                Integer id = tareaRepositorio.actualizar(tarea);
-                ruta = "redirect:/proyecto/"+tarea.getColaboradorProyecto().getProyecto().getIdProyecto()+"/tareas-asignadas";
-            }else
-                ruta = "redirect:/";
-        }
-        return ruta;
-    }
+		if (tarea != null
+				&& tarea.getColaboradorProyecto().getProyecto()
+						.getCoordinador().getIdUsuarios() == usuario
+						.getIdUsuarios()) {
+			modelo.addAttribute("tarea", tarea);
+			ruta = "tarea/tarea-editar";
+		} else
+			ruta = "redirect:/";
 
-    @RequestMapping(value="/tarea/{tareaId:[0-9]+}/editar", method = RequestMethod.GET)
-    public String actualizar(@PathVariable Integer tareaId,Model modelo, Principal principal) {
-        Tarea tarea = null;
-        String ruta = null;
-        Usuario usuario = null;
-        usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+		return ruta;
+	}
 
-        tarea = tareaRepositorio.buscarPorId(tareaId);
+	@RequestMapping(value = "/tarea/ver/{tareaId:[0-9]+}")
+	public String ver(@PathVariable Integer tareaId, Model modelo,
+			Boolean actualizado, Boolean creado) {
+		String ruta = null;
+		Tarea tarea = null;
 
+		tarea = tareaRepositorio.buscarPorId(tareaId);
+		if (tarea != null) {
+			modelo.addAttribute("tarea", tarea);
+			modelo.addAttribute("actualizado", actualizado);
+			modelo.addAttribute("creado", creado);
+			ruta = "tarea/tarea-ver";
+		} else
+			ruta = "redirect:/tarea";
 
-        if (tarea != null && tarea.getColaboradorProyecto().getProyecto().getCoordinador().getIdUsuarios() == usuario.getIdUsuarios()) {
-            modelo.addAttribute("tarea", tarea);
-            ruta = "tarea/tarea-editar";
-        }
-        else
-            ruta = "redirect:/";
+		return ruta;
+	}
 
-        return ruta;
-    }
+	@RequestMapping(value = "/tarea/eliminar/{tareaId:[0-9]+}")
+	public String eliminar(@PathVariable Integer tareaId, Model modelo) {
+		Boolean eliminado;
+		Tarea tarea = null;
+		tarea = tareaRepositorio.buscarPorId(tareaId);
 
-    @RequestMapping(value="/tarea/ver/{tareaId:[0-9]+}")
-    public String ver(@PathVariable Integer tareaId, Model modelo, Boolean actualizado, Boolean creado) {
-        String ruta = null;
-        Tarea tarea= null;
+		if (tarea != null) {
+			tareaRepositorio.eliminar(tarea);
+			eliminado = true;
+		} else {
+			eliminado = false;
+		}
 
-        tarea = tareaRepositorio.buscarPorId(tareaId);
-        if (tarea != null) {
-            modelo.addAttribute("tarea", tarea);
-            modelo.addAttribute("actualizado", actualizado);
-            modelo.addAttribute("creado", creado);
-            ruta = "tarea/tarea-ver";
-        }else
-            ruta = "redirect:/tarea";
+		return "redirect:/tarea?eliminado=" + eliminado;
+	}
 
-        return ruta;
-    }
+	@RequestMapping(value = "/tarea")
+	public String verTodos(Model modelo, Boolean eliminado) {
 
-    @RequestMapping(value="/tarea/eliminar/{tareaId:[0-9]+}")
-    public String eliminar(@PathVariable Integer tareaId, Model modelo) {
-        Boolean eliminado;
-        Tarea tarea = null;
-        tarea = tareaRepositorio.buscarPorId(tareaId);
+		List<Tarea> tareaList = null;
 
-        if(tarea != null){
-            tareaRepositorio.eliminar(tarea);
-            eliminado = true;
-        }else{
-            eliminado = false;
-        }
+		tareaList = tareaRepositorio.obtenerTodos();
 
-        return "redirect:/tarea?eliminado=" + eliminado;
-    }
+		modelo.addAttribute("tareasList", tareaList);
+		modelo.addAttribute("eliminado", eliminado);
 
-    @RequestMapping(value="/tarea")
-    public String verTodos(Model modelo,Boolean eliminado) {
-
-        List<Tarea> tareaList = null;
-
-        tareaList = tareaRepositorio.obtenerTodos();
-
-        modelo.addAttribute("tareasList", tareaList);
-        modelo.addAttribute("eliminado", eliminado);
-
-        return "tarea/tarea-todos";
-    }
+		return "tarea/tarea-todos";
+	}
 }

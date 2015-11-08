@@ -160,9 +160,9 @@
 													href="javascript:;" class="remove"> </a>
 											</div>
 										</div>
-										<div class="portlet-body">
+										<div class="portlet-body" style="height: 600px">
 											<table class="table table-striped table-bordered table-hover"
-												id="sample_3">
+												id="sample_3" >
 												<thead>
 													<tr>
 														<th>#</th>

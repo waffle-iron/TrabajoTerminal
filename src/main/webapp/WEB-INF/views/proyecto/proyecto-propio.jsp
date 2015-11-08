@@ -71,17 +71,7 @@
                                         <i class="icon-pie-chart"></i>
                                     </div>
                                 </div>
-                                <div class="progress-info">
-                                    <div class="progress">
-                                        <span style="width: 76%;" class="progress-bar progress-bar-success green-sharp">
-                                            <span class="sr-only">76% progress</span>
-                                        </span>
-                                    </div>
-                                    <div class="status">
-                                        <div class="status-title"> progress </div>
-                                        <div class="status-number"> 76% </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
 				
@@ -91,19 +81,11 @@
 						<div class="portlet blue-hoki box">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-cogs"></i>Información del Proyecto
+									<i class="fa fa-cogs"></i>Información del Poyecto <b>${proyecto.nombre}</b>
 								</div>
 								
 							</div>
 							<div class="portlet-body">
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Nombre del proyecto:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.nombre}
-									</div>
-								</div>
 								
 															
 								<div class="row static-info">
@@ -258,8 +240,79 @@
 
                         </div>
                     </div>
+                    <!-- BEGIN VALIDATION STATES-->
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i>Tareas de <b>${proyecto.nombre}</b>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="table-scrollable">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            Título
+                                        </th>
+                                        <th>
+                                            Estado
+                                        </th>
+                                        <th>
+                                            Avance
+                                        </th>
+                                        <th>
+                                            Fecha de Asignación
+                                        </th>
+                                        <th>
+                                            Usuario asignaado
+                                        </th>
+                                        <th>
+
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${tareasList}" var="tarea" varStatus="loop">
+                                        <tr>
+                                            <td>
+                                                ${loop.index + 1}
+                                            </td>
+                                            <td>
+                                                ${tarea.titulo}
+                                            </td>
+                                            <td>
+                                                ${tarea.estado}
+                                            </td>
+                                            <td>
+                                                ${tarea.avance}
+                                            </td>
+                                            <td>
+                                                ${tarea.fechaEntrega}
+                                            </td>
+                                            <td>
+                                                ${tarea.colaboradorProyecto.usuario.nombres} ${tarea.colaboradorProyecto.usuario.aPaterno}
+                                            </td>
+                                            <td>
+                                                <a href="${contexto}/tarea/${tarea.idTarea}/editar" class="btn default btn-xs purple">
+                                                    <i class="fa fa-edit"></i> editar </a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
                     <!-- END VALIDATION STATES-->
+                    
+                    </div>
+                    <!-- END VALIDATION STATES-->
+                    
 					
 					
 					</div>
