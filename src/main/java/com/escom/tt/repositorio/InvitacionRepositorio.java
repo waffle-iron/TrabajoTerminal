@@ -20,4 +20,6 @@ public interface InvitacionRepositorio {
     List<Invitacion> obtenerTodos();
 
     List<Invitacion> obtenerPorUsuario(ColaboradorProyecto colaboradorProyecto);
+    
+    boolean eliminarInvitacionColaborador(ColaboradorProyecto colaboradorProyecto);
 }

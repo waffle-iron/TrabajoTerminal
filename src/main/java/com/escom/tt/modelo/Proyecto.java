@@ -40,6 +40,7 @@ public class Proyecto {
     @Column(name="fechaInicio")
     @NotNull(message = "La fecha de inicio debe ser obligatorio")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    
     private Date fechaInicio;
 
     @Column(name="fechaFin")

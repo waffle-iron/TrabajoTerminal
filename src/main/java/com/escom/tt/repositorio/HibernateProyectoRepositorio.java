@@ -2,10 +2,10 @@ package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Grado;
+import com.escom.tt.modelo.Invitacion;
 import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.TipoProyecto;
 import com.escom.tt.modelo.Usuario;
-
 import org.hibernate.Criteria;
 
 
@@ -162,7 +162,7 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
         return proyectosPorGrado;
 	}
 
-	
+
 	
 	
    
@@ -172,6 +172,16 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
     
     
 
-	
+	@Override
+	public boolean eliminarInvitacionColaborador(
+			ColaboradorProyecto colaboradorProyecto) {
+
+		boolean eliminado = false;
+
+		sf.getCurrentSession().delete(colaboradorProyecto);
+
+		System.err.println("Se elemino colaborador proyecto" + eliminado);
+		return eliminado;
+	}
 
 }

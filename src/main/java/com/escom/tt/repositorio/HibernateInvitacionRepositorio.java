@@ -47,12 +47,32 @@ public class HibernateInvitacionRepositorio implements InvitacionRepositorio {
         return invitacion;
     }
 
-    @Override
-    public List<Invitacion> obtenerTodos() {
-        List<Invitacion> invitacions = null;
-        invitacions = sf.getCurrentSession().createCriteria(Invitacion.class).list();
-        return invitacions;
-    }
+	@Override
+	public List<Invitacion> obtenerTodos() {
+		List<Invitacion> invitacions = null;
+		invitacions = sf.getCurrentSession().createCriteria(Invitacion.class)
+				.list();
+		return invitacions;
+	}
+
+	@Override
+	public boolean eliminarInvitacionColaborador(
+			ColaboradorProyecto colaboradorProyecto) {
+		Invitacion invitacion = null;
+		boolean eliminado = false;
+		Session session = sf.getCurrentSession();
+
+		Criteria criteria = session.createCriteria(Invitacion.class);
+
+		criteria.add(Restrictions.and(Restrictions.eq("colaboradorProyecto",
+				colaboradorProyecto)));
+		invitacion = (Invitacion) criteria.uniqueResult();
+		
+		session.delete(invitacion);
+		eliminado = true;
+		System.err.println("Se elemino " + eliminado);
+		return eliminado;
+	}
 
     @Override
     public List<Invitacion> obtenerPorUsuario(ColaboradorProyecto colaboradorProyecto){

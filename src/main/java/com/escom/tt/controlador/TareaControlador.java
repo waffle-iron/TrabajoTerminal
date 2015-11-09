@@ -7,6 +7,7 @@ import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.TareaRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+
 import java.security.Principal;
 import java.util.List;
 
@@ -44,55 +46,60 @@ public class TareaControlador {
         return "tarea/tarea-crear";
     }
 
-    @RequestMapping(value="/tarea/crear", method = RequestMethod.POST)
-    public String crear(@ModelAttribute("tarea") @Valid Tarea tarea, BindingResult validacion, Model modelo) {
-        String ruta = null;
-
-        if (validacion.hasErrors()){
-            modelo.addAttribute("tarea", tarea);
-            ruta = "tarea/tarea-crear";
-        }else{
-            Integer id = tareaRepositorio.crear(tarea);
-            ruta = "redirect:/tarea/ver/" + tarea.getIdTarea()+ "/?creado=true";
-        }
-        return ruta;
-    }
-
-
-    @RequestMapping(value="/tarea/guardarCambios", method = RequestMethod.POST)
-    public String actualizar(@ModelAttribute("tarea") @Valid Tarea tarea, BindingResult validacion, Model modelo, Principal principal) {
+    @RequestMapping(value = "/tarea/guardarCambios", method = RequestMethod.POST)
+    public String actualizar(@ModelAttribute("tarea") @Valid Tarea tarea,
+                             BindingResult validacion, Model modelo, Principal principal) {
         String ruta = null;
         Usuario coordinador = null;
         Usuario usuario = null;
         Proyecto proyecto = null;
         ColaboradorProyecto colaboradorProyecto = null;
-
+        List<Tarea> tareas = null;
         coordinador = usuarioRepositorio.buscarPorCorreo(principal.getName());
+        Integer avanceTotal = 0;
 
-        if (validacion.hasErrors()){
+        if (validacion.hasErrors()) {
+            System.err.println("HUBO ERRORES");
             modelo.addAttribute("tarea", tarea);
             ruta = "tarea/tarea-editar";
-        }else{
+        } else {
 
-            proyecto = proyectoRepositorio.buscarPorId(tarea.getColaboradorProyecto().getProyecto().getIdProyecto());
-            usuario = usuarioRepositorio.buscarPorId(tarea.getColaboradorProyecto().getUsuario().getIdUsuarios());
+            proyecto = proyectoRepositorio.buscarPorId(tarea
+                    .getColaboradorProyecto().getProyecto().getIdProyecto());
+            usuario = usuarioRepositorio.buscarPorId(tarea
+                    .getColaboradorProyecto().getUsuario().getIdUsuarios());
 
             colaboradorProyecto = new ColaboradorProyecto(proyecto, usuario);
+            tareas = tareaRepositorio.obtenerPorProyecto(colaboradorProyecto);
+            int contadorTarea = 0;
+            for (Tarea tareaTemporal : tareas) {
 
+                avanceTotal = +tarea.getAvance();
+                contadorTarea++;
+            }
+            Integer avance = (avanceTotal * 100) / (contadorTarea * 100);
+
+            proyecto.setAvance(avance);
             tarea.setColaboradorProyecto(colaboradorProyecto);
-            if (tarea.getColaboradorProyecto().getProyecto().getCoordinador().getIdUsuarios() == coordinador.getIdUsuarios()){
+            if (tarea.getColaboradorProyecto().getProyecto().getCoordinador()
+                    .getIdUsuarios() == coordinador.getIdUsuarios()) {
                 System.err.println("ES EL COORDINADOR");
                 System.err.println("TAREA [1]: " + tarea);
                 Integer id = tareaRepositorio.actualizar(tarea);
-                ruta = "redirect:/proyecto/"+tarea.getColaboradorProyecto().getProyecto().getIdProyecto()+"/tareas-asignadas";
-            }else
+                Integer idProyecto = proyectoRepositorio.actualizar(proyecto);
+                ruta = "redirect:/proyecto/propio/"
+                        + tarea.getColaboradorProyecto().getProyecto()
+                        .getIdProyecto();
+            } else
                 ruta = "redirect:/";
         }
         return ruta;
     }
 
-    @RequestMapping(value="/tarea/{tareaId:[0-9]+}/editar", method = RequestMethod.GET)
-    public String actualizar(@PathVariable Integer tareaId,Model modelo, Principal principal) {
+
+    @RequestMapping(value = "/tarea/{tareaId:[0-9]+}/editar", method = RequestMethod.GET)
+    public String actualizar(@PathVariable Integer tareaId, Model modelo,
+                             Principal principal) {
         Tarea tarea = null;
         String ruta = null;
         Usuario usuario = null;
@@ -100,12 +107,13 @@ public class TareaControlador {
 
         tarea = tareaRepositorio.buscarPorId(tareaId);
 
-
-        if (tarea != null && tarea.getColaboradorProyecto().getProyecto().getCoordinador().getIdUsuarios() == usuario.getIdUsuarios()) {
+        if (tarea != null
+                && tarea.getColaboradorProyecto().getProyecto()
+                .getCoordinador().getIdUsuarios() == usuario
+                .getIdUsuarios()) {
             modelo.addAttribute("tarea", tarea);
             ruta = "tarea/tarea-editar";
-        }
-        else
+        } else
             ruta = "redirect:/";
 
         return ruta;

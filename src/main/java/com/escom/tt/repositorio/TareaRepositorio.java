@@ -21,4 +21,8 @@ public interface TareaRepositorio {
     List<Tarea> obtenerTodos();
 
     List<Tarea> obtenerPorProyecto(ColaboradorProyecto colaboradorProyecto);
+    
+    public boolean eliminarAsignaciones(ColaboradorProyecto colaboradorProyecto);
+
+
 }

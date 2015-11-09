@@ -57,24 +57,35 @@
                         <h1 class="text-success"><strong>Se ha creado un nuevo proyecto</strong></h1>
 					</c:if>
 					
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat2 bordered">
+                                <div class="display">
+                                    <div class="number">
+                                        <h3 class="font-green-sharp">
+                                            <span data-counter="counterup" data-value="7800">0</span>
+                                            <small class="font-green-sharp">$</small>
+                                        </h3>
+                                        <small>TOTAL PROFIT</small>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="icon-pie-chart"></i>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+				
+				
 				
 					<div class="col-md-8 col-md-offset-2">
 						<div class="portlet blue-hoki box">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-cogs"></i>Información del Proyecto
+									<i class="fa fa-cogs"></i>Información del Poyecto <b>${proyecto.nombre}</b>
 								</div>
 								
 							</div>
 							<div class="portlet-body">
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Nombre del proyecto:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.nombre}
-									</div>
-								</div>
 								
 															
 								<div class="row static-info">
@@ -181,6 +192,10 @@
                                         <th>
                                             Asignar Tarea
                                         </th>
+                                        
+                                        <th>
+                                            Eliminar Tareea
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -211,6 +226,11 @@
                                             <td>
                                                 <a href="${contexto}proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs purple">
                                                     <i class="fa fa-edit"></i> Asignar </a>
+                                            </td>        
+                                            <td>        
+                                              <a href="${contexto}/proyecto/eliminarColaborador/${proyecto.idProyecto}/${colaborador.usuario.idUsuarios}" onclick="return confirmar()" class="btn default btn-xs black" >
+											  <i class="fa fa-trash-o"></i> Delete </a>
+                                                    
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -220,11 +240,82 @@
 
                         </div>
                     </div>
+                    <!-- BEGIN VALIDATION STATES-->
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i>Tareas de <b>${proyecto.nombre}</b>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="table-scrollable">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            Título
+                                        </th>
+                                        <th>
+                                            Estado
+                                        </th>
+                                        <th>
+                                            Avance
+                                        </th>
+                                        <th>
+                                            Fecha de Asignación
+                                        </th>
+                                        <th>
+                                            Usuario asignaado
+                                        </th>
+                                        <th>
+
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${tareasList}" var="tarea" varStatus="loop">
+                                        <tr>
+                                            <td>
+                                                ${loop.index + 1}
+                                            </td>
+                                            <td>
+                                                ${tarea.titulo}
+                                            </td>
+                                            <td>
+                                                ${tarea.estado}
+                                            </td>
+                                            <td>
+                                                ${tarea.avance}
+                                            </td>
+                                            <td>
+                                                ${tarea.fechaEntrega}
+                                            </td>
+                                            <td>
+                                                ${tarea.colaboradorProyecto.usuario.nombres} ${tarea.colaboradorProyecto.usuario.aPaterno}
+                                            </td>
+                                            <td>
+                                                <a href="${contexto}/tarea/${tarea.idTarea}/editar" class="btn default btn-xs purple">
+                                                    <i class="fa fa-edit"></i> editar </a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
                     <!-- END VALIDATION STATES-->
+                    
+                    </div>
+                    <!-- END VALIDATION STATES-->
+                    
 					
 					
-					
+					</div>
 				
 					
 				
@@ -248,7 +339,23 @@
 			Layout.init(); // init current layout
 			Demo.init(); // init demo features
 		});
-	</script>
+
+		function confirmar(text, tez2)
+		{
+			return confirm("¿Estas seguro de que deseas quitar a este colaborador de tu proyecto? Al dejar de colaborar con el se perdera la tarea que tiene asiganada")}
+		
+		
+		</script>
+		
+	 <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37564768-1', 'keenthemes.com');
+  ga('send', 'pageview');
+</script>
+	
 
 	<!-- END JAVASCRIPTS -->
 </body>

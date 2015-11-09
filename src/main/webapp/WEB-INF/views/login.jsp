@@ -77,14 +77,14 @@
     <!--  dsasgegfsadgsgf
     -->
     <form class="login-form" action="${rutaAutentificar}" method="POST">
-        <h3 class="form-title">Login to your account</h3>
+        <h3 class="form-title">Inicio de sesión</h3>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
         <div class="alert alert-danger <c:if test="${valido == null}">display-hide</c:if>">
             <button class="close" data-close="alert"></button>
                 <c:if test="${valido == false}">
-                    <h3 style="color: #FFFFFF">Usuario o password incorrectos!!</h3>
+                    <h3 style="color: #FFFFFF">Usuario o password incorrectos!</h3>
 
                 </c:if>
         </div>
@@ -95,8 +95,7 @@
             <div class="input-icon">
                 <i class="fa fa-user"></i>
                 <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="email"
-                       name="email" value="gio_rt@hotmail.com"/>
-
+                       name="email" value=""/>
             </div>
         </div>
         <div class="form-group">
@@ -105,19 +104,19 @@
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
                 <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password"
-                       name="password" value="123"/>
+                       name="password" value=""/>
             </div>
         </div>
 
         <div class="form-actions">
             <button type="submit" class="btn blue pull-right">
-                Login <i class="m-icon-swapright m-icon-white"></i>
+                Iniciar Sesión <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                Don't have an account yet ?&nbsp; <a href="${contexto}registro" id="register-btn">
-                Create an account </a>
+                Aún no tienes una cuenta??&nbsp; <a href="${contexto}registro" id="register-btn">
+                Registrate</a>
             </p>
         </div>
     </form>

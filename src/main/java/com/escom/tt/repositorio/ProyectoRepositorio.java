@@ -27,7 +27,6 @@ public interface ProyectoRepositorio {
     List<Proyecto> buscarPorCoordinador(Usuario coordinador);
 
     ColaboradorProyecto getColaborador(ColaboradorProyecto colaboradorProyecto);
-    
     List<Proyecto> buscarPorProyecto(String proyectoUsuario);
     
     List<Proyecto> buscaTipoProyectoUsuario(int tipoProyecto, Usuario usu);
@@ -45,4 +44,7 @@ public interface ProyectoRepositorio {
     
     
     
+    
+     boolean eliminarInvitacionColaborador(
+			ColaboradorProyecto colaboradorProyecto);
 }

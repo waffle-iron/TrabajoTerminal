@@ -1,6 +1,10 @@
 package com.escom.tt.controlador;
 
 import java.security.Principal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -57,17 +61,55 @@ public class UsuarioControlador {
 
 	@RequestMapping(value = "/usuario/crear", method = RequestMethod.POST)
 	public String crear(@ModelAttribute("usuario") @Valid Usuario usuario,
-			BindingResult validacion, Model modelo) {
+			BindingResult validacion, Model modelo) throws ParseException {
 		String ruta = null;
-
+		String mensaje1 = null;
+		String mensaje2 = null;
 		if (validacion.hasErrors()) {
 			System.err.println(validacion.getAllErrors());
 			modelo.addAttribute("usuario", usuario);
 			modelo.addAttribute("escuelaList",
 					escuelaRepositorio.obtenerTodos());
 			modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
+			modelo.addAttribute("mensajeFechas", mensaje1);
+			modelo.addAttribute("mensajeFechasIngreso", mensaje2);
 			ruta = "registro";
 		} else {
+			Date fechaActual = new Date();
+			SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy"); 
+			String fecha14años = "01/01/2002";
+			Date fecha14añosDate = formateador.parse(fecha14años);
+					
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(usuario.getFechaNacimiento());
+			calendar.add(Calendar.YEAR, 15);
+			
+			Date fechaNacMas15Años = calendar.getTime(); 
+			
+			boolean fecha = usuario.getFechaIngresoIPN().before(fechaNacMas15Años);
+			if(fecha14añosDate.before(usuario.getFechaNacimiento()) ){
+				mensaje1 = "Debes tener mas de 15 años para ingresar al sistema";
+				mensaje2 = "";
+				modelo.addAttribute("usuario", usuario);
+				modelo.addAttribute("escuelaList",
+						escuelaRepositorio.obtenerTodos());
+				modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
+				modelo.addAttribute("mensajeFechas", mensaje1);
+				modelo.addAttribute("mensajeFechasIngreso", mensaje2);
+				ruta = "registro";
+			}else if(usuario.getFechaIngresoIPN().before(fechaNacMas15Años)){
+				mensaje1 = "";
+				mensaje2 = "Verifica tu fecha de ingreso al IPN";
+				modelo.addAttribute("usuario", usuario);
+				modelo.addAttribute("escuelaList",
+						escuelaRepositorio.obtenerTodos());
+				modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
+				modelo.addAttribute("mensajeFechas", mensaje1);
+				modelo.addAttribute("mensajeFechasIngreso", mensaje2);
+				ruta = "registro";
+				
+			}else{
+			
 			usuario.setEvaluacion(10);
 			usuario.setActivo(true);
 			usuario.setRol("ROLE_ADMIN");
@@ -81,6 +123,7 @@ public class UsuarioControlador {
 			Integer id = usuarioRepositorio.crearUsuario(usuario);
 			System.err.println("NO HUBO ERRORES");
 			ruta = "redirect:/login/?creado=true";
+			}
 		}
 		return ruta;
 	}

@@ -45,136 +45,167 @@ public class ProyectoControlador {
     @Autowired    
     private BusquedaRepositorio busquedaRepositorio;
     
-    
-
     @Autowired
     private TareaRepositorio tareaRepositorio;
+    
+	@RequestMapping(value = "/proyecto/crear", method = RequestMethod.GET)
+	public String crear(Principal principal, Model modelo) {
+		Usuario coordinador = null;
+		String email = principal.getName();
+		String mensaje = "";
+		coordinador = busquedaRepositorio.buscarPorEmail(email);
+		modelo.addAttribute("coordinadorX", coordinador.getIdUsuarios());
+		modelo.addAttribute("tipoProyectoList",
+				tipoProyectoRepositorio.obtenerTodos());
+		modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
+		modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
+		modelo.addAttribute("proyecto", new Proyecto());
+		modelo.addAttribute("nombre", principal.getName());
+		modelo.addAttribute("mensajeFechas", mensaje);
+		return "proyecto/proyecto-crear";
+	}
 
+	@RequestMapping(value = "/proyecto/crear", method = RequestMethod.POST)
+	public String crear(@ModelAttribute("proyecto") @Valid Proyecto proyecto,
+			BindingResult validacion, Model modelo, Principal principal) {
+		String ruta = null;
+		String mensaje = null;
 
-    @RequestMapping(value="/proyecto/crear", method = RequestMethod.GET)
-    public String crear(Principal principal, Model modelo){
-    	Usuario coordinador =  null;
-    	String email=principal.getName();
-    	coordinador = busquedaRepositorio.buscarPorEmail(email);
-    	modelo.addAttribute("coordinadorX",coordinador.getIdUsuarios());
-        modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
-        modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
-        modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
-        modelo.addAttribute("proyecto", new Proyecto());
-        modelo.addAttribute("nombre",principal.getName());
-        return "proyecto/proyecto-crear";
-    }
-
-    @RequestMapping(value="/proyecto/crear", method = RequestMethod.POST)
-    public String crear(@ModelAttribute("proyecto") @Valid Proyecto proyecto, BindingResult validacion, Model modelo, Principal principal) {
-        String ruta = null;    	
-        
-
-        if (validacion.hasErrors()){
-        	List<ObjectError> error= validacion.getAllErrors();
-        	for (ObjectError objectError : error) {
+		if (validacion.hasErrors()) {
+			List<ObjectError> error = validacion.getAllErrors();
+			for (ObjectError objectError : error) {
 				System.out.println(objectError);
 			}
-            modelo.addAttribute("proyecto", proyecto);
-            modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
-            modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
-            modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
-            modelo.addAttribute("nombre",principal.getName());
 
-            ruta = "proyecto/proyecto-crear";
-        }else{
+			proyecto.setAvance(0);
 
-        	proyectoRepositorio.crear(proyecto);
+			modelo.addAttribute("proyecto", proyecto);
+			modelo.addAttribute("tipoProyectoList",
+					tipoProyectoRepositorio.obtenerTodos());
+			modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
+			modelo.addAttribute("cordinadorList",
+					usuarioRepositorio.obtenerTodos());
+			modelo.addAttribute("nombre", principal.getName());
+			modelo.addAttribute("mensajeFechas", mensaje);
+			ruta = "proyecto/proyecto-crear";
+		} else {
+			// validacion de fechas
+			if (proyecto.getFechaFin().before(proyecto.getFechaInicio())) {
+				mensaje = "La fecha de inicio es posterior a la de fin";
+				proyecto.setAvance(0);
 
-            ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()+ "/?creado=true";
-        }
-        return ruta;
-    }
+				modelo.addAttribute("proyecto", proyecto);
+				modelo.addAttribute("tipoProyectoList",
+						tipoProyectoRepositorio.obtenerTodos());
+				modelo.addAttribute("estadoList",
+						estadoRepositorio.obtenerTodos());
+				modelo.addAttribute("cordinadorList",
+						usuarioRepositorio.obtenerTodos());
+				modelo.addAttribute("nombre", principal.getName());
+				modelo.addAttribute("mensajeFechas", mensaje);
+				ruta = "proyecto/proyecto-crear";
+			} else {
+				mensaje = "";
+				proyectoRepositorio.crear(proyecto);
+				ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()
+						+ "/?creado=true";
+			}
 
+		}
+		return ruta;
+	}
 
-    @RequestMapping(value="/proyecto/guardarCambios", method = RequestMethod.POST)
-    public String actualizar(@ModelAttribute("proyecto") @Valid Proyecto proyecto, BindingResult validacion, Model modelo, Principal principal) {
-        String ruta = null;
+	@RequestMapping(value = "/proyecto/guardarCambios", method = RequestMethod.POST)
+	public String actualizar(
+			@ModelAttribute("proyecto") @Valid Proyecto proyecto,
+			BindingResult validacion, Model modelo, Principal principal) {
+		String ruta = null;
 
-        if (validacion.hasErrors()){
-            modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
-            modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
-            modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
-            modelo.addAttribute("proyecto", proyecto);
-            modelo.addAttribute("nombre",principal.getName());
-            ruta = "proyecto/proyecto-editar";
-        }else{
-            Integer id = proyectoRepositorio.actualizar(proyecto);
-            modelo.addAttribute("nombre",principal.getName());            
-            ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto() + "/?actualizado=true";
-        }
-        return ruta;
-    }
+		if (validacion.hasErrors()) {
+			modelo.addAttribute("tipoProyectoList",
+					tipoProyectoRepositorio.obtenerTodos());
+			modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
+			modelo.addAttribute("cordinadorList",
+					usuarioRepositorio.obtenerTodos());
+			modelo.addAttribute("proyecto", proyecto);
+			modelo.addAttribute("nombre", principal.getName());
+			ruta = "proyecto/proyecto-editar";
+		} else {
+			Integer id = proyectoRepositorio.actualizar(proyecto);
+			modelo.addAttribute("nombre", principal.getName());
+			ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()
+					+ "/?actualizado=true";
+		}
+		return ruta;
+	}
 
-    @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/editar", method = RequestMethod.GET)
-    public String actualizar(@PathVariable Integer proyectoId,Model modelo, Principal principal) {
-    	Usuario coordinador =  null;
-    	String email=principal.getName();
-    	coordinador = busquedaRepositorio.buscarPorEmail(email);
-    	modelo.addAttribute("coordinadorX",coordinador.getIdUsuarios());
-        
-    	Proyecto proyecto = null;
-        String ruta = null;
-        proyecto = proyectoRepositorio.buscarPorId(proyectoId);
-        proyecto.setCoordinador(coordinador);
-        if (proyecto != null) {
-            modelo.addAttribute("tipoProyectoList", tipoProyectoRepositorio.obtenerTodos());
-            modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
-            modelo.addAttribute("coordinadorId",coordinador.getIdUsuarios());            
-//            modelo.addAttribute("cordinadorList", usuarioRepositorio.obtenerTodos());
-            
-            modelo.addAttribute("proyecto", proyecto);
-            modelo.addAttribute("nombre",principal.getName());
-            ruta = "proyecto/proyecto-editar";
-        }
-        else
-            ruta = "redirect:/proyecto";
+	@RequestMapping(value = "/proyecto/{proyectoId:[0-9]+}/editar", method = RequestMethod.GET)
+	public String actualizar(@PathVariable Integer proyectoId, Model modelo,
+			Principal principal) {
+		Usuario coordinador = null;
+		String email = principal.getName();
+		coordinador = busquedaRepositorio.buscarPorEmail(email);
+		modelo.addAttribute("coordinadorX", coordinador.getIdUsuarios());
 
-        return ruta;
-    }
+		Proyecto proyecto = null;
+		String ruta = null;
+		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
+		proyecto.setCoordinador(coordinador);
+		if (proyecto != null) {
+			modelo.addAttribute("tipoProyectoList",
+					tipoProyectoRepositorio.obtenerTodos());
+			modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
+			modelo.addAttribute("coordinadorId", coordinador.getIdUsuarios());
+			// modelo.addAttribute("cordinadorList",
+			// usuarioRepositorio.obtenerTodos());
 
-    @RequestMapping(value="/proyecto/ver/{proyectoId:[0-9]+}")
-    public String ver(@PathVariable Integer proyectoId, Model modelo, Boolean actualizado, Boolean creado, Principal principal) {
-        String ruta = null;
-        Proyecto proyecto= null;
+			modelo.addAttribute("proyecto", proyecto);
+			modelo.addAttribute("nombre", principal.getName());
+			ruta = "proyecto/proyecto-editar";
+		} else
+			ruta = "redirect:/proyecto";
 
-        proyecto = proyectoRepositorio.buscarPorId(proyectoId);
-        if (proyecto != null) {
-            modelo.addAttribute("proyecto", proyecto);
-            modelo.addAttribute("actualizado", actualizado);
-            modelo.addAttribute("creado", creado);
-            modelo.addAttribute("nombre",principal.getName());
-        	modelo.addAttribute("proyecto",proyecto);
-            modelo.addAttribute("nombre",principal.getName());
+		return ruta;
+	}
 
-            ruta = "proyecto/proyecto-ver";
-        }else
-            ruta = "redirect:/proyecto";
+	@RequestMapping(value = "/proyecto/ver/{proyectoId:[0-9]+}")
+	public String ver(@PathVariable Integer proyectoId, Model modelo,
+			Boolean actualizado, Boolean creado, Principal principal) {
+		String ruta = null;
+		Proyecto proyecto = null;
 
-        return ruta;
-    }
+		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
+		if (proyecto != null) {
+			modelo.addAttribute("proyecto", proyecto);
+			modelo.addAttribute("actualizado", actualizado);
+			modelo.addAttribute("creado", creado);
+			modelo.addAttribute("nombre", principal.getName());
+			modelo.addAttribute("proyecto", proyecto);
+			modelo.addAttribute("nombre", principal.getName());
 
-    @RequestMapping(value="/proyecto/eliminar/{proyectoId:[0-9]+}")
-    public String eliminar(@PathVariable Integer proyectoId, Model modelo, Principal principal) {
-        Boolean eliminado;
-        Proyecto proyecto = null;
-        proyecto = proyectoRepositorio.buscarPorId(proyectoId);
+			ruta = "proyecto/proyecto-ver";
+		} else
+			ruta = "redirect:/proyecto";
 
-        if(proyecto != null){
-            proyectoRepositorio.eliminar(proyecto);
-            eliminado = true;
-        }else{
-            eliminado = false;
-        }
+		return ruta;
+	}
 
-        return "redirect:/proyecto?eliminado=" + eliminado;
-    }
+	@RequestMapping(value = "/proyecto/eliminar/{proyectoId:[0-9]+}")
+	public String eliminar(@PathVariable Integer proyectoId, Model modelo,
+			Principal principal) {
+		Boolean eliminado;
+		Proyecto proyecto = null;
+		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
 
+		if (proyecto != null) {
+			proyectoRepositorio.eliminar(proyecto);
+			eliminado = true;
+		} else {
+			eliminado = false;
+		}
+
+		return "redirect:/proyecto?eliminado=" + eliminado;
+	}
     @RequestMapping(value="/proyecto")
     public String verTodos(Model modelo,Boolean eliminado, Principal principal) {
     	
