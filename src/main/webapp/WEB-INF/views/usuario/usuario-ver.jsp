@@ -63,32 +63,19 @@
 								<div class="caption">
 									<i class="fa fa-cogs"></i>Información del usuario
 								</div>
-								<div class="actions">
-									<a href="${contexto}usuario/${usuario.idUsuarios}/editar" class="btn btn-default btn-sm">
-										<i class="fa fa-pencil"></i> Editar </a>
-									<a href="${contexto}usuario/eliminar/${usuario.idUsuarios}/" class="btn btn-default btn-sm">
-										<i class="fa fa-pencil"></i> Eliminar </a>
-								</div>
+								
 							</div>
 							<div class="portlet-body">
 								<div class="row static-info">
 									<div class="col-md-5 name">
-										Nombre:
+										Nombre de usuario:
 									</div>
 									<div class="col-md-7 value">
 										${usuario.nombreUsuario}
 									</div>
 								</div>
 								
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Contraseña
-									</div>
-									<div class="col-md-7 value">
-										${usuario.contraseña}
-									</div>
-								</div>
-								
+															
 								<div class="row static-info">
 									<div class="col-md-5 name">
 										Nombres

@@ -1,5 +1,6 @@
 package com.escom.tt.repositorio;
 
+import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Invitacion;
 
 import java.util.List;
@@ -17,4 +18,8 @@ public interface InvitacionRepositorio {
     Invitacion buscarPorId(Integer id);
 
     List<Invitacion> obtenerTodos();
+
+    List<Invitacion> obtenerPorUsuario(ColaboradorProyecto colaboradorProyecto);
+    
+    boolean eliminarInvitacionColaborador(ColaboradorProyecto colaboradorProyecto);
 }

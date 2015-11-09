@@ -92,10 +92,10 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Nombre (s)</label>
+            <label class="control-label visible-ie8 visible-ie9">Nombre )</label>
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <form:input path="nombres" cssClass="form-control placeholder-no-fix"  placeholder="Nombre" />
+                <form:input path="nombres" cssClass="form-control placeholder-no-fix"  placeholder="Nombre (s)" />
                 <form:errors path="nombres" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
@@ -116,7 +116,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">email</label>
+            <label class="control-label visible-ie8 visible-ie9">E-mail</label>
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
                 <form:input path="email" cssClass="form-control placeholder-no-fix"  placeholder="Correo" />
@@ -124,31 +124,33 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">telefono</label>
+            <label class="control-label visible-ie8 visible-ie9">Teléfono</label>
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <form:input path="telefono" cssClass="form-control placeholder-no-fix" type="tel" />
+                <form:input path="telefono" cssClass="form-control placeholder-no-fix" type="tel" placeholder="Teléfono" />
                 <form:errors path="telefono" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">fechaNacimiento</label>
+            <label class="control-label visible-ie8 visible-ie9">Fecha de nacimiento</label>
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
                 <form:input path="fechaNacimiento" cssClass="form-control placeholder-no-fix" type="date"/>
                 <form:errors path="fechaNacimiento" element="span" cssClass="help-block text-danger" />
+                <div style="color:#C00;">${mensajeFechas}</div>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">fechaIngresoIPN</label>
+            <label class="control-label visible-ie8 visible-ie9">Fecha de ingreso al IPN</label>
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
                 <form:input path="fechaIngresoIPN" cssClass="form-control placeholder-no-fix" type="date"  />
                 <form:errors path="fechaIngresoIPN" element="span" cssClass="help-block text-danger" />
+                <div style="color:#C00;">${mensajeFechasIngreso}</div>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">estadoCivil</label>
+            <label class="control-label visible-ie8 visible-ie9">Estado Civil</label>
             <div class="input-icon">
                 <form:checkbox path="estadoCivil" value="Soltero" cssClass="form-control placeholder-no-fix"/>Soltero
                 <form:checkbox path="estadoCivil" value="Casado" cssClass="form-control placeholder-no-fix"/>Casado
@@ -157,7 +159,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">sexo</label>
+            <label class="control-label visible-ie8 visible-ie9">Sexo</label>
             <div class="input-icon">
                 <form:checkbox path="sexo" value="Masculino" cssClass="form-control placeholder-no-fix"/>Masculino
                 <form:checkbox path="sexo" value="Femenino" cssClass="form-control placeholder-no-fix"/>Femenino
@@ -166,28 +168,28 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">escuela</label>
+            <label class="control-label visible-ie8 visible-ie9">Escuela</label>
 
             <form:select path="escuela.id" cssClass="select2 form-control" id="select2_sample4">
-                <form:option value="" label="Selecciona una opciÃ³n"/>
+                <form:option value="" label="Selecciona una opción"/>
                 <form:options items="${escuelaList}" itemValue="id"
                               itemLabel="nombre"/>
             </form:select>
             <form:errors path="escuela" element="span" cssClass="help-block text-danger"/>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">grado</label>
+            <label class="control-label visible-ie8 visible-ie9">Grado</label>
             <form:select path="grado.idGrado"  cssClass="select2 form-control" id="select2_sample4">
-                <form:option value="" label="Selecciona una opciÃ³n"/>
+                <form:option value="" label="Selecciona una opción"/>
                 <form:options items="${gradoList}" itemValue="idGrado" itemLabel="nombre"/>
             </form:select>
             <form:errors path="grado" element="span" cssClass="help-block text-danger"/>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">password</label>
+            <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <form:input path="password" cssClass="form-control placeholder-no-fix" placeholder="password" />
+                <form:input path="password" cssClass="form-control placeholder-no-fix" placeholder="Contraseña" />
                 <form:errors path="password" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
@@ -199,7 +201,7 @@
         <div class="create-account">
             <p>
                 Ya tienes una cuenta <a href="${contexto}login" id="register-btn">
-                Iniciar SesiÃ³n </a>
+                Iniciar Sesión </a>
             </p>
         </div>
     </form:form>

@@ -20,7 +20,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="USUARIO")
 public class Usuario {
 
-
+	public Usuario(){
+		
+	}
+	public Usuario(Grado grado){
+		this.grado = grado;
+	}
+	
+	
 	@Id
 	@Column(name="idUsuarios")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -107,7 +114,7 @@ public class Usuario {
 	private List<Proyecto> proyectos;
 	
 	@ManyToMany
-	@JoinTable(name="usuario_has_idiomas",
+	@JoinTable(name="usuario_has_idomas",
 				joinColumns={@JoinColumn(name="Usuarios_idUsuarios")},
 				inverseJoinColumns={@JoinColumn(name="Idiomas_idIdiomas")})
 	private List<Idioma> idiomas;
@@ -141,7 +148,8 @@ public class Usuario {
 		this.evaluacion = evaluacion;
 	}
 
-	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
+	//wqdbgfn
 	@Fetch(FetchMode.SELECT)
 	private List<ColaboradorProyecto> colaboradorProyectos;
 

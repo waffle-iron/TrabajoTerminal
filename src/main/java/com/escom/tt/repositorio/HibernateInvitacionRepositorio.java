@@ -1,7 +1,11 @@
 package com.escom.tt.repositorio;
 
+import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Invitacion;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,11 +47,41 @@ public class HibernateInvitacionRepositorio implements InvitacionRepositorio {
         return invitacion;
     }
 
-    @Override
-    public List<Invitacion> obtenerTodos() {
-        List<Invitacion> invitacions = null;
-        invitacions = sf.getCurrentSession().createCriteria(Invitacion.class).list();
-        return invitacions;
-    }
+	@Override
+	public List<Invitacion> obtenerTodos() {
+		List<Invitacion> invitacions = null;
+		invitacions = sf.getCurrentSession().createCriteria(Invitacion.class)
+				.list();
+		return invitacions;
+	}
 
+	@Override
+	public boolean eliminarInvitacionColaborador(
+			ColaboradorProyecto colaboradorProyecto) {
+		Invitacion invitacion = null;
+		boolean eliminado = false;
+		Session session = sf.getCurrentSession();
+
+		Criteria criteria = session.createCriteria(Invitacion.class);
+
+		criteria.add(Restrictions.and(Restrictions.eq("colaboradorProyecto",
+				colaboradorProyecto)));
+		invitacion = (Invitacion) criteria.uniqueResult();
+		
+		session.delete(invitacion);
+		eliminado = true;
+		System.err.println("Se elemino " + eliminado);
+		return eliminado;
+	}
+
+    @Override
+    public List<Invitacion> obtenerPorUsuario(ColaboradorProyecto colaboradorProyecto){
+        List<Invitacion> invitaciones = null;
+        Session session = sf.getCurrentSession();
+        Criteria criteria = session.createCriteria(Invitacion.class);
+        Criteria criteriaPK = criteria.createCriteria("colaboradorProyecto");
+        criteriaPK.add(Restrictions.eq("usuario", colaboradorProyecto.getUsuario()));
+        invitaciones = criteriaPK.list();
+        return invitaciones;
+    }
 }

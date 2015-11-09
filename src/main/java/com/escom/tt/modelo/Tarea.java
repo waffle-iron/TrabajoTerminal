@@ -1,6 +1,7 @@
 package com.escom.tt.modelo;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -22,6 +23,7 @@ public class Tarea {
 	@NotNull(message = "La descripcón es obligatoria")
 	private String descripcion;
 	private Integer avance;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaEntrega;
 
 	@ManyToOne
