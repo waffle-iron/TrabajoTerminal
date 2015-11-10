@@ -4,19 +4,19 @@ import java.util.List;
 
 import com.escom.tt.modelo.Correo;
 import com.escom.tt.modelo.Escuela;
+import com.escom.tt.modelo.Usuario;
 
 public interface CorreoRepositorio {
 
-		  Integer crearCorreo(Correo correo);
+    Integer crearCorreo(Correo correo);
 
-		    void eliminarCorreo(Correo correo);
+    void eliminarCorreo(Correo correo);
 
-		    Integer actualizarCorreo(Correo correo);
+    Integer actualizarCorreo(Correo correo);
 
-		    Correo buscarPorId(Integer id);
+    Correo buscarPorId(Integer id);
 
-		    List<Correo> obtenerTodos();
+    List<Correo> obtenerTodos();
 
-
-
+    List<Correo> chat(Usuario emisor, Usuario receptor);
 }

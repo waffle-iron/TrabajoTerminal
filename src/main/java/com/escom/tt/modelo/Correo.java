@@ -1,5 +1,6 @@
 package com.escom.tt.modelo;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,6 +38,9 @@ public class Correo {
 	@NotNull(message = "este campo no debe estar vacio")
 	@Size(min = 1, max =  255, message =" el asunto debe tener al menos un caracter y maximo 255")
 	private String contenido;
+
+	@Column(name="fecha_hora")
+	private Date fechaHora;
 	
 	
 	@ManyToOne
@@ -87,7 +91,24 @@ public class Correo {
 	public void setUsuarioReceptor(Usuario usuarioReceptor) {
 		this.usuarioReceptor = usuarioReceptor;
 	}
-    
 
-	
+	public Date getFechaHora() {
+		return fechaHora;
 	}
+
+	public void setFechaHora(Date fechaHora) {
+		this.fechaHora = fechaHora;
+	}
+
+	@Override
+	public String toString() {
+		return "Correo{" +
+				"idCorreo=" + idCorreo +
+				", asunto='" + asunto + '\'' +
+				", contenido='" + contenido + '\'' +
+				", fechaHora=" + fechaHora +
+				", usuarioEmisor=" + usuarioEmisor.getNombres() +
+				", usuarioReceptor=" + usuarioReceptor.getNombres() +
+				'}';
+	}
+}

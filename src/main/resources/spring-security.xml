@@ -34,7 +34,7 @@
         <security:intercept-url pattern="/tipoproyecto/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/usuario/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/mis-invitaciones" access="hasAnyRole('ROLE_ADMIN')"/>
-        <!--<security:intercept-url pattern="/usuario/**" access="hasAnyRole('ROLE_ADMIN')"/>-->
+        <security:intercept-url pattern="/chat/**" access="hasAnyRole('ROLE_ADMIN')"/>
         
         <security:intercept-url pattern="/usuario/perfil" access="hasAnyRole('ROLE_ADMIN')"/>
         

@@ -2,6 +2,7 @@ package com.escom.tt.repositorio;
 
 import java.util.List;
 
+import com.escom.tt.modelo.Correo;
 import com.escom.tt.modelo.Usuario;
 
 public interface UsuarioRepositorio {
