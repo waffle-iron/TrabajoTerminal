@@ -429,34 +429,36 @@ public class ProyectoControlador {
         return "redirect:/proyecto/invitar?error=" + error;
     }
     
-    @RequestMapping(value="/proyecto/propio/{proyectoId:[0-9]+}", method = RequestMethod.GET)
-    public String consultarProyectoPropio(@PathVariable Integer proyectoId, Model modelo, Boolean actualizado, Boolean creado, Principal principal) {
-        
-    	
-    	String ruta = null;
-    	Usuario usuario = null;
-    	String nombre = principal.getName();
-        Proyecto proyecto= null;
-        String mensaje = null;
-        
-        usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
-        proyecto = proyectoRepositorio.buscarPorId(proyectoId);
-        
-       
-        if(proyecto != null){
-       
-        if(proyecto.getCoordinador().getEmail().equals(usuario.getEmail())){
-        	
-        	
-        	modelo.addAttribute("proyecto", proyecto);
-        	ruta = "proyecto/proyecto-propio";
-        }}else{
-        	ruta = "redirect:/";
-        }
-        
-        
-        return ruta;
-    }
+    @RequestMapping(value = "/proyecto/propio/{proyectoId:[0-9]+}", method = RequestMethod.GET)
+	public String consultarProyectoPropio(@PathVariable Integer proyectoId,
+			Model modelo, Boolean actualizado, Boolean creado,
+			Principal principal) {
+
+		String ruta = null;
+		Usuario usuario = null;
+		List<Tarea> tareaList = null;
+		Proyecto proyecto = null;
+
+		usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
+
+		if (proyecto != null) {
+
+			if (proyecto.getCoordinador().getEmail().equals(usuario.getEmail())) {
+				if (principal.getName().equals(proyecto.getCoordinador().getEmail())){
+					tareaList = tareaRepositorio.obtenerPorProyecto(new ColaboradorProyecto(proyecto));
+				
+				modelo.addAttribute("tareasList", tareaList);
+				modelo.addAttribute("proyecto", proyecto);
+				ruta = "proyecto/proyecto-propio";
+				}
+			}
+		} else {
+			ruta = "redirect:/usuario/perfil";
+		}
+
+		return ruta;
+	}
 
     @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/tareas-asignadas", method = RequestMethod.GET)
     public String tareasAsignadas(@PathVariable Integer proyectoId, Model modelo, Principal principal) {

@@ -57,102 +57,85 @@
                         <h1 class="text-success"><strong>Se ha creado un nuevo proyecto</strong></h1>
 					</c:if>
 					
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="dashboard-stat2 bordered">
-                                <div class="display">
-                                    <div class="number">
-                                        <h3 class="font-green-sharp">
-                                            <span data-counter="counterup" data-value="7800">0</span>
-                                            <small class="font-green-sharp">$</small>
-                                        </h3>
-                                        <small>TOTAL PROFIT</small>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="icon-pie-chart"></i>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
 				
 				
-				
-					<div class="col-md-8 col-md-offset-2">
-						<div class="portlet blue-hoki box">
-							<div class="portlet-title">
-								<div class="caption">
-									<i class="fa fa-cogs"></i>Información del Poyecto <b>${proyecto.nombre}</b>
-								</div>
-								
-							</div>
-							<div class="portlet-body">
-								
-															
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Descripción:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.descripcion}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Fecha de inicio:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.fechaInicio}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Fecha Fin:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.fechaFin}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Avance:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.avance} 
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Tipo de proyecto:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.tipoProyecto}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Estado:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.estado}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Coordinador:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.coordinador.nombres}
-									</div>
-								</div>
-								
-								
-								
-								
-							</div>
-						</div>
-
-
+					<div class="row">
+					<div class="col-md-4" >
 					</div>
+						<div class="col-md-4" >
+<!-- 					******** -->
+<!-- BEGIN PROFILE SIDEBAR -->
+						<div class="profile-sidebar" style="width: 250px;">
+							<!-- PORTLET MAIN -->
+							<div class="portlet light profile-sidebar-portlet">
+								<!-- SIDEBAR USERPIC -->
+								
+								<!-- END SIDEBAR USERPIC -->
+								<!-- SIDEBAR USER TITLE -->
+								<div class="profile-usertitle">
+									<div class="profile-usertitle-name">
+										${proyecto.nombre}</div>
+									
+																			
+								</div>
+								<!-- END SIDEBAR USER TITLE -->
+								<!-- SIDEBAR BUTTONS -->
+								
+								<!-- END SIDEBAR BUTTONS -->
+								<!-- SIDEBAR MENU -->
+								<div class="profile-usermenu">
+									<ul class="nav">
+										<li class="active">
+
+
+											<h2 class="profile-desc-title">Descripción:</h2>
+											${proyecto.descripcion}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Fecha de inicio:</h2>
+											${proyecto.fechaInicio}
+										</li>
+										<li>
+											<h2 class="profile-desc-title">Fecha de fin:</h2> ${proyecto.fechaFin}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Avance:</h2>
+											${proyecto.avance} 
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Tipo de proyecto:</h2>
+											${proyecto.tipoProyecto.nombre}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Estado:</h2>
+											${proyecto.estado.nombre}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Coordinador:</h2> ${proyecto.coordinador.nombres}
+										</li>
+										
+
+
+									</ul>
+								</div>
+								<!-- END MENU -->
+							</div>
+
+
+
+						</div>
+						<!-- END BEGIN PROFILE SIDEBAR -->
+						</div>
+<!-- ********** --><div class="col-md-4">
+					</div>
+					
+					
+				</div>
 					
 					<div class="col-md-12">
 					

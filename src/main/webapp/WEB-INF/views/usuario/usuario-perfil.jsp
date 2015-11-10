@@ -72,11 +72,7 @@
 								</div>
 								<!-- END SIDEBAR USER TITLE -->
 								<!-- SIDEBAR BUTTONS -->
-								<div class="profile-userbuttons">
-									<button type="button" class="btn btn-circle green-haze btn-sm">Invitar
-										a colaborar</button>
-									<button type="button" class="btn btn-circle btn-danger btn-sm">Mensaje</button>
-								</div>
+								
 								<!-- END SIDEBAR BUTTONS -->
 								<!-- SIDEBAR MENU -->
 								<div class="profile-usermenu">

@@ -57,130 +57,106 @@
 					<c:if test="${creado}">
                         <h1 class="text-success"><strong>Se ha creado un nuevo Usuario</strong></h1>
 					</c:if>
-					<div class="col-md-8 col-md-offset-2">
-						<div class="portlet blue-hoki box">
-							<div class="portlet-title">
-								<div class="caption">
-									<i class="fa fa-cogs"></i>Información del usuario
-								</div>
-								
-							</div>
-							<div class="portlet-body">
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Nombre de usuario:
-									</div>
-									<div class="col-md-7 value">
-										${usuario.nombreUsuario}
-									</div>
-								</div>
-								
-															
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Nombres
-									</div>
-									<div class="col-md-7 value">
-										${usuario.nombres}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Apellido paterno
-									</div>
-									<div class="col-md-7 value">
-										${usuario.aPaterno}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Apellido materno
-									</div>
-									<div class="col-md-7 value">
-										${usuario.aMaterno}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Email
-									</div>
-									<div class="col-md-7 value">
-										${usuario.email}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Fecha de nacimiento
-									</div>
-									<div class="col-md-7 value">
-										${usuario.fechaNacimiento}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Estado Civil
-									</div>
-									<div class="col-md-7 value">
-										${usuario.estadoCivil}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Telefono
-									</div>
-									<div class="col-md-7 value">
-										${usuario.telefono}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Sexo
-									</div>
-									<div class="col-md-7 value">
-										${usuario.sexo}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Fecha ingreso IPN
-									</div>
-									<div class="col-md-7 value">
-										${usuario.fechaIngresoIPN}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Calificacion
-									</div>
-									<div class="col-md-7 value">
-										${usuario.evaluacion}
-									</div>
-								</div>
-								
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Grado
-									</div>
-									<div class="col-md-7 value">
-										${usuario.grado.nombre}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Escuela
-									</div>
-									<div class="col-md-7 value">
-										${usuario.escuela.nombre}
-									</div>
-								</div>
-								
-								
-								
-							</div>
-						</div>
-
-
+					
+					<div class="row">
+					<div class="col-md-4" >
 					</div>
+						<div class="col-md-4" >
+<!-- 					******** -->
+<!-- BEGIN PROFILE SIDEBAR -->
+						<div class="profile-sidebar" style="width: 250px;">
+							<!-- PORTLET MAIN -->
+							<div class="portlet light profile-sidebar-portlet">
+								<!-- SIDEBAR USERPIC -->
+								
+								<!-- END SIDEBAR USERPIC -->
+								<!-- SIDEBAR USER TITLE -->
+								<div class="profile-usertitle">
+									<div class="profile-usertitle-name">
+										${usuario.nombreUsuario}</div>
+									<div class="profile-usertitle-job">
+										${usuario.grado.nombre}</div>
+									<div class="profile-usertitle-job">
+										<a href ="${contexto}/usuario/${usuario.idUsuarios}/editar "> Editar perfil</a></div>
+										
+								</div>
+								<!-- END SIDEBAR USER TITLE -->
+								<!-- SIDEBAR BUTTONS -->
+								<div class="profile-userbuttons">
+									<button type="button" class="btn btn-circle green-haze btn-sm">Invitar
+										a colaborar</button>
+									<button type="button" class="btn btn-circle btn-danger btn-sm">Mensaje</button>
+								</div>
+								<!-- END SIDEBAR BUTTONS -->
+								<!-- SIDEBAR MENU -->
+								<div class="profile-usermenu">
+									<ul class="nav">
+										<li class="active">
+
+
+											<h2 class="profile-desc-title">Apellido Paterno:</h2>
+											${usuario.aPaterno}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Apellido Materno:</h2>
+											${usuario.aMaterno}
+										</li>
+										<li>
+											<h2 class="profile-desc-title">Email:</h2> ${usuario.email}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Fecha de nacimiento:</h2>
+											${usuario.fechaNacimiento}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Estado Civil:</h2>
+											${usuario.estadoCivil}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Teléfono:</h2>
+											${usuario.telefono}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Sexo:</h2> ${usuario.sexo}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Calificación:</h2>
+											${usuario.evaluacion}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Escuela:</h2>
+											${usuario.escuela.nombre}
+										</li>
+
+										<li>
+
+											<h2 class="profile-desc-title">Fecha ingreso IPN:</h2>
+											${usuario.fechaIngresoIPN}
+										</li>
+
+
+
+									</ul>
+								</div>
+								<!-- END MENU -->
+							</div>
+
+
+
+						</div>
+						<!-- END BEGIN PROFILE SIDEBAR -->
+						</div>
+<!-- ********** --><div class="col-md-4">
+					</div>
+					
+					
 				</div>
 				<!-- END PAGE CONTENT-->
 			</div>
