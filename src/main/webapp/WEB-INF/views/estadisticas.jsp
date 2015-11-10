@@ -290,7 +290,7 @@
 							<div class="details">
 								<div class="number">
 									<i class="icon-users"><span data-counter="counterup">
-											${totalUsuariosMedioSuperior}</span></i>
+											${totalUsuGrado1}</span></i>
 								</div>
 								<div class="desc">Usuarios nivel medio superior</div>
 							</div>
@@ -306,10 +306,27 @@
 							</div>
 							<div class="details">
 								<div class="number">
-									+ <span data-counter="counterup"></span><i class="icon-users">
-										${totalUsuariosSuperior} </i>
+									<span data-counter="counterup"></span><i class="icon-users">
+										${totalUsuGrado2} </i>
 								</div>
 								<div class="desc">Usuarios nivel superior</div>
+							</div>
+							<a class="more" href="javascript:;"> View more <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat yellow">
+							<div class="visual">
+								<i class="fa fa-globe"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup"></span><i class="icon-users">
+										${totalUsuGrado3} </i>
+								</div>
+								<div class="desc">Posgrado</div>
 							</div>
 							<a class="more" href="javascript:;"> View more <i
 								class="m-icon-swapright m-icon-white"></i>
@@ -328,7 +345,7 @@
 										<div class="caption" data-toggle="collapse"
 											data-target=".todo-project-list-content">
 											<div class="blog-single-head">
-												<h1 class="blog-single-head-title">Proyectos por
+												<h1 class="blog-single-head-title">Usuarios por
 													escuelas</h1>
 											</div>
 										</div>
@@ -350,21 +367,16 @@
 
 
 										<div>
-											<%-- 										<input type="hidden" id="mult" value="${TamlistProyMult}"> --%>
-											<%-- 										<input type="hidden" id="prog" value="${TamlistProyProg}"> --%>
-											<%-- 										<input type="hidden" id="prop" value="${TamlistProyProp}"> --%>
-											<%-- 										<input type="hidden" id="indi" value="${TamlistProyInd}"> --%>
-											<%-- 										<input type="hidden" id="red" value="${TamlistProyRed}"> --%>
-											<%-- 										<input type="hidden" id="inno" value="${TamlistProyInv}"> --%>
-											<%-- 										<input type="hidden" id="TT" value="${TamlistProyTT}"> --%>
+											<input type="hidden" id="totalUsuGrado1" value="${totalUsuGrado1}">
+											<input type="hidden" id="totalUsuGrado2" value="${totalUsuGrado2}">
+											<input type="hidden" id="totalUsuGrado3" value="${totalUsuGrado3}">
 										</div>
 
 										<!-- BEGIN BASIC CHART PORTLET-->
 
-										<div style="width: 30%">
-											<canvas id="canva" height="450" width="450"></canvas>
+										<div style="width: 80%">
+											<canvas id="chart-area" width="550" height="550"/>
 										</div>
-
 
 
 									</div>
@@ -374,7 +386,8 @@
 							<!-- END TODO SIDEBAR -->
 
 						</div>
-
+					</div>
+				</div>
 
 
 
