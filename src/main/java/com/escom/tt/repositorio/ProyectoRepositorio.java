@@ -39,6 +39,8 @@ public interface ProyectoRepositorio {
     
     
     
+    
+    
   
     
     
@@ -47,4 +49,5 @@ public interface ProyectoRepositorio {
     
      boolean eliminarInvitacionColaborador(
 			ColaboradorProyecto colaboradorProyecto);
+     
 }

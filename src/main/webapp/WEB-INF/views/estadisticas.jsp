@@ -68,7 +68,7 @@
 								</div>
 								<div class="desc">Total de proyectos</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -86,7 +86,7 @@
 								<div class="desc">Proyectos registrados en nivel medio
 									superior</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -103,7 +103,7 @@
 								</div>
 								<div class="desc">Proyectos registrados en nivel superior</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -277,7 +277,7 @@
 								</div>
 								<div class="desc">Usuarios</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -294,7 +294,7 @@
 								</div>
 								<div class="desc">Usuarios nivel medio superior</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -311,7 +311,7 @@
 								</div>
 								<div class="desc">Usuarios nivel superior</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -328,7 +328,7 @@
 								</div>
 								<div class="desc">Posgrado</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -374,8 +374,8 @@
 
 										<!-- BEGIN BASIC CHART PORTLET-->
 
-										<div style="width: 80%">
-											<canvas id="chart-area" width="550" height="550"/>
+										<div style="width: 70%">
+											<canvas id="chart-area" width="450" height="450"/>
 										</div>
 
 
