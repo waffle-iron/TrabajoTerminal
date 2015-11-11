@@ -152,6 +152,7 @@
 													<form:input path="fechaNacimiento" cssClass="form-control" />
 													<form:errors path="fechaNacimiento" element="span"
 														cssClass="help-block text-danger" />
+														<div style="color:#C00;">${mensajeFechas}</div>
 												</div>
 											</div>
 										</div>
@@ -176,31 +177,31 @@
 
 											<div class="col-md-4">
 												<div class="input-icon right">
-												<c:choose>
-													<c:when test="${usuario.sexo.equals('Masculino')}">
-													<form:checkbox path="sexo" value="Masculino"
-													cssClass="form-control placeholder-no-fix"  checked="checked"/>
-												Masculino
 												
-												<form:checkbox path="sexo" value="Femenino"
-													cssClass="form-control placeholder-no-fix" />
-												Femenino
+												
+												 
+												
+												
+												
+													<div class="form-group">
+                                                                    
+                                                                    <div class="input-group">
+                                                                        <div class="icheck-inline">
+                                                                        
+                                                                        <form:radiobutton path="sexo" name="radio1"  value="Masculino"/> Masculino 
+																		<form:radiobutton path="sexo" name="radio1"  value="Femenino"/> Femenino
+                                                                            
+                                                                            </div>
+                                                                    </div>
+                                                                </div>
+																																							
 												<form:errors path="sexo" element="span"
 													cssClass="help-block text-danger"/>
-												</c:when>
 												
-												<c:when test="${usuario.sexo.equals('Femenino')}">
-													<form:checkbox path="sexo" value="Masculino"
-													cssClass="form-control placeholder-no-fix"  />
-												Masculino
 												
-												<form:checkbox path="sexo" value="Femenino"
-													cssClass="form-control placeholder-no-fix" checked="checked"/>
-												Femenino
-												<form:errors path="sexo" element="span"
-													cssClass="help-block text-danger"/>
-												</c:when>
-												</c:choose>
+												
+													
+											
 												
 												
 												</div>
@@ -215,32 +216,21 @@
 
 											<div class="col-md-4">
 												<div class="input-icon right">
-												<c:choose>
-													<c:when test="${usuario.estadoCivil.equals('Soltero')}">
-													<form:checkbox path="estadoCivil" value="Soltero"
-													cssClass="form-control placeholder-no-fix"  checked="checked"/>
-												Soltero
 												
-												<form:checkbox path="estadoCivil" value="Casado"
-													cssClass="form-control placeholder-no-fix" />
-												Casado
+													<div class="form-group">
+                                                                    
+                                                                    <div class="input-group">
+                                                                        <form:radiobutton path="estadoCivil" name="radio2"  value="Soltero"/> Soltero 
+																		<form:radiobutton path="estadoCivil" name="radio2"  value="Casado"/> Casado
+                                                                    </div>
+                                                                </div>
 												<form:errors path="estadoCivil" element="span"
 													cssClass="help-block text-danger"/>
-												</c:when>
 												
-												<c:when test="${usuario.estadoCivil.equals('Casado')}">
-													<form:checkbox path="estadoCivil" value="Soltero"
-													cssClass="form-control placeholder-no-fix"  />
-												Soltero
 												
-												<form:checkbox path="estadoCivil" value="Casado"
-													cssClass="form-control placeholder-no-fix" checked="checked"/>
-												Casado
-												<form:errors path="estadoCivil" element="span"
-													cssClass="help-block text-danger"/>
-												</c:when>
-												</c:choose>
 												
+													
+											
 												
 												</div>
 											</div>
@@ -262,6 +252,7 @@
 													<form:input path="fechaIngresoIPN" cssClass="form-control" />
 													<form:errors path="fechaIngresoIPN" element="span"
 														cssClass="help-block text-danger" />
+														<div style="color:#C00;">${mensajeFechasIngreso}</div>
 												</div>
 											</div>
 										</div>
@@ -339,7 +330,7 @@
 											<div class="col-md-offset-3 col-md-9">
 												<button type="submit" class="btn green">Guardar
 													cambios</button>
-												<button type="button" class="btn default">Cancelar</button>
+												
 											</div>
 										</div>
 									</div>
