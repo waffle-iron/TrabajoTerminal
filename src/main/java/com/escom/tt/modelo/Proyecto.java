@@ -73,7 +73,12 @@ public class Proyecto {
     @OneToMany(mappedBy="proyecto",fetch=FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
     private List<ColaboradorProyecto> colaboradorProyectos;
-
+    
+    @ManyToMany
+    @JoinTable(name="area_has_proyecto",
+    		   joinColumns={@JoinColumn(name="Proyecto_idProyectos")},
+    		   inverseJoinColumns={@JoinColumn(name="Area_idArea")})
+    private List<Area> areas;
 
     public List<ColaboradorProyecto> getColaboradorProyectos() {
         return colaboradorProyectos;

@@ -43,8 +43,8 @@ var PrograGraficas = function() {
 		});
 
 	}
-
-
+	
+	//--------------------------------------------------------------------------
 	var pieData = [
 			{
 				value: document.getElementById("totalUsuGrado1").value,
@@ -72,13 +72,43 @@ var PrograGraficas = function() {
 			var ctx = document.getElementById("chart-area").getContext("2d");
 			window.myPie = new Chart(ctx).Pie(pieData);
 		
-	 			
-	
+	//--------------------------------------------------------------------------
+			var polarData = [
+			 				{
+			 					value: document.getElementById("proyectosArea1").value,
+			 					color:"#F7464A",
+			 					highlight: "#FF5A5E",
+			 					label: "Ingeniería y Ciencias Físico Matemáticas"
+			 				},
+			 				{
+			 					value: document.getElementById("proyectosArea2").value,
+			 					color: "#46BFBD",
+			 					highlight: "#5AD3D1",
+			 					label: "Ciencias Sociales y Administrativas"
+			 				},
+			 				{
+			 					value: document.getElementById("proyectosArea3").value,
+			 					color: "#FDB45C",
+			 					highlight: "#FFC870",
+			 					label: "Ciencias Médico Biológicas"
+			 				}
+			 			];
+
+			 			
+			 				var ctx = document.getElementById("chart-area2").getContext("2d");
+			 				window.myPolarArea = new Chart(ctx).PolarArea(polarData, {
+			 					responsive:true
+			 				});
+			 			
+	//--------------------------------------------------------------------------
+			 			
 	
 	return {
 		init : function() {
 			proyectosRegistrados();
 			pieData();
+			polarData();
+			
 		}
 	};
 

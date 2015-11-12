@@ -105,6 +105,7 @@ public class HibernateUsuarioRepositorio implements UsuarioRepositorio {
 		Session session = sf.getCurrentSession();
 		Criteria criteria = session.createCriteria(Usuario.class);
 		criteria.add(Restrictions.eq("grado.idGrado", idGrado));
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		usuarios = criteria.list();		
 		return usuarios;
 	}

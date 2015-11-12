@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.escom.tt.modelo.Area;
 import com.escom.tt.modelo.CadenaBusqueda;
 import com.escom.tt.modelo.Escuela;
 import com.escom.tt.modelo.Grado;
 import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Usuario;
+import com.escom.tt.repositorio.AreaRepositorio;
 import com.escom.tt.repositorio.EscuelaRepositorio;
 import com.escom.tt.repositorio.GradoRepositorio;
 import com.escom.tt.repositorio.ProyectoRepositorio;
@@ -35,6 +37,8 @@ public class EstadisticasControlador {
 	GradoRepositorio gradoRepositorio;
 	@Autowired		
 	EscuelaRepositorio escuelaRepositorio;
+	@Autowired			
+	AreaRepositorio areaRepositorio;
 	
 	@RequestMapping(value = "/estadisticas", method = RequestMethod.GET)
 	public String resultadoBusqueda(Model modelo) {
@@ -134,8 +138,20 @@ public class EstadisticasControlador {
 		int totalUsuEsc3 = usuariosEsc2.size();
 		modelo.addAttribute("totalUsuEsc3", totalUsuEsc3);
 		
+		List<Proyecto> proyectosPorArea = null;		
+		proyectosPorArea = proyectoRepositorio.obtenerProyectosPorArea(1);		
+		int proyectosArea1 = proyectosPorArea.size();
+		modelo.addAttribute("proyectosArea1", proyectosArea1);
+		List<Proyecto> proyectosPorArea2 = null;		
+		proyectosPorArea2 = proyectoRepositorio.obtenerProyectosPorArea(2);		
+		int proyectosArea2 = proyectosPorArea2.size();
+		modelo.addAttribute("proyectosArea2", proyectosArea2);
+		List<Proyecto> proyectosPorArea3 = null;		
+		proyectosPorArea3 = proyectoRepositorio.obtenerProyectosPorArea(3);		
+		int proyectosArea3 = proyectosPorArea3.size();
+		modelo.addAttribute("proyectosArea3", proyectosArea3);
 		
-
+		
 		return "estadisticas";
 
 	}

@@ -375,7 +375,7 @@
 										<!-- BEGIN BASIC CHART PORTLET-->
 
 										<div style="width: 70%">
-											<canvas id="chart-area" width="450" height="450"/>
+											<canvas id="chart-area" width="350" height="350"/>
 										</div>
 
 
@@ -387,6 +387,69 @@
 
 						</div>
 					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat red">
+							<div class="visual">
+								<i class="fa fa-bar-chart-o"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup">${proyectosArea1}</span>
+								</div>
+								<div class="desc">Ingeniería y Ciencias Físico Matemáticas</div>
+							</div>
+							<a class="more" href="javascript:;"> Ver <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat green">
+							<div class="visual">
+								<i class="fa fa-shopping-cart"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup">
+											${proyectosArea2}</span>
+								</div>
+								<div class="desc">Ciencias Sociales y Administrativas</div>
+							</div>
+							<a class="more" href="javascript:;"> Ver <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat purple">
+							<div class="visual">
+								<i class="fa fa-globe"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup"></span><i class="icon-users">
+										${proyectosArea3} </i>
+								</div>
+								<div class="desc">Ciencias Médico Biológicas</div>
+							</div>
+							<a class="more" href="javascript:;"> Ver <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					
+				</div>
+				
+										<div>
+											<input type="hidden" id="proyectosArea1" value="${proyectosArea1}">
+											<input type="hidden" id="proyectosArea2" value="${proyectosArea2}">
+											<input type="hidden" id="proyectosArea3" value="${proyectosArea3}">
+											
+										</div>
+				<div style="width:60%">
+					<canvas id="chart-area2" width="300" height="300"/>
 				</div>
 
 
