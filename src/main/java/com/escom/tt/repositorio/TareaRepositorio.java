@@ -1,6 +1,7 @@
 package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
+import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Tarea;
 
 import java.util.List;
@@ -23,6 +24,11 @@ public interface TareaRepositorio {
     List<Tarea> obtenerPorProyecto(ColaboradorProyecto colaboradorProyecto);
     
     public boolean eliminarAsignaciones(ColaboradorProyecto colaboradorProyecto);
+    
+    List<Tarea> obtenerPorProy(Proyecto proyecto);
+    
+    
+    
 
 
 }

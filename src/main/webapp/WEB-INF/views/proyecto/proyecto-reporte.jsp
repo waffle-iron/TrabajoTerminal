@@ -18,7 +18,7 @@
 <meta content="" name="description" />
 <meta content="" name="author" />
 
-<jsp:include page="recursos/estilos.jsp"></jsp:include>
+<jsp:include page="../recursos/estilos.jsp"></jsp:include>
 
 </head>
 <!-- END HEAD -->
@@ -35,20 +35,20 @@
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo">
 	<!-- BEGIN HEADER -->
-	<jsp:include page="recursos/header.jsp"></jsp:include>
+	<jsp:include page="../recursos/header.jsp"></jsp:include>
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
-		<jsp:include page="recursos/side-bar.jsp"></jsp:include>
+		<jsp:include page="../recursos/side-bar.jsp"></jsp:include>
 		<!-- END SIDEBAR -->
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="recursos/breadcrumbs.jsp"></jsp:include>
+				<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
 				<!-- END PAGE HEADER-->
 
 				 <!-- BEGIN PAGE BASE CONTENT -->
@@ -92,15 +92,16 @@
                                             </li>
                                             <li>
                                                 <a href="#tab_2" data-toggle="tab"> Tareas
-                                                    <span class="badge badge-success">4</span>
+                                                    <span class="badge badge-success">${totalTareasPorProy}</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#tab_3" data-toggle="tab"> Colaboradores </a>
+                                                <a href="#tab_3" data-toggle="tab"> <i class="fa fa-users"></i>  Colaboradores
+                                                <span class="badge badge-danger">${totalColaboradoresPorProyecto}</span></a>
                                             </li>
                                             <li>
                                                 <a href="#tab_4" data-toggle="tab"> Avance
-                                                    <span class="badge badge-danger"> 2 </span>
+                                                    
                                                 </a>
                                             </li>
                                             <li>
@@ -114,17 +115,22 @@
                                                         <div class="portlet green-meadow box">
                                                             <div class="portlet-title">
                                                                 <div class="caption">
-                                                                    <i class="fa fa-cogs"></i>Resumen</div>
-                                                                <div class="actions">
-                                                                    <a href="javascript:;" class="btn btn-default btn-sm">
-                                                                        
-                                                                </div>
+                                                                    <i class="fa fa-cogs"></i>Resumen
+                                                                </div>                                                                
                                                             </div>
                                                             <div class="portlet-body">
                                                                 <div class="row static-info">
-                                                                    <div class="col-md-5 name"> Info 1 </div>
-                                                                    <div class="col-md-7 value"> info 1.2
-                                                                        
+                                                                    <div class="col-md-5 value"> 
+                                                                    	Nombre: 
+                                                                    </div>
+                                                                    <div class="col-md-7 name"> 
+                                                                    	${proyecto.nombre}    
+                                                                    </div>
+                                                                    <div class="col-md-5 value"> 
+                                                                    	Descripción: 
+                                                                    </div>
+                                                                    <div class="col-md-7 name"> 
+                                                                    	${proyecto.descripcion}    
                                                                     </div>
                                                                 </div>                                                                                                                              
                                                             </div>
@@ -134,15 +140,22 @@
                                                         <div class="portlet blue-hoki box">
                                                             <div class="portlet-title">
                                                                 <div class="caption">
-                                                                    <i class="fa fa-cogs"></i>Información importante</div>
-                                                                <div class="actions">
-                                                                    <a href="javascript:;" class="btn btn-default btn-sm">                                                                        
-                                                                </div>
+                                                                    <i class="fa fa-cogs"></i>Información importante</div>                                                                
                                                             </div>
                                                             <div class="portlet-body">
                                                                 <div class="row static-info">
-                                                                    <div class="col-md-5 name"> Customer Name: </div>
-                                                                    <div class="col-md-7 value"> Jhon Doe </div>
+                                                                    <div class="col-md-5 name">  
+                                                                    	Fecha inicio:
+                                                                    </div>
+                                                                    <div class="col-md-7 value">  
+                                                                    	${proyecto.fechaInicio }
+                                                                    </div>
+                                                                    <div class="col-md-5 name">  
+                                                                    	Fecha fin:
+                                                                    </div>
+                                                                    <div class="col-md-7 value">  
+                                                                    	${proyecto.fechaFin}
+                                                                    </div>
                                                                 </div>                                                                                                                               
                                                             </div>
                                                         </div>
@@ -165,74 +178,35 @@
                                                                     <table class="table table-hover table-bordered table-striped">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th> Product </th>
-                                                                                <th> Item Status </th>
-                                                                                <th> Original Price </th>
-                                                                                <th> Price </th>
-                                                                                <th> Quantity </th>
-                                                                                <th> Tax Amount </th>
-                                                                                <th> Tax Percent </th>
-                                                                                <th> Discount Amount </th>
-                                                                                <th> Total </th>
+                                                                                <th> Id </th>
+                                                                                <th> Proyecto </th>
+                                                                                <th> Descripción </th>
+                                                                                <th> Fecha inicio </th>
+                                                                                <th> Fecha fin </th>
+                                                                                <th> Estatus </th>
+                                                                                <th> Avance </th>
+                                                                                <th> Tipo de proyecto</th>
+                                                                                <th> Coordinador </th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td>
-                                                                                    <a href="javascript:;"> Product 1 </a>
+                                                                                    <a href="javascript:;"> ${proyecto.idProyecto} </a>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <span class="label label-sm label-success"> Available </td>
-                                                                                <td> 345.50$ </td>
-                                                                                <td> 345.50$ </td>
-                                                                                <td> 2 </td>
-                                                                                <td> 2.00$ </td>
-                                                                                <td> 4% </td>
-                                                                                <td> 0.00$ </td>
-                                                                                <td> 691.00$ </td>
+                                                                                    <span class="label label-sm label-success"> ${proyecto.nombre} </td>
+                                                                                <td> ${proyecto.descripcion} </td>
+                                                                                <td> ${proyecto.fechaInicio} </td>
+                                                                                <td> ${proyecto.fechaFin} </td>
+                                                                                <td> ${proyecto.privado} </td>                                                                                
+                                                                                <td> ${proyecto.avance} </td>
+                                                                                <td> ${proyecto.tipoProyecto} </td>
+                                                                                <td> ${proyecto.coordinador.nombreUsuario} </td>
+                                                                              
                                                                             </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <a href="javascript:;"> Product 1 </a>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <span class="label label-sm label-success"> Available </td>
-                                                                                <td> 345.50$ </td>
-                                                                                <td> 345.50$ </td>
-                                                                                <td> 2 </td>
-                                                                                <td> 2.00$ </td>
-                                                                                <td> 4% </td>
-                                                                                <td> 0.00$ </td>
-                                                                                <td> 691.00$ </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <a href="javascript:;"> Product 1 </a>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <span class="label label-sm label-success"> Available </td>
-                                                                                <td> 345.50$ </td>
-                                                                                <td> 345.50$ </td>
-                                                                                <td> 2 </td>
-                                                                                <td> 2.00$ </td>
-                                                                                <td> 4% </td>
-                                                                                <td> 0.00$ </td>
-                                                                                <td> 691.00$ </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <a href="javascript:;"> Product 1 </a>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <span class="label label-sm label-success"> Available </td>
-                                                                                <td> 345.50$ </td>
-                                                                                <td> 345.50$ </td>
-                                                                                <td> 2 </td>
-                                                                                <td> 2.00$ </td>
-                                                                                <td> 4% </td>
-                                                                                <td> 0.00$ </td>
-                                                                                <td> 691.00$ </td>
-                                                                            </tr>
+                                                                           
+                                                                           
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -273,95 +247,101 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="tab_2">
-                                                <div class="table-container">
-                                                    <div class="table-actions-wrapper">
-                                                        <span> </span>
-                                                        <select class="table-group-action-input form-control input-inline input-small input-sm">
-                                                            <option value="">Select...</option>
-                                                            <option value="pending">Pending</option>
-                                                            <option value="paid">Paid</option>
-                                                            <option value="canceled">Canceled</option>
-                                                        </select>
-                                                        <button class="btn btn-sm yellow table-group-action-submit">
-                                                            <i class="fa fa-check"></i> Submit</button>
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-12">
+                                                        <div class="portlet grey-cascade box">
+                                                            <div class="portlet-title">
+                                                                <div class="caption">
+                                                                    <i class="fa fa-cogs"></i>Mas Información </div>
+                                                                <div class="actions">
+                                                                    <a href="javascript:;" class="btn btn-default btn-sm">
+                                                                        <i class="fa fa-pencil"></i> Edit </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="portlet-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-hover table-bordered table-striped">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th> Id Tarea </th>
+                                                                                <th> Nombre </th>
+                                                                                <th> Avance </th>
+                                                                                <th> otro </th>
+                                                                                <th> ... </th>
+                                                                                <th> ... </th>
+                                                                                <th> ... </th>
+                                                                                <th> ...</th>
+                                                                                <th> ... </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        	<c:forEach items="${listaTareasDeProyecto}" var="tarea">
+                                                                            <tr>                                                                            	
+                                                                                <td>
+                                                                                    <a href="javascript:;"> ${tarea.idTarea} </a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <span class="label label-sm label-success"> ${tarea.descripcion} </td>
+                                                                                <td> ${tarea.avance} </td>
+                                                                                <td> ... </td>
+                                                                                <td> ... </td>
+                                                                                <td> ... </td>                                                                                
+                                                                                <td> ... </td>
+                                                                                <td> ... </td>
+                                                                                <td> ... </td>
+                                                                              
+                                                                            </tr>
+                                                                           </c:forEach>
+                                                                           
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <table class="table table-striped table-bordered table-hover" id="datatable_invoices">
-                                                        <thead>
-                                                            <tr role="row" class="heading">
-                                                                <th width="5%">
-                                                                    <input type="checkbox" class="group-checkable"> </th>
-                                                                <th width="5%"> Invoice&nbsp;# </th>
-                                                                <th width="15%"> Bill To </th>
-                                                                <th width="15%"> Invoice&nbsp;Date </th>
-                                                                <th width="10%"> Amount </th>
-                                                                <th width="10%"> Status </th>
-                                                                <th width="10%"> Actions </th>
-                                                            </tr>
-                                                            <tr role="row" class="filter">
-                                                                <td> </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control form-filter input-sm" name="order_invoice_no"> </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control form-filter input-sm" name="order_invoice_bill_to"> </td>
-                                                                <td>
-                                                                    <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
-                                                                        <input type="text" class="form-control form-filter input-sm" readonly name="order_invoice_date_from" placeholder="From">
-                                                                        <span class="input-group-btn">
-                                                                            <button class="btn btn-sm default" type="button">
-                                                                                <i class="fa fa-calendar"></i>
-                                                                            </button>
-                                                                        </span>
-                                                                    </div>
-                                                                    <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
-                                                                        <input type="text" class="form-control form-filter input-sm" readonly name="order_invoice_date_to" placeholder="To">
-                                                                        <span class="input-group-btn">
-                                                                            <button class="btn btn-sm default" type="button">
-                                                                                <i class="fa fa-calendar"></i>
-                                                                            </button>
-                                                                        </span>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="margin-bottom-5">
-                                                                        <input type="text" class="form-control form-filter input-sm" name="order_invoice_amount_from" placeholder="From" /> </div>
-                                                                    <input type="text" class="form-control form-filter input-sm" name="order_invoice_amount_to" placeholder="To" /> </td>
-                                                                <td>
-                                                                    <select name="order_invoice_status" class="form-control form-filter input-sm">
-                                                                        <option value="">Select...</option>
-                                                                        <option value="pending">Pending</option>
-                                                                        <option value="paid">Paid</option>
-                                                                        <option value="canceled">Canceled</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="margin-bottom-5">
-                                                                        <button class="btn btn-sm yellow filter-submit margin-bottom">
-                                                                            <i class="fa fa-search"></i> Search</button>
-                                                                    </div>
-                                                                    <button class="btn btn-sm red filter-cancel">
-                                                                        <i class="fa fa-times"></i> Reset</button>
-                                                                </td>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody> </tbody>
-                                                    </table>
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="tab_3">
-                                                <div class="table-container">
-                                                    <table class="table table-striped table-bordered table-hover" id="datatable_credit_memos">
-                                                        <thead>
-                                                            <tr role="row" class="heading">
-                                                                <th width="5%"> Credit&nbsp;Memo&nbsp;# </th>
-                                                                <th width="15%"> Bill To </th>
-                                                                <th width="15%"> Created&nbsp;Date </th>
-                                                                <th width="10%"> Status </th>
-                                                                <th width="10%"> Actions </th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody> </tbody>
-                                                    </table>
-                                                </div>
+                                               <div class="portlet-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-hover table-bordered table-striped">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th> Id Tarea </th>
+                                                                                <th> Nombre </th>
+                                                                                <th> Avance </th>
+                                                                                <th> otro </th>
+                                                                                <th> ... </th>
+                                                                                <th> ... </th>
+                                                                                <th> ... </th>
+                                                                                <th> ...</th>
+                                                                                <th> ... </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        	<c:forEach items="${colaboradoresProyecto}" var="colaborador">
+                                                                            <tr>                                                                            	
+                                                                                <td>
+                                                                                    <a href="javascript:;"> ${colaborador.usuario.idUsuarios} </a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <span class="label label-sm label-success"> ${colaborador.usuario.nombreUsuario} </td>
+                                                                                <td>  </td>
+                                                                                <td> ... </td>
+                                                                                <td> ... </td>
+                                                                                <td> ... </td>                                                                                
+                                                                                <td> ... </td>
+                                                                                <td> ... </td>
+                                                                                <td> ... </td>
+                                                                              
+                                                                            </tr>
+                                                                           </c:forEach>
+                                                                           
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                  
                                             </div>
                                             <div class="tab-pane" id="tab_4">
                                                 <div class="table-container">
@@ -494,11 +474,11 @@
 					
 
 						<!-- BEGIN FOOTER -->
-						<jsp:include page="recursos/footer.jsp"></jsp:include>
+						<jsp:include page="../recursos/footer.jsp"></jsp:include>
 						<!-- END FOOTER -->
 
 						<!-- BEGIN JS -->
-						<jsp:include page="recursos/recursos-js.jsp"></jsp:include>
+						<jsp:include page="../recursos/recursos-js.jsp"></jsp:include>
 						<!-- END JS -->
 						<script>
 							jQuery(document).ready(function() {
