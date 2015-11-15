@@ -494,6 +494,54 @@
 						</div>
 					</div>
 				</div>
+				<div class="row">
+					<!-- BEGIN PAGE CONTENT-->
+					<div class="col-md-10">
+						<!-- BEGIN TODO SIDEBAR -->
+						<div class="todo-ui">
+							<div class="todo-sidebar">
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption" data-toggle="collapse"
+											data-target=".todo-project-list-content">
+											<div class="blog-single-head">
+												<h1 class="blog-single-head-title">Reporte de proyecto</h1>
+											</div>
+										</div>
+										<div class="actions">
+											<div class="btn-group">
+												<a
+													class="btn green btn-circle btn-outline btn-sm todo-projects-config"
+													href="javascript:;" data-toggle="dropdown"
+													data-hover="dropdown" data-close-others="true"> <i
+													class="icon-settings"></i> &nbsp; <i
+													class="fa fa-angle-down"></i>
+												</a>
+												<ul class="dropdown-menu pull-right">
+													<li><a href=""> Ver </a></li>
+													<li class="divider"></li>
+												</ul>
+											</div>
+										</div>
+
+
+										
+										<!-- BEGIN BASIC CHART PORTLET-->
+										
+										
+										<div id="canvas-holder">
+											<canvas id="chart-areaReporte" width="300" height="300"/>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+							<!-- END TODO SIDEBAR -->
+
+						</div>
+					</div>
+				</div>
 										
 
 
@@ -520,6 +568,8 @@
 								Layout.init(); // init current layout
 								Demo.init(); // init demo features		
 								PrograGraficas.init();
+								PrograGraficas.proyectos();
+								
 							});
 						</script>
 

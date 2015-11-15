@@ -48,6 +48,9 @@ public class ProyectoControladorReporte {
 		colaboradoresProyecto = proyecto.getColaboradorProyectos();
 		int totalColaboradoresPorProyecto = colaboradoresProyecto.size();
 		
+		
+		modelo.addAttribute("totalAvance",proyecto.getAvance());
+		System.out.println("***********"+proyecto.getAvance());
 		modelo.addAttribute("totalColaboradoresPorProyecto",totalColaboradoresPorProyecto);						
 		modelo.addAttribute("totalTareasPorProy",totalTareasPorProy);				
 		modelo.addAttribute("listaTareasDeProyecto",listaTareasDeProyecto);		
@@ -55,6 +58,8 @@ public class ProyectoControladorReporte {
 		modelo.addAttribute("proyecto",proyecto);		
 		
 		
-		return "proyecto/proyecto-reporte";
+		return "proyecto-reporte";
 	}
+	
 }
+	

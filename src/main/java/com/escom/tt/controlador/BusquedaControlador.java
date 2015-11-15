@@ -40,38 +40,10 @@ public class BusquedaControlador {
 		if (validacion.hasErrors()) {
 			ruta = "ResultadosBusqueda";
 		} else {
-			/*
-			 * // HOLA SLACK String
-			 * cadenaObtenida=cadenaBusqueda.getCadenaBuscada();
-			 * System.out.println
-			 * ("********************************"+cadenaObtenida); proyecto =
-			 * busquedaRepositorio
-			 * .buscarPorProyectoORNombreUsuario(cadenaObtenida);
-			 * modelo.addAttribute("proyecto",proyecto);
-			 * 
-			 * 
-			 * String cadenaObtenida2= cadenaBusqueda2.getCadenaBuscada2();
-			 * System
-			 * .out.println("********************************"+cadenaObtenida2);
-			 * List<Proyecto> proyectoListCad2 = null; proyectoListCad2 =
-			 * busquedaRepositorio.buscarCadenaEnProyectos(cadenaObtenida2);
-			 * modelo.addAttribute("listaObt",proyectoListCad2); for (Proyecto
-			 * proyecto2 : proyectoListCad2) {
-			 * System.out.println("*?*?*?*?*?"+proyecto2); }
-			 * 
-			 * 
-			 * List<Proyecto> proyectoList = null; proyectoList =
-			 * proyectoRepositorio.obtenerTodos();
-			 * modelo.addAttribute("proyectosList", proyectoList);
-			 */
+			
 
 		}
-		// List<Usuario>
-		// usuarioListCad2=busquedaRepositorio.buscarCadenaEnusuario(cadenaObtenida2);
-		// if (proyectoListCad2.contains(cadenaObtenida2)) {
-		// }else if(usuarioListCad2.contains(cadenaObtenida2)){
-		// modelo.addAttribute("listaObt",usuarioListCad2);
-		// }
+		
 
 		ruta = "ResultadosBusqueda";
 
@@ -81,10 +53,18 @@ public class BusquedaControlador {
 	
 	@RequestMapping(value="/buscar", method = RequestMethod.GET)
     public String buscar(@RequestParam(required = false) String cadena, Model modelo, Principal principal) {
+		
+		
+		return "resultados-busqueda";
+	}
+	@RequestMapping(value="/buscar/noEncontrado", method = RequestMethod.GET)
+    public String buscarNoEncontrado(@RequestParam(required = false) String cadena, Model modelo) {
 		List<Proyecto> proyectos = null;
 		List<Usuario> usuarios = null;
+		String cadenaNoEncontrada = null;
 		proyectos=proyectoRepositorio.buscarPorProyecto(cadena);
 		usuarios=usuarioRepositorio.buscarPorUsuario(cadena);
+		
 		if(cadena != null){
 				modelo.addAttribute("proyectos", proyectos);
 				if (proyectos!=null) {
@@ -94,7 +74,17 @@ public class BusquedaControlador {
 				if (usuarios!=null) {
 					System.out.println("*********************usuarios no es nulo");
 				}
-		}		
+		}
+		if(proyectos.size()==0 && usuarios.size()==0){
+			System.out.println("entrooo");
+			cadenaNoEncontrada = "No se encontro";
+			modelo.addAttribute("cadenaNoEncontrada",cadenaNoEncontrada);
+			
+		}
+		
 		return "resultados-busqueda";
 	}
+	
+	
+	
 }

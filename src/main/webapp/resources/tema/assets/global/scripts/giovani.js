@@ -1,3 +1,4 @@
+
 var PrograGraficas = function() {
 
 	var proyectosRegistrados = function() {
@@ -44,71 +45,87 @@ var PrograGraficas = function() {
 
 	}
 	
-	//--------------------------------------------------------------------------
-	var pieData = [
-			{
-				value: document.getElementById("totalUsuGrado1").value,
-				color:"#F7464A",
-				highlight: "#FF5A5E",
-				label: "Red"
-			},
-			{
-				value: document.getElementById("totalUsuGrado2").value,
-				color: "#46BFBD",
-				highlight: "#5AD3D1",
-				label: "Green"
-			},
-			{
-				value: document.getElementById("totalUsuGrado3").value,
-				color: "#FDB45C",
-				highlight: "#FFC870",
-				label: "Yellow"
-			},
-			
+	// --------------------------------------------------------------------------
+
+	var pieData = function(){
+		var pieData = [ {
+			value : document.getElementById("totalUsuGrado1").value,
+			color : "#F7464A",
+			highlight : "#FF5A5E",
+			label : "Red"
+		}, {
+			value : document.getElementById("totalUsuGrado2").value,
+			color : "#46BFBD",
+			highlight : "#5AD3D1",
+			label : "Green"
+		}, {
+			value : document.getElementById("totalUsuGrado3").value,
+			color : "#FDB45C",
+			highlight : "#FFC870",
+			label : "Yellow"
+		},
 
 		];
 
-		
-			var ctx = document.getElementById("chart-area").getContext("2d");
-			window.myPie = new Chart(ctx).Pie(pieData);
-		
-	//--------------------------------------------------------------------------
-			var polarData = [
-			 				{
-			 					value: document.getElementById("proyectosArea1").value,
-			 					color:"#F7464A",
-			 					highlight: "#FF5A5E",
-			 					label: "Ingeniería y Ciencias Físico Matemáticas"
-			 				},
-			 				{
-			 					value: document.getElementById("proyectosArea2").value,
-			 					color: "#46BFBD",
-			 					highlight: "#5AD3D1",
-			 					label: "Ciencias Sociales y Administrativas"
-			 				},
-			 				{
-			 					value: document.getElementById("proyectosArea3").value,
-			 					color: "#FDB45C",
-			 					highlight: "#FFC870",
-			 					label: "Ciencias Médico Biológicas"
-			 				}
-			 			];
+		var ctx = document.getElementById("chart-area").getContext("2d");
+		window.myPie = new Chart(ctx).Pie(pieData);
+	};
 
-			 			
-			 				var ctx = document.getElementById("chart-area2").getContext("2d");
-			 				window.myPolarArea = new Chart(ctx).PolarArea(polarData, {
-			 					responsive:true
-			 				});
-			 			
-	//--------------------------------------------------------------------------
-			 			
+	// --------------------------------------------------------------------------
+	var polarData = function (){
+		var polarData = [ {
+			value : document.getElementById("proyectosArea1").value,
+			color : "#F7464A",
+			highlight : "#FF5A5E",
+			label : "Ingeniería y Ciencias Físico Matemáticas"
+		}, {
+			value : document.getElementById("proyectosArea2").value,
+			color : "#46BFBD",
+			highlight : "#5AD3D1",
+			label : "Ciencias Sociales y Administrativas"
+		}, {
+			value : document.getElementById("proyectosArea3").value,
+			color : "#FDB45C",
+			highlight : "#FFC870",
+			label : "Ciencias Médico Biológicas"
+		} ];
+
+		var ctx = document.getElementById("chart-area2").getContext("2d");
+		window.myPolarArea = new Chart(ctx).PolarArea(polarData, {
+			responsive : true
+		});
+	}
+
+	// --------------------------------------------------------------------------
 	
+	var pieDataProyectos = function (){
+		var afsd = [{
+			value : 12,
+			color : "#F7464A",
+			highlight : "#FF5A5E",
+			label : "Red"
+		},{
+			value : 11,
+			color : "#F744AS",
+			highlight : "#FF5D5E",
+			label : "YELLOW"
+		}
+		];
+
+		var ctx = document.getElementById("chart-areaReporte").getContext("2d");		
+		var a = new Chart(ctx).Pie(afsd);
+	}
+	
+	// --------------------------------------------------------------------------
+
 	return {
 		init : function() {
 			proyectosRegistrados();
 			pieData();
 			polarData();
-			
+		},
+		proyectos : function(){
+			pieDataProyectos();
 		}
 	};
 
