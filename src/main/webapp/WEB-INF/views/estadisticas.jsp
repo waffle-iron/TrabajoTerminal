@@ -68,7 +68,7 @@
 								</div>
 								<div class="desc">Total de proyectos</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -86,7 +86,7 @@
 								<div class="desc">Proyectos registrados en nivel medio
 									superior</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -103,7 +103,7 @@
 								</div>
 								<div class="desc">Proyectos registrados en nivel superior</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -277,7 +277,7 @@
 								</div>
 								<div class="desc">Usuarios</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -290,11 +290,11 @@
 							<div class="details">
 								<div class="number">
 									<i class="icon-users"><span data-counter="counterup">
-											${totalUsuariosMedioSuperior}</span></i>
+											${totalUsuGrado1}</span></i>
 								</div>
 								<div class="desc">Usuarios nivel medio superior</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -306,12 +306,29 @@
 							</div>
 							<div class="details">
 								<div class="number">
-									+ <span data-counter="counterup"></span><i class="icon-users">
-										${totalUsuariosSuperior} </i>
+									<span data-counter="counterup"></span><i class="icon-users">
+										${totalUsuGrado2} </i>
 								</div>
 								<div class="desc">Usuarios nivel superior</div>
 							</div>
-							<a class="more" href="javascript:;"> View more <i
+							<a class="more" href="javascript:;"> Ver <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat yellow">
+							<div class="visual">
+								<i class="fa fa-globe"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup"></span><i class="icon-users">
+										${totalUsuGrado3} </i>
+								</div>
+								<div class="desc">Posgrado</div>
+							</div>
+							<a class="more" href="javascript:;"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -328,7 +345,7 @@
 										<div class="caption" data-toggle="collapse"
 											data-target=".todo-project-list-content">
 											<div class="blog-single-head">
-												<h1 class="blog-single-head-title">Proyectos por
+												<h1 class="blog-single-head-title">Usuarios por
 													escuelas</h1>
 											</div>
 										</div>
@@ -350,21 +367,16 @@
 
 
 										<div>
-											<%-- 										<input type="hidden" id="mult" value="${TamlistProyMult}"> --%>
-											<%-- 										<input type="hidden" id="prog" value="${TamlistProyProg}"> --%>
-											<%-- 										<input type="hidden" id="prop" value="${TamlistProyProp}"> --%>
-											<%-- 										<input type="hidden" id="indi" value="${TamlistProyInd}"> --%>
-											<%-- 										<input type="hidden" id="red" value="${TamlistProyRed}"> --%>
-											<%-- 										<input type="hidden" id="inno" value="${TamlistProyInv}"> --%>
-											<%-- 										<input type="hidden" id="TT" value="${TamlistProyTT}"> --%>
+											<input type="hidden" id="totalUsuGrado1" value="${totalUsuGrado1}">
+											<input type="hidden" id="totalUsuGrado2" value="${totalUsuGrado2}">
+											<input type="hidden" id="totalUsuGrado3" value="${totalUsuGrado3}">
 										</div>
 
 										<!-- BEGIN BASIC CHART PORTLET-->
 
-										<div style="width: 30%">
-											<canvas id="canva" height="450" width="450"></canvas>
+										<div style="width: 70%">
+											<canvas id="chart-area" width="350" height="350"/>
 										</div>
-
 
 
 									</div>
@@ -374,7 +386,163 @@
 							<!-- END TODO SIDEBAR -->
 
 						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat red">
+							<div class="visual">
+								<i class="fa fa-bar-chart-o"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup">${proyectosArea1}</span>
+								</div>
+								<div class="desc">Ingeniería y Ciencias Físico Matemáticas</div>
+							</div>
+							<a class="more" href="javascript:;"> Ver <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat green">
+							<div class="visual">
+								<i class="fa fa-shopping-cart"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup">
+											${proyectosArea2}</span>
+								</div>
+								<div class="desc">Ciencias Sociales y Administrativas</div>
+							</div>
+							<a class="more" href="javascript:;"> Ver <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat purple">
+							<div class="visual">
+								<i class="fa fa-globe"></i>
+							</div>
+							<div class="details">
+								<div class="number">
+									<span data-counter="counterup"></span><i class="icon-users">
+										${proyectosArea3} </i>
+								</div>
+								<div class="desc">Ciencias Médico Biológicas</div>
+							</div>
+							<a class="more" href="javascript:;"> Ver <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					<!-- BEGIN PAGE CONTENT-->
+					<div class="col-md-10">
+						<!-- BEGIN TODO SIDEBAR -->
+						<div class="todo-ui">
+							<div class="todo-sidebar">
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption" data-toggle="collapse"
+											data-target=".todo-project-list-content">
+											<div class="blog-single-head">
+												<h1 class="blog-single-head-title">Proyectos por áreas del conocimiento</h1>
+											</div>
+										</div>
+										<div class="actions">
+											<div class="btn-group">
+												<a
+													class="btn green btn-circle btn-outline btn-sm todo-projects-config"
+													href="javascript:;" data-toggle="dropdown"
+													data-hover="dropdown" data-close-others="true"> <i
+													class="icon-settings"></i> &nbsp; <i
+													class="fa fa-angle-down"></i>
+												</a>
+												<ul class="dropdown-menu pull-right">
+													<li><a href=""> Ver </a></li>
+													<li class="divider"></li>
+												</ul>
+											</div>
+										</div>
 
+
+										<div>
+											<input type="hidden" id="proyectosArea1" value="${proyectosArea1}">
+											<input type="hidden" id="proyectosArea2" value="${proyectosArea2}">
+											<input type="hidden" id="proyectosArea3" value="${proyectosArea3}">
+											
+										</div>
+
+										<!-- BEGIN BASIC CHART PORTLET-->
+
+										<div style="width:60%">
+											<canvas id="chart-area2" width="300" height="300"/>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+							<!-- END TODO SIDEBAR -->
+
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!-- BEGIN PAGE CONTENT-->
+					<div class="col-md-10">
+						<!-- BEGIN TODO SIDEBAR -->
+						<div class="todo-ui">
+							<div class="todo-sidebar">
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption" data-toggle="collapse"
+											data-target=".todo-project-list-content">
+											<div class="blog-single-head">
+												<h1 class="blog-single-head-title">Reporte de proyecto</h1>
+											</div>
+										</div>
+										<div class="actions">
+											<div class="btn-group">
+												<a
+													class="btn green btn-circle btn-outline btn-sm todo-projects-config"
+													href="javascript:;" data-toggle="dropdown"
+													data-hover="dropdown" data-close-others="true"> <i
+													class="icon-settings"></i> &nbsp; <i
+													class="fa fa-angle-down"></i>
+												</a>
+												<ul class="dropdown-menu pull-right">
+													<li><a href=""> Ver </a></li>
+													<li class="divider"></li>
+												</ul>
+											</div>
+										</div>
+
+
+										
+										<!-- BEGIN BASIC CHART PORTLET-->
+										
+										
+										<div id="canvas-holder">
+											<canvas id="chart-areaReporte" width="300" height="300"/>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+							<!-- END TODO SIDEBAR -->
+
+						</div>
+					</div>
+				</div>
+										
 
 
 
@@ -400,6 +568,8 @@
 								Layout.init(); // init current layout
 								Demo.init(); // init demo features		
 								PrograGraficas.init();
+								PrograGraficas.proyectos();
+								
 							});
 						</script>
 

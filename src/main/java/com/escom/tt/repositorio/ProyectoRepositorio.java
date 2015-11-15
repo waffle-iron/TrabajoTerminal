@@ -1,5 +1,6 @@
 package com.escom.tt.repositorio;
 
+import com.escom.tt.modelo.Area;
 import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Grado;
 import com.escom.tt.modelo.Proyecto;
@@ -37,6 +38,11 @@ public interface ProyectoRepositorio {
     
     List<Proyecto> obtenerTodosProyectosPorGradoSUp();
     
+    List<Proyecto> obtenerProyectosPorArea(int idArea);
+    
+    
+    
+    
     
     
   
@@ -47,4 +53,5 @@ public interface ProyectoRepositorio {
     
      boolean eliminarInvitacionColaborador(
 			ColaboradorProyecto colaboradorProyecto);
+     
 }

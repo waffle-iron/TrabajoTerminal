@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.escom.tt.modelo.Area;
 import com.escom.tt.modelo.CadenaBusqueda;
+import com.escom.tt.modelo.Escuela;
 import com.escom.tt.modelo.Grado;
 import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Usuario;
+import com.escom.tt.repositorio.AreaRepositorio;
+import com.escom.tt.repositorio.EscuelaRepositorio;
 import com.escom.tt.repositorio.GradoRepositorio;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
@@ -31,6 +35,10 @@ public class EstadisticasControlador {
 	UsuarioRepositorio usuarioRepositorio;
 	@Autowired	
 	GradoRepositorio gradoRepositorio;
+	@Autowired		
+	EscuelaRepositorio escuelaRepositorio;
+	@Autowired			
+	AreaRepositorio areaRepositorio;
 	
 	@RequestMapping(value = "/estadisticas", method = RequestMethod.GET)
 	public String resultadoBusqueda(Model modelo) {
@@ -78,18 +86,19 @@ public class EstadisticasControlador {
 		List<Usuario> listUsuTodos = null;
 		listUsuTodos = usuarioRepositorio.obtenerTodos();
 		int totalUsuarios = listUsuTodos.size();
-		modelo.addAttribute("totalUsuarios", totalUsuarios);
+		modelo.addAttribute("totalUsuarios", totalUsuarios);	
 		
-		List<Grado> listaGradoAcadMS = null;
-		listaGradoAcadMS = gradoRepositorio.buscaGradoAcademico("Medio Superior");
-		int totalUsuariosMedioSuperior = listaGradoAcadMS .size();
-		modelo.addAttribute("totalUsuariosMedioSuperior", totalUsuariosMedioSuperior);
-		
-		List<Grado> listaGradoAcadS = null;
-		listaGradoAcadS = gradoRepositorio.buscaGradoAcademico("Superior");
-		int totalUsuariosSuperior = listaGradoAcadS .size();
-		modelo.addAttribute("totalUsuariosSuperior", totalUsuariosSuperior);
-		
+//		List<Grado> listaGradoAcadMS = null;
+//		listaGradoAcadMS = gradoRepositorio.buscaGradoAcademico("Medio Superior");
+//		int totalUsuariosMedioSuperior = listaGradoAcadMS .size();
+//		System.out.println("----------"+totalUsuariosMedioSuperior );
+//		modelo.addAttribute("totalUsuariosMedioSuperior", totalUsuariosMedioSuperior);		
+//		List<Grado> listaGradoAcadS = null;
+//		listaGradoAcadS = gradoRepositorio.buscaGradoAcademico("Superior");
+//		int totalUsuariosSuperior = listaGradoAcadS .size();
+//		System.out.println("----------"+totalUsuariosSuperior);
+//		modelo.addAttribute("totalUsuariosSuperior", totalUsuariosSuperior);
+//		
 		List<Proyecto> proyectosPorGradoMedSup = null;
 		proyectosPorGradoMedSup = proyectoRepositorio.obtenerTodosProyectosPorGradoMedSUp();
 		int totalProyectosPorGradoMedSup = proyectosPorGradoMedSup.size();
@@ -100,12 +109,49 @@ public class EstadisticasControlador {
 		int totalProyectosPorGradoSup = proyectosPorGradoSup.size();
 		modelo.addAttribute("totalProyectosPorGradoSup", totalProyectosPorGradoSup);
 		
+		List<Usuario> usuariosPorGrado = null;
+		usuariosPorGrado = usuarioRepositorio.usuarioPorGrado(1);
+		int totalUsuGrado1 = usuariosPorGrado.size();
+		modelo.addAttribute("totalUsuGrado1", totalUsuGrado1);		
+		List<Usuario> usuariosPorGrado2 = null;
+		usuariosPorGrado2 = usuarioRepositorio.usuarioPorGrado(2);
+		int totalUsuGrado2 = usuariosPorGrado2.size();
+		modelo.addAttribute("totalUsuGrado2", totalUsuGrado2);		
+		List<Usuario> usuariosPorGrado3 = null;
+		usuariosPorGrado3 = usuarioRepositorio.usuarioPorGrado(3);
+		int totalUsuGrado3 = usuariosPorGrado3.size();
+		modelo.addAttribute("totalUsuGrado3", totalUsuGrado3);
 		
 		
 		
+		List<Usuario> usuariosEscId1 = null;
+		usuariosEscId1  = usuarioRepositorio.usuarioPorEscuela(1);
+		int totalUsuEsc1 = usuariosEscId1.size();
+		System.out.println();
+		modelo.addAttribute("totalUsuEsc1", totalUsuEsc1);		
+		List<Usuario> usuariosEsc2 = null;
+		usuariosEsc2  = usuarioRepositorio.usuarioPorEscuela(2);
+		int totalUsuEsc2 = usuariosEsc2.size();
+		modelo.addAttribute("totalUsuEsc2", totalUsuEsc2);		
+		List<Usuario> usuariosEsc3 = null;
+		usuariosEsc2  = usuarioRepositorio.usuarioPorEscuela(3);
+		int totalUsuEsc3 = usuariosEsc2.size();
+		modelo.addAttribute("totalUsuEsc3", totalUsuEsc3);
+		
+		List<Proyecto> proyectosPorArea = null;		
+		proyectosPorArea = proyectoRepositorio.obtenerProyectosPorArea(1);		
+		int proyectosArea1 = proyectosPorArea.size();
+		modelo.addAttribute("proyectosArea1", proyectosArea1);
+		List<Proyecto> proyectosPorArea2 = null;		
+		proyectosPorArea2 = proyectoRepositorio.obtenerProyectosPorArea(2);		
+		int proyectosArea2 = proyectosPorArea2.size();
+		modelo.addAttribute("proyectosArea2", proyectosArea2);
+		List<Proyecto> proyectosPorArea3 = null;		
+		proyectosPorArea3 = proyectoRepositorio.obtenerProyectosPorArea(3);		
+		int proyectosArea3 = proyectosPorArea3.size();
+		modelo.addAttribute("proyectosArea3", proyectosArea3);
 		
 		
-
 		return "estadisticas";
 
 	}

@@ -53,7 +53,7 @@
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row-fluid span12"></div>
 				
-				<c:url value="/buscar" var="urlBusquedaBus" />
+				<c:url value="/buscar/noEncontrado" var="urlBusquedaBus" />
 
 				<!-- BEGIN FORM 1-->
 				<div class="row">
@@ -61,17 +61,17 @@
 					<h1>&nbsp;Realiza una búsqueda<small> </small></h1>
 				</div>
 				
-				<form action="${urlBusquedaBus}" method="get">
+				<form action="${urlBusquedaBus}" method="get" name="form">
 					<div class="col-md-5">
 					<div class="form-body">
 						<div class="form-group">
-							<input name="cadena" class="form-control input-sm"
-								placeholder="Search..." />
+							<input id="entrada" name="cadena" class="form-control input-sm"
+								placeholder="Search..." required="required"/>
 						</div>
 					</div>
 					</div>
 					<div class="col-md-2">
-						<button type="submit" class="btn blue">Buscar</button>
+						<button type="submit" class="btn blue"  >Buscar</button>
 					</div>					
 				</form>
 				</div>
@@ -204,7 +204,9 @@
 					<!-- END EXAMPLE TABLE PORTLET-->					
 				</div>
 				</c:if>
-
+				<c:if test="${cadenaNoEncontrada != null}">
+					${cadenaNoEncontrada}
+				</c:if>
 				<!-- END EXAMPLE TABLE PORTLET-->
 			</div>
 		</div>
@@ -234,6 +236,13 @@
 
 		});
 	</script>
+	<script>
+	function{ 
+		if (document.getElementById("entrada")   == '') 
+		{ alert ('El campo esta vacío');  
+		}} 
+		
+	</script> 
 
 	<!-- END JAVASCRIPTS -->
 </body>

@@ -25,9 +25,19 @@
 
 
 <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.js"></script>
-<script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.Bar.js"></script>
-<script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.PolarArea.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.min.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.Bar.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.PolarArea.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.Core.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.Doughnut.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.Line.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/js/Chart.Radar.js"></script> --%>
+
+
+
+
+
+
 
 <!-- END CORE PLUGINS -->
 <script src="${pageContext.request.contextPath}/resources/global/scripts/metronic.js" type="text/javascript"></script>
@@ -41,6 +51,9 @@
 <script src="${pageContext.request.contextPath}/resources/tema/assets/admin/pages/scripts/charts-flotcharts.js"></script>
 <script src="${pageContext.request.contextPath}/resources/tema/assets/global/scripts/app.mim.js"></script>
 <script src="${pageContext.request.contextPath}/resources/tema/assets/global/scripts/giovani.js"></script>
+<script src="${pageContext.request.contextPath}/resources/tema/assets/global/scripts/graficareporte.js"></script>
+
+
 
 
 

@@ -307,17 +307,17 @@
 											<div class="success"></div>&nbsp; ${proyecto.nombre}
 										</td>
 										<td><a
-											href="${contexto}/proyecto/ver/${proyecto.idProyecto}"
+											href="${contexto}proyecto/reporte/${proyecto.idProyecto}"
 											class="btn default btn-xs purple"> <i class="fa fa-edit"></i>
 												Ver
 										</a></td>
 										<td><a
-											href="${contexto}/proyecto/${proyecto.idProyecto}/editar"
+											href="${contexto}proyecto/${proyecto.idProyecto}/editar"
 											class="btn default btn-xs purple"> <i class="fa fa-edit"></i>
 												Edit
 										</a></td>
 										<td><a
-											href="${contexto}/proyecto/eliminar/${proyecto.idProyecto}"
+											href="${contexto}proyecto/eliminar/${proyecto.idProyecto}"
 											class="btn default btn-xs black"> <i
 												class="fa fa-trash-o"></i> Delete
 										</a></td>
