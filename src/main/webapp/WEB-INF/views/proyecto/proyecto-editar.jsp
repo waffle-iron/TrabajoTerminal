@@ -116,24 +116,19 @@
 												<form:input path="fechaFin" cssClass="form-control" type="date" value="${var_fechaFin}" />
 												<form:errors path="fechaFin" element="span"
 															 cssClass="help-block text-danger"/>
+															 <div style="color:#C00;">${mensajeFechas}</div>
 											</div>
 										</div>
 									</div>
 
-									<div class="form-group">
-										<label class="control-label col-md-3">Avance
-											<span class="required"> * </span>
-										</label>
-
-										<div class="col-md-7">
-											<div class="input-icon right">
-												<form:input path="avance" cssClass="form-control"/>
+									
+												<form:hidden path="avance" cssClass="form-control"/>
 												<form:errors path="avance" element="span"
 															 cssClass="help-block text-danger"/>
-											</div>
-										</div>
-									</div>
-
+								
+								
+								<form:errors path="*" element="span"
+															 cssClass="help-block text-danger"/>
 									<div class="form-group">
 										<label class="control-label col-md-3">Tipo de proyecto
 											<span class="required"> * </span>

@@ -6,7 +6,7 @@
 
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<c:url value="/" var="contexto" />
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -57,12 +57,10 @@
                         <h1 class="text-success"><strong>Se ha creado un nuevo proyecto</strong></h1>
 					</c:if>
 					
+				<div class="col-md-12">
 				
-				
-					<div class="row">
-					<div class="col-md-4" >
-					</div>
-						<div class="col-md-4" >
+					
+						
 <!-- 					******** -->
 <!-- BEGIN PROFILE SIDEBAR -->
 						<div class="profile-sidebar" style="width: 250px;">
@@ -124,21 +122,51 @@
 									</ul>
 								</div>
 								<!-- END MENU -->
-							</div>
+							
 
 
 
 						</div>
 						<!-- END BEGIN PROFILE SIDEBAR -->
 						</div>
-<!-- ********** --><div class="col-md-4">
-					</div>
+
 					
 					
-				</div>
+				
 					
-					<div class="col-md-12">
+					<div class="col-md-8">
 					
+						<div class="col-md-4">
+						</div>
+						
+						<div class="col-md-4">
+						
+							<!-- PORTLET MAIN -->
+							
+					
+							
+								<div class="col-md-12">
+								
+						<div class="form-actions">
+                                    <div class="row" align="center">
+                                       
+                                        
+                                        <a href="${contexto}/proyecto/invitar">
+                                            <button type="submit" class="btn green">Invitar colaborador</button>
+                                            </a>
+                                        
+                                    </div>
+                                </div>
+                                </div>
+                               
+                                
+                              
+                                
+                                
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+						
 					<!-- BEGIN VALIDATION STATES-->
                     <div class="portlet box blue">
                         <div class="portlet-title">
@@ -207,12 +235,12 @@
                                                 ${colaborador.usuario.telefono}
                                             </td>
                                             <td>
-                                                <a href="${contexto}proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs purple">
+                                                <a href="${contexto}/proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs purple">
                                                     <i class="fa fa-edit"></i> Asignar </a>
                                             </td>        
                                             <td>        
                                               <a href="${contexto}/proyecto/eliminarColaborador/${proyecto.idProyecto}/${colaborador.usuario.idUsuarios}" onclick="return confirmar()" class="btn default btn-xs black" >
-											  <i class="fa fa-trash-o"></i> Delete </a>
+											  <i class="fa fa-trash-o"></i> Eliminar </a>
                                                     
                                             </td>
                                         </tr>
@@ -254,7 +282,10 @@
                                             Usuario asignaado
                                         </th>
                                         <th>
-
+											Editar tarea
+                                        </th>
+                                        <th>
+                                        	Eliminar
                                         </th>
                                     </tr>
                                     </thead>
@@ -281,8 +312,13 @@
                                             </td>
                                             <td>
                                                 <a href="${contexto}/tarea/${tarea.idTarea}/editar" class="btn default btn-xs purple">
-                                                    <i class="fa fa-edit"></i> editar </a>
+                                                    <i class="fa fa-edit"></i> Editar </a>
                                             </td>
+                                            <td>
+                                                <a href="${contexto}/tarea/${proyecto.idProyecto}/${tarea.idTarea}/eliminar" class="btn default btn-xs black">
+                                                    <i class="fa fa-edit"></i> Eliminar </a>
+                                            </td>
+                                            
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -296,9 +332,9 @@
                     </div>
                     <!-- END VALIDATION STATES-->
                     
-					
-					
 					</div>
+					
+					
 				
 					
 				

@@ -2,7 +2,7 @@
 <%@taglib prefix="c"        uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring"   uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="fmt"      uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:url value="/" var="contexto"/>
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -152,8 +152,8 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Estado Civil</label>
             <div class="input-icon">
-                <form:checkbox path="estadoCivil" value="Soltero" cssClass="form-control placeholder-no-fix"/>Soltero
-                <form:checkbox path="estadoCivil" value="Casado" cssClass="form-control placeholder-no-fix"/>Casado
+                <form:radiobutton path="estadoCivil" value="Soltero" cssClass="form-control placeholder-no-fix"/>Soltero
+                <form:radiobutton path="estadoCivil" value="Casado" cssClass="form-control placeholder-no-fix"/>Casado
                 <form:errors path="estadoCivil" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
@@ -161,8 +161,8 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Sexo</label>
             <div class="input-icon">
-                <form:checkbox path="sexo" value="Masculino" cssClass="form-control placeholder-no-fix"/>Masculino
-                <form:checkbox path="sexo" value="Femenino" cssClass="form-control placeholder-no-fix"/>Femenino
+                <form:radiobutton path="sexo" value="Masculino" cssClass="form-control placeholder-no-fix"/>Masculino
+                <form:radiobutton path="sexo" value="Femenino" cssClass="form-control placeholder-no-fix"/>Femenino
                 <form:errors path="sexo" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
@@ -189,7 +189,7 @@
             <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <form:input path="password" cssClass="form-control placeholder-no-fix" placeholder="Contraseña" />
+                <form:input path="password" cssClass="form-control placeholder-no-fix" placeholder="Contraseña" type="password"/>
                 <form:errors path="password" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
@@ -200,7 +200,7 @@
         </div>
         <div class="create-account">
             <p>
-                Ya tienes una cuenta <a href="${contexto}login" id="register-btn">
+                Ya tienes una cuenta <a href="${contexto}/login" id="register-btn">
                 Iniciar Sesión </a>
             </p>
         </div>

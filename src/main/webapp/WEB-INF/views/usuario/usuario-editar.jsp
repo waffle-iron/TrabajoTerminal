@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -142,20 +142,7 @@
 										<!--                                             </div> -->
 										<!--                                         </div> -->
 										<!--                                     </div> -->
-										<div class="form-group">
-											<label class="control-label col-md-3">Fecha de
-												nacimiento: <span class="required"> * </span>
-											</label>
-
-											<div class="col-md-4">
-												<div class="input-icon right">
-													<form:input path="fechaNacimiento" cssClass="form-control" />
-													<form:errors path="fechaNacimiento" element="span"
-														cssClass="help-block text-danger" />
-														<div style="color:#C00;">${mensajeFechas}</div>
-												</div>
-											</div>
-										</div>
+										
 										
 										<div class="form-group">
 											<label class="control-label col-md-3">Teléfono: <span
@@ -236,7 +223,21 @@
 											</div>
 										</div>
 										
-										
+										<div class="form-group">
+											<label class="control-label col-md-3">Fecha de
+												nacimiento: <span class="required"> * </span>
+											</label>
+
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<fmt:formatDate value="${usuario.fechaNacimiento}" var="fecha_nacimiento" pattern="yyyy-MM-dd" />
+													<form:input path="fechaNacimiento" cssClass="form-control" type="date" value="${fecha_nacimiento}"/>
+													<form:errors path="fechaNacimiento" element="span"
+														cssClass="help-block text-danger" />
+														<div style="color:#C00;">${mensajeFechas}</div>
+												</div>
+											</div>
+										</div>
 
 										
 
@@ -249,7 +250,8 @@
 
 											<div class="col-md-4">
 												<div class="input-icon right">
-													<form:input path="fechaIngresoIPN" cssClass="form-control" />
+													<fmt:formatDate value="${usuario.fechaIngresoIPN}" var="fecha_ingreso" pattern="yyyy-MM-dd" />
+													<form:input path="fechaIngresoIPN" cssClass="form-control" type="date" value="${fecha_ingreso}"/>
 													<form:errors path="fechaIngresoIPN" element="span"
 														cssClass="help-block text-danger" />
 														<div style="color:#C00;">${mensajeFechasIngreso}</div>
