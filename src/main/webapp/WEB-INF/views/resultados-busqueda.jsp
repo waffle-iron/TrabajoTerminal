@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:url value="/" var="contexto" />
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -124,14 +124,14 @@
 									<c:forEach items="${proyectos}" var="proyecto">
 										<tr>
 											<td>
-												<a href="${contexto}/proyecto/${proyecto.idProyecto}/ver" class="btn default btn-xs blue">
+												<a href="${contexto}/proyecto/ver/${proyecto.idProyecto}" class="btn default btn-xs blue">
 												<i class="fa fa-file-audio-o"></i>
 												${proyecto.nombre} </a>																							
 											</td>
 											<td>${proyecto.descripcion}</td>
 											<td>${proyecto.estado}</td>
 											<td>
-												<a href="${contexto}/usuario/${usuario.idUsuarios}/ver" class="btn default btn-xs red">
+												<a href="${contexto}/usuario/ver/${proyecto.coordinador.idUsuarios}" class="btn default btn-xs red">
 												<i class="fa fa-user"></i>
 												${proyecto.coordinador.nombres} </a>		
 											</td>
@@ -187,7 +187,7 @@
 									<c:forEach items="${usuarios}" var="usuario">
 										<tr>
 											<td>
-												<a href="${contexto}/usuario/${usuario.idUsuarios}/ver" class="btn default btn-xs red">
+												<a href="${contexto}/usuario/ver/${proyecto.coordinador.idUsuarios}" class="btn default btn-xs red">
 												<i class="fa fa-user"></i>
 												${usuario.nombreUsuario} </a>														
 											</td>
