@@ -187,7 +187,7 @@
 									<c:forEach items="${usuarios}" var="usuario">
 										<tr>
 											<td>
-												<a href="${contexto}/usuario/ver/${proyecto.coordinador.idUsuarios}" class="btn default btn-xs red">
+												<a href="${contexto}/usuario/ver/${usuario.idUsuarios}"" class="btn default btn-xs red">
 												<i class="fa fa-user"></i>
 												${usuario.nombreUsuario} </a>														
 											</td>
