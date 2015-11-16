@@ -1,8 +1,11 @@
-mo
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <c:set var="contexto" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 
@@ -93,14 +96,25 @@ mo
                                 </ul>
                             </div>
                             <div class="chat-form">
-                                <div class="input-cont">
-                                    <input class="form-control" type="text" placeholder="Type a message here..."/></div>
-                                <div class="btn-cont">
-                                    <span class="arrow"> </span>
-                                    <a href="" class="btn blue icn-only">
-                                        <i class="fa fa-check icon-white"></i>
-                                    </a>
-                                </div>
+
+                                <c:url value="/correo/crear" var="urlCorreoGuardar"/>
+                                <form:form action="${urlCorreoGuardar}" method="post" commandName="correo">
+                                    <div class="input-cont">
+
+                                        <form:input path="asunto" cssClass="form-control" placeholder="Type a asunto here..."/>
+                                        <form:errors path="asunto" element="span" cssClass="help-block text-danger"/>
+                                    </div>
+                                    <div class="input-cont">
+                                        <form:input path="contenido" cssClass="form-control" placeholder="Type a message here..."/>
+                                        <form:errors path="contenido" element="span" cssClass="help-block text-danger"/>
+                                        <form:hidden path="usuarioEmisor.idUsuarios" value="${idEmisor}"></form:hidden>
+                                        <form:hidden path="usuarioReceptor.idUsuarios" value="${idReceptor}"></form:hidden>
+                                    </div>
+                                    <div class="btn-cont">
+                                        <span class="arrow"> </span>
+                                        <button type="submit" class="btn blue icn-only"><i class="fa fa-check icon-white"></i></button>
+                                    </div>
+                                </form:form>
                             </div>
 
                         </div>

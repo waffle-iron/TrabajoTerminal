@@ -45,12 +45,13 @@ public class CorreoControlador {
 
 		if (validacion.hasErrors()){
 			modelo.addAttribute("correo", correo);
-			ruta = "correo/correo-crear";
+
 		}else{
 			correo.setFechaHora(new Date());
 			Integer id = correoRepositorio.crearCorreo(correo);
-			ruta = "redirect:/correo/ver/" + correo.getIdCorreo()+ "/?creado=true";
+
 		}
+		ruta = "redirect:/chat/" + correo.getUsuarioReceptor().getIdUsuarios();
 		return ruta;
 	}
 	
@@ -148,8 +149,12 @@ public class CorreoControlador {
 
 		modelo.addAttribute("chat", correoList);
 		modelo.addAttribute("principal", principal.getName());
-		if (usuarioConChat != null)
+		if (usuarioConChat != null) {
 			modelo.addAttribute("receptor", usuarioConChat.getNombres() + " " + usuarioConChat.getaPaterno() + " " + usuarioConChat.getaMaterno());
+			modelo.addAttribute("idReceptor", usuarioConChat.getIdUsuarios());
+			modelo.addAttribute("idEmisor", usuarioEnSesion.getIdUsuarios());
+			modelo.addAttribute("correo", new Correo());
+		}
 		else
 			return "redirect:/";
 
