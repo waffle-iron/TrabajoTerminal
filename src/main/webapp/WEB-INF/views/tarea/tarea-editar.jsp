@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -44,11 +44,104 @@
 
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<!-- BEGIN VALIDATION STATES-->
+						<div class="portlet box blue">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-gift"></i>Actualizar Tarea a: <b>${colaborador}</b>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<div class="alert ${creado ? "alert-success" : "alert-danger"} ${ creado ? "" : "display-hide"}">
+									<button class="close" data-close="alert"></button>
+									<c:choose>
+										<c:when test="${creado}">
+                                        Se ha enviado generado la tarea al usuario.
+                                    </c:when>
+										<c:when test="${!creado}">
+                                        Hubo errores, por favor verifica.
+                                    </c:when>
+									</c:choose>
+								</div>
+								<!-- BEGIN FORM-->
+								<c:url value="/tarea/guardarCambios" var="urlTareaUpdate" />
 
-					<pre>
-						${tarea}
-					</pre>
+								<form:form action="${urlTareaUpdate}" method="post"
+									commandName="tarea" cssClass="form-horizontal">
+									<div class="form-body">
 
+										<div class="form-group">
+											<label class="control-label col-md-3">Título <span
+												class="required"> * </span>
+											</label>
+
+											<div class="col-md-7">
+												<div class="input-icon right">
+													<form:input path="titulo" cssClass="form-control" />
+													<form:errors path="titulo" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3">Estado <span
+												class="required"> * </span>
+											</label>
+
+											<div class="col-md-7">
+												<div class="input-icon right">
+													<form:input path="estado" cssClass="form-control" />
+													<form:errors path="estado" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3">Descripcón de
+												la tarea <span class="required"> * </span>
+											</label>
+
+											<div class="col-md-7">
+												<div class="input-icon right">
+													<form:textarea path="descripcion" cssClass="form-control" />
+													<form:errors path="descripcion" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3">Avance <span
+												class="required"> * </span>
+											</label>
+
+											<div class="col-md-7">
+												<div class="input-icon right">
+													<form:input path="avance" cssClass="form-control" />
+													<form:errors path="*" element="span"
+														cssClass="help-block text-danger" />
+												</div>
+											</div>
+										</div>
+										<fmt:formatDate value="${fechaEntrega}" var="var_fechaEntrega"
+											pattern="yyyy-MM-dd" />
+										<form:hidden path="fechaEntrega" value="${var_fechaEntrega}" />
+										<form:hidden path="idTarea"></form:hidden>
+										<form:hidden path="colaboradorProyecto.proyecto.idProyecto"></form:hidden>
+										<form:hidden path="colaboradorProyecto.usuario.idUsuarios"></form:hidden>
+									</div>
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-offset-3 col-md-9">
+												<button type="submit" class="btn green">Actualizar</button>
+											</div>
+										</div>
+									</div>
+								</form:form>
+							</div>
+						</div>
+						<!-- END VALIDATION STATES-->
+					</div>
 				</div>
 				<!-- END PAGE CONTENT-->
 			</div>

@@ -15,5 +15,8 @@ public interface GradoRepositorio {
 	public abstract Grado buscarPorId(Integer id);
 
 	public abstract List<Grado> obtenerTodos();
+	
+	public abstract List<Grado> buscaGradoAcademico(String nombreGrado);
+
 
 }

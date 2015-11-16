@@ -43,13 +43,108 @@
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
+				
+
 				<div class="row">
+				<c:if test="${actualizado}">
+						<h1 class="text-success"><strong>Datos actualizados</strong></h1>
+					</c:if>
+					<c:if test="${creado}">
+                        <h1 class="text-success"><strong>Se ha creado un nuevo proyecto</strong></h1>
+					</c:if>
+					
+					
+				
+					<div class="col-md-8 col-md-offset-2">
+						<div class="portlet blue-hoki box">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-cogs"></i>Información del Proyecto
+								</div>
+								
+							</div>
+							<div class="portlet-body">
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Nombre del proyecto:
+									</div>
+									<div class="col-md-7 value">
+										${proyecto.nombre}
+									</div>
+								</div>
+								
+															
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Descripción:
+									</div>
+									<div class="col-md-7 value">
+										${proyecto.descripcion}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Fecha de inicio:
+									</div>
+									<div class="col-md-7 value">
+										${proyecto.fechaInicio}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Fecha Fin:
+									</div>
+									<div class="col-md-7 value">
+										${proyecto.fechaFin}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Avance:
+									</div>
+									<div class="col-md-7 value">
+										${proyecto.avance} 
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Tipo de proyecto:
+									</div>
+									<div class="col-md-7 value">
+										${proyecto.tipoProyecto}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Estado:
+									</div>
+									<div class="col-md-7 value">
+										${proyecto.estado}
+									</div>
+								</div>
+								<div class="row static-info">
+									<div class="col-md-5 name">
+										Coordinador:
+									</div>
+									<div class="col-md-7 value">
+										${proyecto.coordinador.nombres}
+									</div>
+								</div>
+								
+								
+								
+								
+							</div>
+						</div>
 
-					<pre>
-						${proyecto}
-					</pre>
 
-				</div>
+					</div>
+					
+					
+					
+				
+					
+				
 				<!-- END PAGE CONTENT-->
 			</div>
 		</div>

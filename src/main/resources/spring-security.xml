@@ -4,12 +4,13 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <security:http use-expressions="true">
+
+    <security:http use-expressions="true" auto-config="true">
 
         <security:form-login login-page="/login"
                              authentication-failure-url="/login?valido=false"
                              login-processing-url="/autentificar" username-parameter="email"
-                             password-parameter="password" default-target-url="/"/>
+                             password-parameter="password" default-target-url="/" />
 
         <security:logout logout-url="/logout"
                          logout-success-url="/login" delete-cookies="JSESSIONID"/>
@@ -17,7 +18,7 @@
 
         <security:access-denied-handler error-page="/error-403"/>
 
-        <security:intercept-url pattern="/area/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/area/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_COLABORADOR')"/>
         <security:intercept-url pattern="/busqueda/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/correo/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/estado/**" access="hasAnyRole('ROLE_ADMIN')"/>
@@ -32,18 +33,25 @@
         <security:intercept-url pattern="/tarea/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/tipoproyecto/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/usuario/**" access="hasAnyRole('ROLE_ADMIN')"/>
-
+        <security:intercept-url pattern="/mis-invitaciones" access="hasAnyRole('ROLE_ADMIN')"/>
+        <!--<security:intercept-url pattern="/usuario/**" access="hasAnyRole('ROLE_ADMIN')"/>-->
+        
+        <security:intercept-url pattern="/usuario/perfil" access="hasAnyRole('ROLE_ADMIN')"/>
+        
+        
+       
     </security:http>
+    <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </bean>
 
     <security:authentication-manager id="authenticationManager">
         <security:authentication-provider>
-
+            <security:password-encoder ref="encoder"/>
             <security:jdbc-user-service
                     data-source-ref="dataSource"
                     users-by-username-query="SELECT email,password,activo FROM USUARIO WHERE email=?"
                     authorities-by-username-query="SELECT email, rol FROM USUARIO WHERE email=?"/>
-
+            <security:password-encoder ref="encoder" />
         </security:authentication-provider>
     </security:authentication-manager>
-    <security:global-method-security secured-annotations="enabled"/>
 </beans>

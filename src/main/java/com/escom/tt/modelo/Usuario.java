@@ -20,7 +20,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="USUARIO")
 public class Usuario {
 
-
+	public Usuario(){
+		
+	}
+	public Usuario(Grado grado){
+		this.grado = grado;
+	}
+	
+	
 	@Id
 	@Column(name="idUsuarios")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,8 +40,8 @@ public class Usuario {
 
 	@Column(name="password")
 	@NotNull
-	@Size(min=1,max=45,message="El nombre de la contraseña debe tener al menos 5 caracteres y maximo 45")
-	private String contraseña;
+
+	private String password;
 
 	@Column(name="nombres")
 	@NotNull
@@ -58,7 +65,7 @@ public class Usuario {
 
 	@Column(name="fechaNacimiento")
 	@NotNull(message = "La fecha de nacimiento debe ser obligatoria")
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
 
 	@Column(name="estadoCivil")
@@ -78,14 +85,18 @@ public class Usuario {
 
 	@Column(name="fechaIngresoIPN")
 	@NotNull(message = "La fecha de ingreso debe ser obligatoria")
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaIngresoIPN;
 
 
 	@Column(name="Evaluacion")
-	@NotNull
 	private Integer evaluacion;
 
+	@Column(name="activo")
+	private boolean activo;
+
+	@Column(name="rol")
+	private String rol;
 
 	@ManyToOne
 	@JoinColumn(name="escuela")
@@ -103,7 +114,7 @@ public class Usuario {
 	private List<Proyecto> proyectos;
 	
 	@ManyToMany
-	@JoinTable(name="usuario_has_idiomas",
+	@JoinTable(name="usuario_has_idomas",
 				joinColumns={@JoinColumn(name="Usuarios_idUsuarios")},
 				inverseJoinColumns={@JoinColumn(name="Idiomas_idIdiomas")})
 	private List<Idioma> idiomas;
@@ -137,9 +148,8 @@ public class Usuario {
 		this.evaluacion = evaluacion;
 	}
 
-
-
-	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
+	//wqdbgfn
 	@Fetch(FetchMode.SELECT)
 	private List<ColaboradorProyecto> colaboradorProyectos;
 
@@ -167,12 +177,12 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getNombres() {
@@ -272,12 +282,28 @@ public class Usuario {
 		this.correos = correos;
 	}
 
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario{" +
 				"idUsuarios=" + idUsuarios +
 				", nombreUsuario='" + nombreUsuario + '\'' +
-				", contraseña='" + contraseña + '\'' +
+				", contraseña='" + password + '\'' +
 				", nombres='" + nombres + '\'' +
 				", aPaterno='" + aPaterno + '\'' +
 				", aMaterno='" + aMaterno + '\'' +

@@ -68,6 +68,16 @@ public class ColaboradorProyecto {
 		proyecto.getColaboradorProyectos().add(this);
 		usuario.getColaboradorProyectos().add(this);
 	}
+	public ColaboradorProyecto(Proyecto proyecto){
+		this.proyecto = proyecto;
+		this.id.idProyecto = proyecto.getIdProyecto();
+		proyecto.getColaboradorProyectos().add(this);
+	}
+	public ColaboradorProyecto(Usuario usuario){
+		this.usuario = usuario;
+		this.id.idUsuario = usuario.getIdUsuarios();
+		usuario.getColaboradorProyectos().add(this);
+	}
 
 	public Id getId() {
 		return id;

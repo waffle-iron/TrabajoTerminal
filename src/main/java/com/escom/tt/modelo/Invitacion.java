@@ -1,5 +1,7 @@
 package com.escom.tt.modelo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -15,6 +17,7 @@ public class Invitacion {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 
     private Integer idInvitacion;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
     private Integer estado;
 
