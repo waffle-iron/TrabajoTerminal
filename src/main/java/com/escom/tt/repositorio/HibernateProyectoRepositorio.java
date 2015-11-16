@@ -163,14 +163,7 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
 	}
 
 
-	
-	
-   
-	
 
-		
-    
-    
 
 	@Override
 	public boolean eliminarInvitacionColaborador(

@@ -148,7 +148,11 @@ public class CorreoControlador {
 
 		modelo.addAttribute("chat", correoList);
 		modelo.addAttribute("principal", principal.getName());
-		modelo.addAttribute("receptor", usuarioConChat.getNombres() + " " + usuarioConChat.getaPaterno() + " " + usuarioConChat.getaMaterno());
+		if (usuarioConChat != null)
+			modelo.addAttribute("receptor", usuarioConChat.getNombres() + " " + usuarioConChat.getaPaterno() + " " + usuarioConChat.getaMaterno());
+		else
+			return "redirect:/";
+
 		return "correo/correo-chat";
 	}
 
