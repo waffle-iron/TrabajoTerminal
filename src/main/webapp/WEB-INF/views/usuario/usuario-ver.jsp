@@ -76,15 +76,15 @@
 										${usuario.nombreUsuario}</div>
 									<div class="profile-usertitle-job">
 										${usuario.grado.nombre}</div>
-									<div class="profile-usertitle-job">
-										<a href ="${contexto}/usuario/${usuario.idUsuarios}/editar "> Editar perfil</a></div>
-										
+									
 								</div>
 								<!-- END SIDEBAR USER TITLE -->
 								<!-- SIDEBAR BUTTONS -->
+								
 								<div class="profile-userbuttons">
+								<a href ="${contexto}/usuario/invitar/${usuario.idUsuarios}">
 									<button type="button" class="btn btn-circle green-haze btn-sm">Invitar
-										a colaborar</button>
+										a colaborar</button></a>
 									<button type="button" class="btn btn-circle btn-danger btn-sm">Mensaje</button>
 								</div>
 								<!-- END SIDEBAR BUTTONS -->

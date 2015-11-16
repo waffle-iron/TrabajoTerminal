@@ -288,5 +288,29 @@ public class UsuarioControlador {
 
 		return ruta;
 	}
+	
+	@RequestMapping(value="/usuario/invitar/{usuarioId:[0-9]+}", method = RequestMethod.GET)
+    public String invitarUsuario(@PathVariable Integer usuarioId, Model modelo, Principal principal, Integer error) {
+        Usuario usuario = null;
+        List<Proyecto> misProyectos = null;
+        String mensaje = null;
+        Usuario usuarioAInvitar = null;
+        
+        usuarioAInvitar = usuarioRepositorio.buscarPorId(usuarioId);
+        usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+        misProyectos = proyectoRepositorio.buscarPorCoordinador(usuario);
+
+        if (misProyectos != null && usuarioAInvitar !=null){
+            modelo.addAttribute("misProyectos", misProyectos);
+        	modelo.addAttribute("usuarioAInvitar", usuarioAInvitar);
+        	
+        }else{
+            modelo.addAttribute("mensaje", "No tienes proyectos aun");
+            modelo.addAttribute("error", error);
+            modelo.addAttribute("misProyectos", misProyectos);
+       		modelo.addAttribute("usuarioAInvitar", usuarioAInvitar);
+        }
+        return "usuario/usuario-invitar";
+    }
 
 }
