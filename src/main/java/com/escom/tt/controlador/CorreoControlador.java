@@ -1,9 +1,12 @@
 package com.escom.tt.controlador;
 
+import java.security.Principal;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import com.escom.tt.modelo.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,16 +27,13 @@ public class CorreoControlador {
 	private CorreoRepositorio correoRepositorio;
 	
 	@Autowired
-	private UsuarioRepositorio usuarioRepositorioReceptor;
-	
-	@Autowired
-	private UsuarioRepositorio usuarioRepositorioEmisor;
+	private UsuarioRepositorio usuarioRepositorio;
 	
 	@RequestMapping(value="/correo/crear", method = RequestMethod.GET)
 	public String crear(Model modelo){
 
-		modelo.addAttribute("usuarioReceptorList", usuarioRepositorioReceptor.obtenerTodos());
-		modelo.addAttribute("usuarioEmisorList", usuarioRepositorioEmisor.obtenerTodos());
+		modelo.addAttribute("usuarioReceptorList", usuarioRepositorio.obtenerTodos());
+		modelo.addAttribute("usuarioEmisorList", usuarioRepositorio.obtenerTodos());
 		modelo.addAttribute("correo", new Correo());
 
 		return "correo/correo-crear";
@@ -45,11 +45,13 @@ public class CorreoControlador {
 
 		if (validacion.hasErrors()){
 			modelo.addAttribute("correo", correo);
-			ruta = "correo/correo-crear";
+
 		}else{
+			correo.setFechaHora(new Date());
 			Integer id = correoRepositorio.crearCorreo(correo);
-			ruta = "redirect:/correo/ver/" + correo.getIdCorreo()+ "/?creado=true";
+
 		}
+		ruta = "redirect:/chat/" + correo.getUsuarioReceptor().getIdUsuarios();
 		return ruta;
 	}
 	
@@ -74,8 +76,8 @@ public class CorreoControlador {
 		correo = correoRepositorio.buscarPorId(correoId);
 
 		if (correo != null) {
-			modelo.addAttribute("usuarioReceptorList", usuarioRepositorioReceptor.obtenerTodos());
-			modelo.addAttribute("usuarioEmisorList", usuarioRepositorioEmisor.obtenerTodos());
+			modelo.addAttribute("usuarioReceptorList", usuarioRepositorio.obtenerTodos());
+			modelo.addAttribute("usuarioEmisorList", usuarioRepositorio.obtenerTodos());
 			modelo.addAttribute("correo", correo);
 			ruta = "correo/correo-editar";
 		}
@@ -129,6 +131,34 @@ public class CorreoControlador {
 		modelo.addAttribute("eliminado", eliminado);
 
 		return "correo/correo-todos";
+	}
+
+	@RequestMapping(value="/chat/{usuarioId:[0-9]+}")
+	public String chat(@PathVariable Integer usuarioId, Model modelo, Principal principal) {
+
+		List<Correo> correoList = null;
+		Usuario usuarioEnSesion = null;
+		Usuario usuarioConChat = null;
+
+		if (principal != null)
+			usuarioEnSesion = usuarioRepositorio.buscarPorCorreo(principal.getName());
+		if (usuarioEnSesion != null)
+			usuarioConChat = usuarioRepositorio.buscarPorId(usuarioId);
+		if (usuarioConChat != null)
+			correoList = correoRepositorio.chat(usuarioEnSesion, usuarioConChat);
+
+		modelo.addAttribute("chat", correoList);
+		modelo.addAttribute("principal", principal.getName());
+		if (usuarioConChat != null) {
+			modelo.addAttribute("receptor", usuarioConChat.getNombres() + " " + usuarioConChat.getaPaterno() + " " + usuarioConChat.getaMaterno());
+			modelo.addAttribute("idReceptor", usuarioConChat.getIdUsuarios());
+			modelo.addAttribute("idEmisor", usuarioEnSesion.getIdUsuarios());
+			modelo.addAttribute("correo", new Correo());
+		}
+		else
+			return "redirect:/";
+
+		return "correo/correo-chat";
 	}
 
 

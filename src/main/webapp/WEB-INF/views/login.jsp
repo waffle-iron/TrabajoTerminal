@@ -77,7 +77,7 @@
     <!--  dsasgegfsadgsgf
     -->
     <form class="login-form" action="${rutaAutentificar}" method="POST">
-        <h3 class="form-title">Inicio de sesión</h3>
+        <h3 class="form-title">Inicio de sesiï¿½n</h3>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -95,8 +95,7 @@
             <div class="input-icon">
                 <i class="fa fa-user"></i>
                 <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="email"
-                       name="email" value=""/>
-                     
+                       name="email" value="juancvfenix@gmail.com"/>
             </div>
         </div>
         <div class="form-group">
@@ -105,19 +104,18 @@
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
                 <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password"
-                       name="password" value=""/>
-                      
+                       name="password" value="123"/>
             </div>
         </div>
 
         <div class="form-actions">
             <button type="submit" class="btn blue pull-right">
-                Iniciar Sesión <i class="m-icon-swapright m-icon-white"></i>
+                Iniciar Sesiï¿½n <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                Aún no tienes una cuenta??&nbsp; <a href="${contexto}registro" id="register-btn">
+                Aï¿½n no tienes una cuenta??&nbsp; <a href="${contexto}registro" id="register-btn">
                 Registrate</a>
             </p>
         </div>
