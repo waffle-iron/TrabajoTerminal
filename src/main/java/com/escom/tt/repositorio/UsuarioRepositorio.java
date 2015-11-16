@@ -21,5 +21,10 @@ public interface UsuarioRepositorio {
 	Usuario buscarPorCorreo(String correo);
 
 	Usuario buscarPorCorreoORNombreUsuario(String correoUsuario);
+	
+	List<Usuario> usuarioPorEscuela(int idEscuela);
+	
+	List<Usuario> usuarioPorGrado(int idGrado);
+	
 
 }

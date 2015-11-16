@@ -1,11 +1,13 @@
 package com.escom.tt.repositorio;
 
+import com.escom.tt.modelo.Area;
 import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Grado;
 import com.escom.tt.modelo.Invitacion;
 import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.TipoProyecto;
 import com.escom.tt.modelo.Usuario;
+
 import org.hibernate.Criteria;
 
 
@@ -163,14 +165,7 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
 	}
 
 
-	
-	
-   
-	
 
-		
-    
-    
 
 	@Override
 	public boolean eliminarInvitacionColaborador(
@@ -183,5 +178,22 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
 		System.err.println("Se elemino colaborador proyecto" + eliminado);
 		return eliminado;
 	}
+
+	@Override
+	public List<Proyecto> obtenerProyectosPorArea(int idArea) {
+		List<Proyecto> proyectos = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Proyecto.class);
+		criteria.createAlias("areas", "areaAlias");
+		criteria.add(Restrictions.eq("areaAlias.idArea", idArea));
+		proyectos=criteria.list();
+		return proyectos;
+		
+	}
+
+	
+	
+	
+	
 
 }

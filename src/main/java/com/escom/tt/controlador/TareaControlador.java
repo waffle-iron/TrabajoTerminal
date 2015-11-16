@@ -136,8 +136,8 @@ public class TareaControlador {
         return ruta;
     }
 
-    @RequestMapping(value="/tarea/eliminar/{tareaId:[0-9]+}")
-    public String eliminar(@PathVariable Integer tareaId, Model modelo) {
+    @RequestMapping(value="/tarea/{proyectoId:[0-9]+}/{tareaId:[0-9]+}/eliminar")
+    public String eliminar(@PathVariable Integer tareaId,@PathVariable Integer proyectoId, Model modelo) {
         Boolean eliminado;
         Tarea tarea = null;
         tarea = tareaRepositorio.buscarPorId(tareaId);
@@ -149,7 +149,7 @@ public class TareaControlador {
             eliminado = false;
         }
 
-        return "redirect:/tarea?eliminado=" + eliminado;
+        return "redirect:/proyecto/propio/"+proyectoId;
     }
 
     @RequestMapping(value="/tarea")

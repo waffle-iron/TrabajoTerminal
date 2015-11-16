@@ -107,8 +107,7 @@ public class ProyectoControlador {
 			} else {
 				mensaje = "";
 				proyectoRepositorio.crear(proyecto);
-				ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()
-						+ "/?creado=true";
+				ruta = "redirect:/proyecto/propio/" + proyecto.getIdProyecto();
 			}
 
 		}
@@ -120,8 +119,12 @@ public class ProyectoControlador {
 			@ModelAttribute("proyecto") @Valid Proyecto proyecto,
 			BindingResult validacion, Model modelo, Principal principal) {
 		String ruta = null;
-
+		String mensaje1 = null;
+		
+		System.err.print("sDDASDSASDA");
+		
 		if (validacion.hasErrors()) {
+			System.err.print(validacion.getAllErrors());
 			modelo.addAttribute("tipoProyectoList",
 					tipoProyectoRepositorio.obtenerTodos());
 			modelo.addAttribute("estadoList", estadoRepositorio.obtenerTodos());
@@ -129,12 +132,32 @@ public class ProyectoControlador {
 					usuarioRepositorio.obtenerTodos());
 			modelo.addAttribute("proyecto", proyecto);
 			modelo.addAttribute("nombre", principal.getName());
+			modelo.addAttribute("mensajeFechas", mensaje1);
+			
 			ruta = "proyecto/proyecto-editar";
 		} else {
+			System.err.print("sDDASDSASDA");
+			if (proyecto.getFechaFin().before(proyecto.getFechaInicio())) {
+				mensaje1 = "La fecha de inicio es posterior a la de fin";
+				
+
+				modelo.addAttribute("proyecto", proyecto);
+				modelo.addAttribute("tipoProyectoList",
+						tipoProyectoRepositorio.obtenerTodos());
+				modelo.addAttribute("estadoList",
+						estadoRepositorio.obtenerTodos());
+				modelo.addAttribute("cordinadorList",
+						usuarioRepositorio.obtenerTodos());
+				modelo.addAttribute("nombre", principal.getName());
+				modelo.addAttribute("mensajeFechas", mensaje1);
+				ruta = "proyecto/proyecto-editar";
+			}else{
+			mensaje1="";
+					
 			Integer id = proyectoRepositorio.actualizar(proyecto);
 			modelo.addAttribute("nombre", principal.getName());
-			ruta = "redirect:/proyecto/ver/" + proyecto.getIdProyecto()
-					+ "/?actualizado=true";
+			ruta = "redirect:/proyecto/propio/" + proyecto.getIdProyecto();
+			}
 		}
 		return ruta;
 	}
@@ -146,6 +169,7 @@ public class ProyectoControlador {
 		String email = principal.getName();
 		coordinador = busquedaRepositorio.buscarPorEmail(email);
 		modelo.addAttribute("coordinadorX", coordinador.getIdUsuarios());
+		String mensaje1 = null;
 
 		Proyecto proyecto = null;
 		String ruta = null;
@@ -161,6 +185,7 @@ public class ProyectoControlador {
 
 			modelo.addAttribute("proyecto", proyecto);
 			modelo.addAttribute("nombre", principal.getName());
+			modelo.addAttribute("mensajeFechas", mensaje1);
 			ruta = "proyecto/proyecto-editar";
 		} else
 			ruta = "redirect:/proyecto";
@@ -330,7 +355,7 @@ public class ProyectoControlador {
             ruta = "redirect:/proyecto/"+miProyecto.getIdProyecto()+"/asignar-tarea/"+usuarioTarea.getIdUsuarios()+"?creado=false";
         }else{
             tareaRepositorio.crear(tarea);
-            ruta = "redirect:/proyecto/"+miProyecto.getIdProyecto()+"/asignar-tarea/"+usuarioTarea.getIdUsuarios()+"?creado=true";
+            ruta = "redirect:/proyecto/propio/"+miProyecto.getIdProyecto();
         }
 
         return ruta;
@@ -429,34 +454,36 @@ public class ProyectoControlador {
         return "redirect:/proyecto/invitar?error=" + error;
     }
     
-    @RequestMapping(value="/proyecto/propio/{proyectoId:[0-9]+}", method = RequestMethod.GET)
-    public String consultarProyectoPropio(@PathVariable Integer proyectoId, Model modelo, Boolean actualizado, Boolean creado, Principal principal) {
-        
-    	
-    	String ruta = null;
-    	Usuario usuario = null;
-    	String nombre = principal.getName();
-        Proyecto proyecto= null;
-        String mensaje = null;
-        
-        usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
-        proyecto = proyectoRepositorio.buscarPorId(proyectoId);
-        
-       
-        if(proyecto != null){
-       
-        if(proyecto.getCoordinador().getEmail().equals(usuario.getEmail())){
-        	
-        	
-        	modelo.addAttribute("proyecto", proyecto);
-        	ruta = "proyecto/proyecto-propio";
-        }}else{
-        	ruta = "redirect:/";
-        }
-        
-        
-        return ruta;
-    }
+    @RequestMapping(value = "/proyecto/propio/{proyectoId:[0-9]+}", method = RequestMethod.GET)
+	public String consultarProyectoPropio(@PathVariable Integer proyectoId,
+			Model modelo, Boolean actualizado, Boolean creado,
+			Principal principal) {
+
+		String ruta = null;
+		Usuario usuario = null;
+		List<Tarea> tareaList = null;
+		Proyecto proyecto = null;
+
+		usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
+
+		if (proyecto != null) {
+
+			if (proyecto.getCoordinador().getEmail().equals(usuario.getEmail())) {
+				if (principal.getName().equals(proyecto.getCoordinador().getEmail())){
+					tareaList = tareaRepositorio.obtenerPorProyecto(new ColaboradorProyecto(proyecto));
+				
+				modelo.addAttribute("tareasList", tareaList);
+				modelo.addAttribute("proyecto", proyecto);
+				ruta = "proyecto/proyecto-propio";
+				}
+			}
+		} else {
+			ruta = "redirect:/usuario/perfil";
+		}
+
+		return ruta;
+	}
 
     @RequestMapping(value="/proyecto/{proyectoId:[0-9]+}/tareas-asignadas", method = RequestMethod.GET)
     public String tareasAsignadas(@PathVariable Integer proyectoId, Model modelo, Principal principal) {
@@ -469,4 +496,40 @@ public class ProyectoControlador {
         modelo.addAttribute("tareasList", tareaList);
         return "proyecto/proyecto-tareas";
     }
+    
+    @RequestMapping(value = "/proyecto/eliminarColaborador/{proyectoId:[0-9]+}/{usuarioId:[0-9]+}")
+	public String eliminarColaborador(@PathVariable Integer proyectoId,
+			@PathVariable Integer usuarioId, Model modelo, Principal principal) {
+		Boolean eliminado = false;
+		Boolean eliminadoTarea = false;
+		Boolean eliminadoInvitacion = false;
+		Boolean eliminadoColaboracion = false;
+		Proyecto proyecto = null;
+		Usuario usuario = null;
+		String ruta = null;
+		usuario = usuarioRepositorio.buscarPorId(usuarioId);
+
+		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
+
+		if (usuario != null && proyecto != null) {
+			ColaboradorProyecto colaboradorProyecto = new ColaboradorProyecto(
+					proyecto, usuario);
+
+			eliminadoTarea = tareaRepositorio
+					.eliminarAsignaciones(colaboradorProyecto);
+			eliminadoInvitacion = invitacionRepositorio
+					.eliminarInvitacionColaborador(colaboradorProyecto);
+			eliminadoColaboracion = proyectoRepositorio
+					.eliminarInvitacionColaborador(colaboradorProyecto);
+		}
+
+		eliminado = true;
+		if (eliminadoTarea && eliminadoTarea && eliminadoColaboracion) {
+			ruta = "redirec:/proyecto/";
+		} else {
+			ruta = "redirec:/";
+		}
+
+		return "redirect:/proyecto/propio/" + proyectoId;
+	}   
 }

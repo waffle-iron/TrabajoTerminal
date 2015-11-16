@@ -6,7 +6,7 @@
 
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<c:url value="/" var="contexto" />
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -57,105 +57,116 @@
                         <h1 class="text-success"><strong>Se ha creado un nuevo proyecto</strong></h1>
 					</c:if>
 					
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="dashboard-stat2 bordered">
-                                <div class="display">
-                                    <div class="number">
-                                        <h3 class="font-green-sharp">
-                                            <span data-counter="counterup" data-value="7800">0</span>
-                                            <small class="font-green-sharp">$</small>
-                                        </h3>
-                                        <small>TOTAL PROFIT</small>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="icon-pie-chart"></i>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
+				<div class="col-md-12">
 				
-				
-				
-					<div class="col-md-8 col-md-offset-2">
-						<div class="portlet blue-hoki box">
-							<div class="portlet-title">
-								<div class="caption">
-									<i class="fa fa-cogs"></i>Información del Poyecto <b>${proyecto.nombre}</b>
-								</div>
+					
+						
+<!-- 					******** -->
+<!-- BEGIN PROFILE SIDEBAR -->
+						<div class="profile-sidebar" style="width: 250px;">
+							<!-- PORTLET MAIN -->
+							<div class="portlet light profile-sidebar-portlet">
+								<!-- SIDEBAR USERPIC -->
 								
-							</div>
-							<div class="portlet-body">
+								<!-- END SIDEBAR USERPIC -->
+								<!-- SIDEBAR USER TITLE -->
+								<div class="profile-usertitle">
+									<div class="profile-usertitle-name">
+										${proyecto.nombre}</div>
+									
+																			
+								</div>
+								<!-- END SIDEBAR USER TITLE -->
+								<!-- SIDEBAR BUTTONS -->
 								
-															
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Descripción:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.descripcion}
-									</div>
+								<!-- END SIDEBAR BUTTONS -->
+								<!-- SIDEBAR MENU -->
+								<div class="profile-usermenu">
+									<ul class="nav">
+										<li class="active">
+
+
+											<h2 class="profile-desc-title">Descripción:</h2>
+											${proyecto.descripcion}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Fecha de inicio:</h2>
+											${proyecto.fechaInicio}
+										</li>
+										<li>
+											<h2 class="profile-desc-title">Fecha de fin:</h2> ${proyecto.fechaFin}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Avance:</h2>
+											${proyecto.avance} 
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Tipo de proyecto:</h2>
+											${proyecto.tipoProyecto.nombre}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Estado:</h2>
+											${proyecto.estado.nombre}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Coordinador:</h2> ${proyecto.coordinador.nombres}
+										</li>
+										
+
+
+									</ul>
 								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Fecha de inicio:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.fechaInicio}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Fecha Fin:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.fechaFin}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Avance:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.avance} 
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Tipo de proyecto:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.tipoProyecto}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Estado:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.estado}
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										Coordinador:
-									</div>
-									<div class="col-md-7 value">
-										${proyecto.coordinador.nombres}
-									</div>
-								</div>
-								
-								
-								
-								
-							</div>
+								<!-- END MENU -->
+							
+
+
+
+						</div>
+						<!-- END BEGIN PROFILE SIDEBAR -->
 						</div>
 
-
-					</div>
 					
-					<div class="col-md-12">
 					
+				
+					
+					<div class="col-md-8">
+					
+						<div class="col-md-4">
+						</div>
+						
+						<div class="col-md-4">
+						
+							<!-- PORTLET MAIN -->
+							
+					
+							
+								<div class="col-md-12">
+								
+						<div class="form-actions">
+                                    <div class="row" align="center">
+                                       
+                                        
+                                        <a href="${contexto}/proyecto/invitar">
+                                            <button type="submit" class="btn green">Invitar colaborador</button>
+                                            </a>
+                                        
+                                    </div>
+                                </div>
+                                </div>
+                               
+                                
+                              
+                                
+                                
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+						
 					<!-- BEGIN VALIDATION STATES-->
                     <div class="portlet box blue">
                         <div class="portlet-title">
@@ -224,12 +235,12 @@
                                                 ${colaborador.usuario.telefono}
                                             </td>
                                             <td>
-                                                <a href="${contexto}proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs purple">
+                                                <a href="${contexto}/proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs purple">
                                                     <i class="fa fa-edit"></i> Asignar </a>
                                             </td>        
                                             <td>        
                                               <a href="${contexto}/proyecto/eliminarColaborador/${proyecto.idProyecto}/${colaborador.usuario.idUsuarios}" onclick="return confirmar()" class="btn default btn-xs black" >
-											  <i class="fa fa-trash-o"></i> Delete </a>
+											  <i class="fa fa-trash-o"></i> Eliminar </a>
                                                     
                                             </td>
                                         </tr>
@@ -271,7 +282,10 @@
                                             Usuario asignaado
                                         </th>
                                         <th>
-
+											Editar tarea
+                                        </th>
+                                        <th>
+                                        	Eliminar
                                         </th>
                                     </tr>
                                     </thead>
@@ -298,8 +312,13 @@
                                             </td>
                                             <td>
                                                 <a href="${contexto}/tarea/${tarea.idTarea}/editar" class="btn default btn-xs purple">
-                                                    <i class="fa fa-edit"></i> editar </a>
+                                                    <i class="fa fa-edit"></i> Editar </a>
                                             </td>
+                                            <td>
+                                                <a href="${contexto}/tarea/${proyecto.idProyecto}/${tarea.idTarea}/eliminar" class="btn default btn-xs black">
+                                                    <i class="fa fa-edit"></i> Eliminar </a>
+                                            </td>
+                                            
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -313,9 +332,9 @@
                     </div>
                     <!-- END VALIDATION STATES-->
                     
-					
-					
 					</div>
+					
+					
 				
 					
 				

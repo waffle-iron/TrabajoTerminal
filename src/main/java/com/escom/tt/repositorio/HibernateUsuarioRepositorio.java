@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.escom.tt.modelo.Escuela;
 import com.escom.tt.modelo.Usuario;
 
 @Repository
@@ -89,6 +90,27 @@ public class HibernateUsuarioRepositorio implements UsuarioRepositorio {
 		usuarios =  criteria.list();
 		return usuarios;
 	}
+	@Override
+	public List<Usuario> usuarioPorEscuela(int idEscuela) {
+		List<Usuario> usuarios = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("escuela.id", idEscuela));
+		usuarios = (List<Usuario>)criteria.list();		
+		return usuarios;
+	}
+	@Override
+	public List<Usuario> usuarioPorGrado(int idGrado) {
+		List<Usuario> usuarios = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("grado.idGrado", idGrado));
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		usuarios = criteria.list();		
+		return usuarios;
+	}
+	
+	
 	
 
 }

@@ -23,6 +23,10 @@ public class Area {
 	
 	@OneToMany(mappedBy = "area")
 	private List<Escuela> escuelas;
+	
+	@ManyToMany(mappedBy="areas")
+	private List<Proyecto> proyectos;
+	
 
 	
 	public Integer getIdArea() {

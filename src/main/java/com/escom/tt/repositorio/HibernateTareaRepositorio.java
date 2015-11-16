@@ -1,7 +1,9 @@
 package com.escom.tt.repositorio;
 
 import com.escom.tt.modelo.ColaboradorProyecto;
+import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Tarea;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -57,14 +59,13 @@ public class HibernateTareaRepositorio implements TareaRepositorio {
 	@Override
 	public List<Tarea> obtenerPorProyecto(
 			ColaboradorProyecto colaboradorProyecto) {
-		List<Tarea> tareas = null;
-		Session session = sf.getCurrentSession();
-		Criteria criteria = session.createCriteria(Tarea.class);
-		Criteria criteriaPK = criteria.createCriteria("colaboradorProyecto");
-		criteriaPK.add(Restrictions.eq("proyecto",
-				colaboradorProyecto.getProyecto()));
-		tareas = criteriaPK.list();
-		return tareas;
+			List<Tarea> tareas = null;
+			Session session = sf.getCurrentSession();
+			Criteria criteria = session.createCriteria(Tarea.class);
+			Criteria criteriaPK = criteria.createCriteria("colaboradorProyecto");
+			criteriaPK.add(Restrictions.eq("proyecto",colaboradorProyecto.getProyecto()));
+			tareas = criteriaPK.list();
+			return tareas;
 	}
 
 	@Override
@@ -86,6 +87,20 @@ public class HibernateTareaRepositorio implements TareaRepositorio {
 		eliminado = true;
 		
 		return eliminado;
+	}
+
+	@Override
+	public List<Tarea> obtenerPorProy(Proyecto proyecto) {		
+		List<Tarea> tareas = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Tarea.class);
+		Criteria criteriaPK = criteria.createCriteria("colaboradorProyecto");
+		criteriaPK.add(Restrictions.eq("proyecto",proyecto));
+		tareas = criteriaPK.list();
+		return tareas;
+			
+		
+		
 	}
 
 }

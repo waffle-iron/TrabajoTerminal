@@ -72,11 +72,7 @@
 								</div>
 								<!-- END SIDEBAR USER TITLE -->
 								<!-- SIDEBAR BUTTONS -->
-								<div class="profile-userbuttons">
-									<button type="button" class="btn btn-circle green-haze btn-sm">Invitar
-										a colaborar</button>
-									<button type="button" class="btn btn-circle btn-danger btn-sm">Mensaje</button>
-								</div>
+								
 								<!-- END SIDEBAR BUTTONS -->
 								<!-- SIDEBAR MENU -->
 								<div class="profile-usermenu">
@@ -142,8 +138,46 @@
 
 						</div>
 						<!-- END BEGIN PROFILE SIDEBAR -->
+						
+						
+                                
+                                
+						
 						<!-- BEGIN PROFILE CONTENT -->
+						<div class="profile-content" align="center">
+						<div class="row" align="center">
+						<div class="col-md-4">
+						</div>
+						
+						<div class="col-md-4">
+						<div class="profile-sidebar" style="width: 500x;">
+							<!-- PORTLET MAIN -->
+							<div class="portlet light profile-sidebar-portlet">
 						<div class="profile-content">
+							<div class="row">
+								<div class="col-md-12">
+								
+						<div class="form-actions">
+                                    <div class="row" align="center">
+                                       
+                                        
+                                        <a href="${contexto}/proyecto/crear">
+                                            <button type="submit" class="btn green">Crear Proyecto</button>
+                                            </a>
+                                        
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                
+                                </div>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+						</div>
+						
 							<div class="row">
 								<div class="col-md-12">
 
@@ -171,6 +205,8 @@
 														<th>Fecha de Inicio</th>
 														<th>Fecha de Fin</th>
 														<th>Coordinador</th>
+														<th>Editar proyecto</th>
+														
 													</tr>
 												</thead>
 												<tbody>
@@ -184,6 +220,10 @@
 														<td>${proyecto.fechaInicio}</td>
 														<td>${proyecto.fechaFin}</td>
 														<td>${proyecto.coordinador.nombres}</td>
+														<td>
+															<a href="${contexto}/proyecto/${proyecto.idProyecto}/editar" class="btn default btn-xs purple">
+                                                    		<i class="fa fa-edit"></i> Editar </a>
+                                            			</td>
 													</tr>
 																						
 													</c:forEach>

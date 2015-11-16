@@ -130,18 +130,61 @@ public class UsuarioControlador {
 
 	@RequestMapping(value = "/usuario/guardarCambios", method = RequestMethod.POST)
 	public String actualizar(@ModelAttribute("usuario") @Valid Usuario usuario,
-			BindingResult validacion, Model modelo) {
+			BindingResult validacion, Model modelo) throws ParseException {
 		String ruta = null;
 		usuario.setRol("ROLE_ADMIN");
 		usuario.setIdiomas(null);
-
+		String mensaje1 = null;
+		String mensaje2 = null;
 		if (validacion.hasErrors()) {
 			modelo.addAttribute("usuario", usuario);
+			System.err.println(validacion.getAllErrors());
+
+			modelo.addAttribute("escuelaList", escuelaRepositorio.obtenerTodos());
+			modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
+			modelo.addAttribute("mensajeFechas", mensaje1);
+			modelo.addAttribute("mensajeFechasIngreso", mensaje2);
 			ruta = "usuario/usuario-editar";
 		} else {
+			Date fechaActual = new Date();
+			SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy"); 
+			String fecha14años = "01/01/2002";
+			Date fecha14añosDate = formateador.parse(fecha14años);
+					
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(usuario.getFechaNacimiento());
+			calendar.add(Calendar.YEAR, 15);
+			
+			Date fechaNacMas15Años = calendar.getTime(); 
+			
+			boolean fecha = usuario.getFechaIngresoIPN().before(fechaNacMas15Años);
+			if(fecha14añosDate.before(usuario.getFechaNacimiento()) ){
+				mensaje1 = "Debes tener mas de 15 años para ingresar al sistema";
+				mensaje2 = "";
+				modelo.addAttribute("usuario", usuario);
+				modelo.addAttribute("escuelaList",
+						escuelaRepositorio.obtenerTodos());
+				modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
+				modelo.addAttribute("mensajeFechas", mensaje1);
+				modelo.addAttribute("mensajeFechasIngreso", mensaje2);
+				ruta = "usuario/usuario-editar";
+			}else if(usuario.getFechaIngresoIPN().before(fechaNacMas15Años)){
+				mensaje1 = "";
+				mensaje2 = "Verifica tu fecha de ingreso al IPN";
+				modelo.addAttribute("usuario", usuario);
+				modelo.addAttribute("escuelaList",
+						escuelaRepositorio.obtenerTodos());
+				modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
+				modelo.addAttribute("mensajeFechas", mensaje1);
+				modelo.addAttribute("mensajeFechasIngreso", mensaje2);
+				ruta = "usuario/usuario-editar";
+				
+			}else{
+			
+			
 			Integer id = usuarioRepositorio.actualizarUsuario(usuario);
-			ruta = "redirect:/usuario/ver/" + usuario.getIdUsuarios()
-					+ "/?actualizado=true";
+			ruta = "redirect:/usuario/perfil/";
+		}
 		}
 		return ruta;
 	}
