@@ -69,6 +69,7 @@ public class HibernateCorreoRepositorio implements CorreoRepositorio {
 		Criterion criterion2 = Restrictions.and(
 				Restrictions.like("usuarioEmisor", receptor),
 				Restrictions.like("usuarioReceptor", emisor));
+
 		criteria.add(Restrictions.or(criterion1,criterion2));
 
 		criteria.addOrder( Order.asc("fechaHora") );

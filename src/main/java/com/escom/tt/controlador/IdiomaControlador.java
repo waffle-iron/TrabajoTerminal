@@ -37,8 +37,8 @@ public class IdiomaControlador {
 			Integer id = idiomaRepositorio.crearIdioma(idioma);
 			ruta = "redirect:/idioma/ver/" + idioma.getIdIdioma()+ "/?creado=true";
 		}
-		return ruta;
-	}
+					return ruta;
+				}
 //http://localhost:8080/trabajoterminal/idioma/guardarCambios
 	
 	@RequestMapping(value="/idioma/guardarCambios", method = RequestMethod.POST)

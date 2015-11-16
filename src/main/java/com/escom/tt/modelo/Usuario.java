@@ -58,7 +58,7 @@ public class Usuario {
 	@Size(min=1,max=45,message="El apellido materno debe tener al menos 5 caracteres y maximo 45")
 	private String aMaterno;
 
-	@Column(name="email")
+	@Column(name="email",unique=true)
 	@NotNull
 	@Size(min=1,max=45,message="El email debe tener al menos 5 caracteres y maximo 45")
 	private String email;
