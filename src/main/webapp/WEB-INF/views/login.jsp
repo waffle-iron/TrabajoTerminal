@@ -1,4 +1,4 @@
-<%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
+la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c"        uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring"   uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="contexto"/>
@@ -12,7 +12,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>Metronic | Login Options - Login Form 4</title>
+    <title>Sistema de búsqueda de información de proyectos enfocada a los trabajos de investigación en el IPN</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -77,7 +77,7 @@
     <!--  dsasgegfsadgsgf
     -->
     <form class="login-form" action="${rutaAutentificar}" method="POST">
-        <h3 class="form-title">Inicio de sesiï¿½n</h3>
+        <h3 class="form-title">Inicio de sesión</h3>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -90,32 +90,32 @@
         </div>
         <div class="form-group">
             <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <label class="control-label visible-ie8 visible-ie9">email</label>
+            <label class="control-label visible-ie8 visible-ie9">Correo</label>
 
             <div class="input-icon">
                 <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="email"
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Correo"
                        name="email" value=""/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Password</label>
+            <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
 
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
-                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password"
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Contraseña"
                        name="password" value=""/>
             </div>
         </div>
 
         <div class="form-actions">
             <button type="submit" class="btn blue pull-right">
-                Iniciar Sesiï¿½n <i class="m-icon-swapright m-icon-white"></i>
+                Iniciar Sesión <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                Aï¿½n no tienes una cuenta??&nbsp; <a href="${contexto}registro" id="register-btn">
+                Aún no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
                 Registrate</a>
             </p>
         </div>
