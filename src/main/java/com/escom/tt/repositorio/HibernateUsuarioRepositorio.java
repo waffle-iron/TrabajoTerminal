@@ -2,6 +2,8 @@ package com.escom.tt.repositorio;
 
 import java.util.List;
 
+import com.escom.tt.modelo.Grado;
+import com.escom.tt.modelo.Idioma;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -109,8 +111,33 @@ public class HibernateUsuarioRepositorio implements UsuarioRepositorio {
 		usuarios = criteria.list();		
 		return usuarios;
 	}
-	
-	
-	
 
+	@Override
+	public List<Usuario> obtenerPorRelacionEscuela(Escuela escuela){
+		List<Usuario> usuarios = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("escuela", escuela));
+		usuarios = criteria.list();
+		return usuarios;
+	}
+	@Override
+	public List<Usuario> obtenerPorRelacionGradoAcademico(Grado grado){
+		List<Usuario> usuarios = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("grado", grado));
+		usuarios = criteria.list();
+		return usuarios;
+	}
+	@Override
+	public List<Usuario> obtenerPorRelacionIdioma(Idioma idioma){
+		List<Usuario> usuarios = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("idiomas.", idioma));
+		usuarios = criteria.list();
+		return usuarios;
+	}
+	//List<Idioma> idiomas
 }

@@ -3,12 +3,11 @@ package com.escom.tt.controlador;
 import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.validation.Valid;
 
+import com.escom.tt.modelo.Idioma;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -287,6 +286,28 @@ public class UsuarioControlador {
 			ruta = "redirect:/usuario";
 
 		return ruta;
+	}
+	@RequestMapping(value = "/relacion-de-usuarios")
+	public String mostrarUsuariosRelacionados(Principal principal, Model model){
+		Map<String, List<Usuario>> usuarioMap = new HashMap<String, List<Usuario>>(); ;
+		List<Usuario> usuarios = null;
+		Usuario usuario = null;
+
+
+
+		if (principal != null)
+			usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+
+		if (usuario != null) {
+			usuarioMap.put("Escuela " + usuario.getEscuela().getNombre(), usuarioRepositorio.obtenerPorRelacionEscuela(usuario.getEscuela()));
+
+			usuarioMap.put("Grado " + usuario.getGrado().getNombre(), usuarioRepositorio.obtenerPorRelacionGradoAcademico(usuario.getGrado()));
+			for (Idioma idioma : usuario.getIdiomas())
+				usuarioMap.put("Idioma " + idioma.getNombre(), usuarioRepositorio.obtenerPorRelacionIdioma(idioma));
+		}
+		model.addAttribute("mapa", usuarioMap);
+
+		return "usuario/usuario-relaciones";
 	}
 
 }
