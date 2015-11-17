@@ -39,6 +39,9 @@
         
         <security:intercept-url pattern="/usuario/perfil" access="hasAnyRole('ROLE_ADMIN')"/>
         
+        <security:intercept-url pattern="/usuario/invitar/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/usuario/ver/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        
         
        
     </security:http>

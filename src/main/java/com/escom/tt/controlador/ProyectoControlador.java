@@ -532,4 +532,7 @@ public class ProyectoControlador {
 
 		return "redirect:/proyecto/propio/" + proyectoId;
 	}   
+    
+    
+    
 }
