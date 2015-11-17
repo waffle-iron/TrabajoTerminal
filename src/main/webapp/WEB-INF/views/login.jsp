@@ -95,7 +95,7 @@
             <div class="input-icon">
                 <i class="fa fa-user"></i>
                 <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="email"
-                       name="email" value="juancvfenix@gmail.com"/>
+                       name="email" value="gio_rt@hotmail.com"/>
             </div>
         </div>
         <div class="form-group">

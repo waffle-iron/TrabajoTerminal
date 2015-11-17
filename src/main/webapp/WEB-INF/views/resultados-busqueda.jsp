@@ -187,7 +187,7 @@
 									<c:forEach items="${usuarios}" var="usuario">
 										<tr>
 											<td>
-												<a href="${contexto}/usuario/ver/${proyecto.coordinador.idUsuarios}" class="btn default btn-xs red">
+												<a href="${contexto}/usuario/ver/${usuario.idUsuarios}"" class="btn default btn-xs red">
 												<i class="fa fa-user"></i>
 												${usuario.nombreUsuario} </a>														
 											</td>
@@ -210,20 +210,15 @@
 				<!-- END EXAMPLE TABLE PORTLET-->
 			</div>
 		</div>
-
-
-
 		<!-- END PAGE CONTENT-->
 	</div>
 	</div>
 	<!-- END CONTENT -->
 	</div>
 	<!-- END CONTAINER -->
-
 	<!-- BEGIN FOOTER -->
 	<jsp:include page="recursos/footer.jsp"></jsp:include>
 	<!-- END FOOTER -->
-
 	<!-- BEGIN JS -->
 	<jsp:include page="recursos/recursos-js.jsp"></jsp:include>
 	<!-- END JS -->
@@ -233,7 +228,6 @@
 			Layout.init(); // init current layout
 			Demo.init(); // init demo features
 			TableAdvanced.init();
-
 		});
 	</script>
 	<script>
@@ -243,7 +237,6 @@
 		}} 
 		
 	</script> 
-
 	<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

@@ -6,6 +6,7 @@
 
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -198,7 +199,7 @@
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button type="submit" class="btn green">Actualizar</button>
-											<button type="button" class="btn default">Cancelar</button>
+											<button type="button" class="btn default" onclick="location.href='${contexto}/usuario/perfil'">Cancelar</button>
 										</div>
 									</div>
 								</div>

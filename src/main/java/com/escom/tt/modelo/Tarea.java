@@ -1,11 +1,14 @@
 package com.escom.tt.modelo;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 
 @Entity
@@ -16,12 +19,16 @@ public class Tarea {
 	@Column(name = "idTarea")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idTarea;
-
+	@NotNull(message = "El titulo es requerido")	
+	@NotBlank
 	private String titulo;
+	@NotNull(message = "El estado es requerido")			
 	private Integer estado;
 	@Length(max = 50, message = "La descripción no debe rebasar los 200 caracteres")
-	@NotNull(message = "La descripcón es obligatoria")
+	@NotNull(message = "La descripcón es obligatoria")	
+	@NotBlank
 	private String descripcion;
+	@NotNull(message = "El avance es obligatorio")		
 	private Integer avance;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaEntrega;

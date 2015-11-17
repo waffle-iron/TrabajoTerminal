@@ -68,7 +68,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="btn-group">
-                                            <button id="sample_editable_1_new" class="btn sbold green"> Add New
+                                            <button id="sample_editable_1_new" class="btn sbold green"> ...
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
@@ -76,21 +76,21 @@
                                     <div class="col-md-6">
                                         <div class="btn-group pull-right">
                                             <button class="btn green  btn-outline dropdown-toggle"
-                                                    data-toggle="dropdown">Tools
+                                                    data-toggle="dropdown">...
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
                                                 <li>
                                                     <a href="javascript:;">
-                                                        <i class="fa fa-print"></i> Print </a>
+                                                        <i class="fa fa-print"></i> .. </a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:;">
-                                                        <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
+                                                        <i class="fa fa-file-pdf-o"></i> .. </a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:;">
-                                                        <i class="fa fa-file-excel-o"></i> Export to Excel </a>
+                                                        <i class="fa fa-file-excel-o"></i> .. </a>
                                                 </li>
                                             </ul>
                                         </div>

@@ -91,7 +91,7 @@
 
 											<div class="col-md-7">
 												<div class="input-icon right">
-													<form:input path="estado" cssClass="form-control" />
+													<form:input path="estado" cssClass="form-control"  />
 													<form:errors path="estado" element="span"
 														cssClass="help-block text-danger" />
 												</div>
