@@ -10,7 +10,7 @@
         <security:form-login login-page="/login"
                              authentication-failure-url="/login?valido=false"
                              login-processing-url="/autentificar" username-parameter="email"
-                             password-parameter="password" default-target-url="/" />
+                             password-parameter="password" default-target-url="/usuario/perfil" />
 
         <security:logout logout-url="/logout"
                          logout-success-url="/login" delete-cookies="JSESSIONID"/>

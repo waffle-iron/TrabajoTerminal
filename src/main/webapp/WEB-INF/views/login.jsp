@@ -12,7 +12,7 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>Sistema de búsqueda de información de proyectos enfocada a los trabajos de investigación en el IPN</title>
+    <title>SIBIPI</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -61,7 +61,7 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="index.html">
-        <img src="${pageContext.request.contextPath}/resources/tema/assets/admin/layout4/img/logo-big.png" alt=""/>
+        <img src="${pageContext.request.contextPath}/resources/tema/assets/admin/layout4/img/logoTT.png" alt=""/>
     </a>
 </div>
 <!-- END LOGO -->
@@ -125,7 +125,7 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-    2014 &copy; Metronic - Admin Dashboard Template.
+...
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
