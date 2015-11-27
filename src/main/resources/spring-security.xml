@@ -38,11 +38,13 @@
         <security:intercept-url pattern="/chat/**" access="hasAnyRole('ROLE_ADMIN')"/>
         
         <security:intercept-url pattern="/usuario/perfil" access="hasAnyRole('ROLE_ADMIN')"/>
-        
+        <security:intercept-url pattern="/relacion-de-usuarios" access="hasAnyRole('ROLE_ADMIN')"/>
+
+
         <security:intercept-url pattern="/usuario/invitar/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/usuario/ver/**" access="hasAnyRole('ROLE_ADMIN')"/>
-        
-        
+
+
        
     </security:http>
     <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">

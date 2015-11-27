@@ -2,6 +2,9 @@ package com.escom.tt.repositorio;
 
 import java.util.List;
 
+import com.escom.tt.modelo.Escuela;
+import com.escom.tt.modelo.Grado;
+import com.escom.tt.modelo.Idioma;
 import com.escom.tt.modelo.Usuario;
 
 public interface UsuarioRepositorio {
@@ -25,6 +28,10 @@ public interface UsuarioRepositorio {
 	List<Usuario> usuarioPorEscuela(int idEscuela);
 	
 	List<Usuario> usuarioPorGrado(int idGrado);
-	
 
+	List<Usuario> obtenerPorRelacionEscuela(Escuela escuela);
+
+	List<Usuario> obtenerPorRelacionGradoAcademico(Grado grado);
+
+	List<Usuario> obtenerPorRelacionIdioma(Idioma idioma);
 }

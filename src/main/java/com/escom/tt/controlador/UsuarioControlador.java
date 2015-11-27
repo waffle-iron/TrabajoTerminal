@@ -3,12 +3,11 @@ package com.escom.tt.controlador;
 import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.validation.Valid;
 
+import com.escom.tt.modelo.Idioma;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -288,14 +287,14 @@ public class UsuarioControlador {
 
 		return ruta;
 	}
-	
+
 	@RequestMapping(value="/usuario/invitar/{usuarioId:[0-9]+}", method = RequestMethod.GET)
     public String invitarUsuario(@PathVariable Integer usuarioId, Model modelo, Principal principal, Integer error) {
         Usuario usuario = null;
         List<Proyecto> misProyectos = null;
         String mensaje = null;
         Usuario usuarioAInvitar = null;
-        
+
         usuarioAInvitar = usuarioRepositorio.buscarPorId(usuarioId);
         usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
         misProyectos = proyectoRepositorio.buscarPorCoordinador(usuario);
@@ -303,7 +302,7 @@ public class UsuarioControlador {
         if (misProyectos != null && usuarioAInvitar !=null){
             modelo.addAttribute("misProyectos", misProyectos);
         	modelo.addAttribute("usuarioAInvitar", usuarioAInvitar);
-        	
+
         }else{
             modelo.addAttribute("mensaje", "No tienes proyectos aun");
             modelo.addAttribute("error", error);
@@ -312,5 +311,27 @@ public class UsuarioControlador {
         }
         return "usuario/usuario-invitar";
     }
+	@RequestMapping(value = "/relacion-de-usuarios")
+	public String mostrarUsuariosRelacionados(Principal principal, Model model){
+		Map<String, List<Usuario>> usuarioMap = new HashMap<String, List<Usuario>>(); ;
+		List<Usuario> usuarios = null;
+		Usuario usuario = null;
+
+
+
+		if (principal != null)
+			usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+
+		if (usuario != null) {
+			usuarioMap.put("Escuela " + usuario.getEscuela().getNombre(), usuarioRepositorio.obtenerPorRelacionEscuela(usuario.getEscuela()));
+
+			usuarioMap.put("Grado " + usuario.getGrado().getNombre(), usuarioRepositorio.obtenerPorRelacionGradoAcademico(usuario.getGrado()));
+			for (Idioma idioma : usuario.getIdiomas())
+				usuarioMap.put("Idioma " + idioma.getNombre(), usuarioRepositorio.obtenerPorRelacionIdioma(idioma));
+		}
+		model.addAttribute("mapa", usuarioMap);
+
+		return "usuario/usuario-relaciones";
+	}
 
 }

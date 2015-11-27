@@ -20,7 +20,7 @@ public class Idioma {
 	@Size(min = 2, max = 14, message = "El nombre debe tener al menos 2 caracteres y máximo 14")
 	private String nombre;
 	
-	@ManyToMany(mappedBy="idiomas")
+	@ManyToMany(mappedBy="idiomas", fetch=FetchType.EAGER)
 	private List<Usuario> usuarios;
 	
 	
