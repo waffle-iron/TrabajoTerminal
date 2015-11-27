@@ -132,7 +132,6 @@
                                         <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:select path="tipoProyecto.idTipoProyecto" cssClass="form-control">
-                                                    <form:option value="" label="Selecciona una opción"/>
                                                     <form:options items="${tipoProyectoList}" itemValue="idTipoProyecto"
                                                                   itemLabel="nombre"/>
                                                 </form:select>
@@ -148,7 +147,6 @@
                                         <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:select path="estado.idEstado" cssClass="form-control">
-                                                    <form:option value="" label="Selecciona una opción"/>
                                                     <form:options items="${estadoList}" itemValue="idEstado"
                                                                   itemLabel="nombre"/>
                                                 </form:select>
