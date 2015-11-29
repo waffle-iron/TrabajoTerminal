@@ -12,7 +12,7 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>Sistema de búsqueda de información de proyectos enfocada a los trabajos de investigación en el IPN</title>
+    <title>Sistema de bï¿½squeda de informaciï¿½n de proyectos enfocada a los trabajos de investigaciï¿½n en el IPN</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -77,7 +77,7 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
     <!--  dsasgegfsadgsgf
     -->
     <form class="login-form" action="${rutaAutentificar}" method="POST">
-        <h3 class="form-title">Inicio de sesión</h3>
+        <h3 class="form-title">Inicio de sesiï¿½n</h3>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -95,11 +95,11 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
             <div class="input-icon">
                 <i class="fa fa-user"></i>
                 <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="email"
-                       name="email" value="gio_rt@hotmail.com"/>
+                       name="email" value="juancvfenix@gmail.com"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
+            <label class="control-label visible-ie8 visible-ie9">Contraseï¿½a</label>
 
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
@@ -110,12 +110,12 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 
         <div class="form-actions">
             <button type="submit" class="btn blue pull-right">
-                Iniciar Sesión <i class="m-icon-swapright m-icon-white"></i>
+                Iniciar Sesiï¿½n <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                Aún no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
+                Aï¿½n no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
                 Registrate</a>
             </p>
         </div>

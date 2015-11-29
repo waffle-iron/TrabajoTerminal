@@ -17,3 +17,23 @@ Rounded Portlets
 	border-radius: 0px 0px 4px 4px !important;
 }
 */
+.dropdown-menu li input{
+	padding: 8px 14px;
+	color: #555;
+	text-decoration: none;
+	display: block;
+	clear: both;
+	font-weight: 300;
+	line-height: 18px;
+	white-space: nowrap;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	color: white;
+}
+
+
+.portlet.box.poli > .portlet-title, .portlet > .portlet-body.poli, .portlet.poli, .portlet > .portlet-body.poli, .portlet.poli i{
+	background-color: #6A0888;
+	color: white !important;
+}
