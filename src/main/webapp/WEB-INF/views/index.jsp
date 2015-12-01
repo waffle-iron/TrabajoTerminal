@@ -58,47 +58,42 @@
                             <div class="portlet light about-text">
                                 <h4>
                                     <i class="fa fa-check icon-info"></i> Sobre el sistema...</h4>
-                                <p class="margin-top-20"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-                                    lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
-                                    odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. </p>
+                                <p class="margin-top-20">
+									Uno  de  los  objetivos  del  Instituto  Politécnico  Nacional es  la  realización  de  trabajos  de  investigación.  
+									La Dirección de Investigación es la entidad encargada de promover y difundir la investigación que se realice en los  
+									niveles  educativos  que  atiende  el  IPN.
+									La  falta  de medios  para  la  vinculación  de  diferentes  disciplinas  es  una  de las  causas  de la  baja  cantidad  
+									de trabajos  multidisciplinarios  que  se realizan  en  el  IPN. El  costo  de  oportunidad al no  vincular  estas  áreas 
+									es muy alto debido que la innovación queda limitada y el campo de problemas con los que se enfrente cada área del conocimiento 
+									tiene menos oportunidades de solución.
+									
+                                    </p>
+                                    <p>
+                                    Este sistema  web  pretende apoyar a la  coordinación  de  trabajos  de investigación  entre  
+                                    la  comunidad  politécnica  (docente-docente,  alumno-alumno  y  docente-alumno).  
+                                    Se busca que todos los integrantes del instituto tengan un beneficio con este sistema ya que al brindarse apoyo generarán mejores 
+                                    trabajos y proyectos compartiendo experiencia y conocimientos adquiridos en diferentes áreas 
+                                    </p>
+                                    <p>Entre otras cosas que se podran consultar como:</p>
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <ul class="list-unstyled margin-top-10 margin-bottom-10">
                                             <li>
-                                                <i class="fa fa-check"></i> Nam liber tempor cum soluta </li>
+                                                <i class="fa fa-check"></i> Información relacionada con los trabajos de investigación</li>
                                             <li>
-                                                <i class="fa fa-check"></i> Mirum est notare quam </li>
+                                                <i class="fa fa-check"></i> Avance de dichos proyectos</li>
                                             <li>
-                                                <i class="fa fa-check"></i> Lorem ipsum dolor sit amet </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Mirum est notare quam </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Mirum est notare quam </li>
+                                                <i class="fa fa-check"></i> Acceder fácilmente a un proyecto buscado</li>
+                                            
                                         </ul>
                                     </div>
-                                    <div class="col-xs-6">
-                                        <ul class="list-unstyled margin-top-10 margin-bottom-10">
-                                            <li>
-                                                <i class="fa fa-check"></i> Nam liber tempor cum soluta </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Mirum est notare quam </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Lorem ipsum dolor sit amet </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Mirum est notare quam </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Mirum est notare quam </li>
-                                        </ul>
-                                    </div>
+                               
                                 </div>
-                                <div class="about-quote">
-                                    <h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</h3>
-                                    <p class="about-author">Tom Hardy, 2015</p>
-                                </div>
+                             
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <iframe src="http://player.vimeo.com/video/22439234" style="width:100%; height:500px;border:0" allowfullscreen> </iframe>
+                            <iframe src="http://player.vimeo.com/video/43904685" style="width:100%; height:500px;border:0" allowfullscreen> </iframe>
                         </div>
                     </div>
                     <!-- END TEXT & VIDEO -->

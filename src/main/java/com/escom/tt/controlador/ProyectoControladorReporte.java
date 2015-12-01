@@ -1,5 +1,6 @@
 package com.escom.tt.controlador;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,16 +30,19 @@ public class ProyectoControladorReporte {
 	TareaRepositorio tareaRepositorio;
 	
 	@RequestMapping(value="/proyecto/reporte/{proyectoId:[0-9]+}",method=RequestMethod.GET)
-	public String verReporte(@PathVariable Integer proyectoId,  Model modelo){
+	public String verReporte(@PathVariable Integer proyectoId,  Model modelo, Principal principal){
 		String ruta = null;
 		Proyecto proyecto = null;
+		String nombre = principal.getName();
 		Calendar fechaActual = new GregorianCalendar();
 		String dia="", mes="", anio="", fecha="";
 		dia = Integer.toString(fechaActual.get(Calendar.DATE));
 		mes = Integer.toString(fechaActual.get(Calendar.MONTH));
 		anio = Integer.toString(fechaActual.get(Calendar.YEAR));
 		fecha = dia+"/"+mes+"/"+anio; 
-		modelo.addAttribute("fecha",fecha);			
+		modelo.addAttribute("fecha",fecha);	
+		modelo.addAttribute("nombre",nombre);	
+		
 		
 		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
 		List<Tarea> listaTareasDeProyecto = new ArrayList();

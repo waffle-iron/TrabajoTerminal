@@ -48,17 +48,25 @@
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="recursos/breadcrumbs.jsp"></jsp:include>
+				
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN SUPERIOR -->
 
 
-
+				 <div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-social-dribbble font-red"></i>
+                                <span class="caption-subject font-red bold ">Consultar estadísticas</span>
+                            </div>
+                            
+                        </div>
+                  </div>
 
 				<div class="row">
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<div class="dashboard-stat blue">
+						<div class="dashboard-stat red">
 							<div class="visual">
 								<i class="fa fa-comments"></i>
 							</div>
@@ -123,8 +131,8 @@
 										<div class="caption" data-toggle="collapse"
 											data-target=".todo-project-list-content">
 											<div class="blog-single-head">
-												<h1 class="blog-single-head-title">Proyectos
-													registrados en el sistema</h1>
+												<h3 class="blog-single-head-title">Proyectos
+													registrados en el sistema</h3>
 											</div>
 										</div>
 										<div class="actions">
@@ -176,7 +184,7 @@
 									<div class="portlet-title">
 										<div class="caption" data-toggle="collapse"
 											data-target=".todo-project-list-content">
-											<span class="caption-subject font-green-sharp bold uppercase">Tipos
+											<span class="caption-subject ">Tipos
 												de Proyectos </span> <span
 												class="caption-helper visible-sm-inline-block visible-xs-inline-block">click
 												to view project list</span>
@@ -494,54 +502,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<!-- BEGIN PAGE CONTENT-->
-					<div class="col-md-10">
-						<!-- BEGIN TODO SIDEBAR -->
-						<div class="todo-ui">
-							<div class="todo-sidebar">
-								<div class="portlet light bordered">
-									<div class="portlet-title">
-										<div class="caption" data-toggle="collapse"
-											data-target=".todo-project-list-content">
-											<div class="blog-single-head">
-												<h1 class="blog-single-head-title">Reporte de proyecto</h1>
-											</div>
-										</div>
-										<div class="actions">
-											<div class="btn-group">
-												<a
-													class="btn green btn-circle btn-outline btn-sm todo-projects-config"
-													href="javascript:;" data-toggle="dropdown"
-													data-hover="dropdown" data-close-others="true"> <i
-													class="icon-settings"></i> &nbsp; <i
-													class="fa fa-angle-down"></i>
-												</a>
-												<ul class="dropdown-menu pull-right">
-													<li><a href=""> Ver </a></li>
-													<li class="divider"></li>
-												</ul>
-											</div>
-										</div>
-
-
-										
-										<!-- BEGIN BASIC CHART PORTLET-->
-										
-										
-										<div id="canvas-holder">
-											<canvas id="chart-areaReporte" width="300" height="300"/>
-										</div>
-
-									</div>
-								</div>
-
-							</div>
-							<!-- END TODO SIDEBAR -->
-
-						</div>
-					</div>
-				</div>
+				
 										
 
 

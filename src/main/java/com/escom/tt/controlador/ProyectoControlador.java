@@ -465,6 +465,7 @@ public class ProyectoControlador {
 		Usuario usuario = null;
 		List<Tarea> tareaList = null;
 		Proyecto proyecto = null;
+		String nombre = principal.getName();
 
 		usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
 		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
@@ -477,6 +478,8 @@ public class ProyectoControlador {
 				
 				modelo.addAttribute("tareasList", tareaList);
 				modelo.addAttribute("proyecto", proyecto);
+				modelo.addAttribute("nombre", nombre);
+				
 				ruta = "proyecto/proyecto-propio";
 				}
 			}

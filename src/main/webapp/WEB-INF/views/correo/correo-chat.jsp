@@ -51,8 +51,16 @@
         <div class="page-content">
 
             <!-- BEGIN PAGE HEADER-->
-            <jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
             <!-- END PAGE HEADER-->
+				<div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                              
+                                <span class="caption-subject font-red bold ">Correo chat</span>
+                            </div>
+                            
+                        </div>
+                  </div>
 
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
@@ -68,7 +76,7 @@
                                 <div class="portlet-input input-inline">
                                     <div class="input-icon right">
                                         <i class="icon-magnifier"></i>
-                                        <input type="text" class="form-control input-circle" placeholder="search...">
+                                        <input type="text" class="form-control input-circle" placeholder="Buscar...">
                                     </div>
                                 </div>
                             </div>

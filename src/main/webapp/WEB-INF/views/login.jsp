@@ -1,4 +1,4 @@
-la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c"        uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring"   uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="contexto"/>
@@ -57,7 +57,7 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="page-md login">
+<body class=" login">
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="index.html">
@@ -109,13 +109,13 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
         </div>
 
         <div class="form-actions">
-            <button type="submit" class="btn blue pull-right">
+            <button type="submit" class="btn red-soft pull-right">
                 Iniciar Sesión <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                Aún no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
+                ¿Aún no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
                 Registrate</a>
             </p>
         </div>
@@ -170,10 +170,8 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
         Demo.init();
         // init background slide images
         $.backstretch([
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/1.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/2.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/3.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/4.jpg"
+                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/1.jpg"
+                    
                 ], {
                     fade: 1000,
                     duration: 8000
