@@ -347,10 +347,13 @@ public class ProyectoControlador {
         tarea.setFechaEntrega(new Date());
         tarea.setColaboradorProyecto(new ColaboradorProyecto(miProyecto, usuarioTarea));
 
+
+
         if (miProyecto == null || !miProyecto.getCoordinador().getEmail().equals(coordinador.getEmail()))
             ruta = "redirect:/";
 
         if (validacion.hasErrors()){
+			System.err.println(validacion.getAllErrors());
             modelo.addAttribute("tarea", tarea);
             ruta = "redirect:/proyecto/"+miProyecto.getIdProyecto()+"/asignar-tarea/"+usuarioTarea.getIdUsuarios()+"?creado=false";
         }else{
