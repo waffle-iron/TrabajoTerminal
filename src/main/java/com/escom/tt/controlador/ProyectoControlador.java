@@ -70,6 +70,7 @@ public class ProyectoControlador {
 			BindingResult validacion, Model modelo, Principal principal) {
 		String ruta = null;
 		String mensaje = null;
+		String mensajeCombo = null;
 
 		if (validacion.hasErrors()) {
 			List<ObjectError> error = validacion.getAllErrors();
@@ -87,6 +88,7 @@ public class ProyectoControlador {
 					usuarioRepositorio.obtenerTodos());
 			modelo.addAttribute("nombre", principal.getName());
 			modelo.addAttribute("mensajeFechas", mensaje);
+			modelo.addAttribute("mensajeCombo",mensajeCombo);
 			ruta = "proyecto/proyecto-crear";
 		} else {
 			// validacion de fechas
@@ -463,6 +465,7 @@ public class ProyectoControlador {
 		Usuario usuario = null;
 		List<Tarea> tareaList = null;
 		Proyecto proyecto = null;
+		String nombre = principal.getName();
 
 		usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
 		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
@@ -475,6 +478,8 @@ public class ProyectoControlador {
 				
 				modelo.addAttribute("tareasList", tareaList);
 				modelo.addAttribute("proyecto", proyecto);
+				modelo.addAttribute("nombre", nombre);
+				
 				ruta = "proyecto/proyecto-propio";
 				}
 			}

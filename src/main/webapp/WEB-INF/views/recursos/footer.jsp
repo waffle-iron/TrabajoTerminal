@@ -1,6 +1,6 @@
 <div class="page-footer">
 	<div class="page-footer-inner">
-		 2014 &copy; Metronic by keenthemes.
+		TT-2014-B059
 	</div>
 	<div class="scroll-to-top">
 		<i class="icon-arrow-up"></i>

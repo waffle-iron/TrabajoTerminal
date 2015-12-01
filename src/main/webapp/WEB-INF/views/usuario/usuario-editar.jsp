@@ -4,6 +4,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -48,17 +49,16 @@
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
 						<!-- BEGIN VALIDATION STATES-->
-						<div class="portlet box blue">
+						<div class="portlet box grey">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-gift"></i>Editar Perfil
+									Editar Perfil
 								</div>
 
 							</div>
@@ -328,12 +328,13 @@
 
 									</div>
 									<div class="form-actions">
+										
 										<div class="row">
-											<div class="col-md-offset-3 col-md-9">
-												<button type="submit" class="btn green">Guardar
-													cambios</button>
-												
-											</div>
+											 <div class="profile-userbuttons">
+		                                        <button type="submit" class="btn btn-circle red btn-sm">Guardar</button>
+		                                        <button type="button" class="btn btn-circle grey btn-sm" onclick="location.href='${contexto}/usuario/perfil'">Cancelar</button>
+		                                    </div>
+													
 										</div>
 									</div>
 								</form:form>

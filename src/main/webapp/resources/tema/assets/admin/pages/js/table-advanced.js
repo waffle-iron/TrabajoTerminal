@@ -26,13 +26,13 @@ var TableAdvanced = function () {
                     "sortAscending": ": activate to sort column ascending",
                     "sortDescending": ": activate to sort column descending"
                 },
-                "emptyTable": "No data available in table",
+                "emptyTable": "Datos no encontrados",
                 "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                "infoEmpty": "No entries found",
+                "infoEmpty": "Nada encontrado",
                 "infoFiltered": "(filtered1 from _MAX_ total entries)",
-                "lengthMenu": "Show _MENU_ entries",
-                "search": "Search:",
-                "zeroRecords": "No matching records found"
+                "lengthMenu": "Ver _MENU_ resultados",
+                "search": "Buscar:",
+                "zeroRecords": "Nada encontrado"
             },
 
             // Or you can use remote translation file
@@ -106,13 +106,13 @@ var TableAdvanced = function () {
                     "sortAscending": ": activate to sort column ascending",
                     "sortDescending": ": activate to sort column descending"
                 },
-                "emptyTable": "No data available in table",
+                "emptyTable": "Nada de datos",
                 "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                "infoEmpty": "No entries found",
+                "infoEmpty": "No encontrado",
                 "infoFiltered": "(filtered1 from _MAX_ total entries)",
-                "lengthMenu": "Show _MENU_ entries",
-                "search": "Search:",
-                "zeroRecords": "No matching records found"
+                "lengthMenu": "Ver _MENU_ resultados",
+                "search": "Buscar:",
+                "zeroRecords": "Nada encontrado"
             },
 
             "order": [
@@ -166,10 +166,10 @@ var TableAdvanced = function () {
         function fnFormatDetails(oTable, nTr) {
             var aData = oTable.fnGetData(nTr);
             var sOut = '<table>';
-            sOut += '<tr><td>Platform(s):</td><td>' + aData[2] + '</td></tr>';
-            sOut += '<tr><td>Engine version:</td><td>' + aData[3] + '</td></tr>';
-            sOut += '<tr><td>CSS grade:</td><td>' + aData[4] + '</td></tr>';
-            sOut += '<tr><td>Others:</td><td>Could provide a link here</td></tr>';
+            sOut += '<tr><td>Descripci&oacute;n:</td><td>' + aData[2] + '</td></tr>';
+            sOut += '<tr><td>Estado:</td><td>' + aData[3] + '</td></tr>';
+            sOut += '<tr><td>Coordinador:</td><td>' + aData[4] + '</td></tr>';
+            sOut += '<tr><td>Otros:</td><td>.</td></tr>';
             sOut += '</table>';
 
             return sOut;
@@ -203,13 +203,13 @@ var TableAdvanced = function () {
                     "sortAscending": ": activate to sort column ascending",
                     "sortDescending": ": activate to sort column descending"
                 },
-                "emptyTable": "No data available in table",
+                "emptyTable": "Datos no encontrados",
                 "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                "infoEmpty": "No entries found",
+                "infoEmpty": "Nada encontrado",
                 "infoFiltered": "(filtered1 from _MAX_ total entries)",
-                "lengthMenu": "Show _MENU_ entries",
-                "search": "Search:",
-                "zeroRecords": "No matching records found"
+                "lengthMenu": "Ver _MENU_ resultados",
+                "search": "Buscar:",
+                "zeroRecords": "Nada encontrado"
             },
 
             "columnDefs": [{
@@ -255,10 +255,10 @@ var TableAdvanced = function () {
         function fnFormatDetails(oTable, nTr) {
             var aData = oTable.fnGetData(nTr);
             var sOut = '<table>';
-            sOut += '<tr><td>Platform(s):</td><td>' + aData[2] + '</td></tr>';
-            sOut += '<tr><td>Engine version:</td><td>' + aData[3] + '</td></tr>';
-            sOut += '<tr><td>CSS grade:</td><td>' + aData[4] + '</td></tr>';
-            sOut += '<tr><td>Others:</td><td>Could provide a link here</td></tr>';
+            sOut += '<tr><td>Descripci&oacute;n:</td><td>' + aData[2] + '</td></tr>';
+            sOut += '<tr><td>Estado:</td><td>' + aData[3] + '</td></tr>';
+            sOut += '<tr><td>Coordinador:</td><td>' + aData[4] + '</td></tr>';
+            sOut += '<tr><td>Otros:</td><td>.</td></tr>';
             sOut += '</table>';
 
             return sOut;
@@ -289,13 +289,13 @@ var TableAdvanced = function () {
                     "sortAscending": ": activate to sort column ascending",
                     "sortDescending": ": activate to sort column descending"
                 },
-                "emptyTable": "No data available in table",
+                "emptyTable": "Vacio",
                 "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                "infoEmpty": "No entries found",
+                "infoEmpty": "Nada encontrado",
                 "infoFiltered": "(filtered1 from _MAX_ total entries)",
-                "lengthMenu": "Show _MENU_ entries",
-                "search": "Search:",
-                "zeroRecords": "No matching records found"
+                "lengthMenu": "Ver _MENU_ resultados",
+                "search": "Buscar:",
+                "zeroRecords": "Nada encontrado"
             },
 
             "columnDefs": [{
@@ -383,13 +383,13 @@ var TableAdvanced = function () {
                     "sortAscending": ": activate to sort column ascending",
                     "sortDescending": ": activate to sort column descending"
                 },
-                "emptyTable": "No data available in table",
+                "emptyTable": "Datos no encontrados",
                 "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                "infoEmpty": "No entries found",
+                "infoEmpty": "Nada encontrado",
                 "infoFiltered": "(filtered1 from _MAX_ total entries)",
-                "lengthMenu": "Show _MENU_ entries",
-                "search": "Search:",
-                "zeroRecords": "No matching records found"
+                "lengthMenu": "Ver _MENU_ resultados",
+                "search": "Buscar:",
+                "zeroRecords": "Nada encontrado"
             },
             "order": [
                 [0, 'asc']

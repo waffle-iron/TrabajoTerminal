@@ -48,7 +48,6 @@
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="recursos/breadcrumbs.jsp"></jsp:include>
 				<!-- END PAGE HEADER-->
 
 								<!-- BEGIN PAGE BASE CONTENT -->

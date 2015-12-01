@@ -41,12 +41,21 @@
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
 				
 
+				<div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                              
+                                <span class="caption-subject font-red bold ">Proyecto propio</span>
+                            </div>
+                            
+                        </div>
+                  </div>
+				
 				<div class="row">
 				
 				
@@ -73,6 +82,14 @@
 								<div class="profile-usertitle">
 									<div class="profile-usertitle-name">
 										${proyecto.nombre}</div>
+									<div class="profile-usertitle-job">
+										<a href="${contexto}/proyecto/${proyecto.idProyecto}/editar ">
+											Editar proyecto</a>
+									</div>
+									<div class="profile-usertitle-job">
+										<a href="${contexto}/proyecto/reporte/${proyecto.idProyecto}">
+											Reporte de proyecto</a>
+									</div>
 									
 																			
 								</div>
@@ -152,7 +169,7 @@
                                        
                                         
                                         <a href="${contexto}/proyecto/invitar">
-                                            <button type="submit" class="btn green">Invitar colaborador</button>
+                                            <button type="submit" class="btn red-soft">Invitar colaborador</button>
                                             </a>
                                         
                                     </div>
@@ -168,10 +185,10 @@
                                 </div>
 						
 					<!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet box blue">
+                    <div class="portlet box grey">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Colaboradores de <b>${proyecto.nombre}</b>
+                                Colaboradores de <b>${proyecto.nombre}</b>
                             </div>
                         </div>
                         <div class="portlet-body">
@@ -235,7 +252,7 @@
                                                 ${colaborador.usuario.telefono}
                                             </td>
                                             <td>
-                                                <a href="${contexto}/proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs purple">
+                                                <a href="${contexto}/proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs grey">
                                                     <i class="fa fa-edit"></i> Asignar </a>
                                             </td>        
                                             <td>        
@@ -252,10 +269,10 @@
                         </div>
                     </div>
                     <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet box blue">
+                    <div class="portlet box grey">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Tareas de <b>${proyecto.nombre}</b>
+                                Tareas de <b>${proyecto.nombre}</b>
                             </div>
                         </div>
                         <div class="portlet-body">
@@ -311,7 +328,7 @@
                                                 ${tarea.colaboradorProyecto.usuario.nombres} ${tarea.colaboradorProyecto.usuario.aPaterno}
                                             </td>
                                             <td>
-                                                <a href="${contexto}/tarea/${tarea.idTarea}/editar" class="btn default btn-xs purple">
+                                                <a href="${contexto}/tarea/${tarea.idTarea}/editar" class="btn default btn-xs grey">
                                                     <i class="fa fa-edit"></i> Editar </a>
                                             </td>
                                             <td>

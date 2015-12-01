@@ -39,7 +39,6 @@
         <div class="page-content">
 
             <!-- BEGIN PAGE HEADER-->
-            <jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
             <!-- END PAGE HEADER-->
 
             <!-- BEGIN PAGE CONTENT-->
@@ -56,10 +55,10 @@
                             </div>
                             <div class="actions">
                                 <div class="btn-group btn-group-devided" data-toggle="buttons">
-                                    <label class="btn btn-transparent dark btn-outline btn-circle btn-sm active">
-                                        <input type="radio" name="options" class="toggle" id="option1">Actions</label>
-                                    <label class="btn btn-transparent dark btn-outline btn-circle btn-sm">
-                                        <input type="radio" name="options" class="toggle" id="option2">Settings</label>
+<!--                                     <label class="btn btn-transparent dark btn-outline btn-circle btn-sm active"> -->
+<!--                                         <input type="radio" name="options" class="toggle" id="option1">Actions</label> -->
+<!--                                     <label class="btn btn-transparent dark btn-outline btn-circle btn-sm"> -->
+<!--                                         <input type="radio" name="options" class="toggle" id="option2">Settings</label> -->
                                 </div>
                             </div>
                         </div>

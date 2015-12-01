@@ -30,11 +30,14 @@ public class CorreoControlador {
 	private UsuarioRepositorio usuarioRepositorio;
 	
 	@RequestMapping(value="/correo/crear", method = RequestMethod.GET)
-	public String crear(Model modelo){
+	public String crear(Model modelo, Principal principal){
 
+		String nombre = principal.getName();
 		modelo.addAttribute("usuarioReceptorList", usuarioRepositorio.obtenerTodos());
 		modelo.addAttribute("usuarioEmisorList", usuarioRepositorio.obtenerTodos());
 		modelo.addAttribute("correo", new Correo());
+		modelo.addAttribute("nombre", nombre);
+		
 
 		return "correo/correo-crear";
 	}
@@ -139,6 +142,7 @@ public class CorreoControlador {
 		List<Correo> correoList = null;
 		Usuario usuarioEnSesion = null;
 		Usuario usuarioConChat = null;
+		String nombre = principal.getName();
 
 		if (principal != null)
 			usuarioEnSesion = usuarioRepositorio.buscarPorCorreo(principal.getName());
@@ -154,6 +158,9 @@ public class CorreoControlador {
 			modelo.addAttribute("idReceptor", usuarioConChat.getIdUsuarios());
 			modelo.addAttribute("idEmisor", usuarioEnSesion.getIdUsuarios());
 			modelo.addAttribute("correo", new Correo());
+			modelo.addAttribute("nombre", nombre);
+			
+			
 		}
 		else
 			return "redirect:/";

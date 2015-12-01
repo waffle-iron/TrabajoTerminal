@@ -256,7 +256,7 @@ public class UsuarioControlador {
 			
 		
 		nombre = principal.getName();
-		
+		System.out.println("*************************"+nombre);
 		}
 		System.out.println(nombre);
 
@@ -281,6 +281,8 @@ public class UsuarioControlador {
 			modelo.addAttribute("proyectos", proyectos);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
+			modelo.addAttribute("nombre", nombre);
+			
 			ruta = "usuario/usuario-perfil";
 		} else
 			ruta = "redirect:/usuario";

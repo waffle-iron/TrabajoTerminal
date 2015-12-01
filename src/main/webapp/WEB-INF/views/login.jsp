@@ -1,4 +1,4 @@
-la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c"        uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring"   uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="contexto"/>
@@ -12,7 +12,7 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>Sistema de búsqueda de información de proyectos enfocada a los trabajos de investigación en el IPN</title>
+    <title>SIBIPI</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -57,11 +57,11 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="page-md login">
+<body class=" login">
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="index.html">
-        <img src="${pageContext.request.contextPath}/resources/tema/assets/admin/layout4/img/logo-big.png" alt=""/>
+        <img src="${pageContext.request.contextPath}/resources/tema/assets/admin/layout4/img/logoTT.png" alt=""/>
     </a>
 </div>
 <!-- END LOGO -->
@@ -109,13 +109,13 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
         </div>
 
         <div class="form-actions">
-            <button type="submit" class="btn blue pull-right">
+            <button type="submit" class="btn red-soft pull-right">
                 Iniciar Sesión <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                Aún no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
+                ¿Aún no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
                 Registrate</a>
             </p>
         </div>
@@ -125,7 +125,7 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-    2014 &copy; Metronic - Admin Dashboard Template.
+...
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
@@ -170,10 +170,8 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
         Demo.init();
         // init background slide images
         $.backstretch([
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/1.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/2.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/3.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/4.jpg"
+                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/1.jpg"
+                    
                 ], {
                     fade: 1000,
                     duration: 8000

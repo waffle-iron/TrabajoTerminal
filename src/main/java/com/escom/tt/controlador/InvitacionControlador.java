@@ -166,7 +166,10 @@ public class InvitacionControlador {
         ColaboradorProyecto colaboradorProyecto = null;
         colaboradorProyecto = new ColaboradorProyecto(usuarioRepositorio.buscarPorCorreo(principal.getName()));
         invitacionList = invitacionRepositorio.obtenerPorUsuario(colaboradorProyecto);
+        String nombre = principal.getName();
         model.addAttribute("invitaciones", invitacionList);
+        model.addAttribute("nombre", nombre);
+        
         return "invitacion/invitacion-propias";
     }
 }
