@@ -347,10 +347,13 @@ public class ProyectoControlador {
         tarea.setFechaEntrega(new Date());
         tarea.setColaboradorProyecto(new ColaboradorProyecto(miProyecto, usuarioTarea));
 
+
+
         if (miProyecto == null || !miProyecto.getCoordinador().getEmail().equals(coordinador.getEmail()))
             ruta = "redirect:/";
 
         if (validacion.hasErrors()){
+			System.err.println(validacion.getAllErrors());
             modelo.addAttribute("tarea", tarea);
             System.err.println("ERROR--------------------------"+validacion.getErrorCount());
             ruta = "redirect:/proyecto/"+miProyecto.getIdProyecto()+"/asignar-tarea/"+usuarioTarea.getIdUsuarios()+"?creado=false";
@@ -416,7 +419,7 @@ public class ProyectoControlador {
         boolean estaColaborador = false;
         Integer error = 4;
 
-        if (correoUsuario == null || proyectoId == null)
+        if (correoUsuario == null || proyectoId == null || principal.getName().equals( correoUsuario ) )
             return "redirect:/proyecto/invitar?error=" + error;
 
 

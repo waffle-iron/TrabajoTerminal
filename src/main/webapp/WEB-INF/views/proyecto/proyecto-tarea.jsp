@@ -90,6 +90,8 @@
                                         <div class="col-md-7">
                                             <div class="input-icon right">
                                                 <form:input path="titulo" cssClass="form-control"/>
+                                                <form:hidden path="avance" value="1"/>
+                                                <form:hidden path="estado" value="1"/>
                                                 <form:errors path="titulo" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
