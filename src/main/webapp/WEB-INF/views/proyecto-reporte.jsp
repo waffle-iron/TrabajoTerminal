@@ -175,7 +175,7 @@
 																			<td>${proyecto.fechaInicio}</td>
 																			<td>${proyecto.fechaFin}</td>
 																			<td>${proyecto.privado}</td>
-																			<td>${proyecto.avance}</td>
+																			<td>${proyecto.avance} %</td>
 																			<td>${proyecto.tipoProyecto}</td>
 																			<td>${proyecto.coordinador.nombreUsuario}</td>
 
@@ -292,7 +292,7 @@
                                   	<c:choose>
 									    <c:when test="${proyecto.avance < 50}">
 									       <div class="alert alert-warning">
-	                                        	<strong>Tu avance es:${proyecto.avance}%!</strong> Tu avance es poco. 
+	                                        	<strong>Tu avance es:${proyecto.avance}%</strong> Tu avance es poco. 
 	                                        </div>										       
 									    </c:when>
 									    <c:when test="${proyecto.avance == 50}">

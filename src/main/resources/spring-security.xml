@@ -12,7 +12,7 @@
                              login-processing-url="/autentificar" username-parameter="email"
                              password-parameter="password" default-target-url="/usuario/perfil" />
 
-        <security:logout logout-url="/logout"
+        <security:logout logout-url="/login"
                          logout-success-url="/login" delete-cookies="JSESSIONID"/>
 
 

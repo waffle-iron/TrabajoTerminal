@@ -13,7 +13,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>Metronic | Login Options - Login Form 4</title>
+    <title>TT-2014-B059 | </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -62,9 +62,10 @@
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="index.html">
-        <img src="${pageContext.request.contextPath}/resources/tema/assets/admin/layout4/img/logo-big.png" alt=""/>
+        <img src="${pageContext.request.contextPath}/resources/tema/assets/admin/layout4/img/logoTT.png" alt=""/>
     </a>
 </div>
+
 <!-- END LOGO -->
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
@@ -94,7 +95,7 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Nombre )</label>
             <div class="input-icon">
-                <i class="fa fa-envelope"></i>
+                
                 <form:input path="nombres" cssClass="form-control placeholder-no-fix"  placeholder="Nombre (s)" />
                 <form:errors path="nombres" element="span" cssClass="help-block text-danger" />
             </div>
@@ -102,7 +103,7 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Apellido Paterno</label>
             <div class="input-icon">
-                <i class="fa fa-envelope"></i>
+                
                 <form:input path="aPaterno" cssClass="form-control placeholder-no-fix"  placeholder="Apellido Paterno" />
                 <form:errors path="aPaterno" element="span" cssClass="help-block text-danger" />
             </div>
@@ -110,7 +111,7 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Apellido Materno</label>
             <div class="input-icon">
-                <i class="fa fa-envelope"></i>
+              
                 <form:input path="aMaterno" cssClass="form-control placeholder-no-fix"  placeholder="Apellido Materno" />
                 <form:errors path="aMaterno" element="span" cssClass="help-block text-danger" />
             </div>
@@ -118,7 +119,7 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">E-mail</label>
             <div class="input-icon">
-                <i class="fa fa-envelope"></i>
+               
                 <form:input path="email" cssClass="form-control placeholder-no-fix"  placeholder="Correo" />
                 <form:errors path="email" element="span" cssClass="help-block text-danger" />
             </div>
@@ -126,24 +127,26 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Teléfono</label>
             <div class="input-icon">
-                <i class="fa fa-envelope"></i>
+            
                 <form:input path="telefono" cssClass="form-control placeholder-no-fix" type="tel" placeholder="Teléfono" />
                 <form:errors path="telefono" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
+		<p>Fecha de nacimiento</p>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Fecha de nacimiento</label>
             <div class="input-icon">
-                <i class="fa fa-envelope"></i>
+                
                 <form:input path="fechaNacimiento" cssClass="form-control placeholder-no-fix" type="date"/>
                 <form:errors path="fechaNacimiento" element="span" cssClass="help-block text-danger" />
                 <div style="color:#C00;">${mensajeFechas}</div>
             </div>
         </div>
+        <p>Fecha de ingreso al IPN</p>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Fecha de ingreso al IPN</label>
             <div class="input-icon">
-                <i class="fa fa-envelope"></i>
+               
                 <form:input path="fechaIngresoIPN" cssClass="form-control placeholder-no-fix" type="date"  />
                 <form:errors path="fechaIngresoIPN" element="span" cssClass="help-block text-danger" />
                 <div style="color:#C00;">${mensajeFechasIngreso}</div>
@@ -166,7 +169,7 @@
                 <form:errors path="sexo" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
-
+		<p>Plantel donde estudias o trabajas</p>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Escuela</label>
 
@@ -177,6 +180,7 @@
             </form:select>
             <form:errors path="escuela" element="span" cssClass="help-block text-danger"/>
         </div>
+		<p>Ultimo grado de estudios</p>        
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Grado</label>
             <form:select path="grado.idGrado"  cssClass="select2 form-control" id="select2_sample4">
@@ -188,19 +192,19 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
             <div class="input-icon">
-                <i class="fa fa-envelope"></i>
                 <form:input path="password" cssClass="form-control placeholder-no-fix" placeholder="Contraseña" type="password"/>
                 <form:errors path="password" element="span" cssClass="help-block text-danger" />
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn blue pull-right">
+            <button type="submit" class="btn red-soft pull-right">
                 Registrarse <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                Ya tienes una cuenta <a href="${contexto}/login" id="register-btn">
+                ¿Ya tienes una cuenta? 
+                <a href="${contexto}/login" id="register-btn">
                 Iniciar Sesión </a>
             </p>
         </div>
@@ -209,9 +213,7 @@
 </div>
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
-<div class="copyright">
-    2014 &copy; Metronic - Admin Dashboard Template.
-</div>
+
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
@@ -257,8 +259,6 @@
         $.backstretch([
                     "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/1.jpg",
                     "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/2.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/3.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/4.jpg"
                 ], {
                     fade: 1000,
                     duration: 8000

@@ -201,7 +201,7 @@
 							</li>
 							<li class="divider"></li>
 
-							<c:url var="logoutUrl" value="/logout"/>
+							<c:url var="logoutUrl" value="/login"/>
 
 							<li>
 								<form action="${logoutUrl}" method="post">

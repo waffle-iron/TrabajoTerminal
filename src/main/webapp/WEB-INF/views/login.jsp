@@ -77,7 +77,7 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
     <!--  dsasgegfsadgsgf
     -->
     <form class="login-form" action="${rutaAutentificar}" method="POST">
-        <h3 class="form-title">Inicio de sesiï¿½n</h3>
+        <h3 class="form-title">Inicio de sesión</h3>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -99,7 +99,7 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Contraseï¿½a</label>
+            <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
 
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
@@ -110,13 +110,13 @@ la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 
         <div class="form-actions">
             <button type="submit" class="btn red-soft pull-right">
-                Iniciar Sesiï¿½n <i class="m-icon-swapright m-icon-white"></i>
+                Iniciar Sesión <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                ï¿½Aï¿½n no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
-                Registrate</a>
+                ¿Aún no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
+                Regístrate</a>
             </p>
         </div>
     </form>

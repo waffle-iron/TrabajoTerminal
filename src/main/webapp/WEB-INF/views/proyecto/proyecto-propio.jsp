@@ -296,7 +296,7 @@
                                             Fecha de Asignación
                                         </th>
                                         <th>
-                                            Usuario asignaado
+                                            Usuario asignado
                                         </th>
                                         <th>
 											Editar tarea
