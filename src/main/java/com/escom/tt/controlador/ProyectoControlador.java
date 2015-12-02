@@ -418,7 +418,7 @@ public class ProyectoControlador {
         boolean estaColaborador = false;
         Integer error = 4;
 
-        if (correoUsuario == null || proyectoId == null)
+        if (correoUsuario == null || proyectoId == null || principal.getName().equals( correoUsuario ) )
             return "redirect:/proyecto/invitar?error=" + error;
 
 
