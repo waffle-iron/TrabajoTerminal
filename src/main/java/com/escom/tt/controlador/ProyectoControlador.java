@@ -153,7 +153,9 @@ public class ProyectoControlador {
 				modelo.addAttribute("nombre", principal.getName());
 				modelo.addAttribute("mensajeFechas", mensaje1);
 				ruta = "proyecto/proyecto-editar";
-			}else{
+			}
+			else{
+
 			mensaje1="";
 					
 			Integer id = proyectoRepositorio.actualizar(proyecto);
@@ -293,14 +295,10 @@ public class ProyectoControlador {
     	modelo.addAttribute("tamProOtros", tamProOtros); 
     	modelo.addAttribute("totalProyectos", totalProyectos); 
     	
-    	
-    	
-    	
-        modelo.addAttribute("proyectosList", proyectosDeCoordinador);
+       modelo.addAttribute("proyectosList", proyectosDeCoordinador);
         modelo.addAttribute("eliminado", eliminado);
         modelo.addAttribute("nombre",principal.getName());
         modelo.addAttribute("idd",email);
-        
         
         return "proyecto/proyecto-todos";
     }
@@ -354,6 +352,7 @@ public class ProyectoControlador {
 
         if (validacion.hasErrors()){
             modelo.addAttribute("tarea", tarea);
+            System.err.println("ERROR--------------------------"+validacion.getErrorCount());
             ruta = "redirect:/proyecto/"+miProyecto.getIdProyecto()+"/asignar-tarea/"+usuarioTarea.getIdUsuarios()+"?creado=false";
         }else{
             tareaRepositorio.crear(tarea);

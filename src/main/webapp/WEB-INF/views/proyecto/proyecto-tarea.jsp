@@ -68,7 +68,7 @@
                                 <button class="close" data-close="alert"></button>
                                 <c:choose>
                                     <c:when test="${creado}">
-                                        Se ha enviado generado la tarea al usuario.
+                                        Se ha generado la tarea al usuario.
                                     </c:when>
                                     <c:when test="${!creado}">
                                         Hubo errores, por favor verifica.
