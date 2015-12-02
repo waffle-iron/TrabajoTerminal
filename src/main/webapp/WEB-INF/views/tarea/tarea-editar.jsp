@@ -103,9 +103,9 @@
 
 											<div class="col-md-7">
 												<div class="input-icon right">
-													<form:input path="estado" cssClass="form-control"  />
-													<form:errors path="estado" element="span"
-														cssClass="help-block text-danger" />
+													<form:select path="estado">
+														<form:options items="${estadoMap}" cssClass="form-control" />
+													</form:select>
 												</div>
 											</div>
 										</div>
@@ -123,20 +123,22 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="control-label col-md-3">Avance <span
+											<label class="control-label col-md-3">Avance: <b><span id="text-avance"> % ${avance} </span></b> <span
 												class="required"> * </span>
 											</label>
 
 											<div class="col-md-7">
 												<div class="input-icon right">
-													<form:input path="avance" cssClass="form-control" />
+													<form:input path="avance" cssClass="form-control" type="range" min="1" max="100" />
 													<form:errors path="*" element="span"
 														cssClass="help-block text-danger" />
 												</div>
 											</div>
 										</div>
+
 										<fmt:formatDate value="${fechaEntrega}" var="var_fechaEntrega"
 											pattern="yyyy-MM-dd" />
+
 										<form:hidden path="fechaEntrega" value="${var_fechaEntrega}" />
 										<form:hidden path="idTarea"></form:hidden>
 										<form:hidden path="colaboradorProyecto.proyecto.idProyecto"></form:hidden>
@@ -177,6 +179,7 @@
 			Metronic.init(); // init metronic core components
 			Layout.init(); // init current layout
 			Demo.init(); // init demo features
+			TT.init();
 		});
 	</script>
 

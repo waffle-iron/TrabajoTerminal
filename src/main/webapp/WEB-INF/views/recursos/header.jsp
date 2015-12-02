@@ -6,7 +6,7 @@
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
-			
+
 			<a href="index.html"> <img
 				src="${context}/resources/tema/img/logoTT.png" alt="logo"
 				class="logo-default" />
@@ -85,15 +85,15 @@
 							<li>
 								<ul class="dropdown-menu-list scroller" style="height: 250px;"
 									data-handle-color="#637283">
-									
+
 									<li><a href="javascript:;"> <span class="time">...
 												</span> <span class="details"> <span
 												class="label label-sm label-icon label-warning"> <i
 													class="fa fa-bell-o"></i>
-											</span> Nueva invitación..
+											</span> Nueva invitaciï¿½n..
 										</span>
 									</a></li>
-									
+
 									<li><a href="javascript:;"> <span class="time">...
 												</span> <span class="details"> <span
 												class="label label-sm label-icon label-danger"> <i
@@ -101,9 +101,9 @@
 											</span> Mensaje nuevo.
 										</span>
 									</a></li>
-									
-									
-									
+
+
+
 								</ul>
 							</li>
 						</ul></li>
@@ -126,20 +126,20 @@
 							<li>
 								<ul class="dropdown-menu-list scroller" style="height: 275px;"
 									data-handle-color="#637283">
-									
+
 									<li><a href="inbox.html?a=view"> <span class="photo">
-											
+
 										</span> <span class="subject"> <span class="from">
 													Richard </span> <span class="time">...</span>
 										</span> <span class="message"> mi mensaje es.... </span>
 									</a></li>
 									<li><a href="inbox.html?a=view"> <span class="photo">
-											
+
 										</span> <span class="subject"> <span class="from">
 													Richard </span> <span class="time">...</span>
 										</span> <span class="message"> mi mensaje es.... </span>
 									</a></li>
-									
+
 								</ul>
 							</li>
 						</ul></li>
@@ -179,8 +179,8 @@
 												aria-valuemin="0" aria-valuemax="100"><span
 													class="sr-only">40% completado</span></span>
 										</span>
-									</a></li>																																				
-									
+									</a></li>
+
 								</ul>
 							</li>
 						</ul></li>
@@ -197,16 +197,18 @@
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li><a href="${contexto}/usuario/perfil"> <i class="icon-user"></i>
 									Mi perfil
-							</a></li>
-							<li><a href="${contexto}/usuario/perfil"> <i
-									class="icon-calendar"></i> Mis proyectos
-							</a></li>
-							<li><a href="inbox.html"> <i class="icon-envelope-open"></i>
-									Mis mensajes <span class="badge badge-danger"> 3 </span>
-							</a></li>
+							</a>
+							</li>
 							<li class="divider"></li>
-							<li><a href="${context}/login"> <i class="icon-key"></i> Salir
-							</a></li>
+
+							<c:url var="logoutUrl" value="/logout"/>
+
+							<li>
+								<form action="${logoutUrl}" method="post">
+									<input type="submit" value="Salir" />
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+								</form>
+							</li>
 						</ul></li>
 					<!-- END USER LOGIN DROPDOWN -->
 				</ul>

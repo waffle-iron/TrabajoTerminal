@@ -22,14 +22,18 @@ public class Tarea {
 	@NotNull(message = "El titulo es requerido")	
 	@NotBlank
 	private String titulo;
+
 	@NotNull(message = "El estado es requerido")			
 	private Integer estado;
+
 	@Length(max = 50, message = "La descripción no debe rebasar los 200 caracteres")
 	@NotNull(message = "La descripcón es obligatoria")	
 	@NotBlank
 	private String descripcion;
+
 	@NotNull(message = "El avance es obligatorio")		
 	private Integer avance;
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaEntrega;
 

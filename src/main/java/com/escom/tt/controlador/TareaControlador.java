@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 import java.security.Principal;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by darcusfenix on 15/09/15.
@@ -105,16 +107,25 @@ public class TareaControlador {
         Usuario usuario = null;
         usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
 
+
         tarea = tareaRepositorio.buscarPorId(tareaId);
+
+        Map<Integer,String> estadoMap = new LinkedHashMap<Integer,String>();
+        estadoMap.put(1, "Iniciando");
+        estadoMap.put(2, "estado 1");
+        estadoMap.put(3, "estado 2");
+        estadoMap.put(4, "estado 3");
 
         if (tarea != null
                 && tarea.getColaboradorProyecto().getProyecto()
                 .getCoordinador().getIdUsuarios() == usuario
                 .getIdUsuarios()) {
             modelo.addAttribute("tarea", tarea);
+            modelo.addAttribute("estadoMap", estadoMap);
             ruta = "tarea/tarea-editar";
-        } else
+        } else {
             ruta = "redirect:/";
+        }
 
         return ruta;
     }

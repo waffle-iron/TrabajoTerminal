@@ -1,4 +1,4 @@
-<%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
+la <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c"        uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring"   uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="contexto"/>
@@ -57,7 +57,7 @@
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class=" login">
+<body class="page-md login">
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="index.html">
@@ -77,7 +77,7 @@
     <!--  dsasgegfsadgsgf
     -->
     <form class="login-form" action="${rutaAutentificar}" method="POST">
-        <h3 class="form-title">Inicio de sesión</h3>
+        <h3 class="form-title">Inicio de sesiï¿½n</h3>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -99,7 +99,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
+            <label class="control-label visible-ie8 visible-ie9">Contraseï¿½a</label>
 
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
@@ -110,12 +110,12 @@
 
         <div class="form-actions">
             <button type="submit" class="btn red-soft pull-right">
-                Iniciar Sesión <i class="m-icon-swapright m-icon-white"></i>
+                Iniciar Sesiï¿½n <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                ¿Aún no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
+                ï¿½Aï¿½n no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
                 Registrate</a>
             </p>
         </div>
@@ -171,7 +171,7 @@
         // init background slide images
         $.backstretch([
                     "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/1.jpg"
-                    
+
                 ], {
                     fade: 1000,
                     duration: 8000
