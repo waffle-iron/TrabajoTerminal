@@ -35,13 +35,13 @@
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo">
 	<!-- BEGIN HEADER -->
-	<jsp:include page="recursos/header.jsp"></jsp:include>
+	<jsp:include page="recursos/headerIndex.jsp"></jsp:include>
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
-		<jsp:include page="recursos/side-bar.jsp"></jsp:include>
+		<jsp:include page="recursos/side-barIndex.jsp"></jsp:include>
 		<!-- END SIDEBAR -->
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">

@@ -39,12 +39,21 @@
 		<div class="page-content">
 
 			<!-- BEGIN PAGE HEADER-->
-			<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
 			<!-- END PAGE HEADER-->
+
+			<div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-social-dribbble font-red"></i>
+                                <span class="caption-subject font-red bold ">Invitaciones</span>
+                            </div>
+                            
+                        </div>
+                  </div>
 
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
-				<p>${invitaciones == null ? 'No tienes invitaciones' : ''}</p>
+<%-- 				<p>${invitaciones == null ? 'No tienes invitaciones' : ''}</p> --%>
 
 				<div class="col-md-12">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -55,12 +64,12 @@
 								<span class="caption-subject bold uppercase"> Aceptar o rechazar invitación </span>
 							</div>
 							<div class="actions">
-								<div class="btn-group btn-group-devided" data-toggle="buttons">
-									<label class="btn btn-transparent dark btn-outline btn-circle btn-sm active">
-										<input type="radio" name="options" class="toggle" id="option1">Actions</label>
-									<label class="btn btn-transparent dark btn-outline btn-circle btn-sm">
-										<input type="radio" name="options" class="toggle" id="option2">Settings</label>
-								</div>
+<!-- 								<div class="btn-group btn-group-devided" data-toggle="buttons"> -->
+<!-- 									<label class="btn btn-transparent dark btn-outline btn-circle btn-sm active"> -->
+<!-- 										<input type="radio" name="options" class="toggle" id="option1">Actions</label> -->
+<!-- 									<label class="btn btn-transparent dark btn-outline btn-circle btn-sm"> -->
+<!-- 										<input type="radio" name="options" class="toggle" id="option2">Settings</label> -->
+<!-- 								</div> -->
 							</div>
 						</div>
 						<div class="portlet-body form">
@@ -115,12 +124,20 @@
 
 								</div>
 								<div class="form-actions">
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-md-offset-3 col-md-9"> -->
+<!-- 											<button type="submit" class="btn green">Actualizar</button> -->
+<%-- 											<button type="button" class="btn default" onclick="location.href='${contexto}/mis-invitaciones'">Cancelar</button> --%>
+<!-- 										</div> -->
+<!-- 									</div> -->
 									<div class="row">
-										<div class="col-md-offset-3 col-md-9">
-											<button type="submit" class="btn green">Actualizar</button>
-											<button type="button" class="btn default" onclick="location.href='${contexto}/mis-invitaciones'">Cancelar</button>
+											 <div class="profile-userbuttons">
+		                                        <button type="submit" class="btn btn-circle red btn-sm">Actualizar</button>
+		                                        <button type="button" class="btn btn-circle grey btn-sm" onclick="location.href='${contexto}/mis-invitaciones'">Cancelar</button>
+		                                    </div>
+													
 										</div>
-									</div>
+									
 								</div>
 							</form:form>
 						</div>

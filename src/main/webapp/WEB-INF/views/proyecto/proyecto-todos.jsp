@@ -54,6 +54,16 @@
 				<!-- BEGIN PAGE BREADCRUMB -->
 				<!-- END PAGE BREADCRUMB -->
 				<!-- BEGIN PAGE BASE CONTENT -->
+				<div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-social-dribbble font-red"></i>
+                                <span class="caption-subject font-red bold ">Tipos de proyectos que tengo</span>
+                            </div>
+                            
+                        </div>
+                  </div>
+				
 				<div class="row">
 				
 					<div class="col-md-9">
@@ -300,17 +310,17 @@
 										<td><a
 											href="${contexto}proyecto/reporte/${proyecto.idProyecto}"
 											class="btn default btn-xs grey"> <i class="fa fa-edit"></i>
-												Ver
+												Ver detalle
 										</a></td>
 										<td><a
 											href="${contexto}proyecto/${proyecto.idProyecto}/editar"
 											class="btn default btn-xs grey"> <i class="fa fa-edit"></i>
-												Edit
+												Editar
 										</a></td>
 										<td><a
 											href="${contexto}proyecto/eliminar/${proyecto.idProyecto}"
 											class="btn default btn-xs black"> <i
-												class="fa fa-trash-o"></i> Delete
+												class="fa fa-trash-o"></i> Eliminar
 										</a></td>
 
 									</tr>

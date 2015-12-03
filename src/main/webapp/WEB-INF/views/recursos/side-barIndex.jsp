@@ -10,7 +10,7 @@
             data-auto-scroll="true" data-slide-speed="200">
 
             <li class="start ${ruta == '/trabajoterminal/' ?  'active open' : ' '}"><a href="${contexto}"> <i
-                    class="icon-home"></i> <span class="title">INICIO</span>
+                    class="icon-home"></i> <span class="title">Principal</span>
             </a></li>
 
 			<c:set var="contextoLogin" value="${contexto.concat('/login')}" />
@@ -23,7 +23,7 @@
 			<li class="${( ruta == contextoLogin
                        || ruta == contextoLogin) ?  'active' : ' '}">
                 <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Iniciar</span> 
+                    class="icon-rocket"></i> <span class="title">Iniciar sesión</span> 
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextoLogin) ?  'open' : ' '}">
@@ -37,7 +37,7 @@
             <li class="${( ruta == contextoEstadisticas
                        || ruta == contextoEstadisticas) ?  'active' : ' '}">
                 <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Estadisticas</span> 
+                    class="icon-rocket"></i> <span class="title">Estadisticas del sistema</span> 
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextoEstadisticas) ?  'open' : ' '}">

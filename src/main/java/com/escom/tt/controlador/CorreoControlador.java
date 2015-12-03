@@ -33,10 +33,21 @@ public class CorreoControlador {
 	public String crear(Model modelo, Principal principal){
 
 		String nombre = principal.getName();
+		String nombre2 = null;
+		Usuario usuarioExistente = new Usuario();
+		usuarioExistente = usuarioRepositorio.buscarPorCorreo(nombre);
+		
+		nombre2 = usuarioExistente.getNombreUsuario();
+		
 		modelo.addAttribute("usuarioReceptorList", usuarioRepositorio.obtenerTodos());
 		modelo.addAttribute("usuarioEmisorList", usuarioRepositorio.obtenerTodos());
 		modelo.addAttribute("correo", new Correo());
 		modelo.addAttribute("nombre", nombre);
+		modelo.addAttribute("nombre2", nombre2);
+		modelo.addAttribute("usuarioId", usuarioExistente.getIdUsuarios());
+		
+		
+		
 		
 
 		return "correo/correo-crear";
@@ -91,15 +102,19 @@ public class CorreoControlador {
 	}
 	
 	@RequestMapping(value="/correo/ver/{correoId:[0-9]+}")
-	public String ver(@PathVariable Integer correoId, Model modelo, Boolean actualizado, Boolean creado) {
+	public String ver(@PathVariable Integer correoId, Model modelo, Boolean actualizado, Boolean creado, Principal principal) {
 		String ruta = null;
 		Correo correo= null;
+		String nombre = principal.getName();
+
 
 		correo= correoRepositorio.buscarPorId(correoId);
 		if (correo != null) {
 			modelo.addAttribute("correo", correo);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
+			modelo.addAttribute("nombre", nombre);
+			
 			ruta = "correo/correo-ver";
 		}else
 			ruta = "redirect:/correo";
@@ -124,14 +139,24 @@ public class CorreoControlador {
 	}
 	
 	@RequestMapping(value="/correo")
-	public String verTodos(Model modelo,Boolean eliminado) {
+	public String verTodos(Model modelo,Boolean eliminado, Principal principal) {
+		String nombre = principal.getName(); 
+		Usuario usuario = new Usuario();
+		usuario = usuarioRepositorio.buscarPorCorreo(nombre);
+		List<Correo> correoListPropios = null;
+		List<Correo> correoListRecibidos = null;
+		
+		correoListPropios = correoRepositorio.obtenerCorreosPropios(usuario);
+		correoListRecibidos = correoRepositorio.obtenerCorreosPropiosRecibidos(usuario);
+		
+//		correoList = correoRepositorio.obtenerTodos();
 
-		List<Correo> correoList = null;
-
-		correoList = correoRepositorio.obtenerTodos();
-
-		modelo.addAttribute("correosList", correoList);
+		modelo.addAttribute("correosListPropios", correoListPropios);
+		modelo.addAttribute("correosListRecibidos", correoListRecibidos );
+		
 		modelo.addAttribute("eliminado", eliminado);
+		modelo.addAttribute("nombre", nombre);
+		
 
 		return "correo/correo-todos";
 	}

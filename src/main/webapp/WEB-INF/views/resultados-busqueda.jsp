@@ -80,11 +80,14 @@
 					<div class="col-md-8 col-md-offset-2"></div>
 				</div>
 				<div class="row"></div><div class="row"></div>
+				<div class="row"></div><div class="row"></div>
+				<div class="row"></div><div class="row"></div>
+				<div class="row"></div><div class="row"></div>
 				
 				<c:if test="${proyectos.size()>0}">
 				<div class="row">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
-					<div class="portlet box red-intense">
+					<div class="portlet box grey">
 						<div class="portlet-title">
 							<div class="caption">
 								Resultados
@@ -147,7 +150,7 @@
 				<c:if test="${usuarios.size()>0}">
 				<div class="row">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
-					<div class="portlet box red-intense">
+					<div class="portlet box grey">
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="fa fa-globe"></i>Resultados Usuarios

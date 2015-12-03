@@ -39,14 +39,24 @@
         <div class="page-content">
 
             <!-- BEGIN PAGE HEADER-->
-            <jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
             <!-- END PAGE HEADER-->
 
             <!-- BEGIN PAGE CONTENT-->
+            <div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-social-dribbble font-red"></i>
+                                <span class="caption-subject font-red bold ">Invitar a usuario</span>
+                            </div>
+                            
+                        </div>
+                  </div>
+
+            
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet box blue">
+                    <div class="portlet box grey">
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="fa fa-gift"></i>Invitar Usuario a proyecto
@@ -109,11 +119,19 @@
 
                                 </div>
                                 <div class="form-actions">
+<!--                                     <div class="row"> -->
+<!--                                         <div class="col-md-offset-3 col-md-9"> -->
+<!--                                             <button type="submit" class="btn green">Invitar</button> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
                                     <div class="row">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="btn green">Invitar</button>
-                                        </div>
-                                    </div>
+											 <div class="profile-userbuttons">
+		                                        <button type="submit" class="btn btn-circle red btn-sm">Invitar</button>
+		                                        <button type="button" class="btn btn-circle grey btn-sm" onclick="location.href='${contexto}/usuario/perfil'">Cancelar</button>
+		                                    </div>
+													
+										</div>
+                                    
                                 </div>
                             </form>
                         </div>

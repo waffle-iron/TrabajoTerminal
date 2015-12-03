@@ -90,7 +90,7 @@
 												</span> <span class="details"> <span
 												class="label label-sm label-icon label-warning"> <i
 													class="fa fa-bell-o"></i>
-											</span> Nueva invitaciï¿½n..
+											</span> Nueva invitación..
 										</span>
 									</a></li>
 

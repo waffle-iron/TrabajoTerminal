@@ -166,10 +166,9 @@ var TableAdvanced = function () {
         function fnFormatDetails(oTable, nTr) {
             var aData = oTable.fnGetData(nTr);
             var sOut = '<table>';
-            sOut += '<tr><td>Descripci&oacute;n:</td><td>' + aData[2] + '</td></tr>';
-            sOut += '<tr><td>Estado:</td><td>' + aData[3] + '</td></tr>';
-            sOut += '<tr><td>Coordinador:</td><td>' + aData[4] + '</td></tr>';
-            sOut += '<tr><td>Otros:</td><td>.</td></tr>';
+            sOut += '<tr><td>Nombre:</td><td>' + aData[2] + '</td></tr>';
+            sOut += '<tr><td>Descripci&oacute;n:</td><td>' + aData[3] + '</td></tr>';
+            sOut += '<tr><td>Coordinador:</td><td>' + aData[6] + '</td></tr>';
             sOut += '</table>';
 
             return sOut;

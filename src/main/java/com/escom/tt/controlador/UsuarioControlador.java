@@ -189,9 +189,10 @@ public class UsuarioControlador {
 	}
 
 	@RequestMapping(value = "/usuario/{usuarioId:[0-9]+}/editar", method = RequestMethod.GET)
-	public String actualizar(Principal principal, @PathVariable Integer usuarioId, Model modelo) {
+	public String actualizar(Principal principal, @PathVariable Integer usuarioId, Model modelo, Principal principal) {
 		Usuario usuario = null;
 		String ruta = null;
+		String nombre = principal.getName();
 		usuario = usuarioRepositorio.buscarPorId(usuarioId);
 
 		if (usuario != null && usuario.getEmail().equals(principal.getName())) {
@@ -199,6 +200,7 @@ public class UsuarioControlador {
 			modelo.addAttribute("escuelaList",
 					escuelaRepositorio.obtenerTodos());
 			modelo.addAttribute("gradoList", gradoRepositorio.obtenerTodos());
+			modelo.addAttribute("nombre", nombre);
 
 			ruta = "usuario/usuario-editar";
 		} else
@@ -209,15 +211,19 @@ public class UsuarioControlador {
 
 	@RequestMapping(value = "/usuario/ver/{usuarioId:[0-9]+}")
 	public String ver(@PathVariable Integer usuarioId, Model modelo,
-			Boolean actualizado, Boolean creado) {
+			Boolean actualizado, Boolean creado, Principal principal) {
 		String ruta = null;
 		Usuario usuario = null;
+		String nombre = principal.getName();
+
 
 		usuario = usuarioRepositorio.buscarPorId(usuarioId);
 		if (usuario != null) {
 			modelo.addAttribute("usuario", usuario);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
+			modelo.addAttribute("nombre", nombre);
+			
 			ruta = "usuario/usuario-ver";
 		} else
 			ruta = "redirect:/usuario";
@@ -318,6 +324,7 @@ public class UsuarioControlador {
 		Map<String, List<Usuario>> usuarioMap = new HashMap<String, List<Usuario>>(); ;
 		List<Usuario> usuarios = null;
 		Usuario usuario = null;
+		String nombre = principal.getName();
 
 
 
@@ -332,6 +339,8 @@ public class UsuarioControlador {
 				usuarioMap.put("Idioma " + idioma.getNombre(), usuarioRepositorio.obtenerPorRelacionIdioma(idioma));
 		}
 		model.addAttribute("mapa", usuarioMap);
+		model.addAttribute("nombre", nombre);
+		
 
 		return "usuario/usuario-relaciones";
 	}

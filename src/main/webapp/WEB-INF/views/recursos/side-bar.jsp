@@ -10,8 +10,13 @@
             data-auto-scroll="true" data-slide-speed="200">
 
             <li class="start ${ruta == '/trabajoterminal/' ?  'active open' : ' '}"><a href="${contexto}"> <i
-                    class="icon-home"></i> <span class="title">INICIO</span>
+                    class="icon-home"></i> <span class="title">Principal</span>
             </a></li>
+            
+            <li class="start ${ruta == '/trabajoterminal/' ?  'active open' : ' '}"><a href="${contexto.concat('/buscar')}"> 
+             <i class="fa fa-search"></i><span class="title">Buscar</span>
+            </a></li>
+            
 
 <%-- 			<c:set var="contextonivel" value="${contexto.concat('/nivel')}" /> --%>
 <%-- 			<c:set var="contextoidioma" value="${contexto.concat('/idioma')}" /> --%>
@@ -26,6 +31,7 @@
 			<c:set var="contextoinvitacion" value="${contexto.concat('/invitacion')}" />
 			<c:set var="contextoproyecto" value="${contexto.concat('/proyecto')}" />
 			<c:set var="contextousuario" value="${contexto.concat('/usuario')}" />
+			
 
 <%-- 			<c:set var="contextonivelcrear" value="${contexto.concat('/nivel/crear')}" /> --%>
 <%-- 			<c:set var="contextoidiomacrear" value="${contexto.concat('/idioma/crear')}" /> --%>
@@ -171,7 +177,7 @@
 			<li class="${( ruta == contextocorreo
                          || ruta == contextocorreocrear ) ?  'active' : ' '}"> 
                 <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Correo</span> <span
+                    class="icon-rocket"></i> <span class="title">Correo chat</span> <span
                     class="arrow ${( ruta == contextocorreo
                                   || ruta == contextocorreocrear) ?  'open text-success' : ' '}"></span> 
                 </a>
@@ -183,7 +189,7 @@
                     </li>
                     <li class="${( ruta == contextocorreocrear ) ?  'open' : ' '}">
                         <a href="${contexto}/correo/crear">
-                        Crear
+                        Crear nuevo chat
                         </a>
                     </li>
                 </ul>
@@ -255,19 +261,19 @@
             <li class="${( ruta == contextoinvitacion
                         || ruta == contextoinvitacioncrear ) ?  'active' : ' '}">
                 <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Invitacion</span> <span
+                    class="icon-rocket"></i> <span class="title">Invitación</span> <span
                     class="arrow ${( ruta == contextoinvitacion
                                   || ruta == contextoinvitacioncrear) ?  'open text-success' : ' '}"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextoinvitacion) ?  'open' : ' '}">
-                        <a href="${contexto}/invitacion">
-                            Ver todos
+                        <a href="${contexto}/mis-invitaciones">
+                            Ver todas
                         </a>
                     </li>
                     <li class="${( ruta == contextoinvitacioncrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/invitacion/crear">
-                        Crear
+                        <a href="${contexto}/proyecto/invitar">
+                        Crear invitación
                         </a>
                     </li>
                 </ul>
@@ -289,7 +295,7 @@
                     </li>
                     <li class="${( ruta == contextoproyectocrear ) ?  'open' : ' '}">
                         <a href="${contexto}/proyecto/crear">
-                        Crear
+                        Crear proyecto
                         </a>
                     </li>
                     <li class="${( ruta == contextoproyectoInvitar ) ?  'open' : ' '}">
@@ -309,13 +315,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextousuario) ?  'open' : ' '}">
-                        <a href="${contexto}/usuario">
-                            Ver todos
+                        <a href="${contexto}/usuario/perfil">
+                            Perfil
                         </a>
                     </li>
                     <li class="${( ruta == contextousuariocrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/usuario/crear">
-                        Crear
+                        <a href="${contexto}/usuario/${usuario.idUsuarios}/editar ">
+                        Editar perfil
                         </a>
                     </li>
                 </ul>

@@ -2,6 +2,8 @@
          pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -102,23 +104,35 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Emisor
-                                            <span class="required"> * </span>
-                                        </label>
+<!--                                     <div class="form-group"> -->
+<!--                                         <label class="control-label col-md-3">Emisor -->
+<!--                                             <span class="required"> * </span> -->
+<!--                                         </label> -->
 
-                                        <div class="col-md-4">
+<!--                                         <div class="col-md-4"> -->
+<!--                                             <div class="input-icon right"> -->
+<%--                                                 <form:select path="usuarioEmisor.idUsuarios" cssClass="form-control"> --%>
+<%--                                                     <form:option value="" label="Selecciona una opción"/> --%>
+<%--                                                     <form:options items="${usuarioEmisorList}" itemValue="idUsuarios" --%>
+<%--                                                                   itemLabel="nombreUsuario"/> --%>
+<%--                                                 </form:select> --%>
+<%--                                                 <form:errors path="usuarioEmisor" element="span" --%>
+<%--                                                              cssClass="help-block text-danger"/> --%>
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+ 									<div class="form-group" >
+<!--                                         <label class="control-label col-md-3">Emisor -->
+<!--                                             <span class="required"> * </span> -->
+<!--                                         </label> -->
+                                        <div class="col-md-7">
                                             <div class="input-icon right">
-                                                <form:select path="usuarioEmisor.idUsuarios" cssClass="form-control">
-                                                    <form:option value="" label="Selecciona una opción"/>
-                                                    <form:options items="${usuarioEmisorList}" itemValue="idUsuarios"
-                                                                  itemLabel="nombreUsuario"/>
-                                                </form:select>
+                                                <form:input path="usuarioEmisor"  value="${nombre2}" type="hidden"/>
                                                 <form:errors path="usuarioEmisor" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>						
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Receptor
                                             <span class="required"> * </span>

@@ -105,6 +105,7 @@ public class TareaControlador {
         Tarea tarea = null;
         String ruta = null;
         Usuario usuario = null;
+        String nombre = principal.getName();
         usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
 
 
@@ -112,9 +113,9 @@ public class TareaControlador {
 
         Map<Integer,String> estadoMap = new LinkedHashMap<Integer,String>();
         estadoMap.put(1, "Iniciando");
-        estadoMap.put(2, "estado 1");
-        estadoMap.put(3, "estado 2");
-        estadoMap.put(4, "estado 3");
+        estadoMap.put(2, "En proceso");
+        estadoMap.put(3, "Terminado");
+        estadoMap.put(4, "Cancelado");
 
         if (tarea != null
                 && tarea.getColaboradorProyecto().getProyecto()
@@ -122,6 +123,8 @@ public class TareaControlador {
                 .getIdUsuarios()) {
             modelo.addAttribute("tarea", tarea);
             modelo.addAttribute("estadoMap", estadoMap);
+            modelo.addAttribute("nombre", nombre);
+            
             ruta = "tarea/tarea-editar";
         } else {
             ruta = "redirect:/";
@@ -131,15 +134,18 @@ public class TareaControlador {
     }
 
     @RequestMapping(value="/tarea/ver/{tareaId:[0-9]+}")
-    public String ver(@PathVariable Integer tareaId, Model modelo, Boolean actualizado, Boolean creado) {
+    public String ver(@PathVariable Integer tareaId, Model modelo, Boolean actualizado, Boolean creado, Principal principal) {
         String ruta = null;
         Tarea tarea= null;
+        String nombre = principal.getName();
 
         tarea = tareaRepositorio.buscarPorId(tareaId);
         if (tarea != null) {
             modelo.addAttribute("tarea", tarea);
             modelo.addAttribute("actualizado", actualizado);
             modelo.addAttribute("creado", creado);
+            modelo.addAttribute("nombre", nombre);
+            
             ruta = "tarea/tarea-ver";
         }else
             ruta = "redirect:/tarea";
@@ -148,14 +154,16 @@ public class TareaControlador {
     }
 
     @RequestMapping(value="/tarea/{proyectoId:[0-9]+}/{tareaId:[0-9]+}/eliminar")
-    public String eliminar(@PathVariable Integer tareaId,@PathVariable Integer proyectoId, Model modelo) {
+    public String eliminar(@PathVariable Integer tareaId,@PathVariable Integer proyectoId, Model modelo, Principal principal) {
         Boolean eliminado;
         Tarea tarea = null;
         tarea = tareaRepositorio.buscarPorId(tareaId);
+        String nombre = principal.getName();
 
         if(tarea != null){
             tareaRepositorio.eliminar(tarea);
             eliminado = true;
+            modelo.addAttribute("nombre", nombre);
         }else{
             eliminado = false;
         }

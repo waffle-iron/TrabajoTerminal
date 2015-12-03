@@ -36,16 +36,26 @@
         <div class="page-content">
 
             <!-- BEGIN PAGE HEADER-->
-            <jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
             <!-- END PAGE HEADER-->
-
+			
+			<div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                    <i class="fa fa-list"></i>
+                                <span class="caption-subject font-red bold ">Sugerencias</span>
+                            </div>
+                            
+                        </div>
+                  </div>
+			
+			
             <c:forEach items="${mapa}" var="entry">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="portlet poli">
+                        <div class="portlet grey">
                             <div class="portlet-title">
                                 <div class="caption">
-                                    <i class="fa fa-shopping-cart"></i>Usuarios relacionados con: <b>${entry.key}</b>
+                                    <i class="fa fa-users"></i> Usuarios relacionados con: <b>${entry.key}</b>
                                 </div>
                             </div>
                             <div class="portlet-body">
@@ -53,53 +63,38 @@
                                     <table class="table table-striped table-bordered table-advance table-hover">
                                         <thead>
                                         <tr>
-                                            <th>
-                                                <i class="fa fa-briefcase"></i> id
-                                            </th>
                                             <th class="hidden-xs">
-                                                <i class="fa fa-question"></i> nombre
+												 Nombre usuario
                                             </th>
                                             <th>
-                                                <i class="fa fa-bookmark"></i> contraseña
+                                                 Apellido paterno
                                             </th>
                                             <th>
-                                                <i class="fa fa-bookmark"></i> Nombres
+                                                Apellido materno
                                             </th>
                                             <th>
-                                                <i class="fa fa-bookmark"></i> aPaterno
+                                                Email
                                             </th>
                                             <th>
-                                                <i class="fa fa-bookmark"></i> aMaterno
+                                                 Estado civil
                                             </th>
                                             <th>
-                                                <i class="fa fa-bookmark"></i> email
+                                                Sexo
                                             </th>
                                             <th>
-                                                <i class="fa fa-bookmark"></i> fechaNacimiento
+                                                Fecha ingreso IPN
                                             </th>
                                             <th>
-                                                <i class="fa fa-bookmark"></i> estadoCivil
+                                                Calificación
                                             </th>
                                             <th>
-                                                <i class="fa fa-bookmark"></i> telefono
+                                                Escuela
                                             </th>
                                             <th>
-                                                <i class="fa fa-bookmark"></i> sexo
+                                                Grado
                                             </th>
                                             <th>
-                                                <i class="fa fa-bookmark"></i> fechaIngresoIPN
-                                            </th>
-                                            <th>
-                                                <i class="fa fa-bookmark"></i> calificacion
-                                            </th>
-                                            <th>
-                                                <i class="fa fa-bookmark"></i> escuela
-                                            </th>
-                                            <th>
-                                                <i class="fa fa-bookmark"></i> grado
-                                            </th>
-                                            <th>
-                                                <i class="fa fa-bookmark"></i> direccion
+                                                Direccion
                                             </th>
 
                                         </tr>
@@ -110,79 +105,59 @@
                                             <tr>
                                                 <td>
                                                     <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
-                                                            ${usuario.idUsuarios}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
                                                             ${usuario.nombreUsuario}
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
-                                                            ${usuario.password}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
+                                                    
                                                             ${usuario.nombres}
-                                                    </a>
+                                                    
                                                 </td>
                                                 <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
+                                                   
                                                             ${usuario.aPaterno}
-                                                    </a>
+                                                   
                                                 </td>
                                                 <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
+                                                    
                                                             ${usuario.aMaterno}
-                                                    </a>
+                                                    
                                                 </td>
                                                 <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
+                                                    
                                                             ${usuario.email}
-                                                    </a>
+                                                    
                                                 </td>
                                                 <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
-                                                            ${usuario.fechaNacimiento}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
+                                                    
                                                             ${usuario.estadoCivil}
-                                                    </a>
+                                                    
                                                 </td>
                                                 <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
-                                                            ${usuario.telefono}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
+                                                    
                                                             ${usuario.sexo}
-                                                    </a>
+                                                    
                                                 </td>
                                                 <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
+                                                    
                                                             ${usuario.fechaIngresoIPN}
-                                                    </a>
+                                                    
                                                 </td>
                                                 <td>
-                                                    <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
+                                                    
                                                             ${usuario.evaluacion}
-                                                    </a>
+                                                    
                                                 </td>
 
                                                 <td>
-                                                    <a href="${contexto}grado/ver/${usuario.grado.idGrado}">
+                                                    
                                                             ${usuario.grado.nombre}
-                                                    </a>
+                                                    
                                                 </td>
                                                 <td>
-                                                    <a href="${contexto}escuela/ver/${usuario.escuela.id}">
+                                                    
                                                             ${usuario.escuela.nombre}
-                                                    </a>
+                                                    
                                                 </td>
 
                                             </tr>

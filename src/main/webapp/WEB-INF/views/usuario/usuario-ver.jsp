@@ -46,9 +46,17 @@
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
 				<!-- END PAGE HEADER-->
-
+				<div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-social-dribbble font-red"></i>
+                                <span class="caption-subject font-red bold ">Detalle de perfil seleccionado</span>
+                            </div>
+                            
+                        </div>
+                  </div>
+				
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row">
 					<c:if test="${actualizado}">
@@ -82,9 +90,12 @@
 								<!-- SIDEBAR BUTTONS -->
 								<div class="profile-userbuttons">
 								<a href ="${contexto}/usuario/invitar/${usuario.idUsuarios}">
-									<button type="button" class="btn btn-circle green-haze btn-sm">Invitar
-										a colaborar</button></a>
+									<button type="button" class="btn btn-circle red btn-sm">Invitar
+										a colaborar</button>
+								</a>
+								<a href="${contexto}/correo/crear">                        
 									<button type="button" class="btn btn-circle btn-danger btn-sm">Mensaje</button>
+								</a>
 								</div>					
 								<!-- END SIDEBAR BUTTONS -->
 								<!-- SIDEBAR MENU -->
