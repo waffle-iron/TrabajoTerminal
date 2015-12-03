@@ -55,14 +55,19 @@
 				<!-- END PAGE BREADCRUMB -->
 				<!-- BEGIN PAGE BASE CONTENT -->
 				<div class="portlet light portlet-fit bordered">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="icon-social-dribbble font-red"></i>
-                                <span class="caption-subject font-red bold ">Tipos de proyectos que tengo</span>
-                            </div>
-                            
-                        </div>
-                  </div>
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Tipos de proyecto que tengo</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+				
 				
 				<div class="row">
 				

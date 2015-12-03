@@ -176,17 +176,31 @@
 
 			<li class="${( ruta == contextocorreo
                          || ruta == contextocorreocrear ) ?  'active' : ' '}"> 
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Correo chat</span> <span
+                <a href="javascript:;">   <i class="icon-envelope"></i> <span class="title">Correo chat</span> <span
                     class="arrow ${( ruta == contextocorreo
                                   || ruta == contextocorreocrear) ?  'open text-success' : ' '}"></span> 
                 </a>
                 <ul class="sub-menu">
+                    
+                   
+                    
                     <li class="${( ruta == contextocorreo) ?  'open' : ' '}">
                         <a href="${contexto}/correo">
                             Ver todos
                         </a>
                     </li>
+                     <li class="${( ruta == contextocorreo) ?  'open' : ' '}">
+                        <a href="${contexto}/correo/enviados">
+                            Ver enviados
+                        </a>
+                    </li>
+                    <li class="${( ruta == contextocorreo) ?  'open' : ' '}">
+                        <a href="${contexto}/correo/recibidos">
+                            Ver recibidos
+                        </a>
+                    </li>
+                    
+                    
                     <li class="${( ruta == contextocorreocrear ) ?  'open' : ' '}">
                         <a href="${contexto}/correo/crear">
                         Crear nuevo chat
@@ -260,8 +274,7 @@
             
             <li class="${( ruta == contextoinvitacion
                         || ruta == contextoinvitacioncrear ) ?  'active' : ' '}">
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Invitación</span> <span
+                <a href="javascript:;">   <i class="icon-folder"></i> <span class="title">Invitación</span> <span
                     class="arrow ${( ruta == contextoinvitacion
                                   || ruta == contextoinvitacioncrear) ?  'open text-success' : ' '}"></span>
                 </a>
@@ -282,8 +295,7 @@
             <li class="${( ruta == contextoproyecto
                         || ruta == contextoproyectocrear
                         || ruta == contextoproyectoInvitar) ?  'active' : ' '}">
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Proyecto</span> <span
+                <a href="javascript:;"> <i class="icon-note"></i> <span class="title">Proyecto</span> <span
                     class="arrow ${( ruta == contextoproyecto
                                   || ruta == contextoproyectocrear) ?  'open text-success' : ' '}"></span>
                 </a>
@@ -308,8 +320,7 @@
             
             <li class="${( ruta == contextousuario
                         || ruta == contextousuariocrear ) ?  'active' : ' '}">
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Usuario</span> <span
+                <a href="javascript:;"> <i class="icon-user"></i> <span class="title">Usuario</span> <span
                     class="arrow ${( ruta == contextousuario
                                   || ruta == contextousuariocrear) ?  'open text-success' : ' '}"></span>
                 </a>
@@ -326,6 +337,9 @@
                     </li>
                 </ul>
             </li>
+             <li class="start ${ruta == '/trabajoterminal/' ?  'active open' : ' '}"><a href="${contexto.concat('/relacion-de-usuarios')}"> 
+               <i class="icon-info"></i><span class="title">Sugerencias</span>
+            </a></li>
             
             
             

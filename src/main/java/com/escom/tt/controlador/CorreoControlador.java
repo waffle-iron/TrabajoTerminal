@@ -192,6 +192,51 @@ public class CorreoControlador {
 
 		return "correo/correo-chat";
 	}
+	@RequestMapping(value="/correo/recibidos")
+	public String verRecibidos(Model modelo,Boolean eliminado, Principal principal) {
+		String nombre = principal.getName(); 
+		Usuario usuario = new Usuario();
+		usuario = usuarioRepositorio.buscarPorCorreo(nombre);
+		List<Correo> correoListPropios = null;
+		List<Correo> correoListRecibidos = null;
+		
+		correoListPropios = correoRepositorio.obtenerCorreosPropios(usuario);
+		correoListRecibidos = correoRepositorio.obtenerCorreosPropiosRecibidos(usuario);
+		
+//		correoList = correoRepositorio.obtenerTodos();
+
+		modelo.addAttribute("correosListPropios", correoListPropios);
+		modelo.addAttribute("correosListRecibidos", correoListRecibidos );
+		
+		modelo.addAttribute("eliminado", eliminado);
+		modelo.addAttribute("nombre", nombre);
+		
+
+		return "correo/correo-recibidos";
+	}
+	@RequestMapping(value="/correo/enviados")
+	public String verEnviados(Model modelo,Boolean eliminado, Principal principal) {
+		String nombre = principal.getName(); 
+		Usuario usuario = new Usuario();
+		usuario = usuarioRepositorio.buscarPorCorreo(nombre);
+		List<Correo> correoListPropios = null;
+		List<Correo> correoListRecibidos = null;
+		
+		correoListPropios = correoRepositorio.obtenerCorreosPropios(usuario);
+		correoListRecibidos = correoRepositorio.obtenerCorreosPropiosRecibidos(usuario);
+		
+//		correoList = correoRepositorio.obtenerTodos();
+
+		modelo.addAttribute("correosListPropios", correoListPropios);
+		modelo.addAttribute("correosListRecibidos", correoListRecibidos );
+		
+		modelo.addAttribute("eliminado", eliminado);
+		modelo.addAttribute("nombre", nombre);
+		
+
+		return "correo/correo-enviados";
+	}
+	
 
 
 }

@@ -55,9 +55,13 @@
 				<div class="portlet light portlet-fit bordered">
 					<div class="portlet-title">
 						<div class="caption">
-
-							<span class="caption-subject font-red bold ">Mi perfil</span>
-							${nombre}
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Mi perfil</span><br /></font>
+							<span class="caption-subject font-dark bold ">${nombre}</span>
+							
+							
 						</div>
 
 					</div>
@@ -75,20 +79,23 @@
 								<!-- SIDEBAR USER TITLE -->
 								<div class="profile-usertitle">
 									<div class="profile-usertitle-name">
-										${usuario.nombreUsuario}</div>
+										<span class="caption-subject font-black bold ">
+										${usuario.nombreUsuario}
+										</span></div>
 									<div>
-										${usuario.grado.nombre}</div>
+										Nivel: ${usuario.grado.nombre}</div><br />
 									<div class="profile-usertitle-job">
-										<a href="${contexto}/usuario/${usuario.idUsuarios}/editar ">
-											Editar perfil</a>
+									
+										<a href="${contexto}/usuario/${usuario.idUsuarios}/editar " >
+											Editar perfil</a>&nbsp; <i class="fa fa-share"></i>
 									</div>
 									<div class="profile-usertitle-job">
 										<a href="${contexto}/mis-invitaciones">
-											Ver invitaciones</a>
+											Ver invitaciones</a>&nbsp;<i class="fa fa-share"></i>
 									</div>
 									<div class="profile-usertitle-job">
 										<a href="${contexto}/crear/correo">
-											Enviar correo en chat</a>
+											<i class="fa fa-envelope-o"></i>&nbsp;Enviar correo en chat</a>&nbsp;<i class="fa fa-share"></i>
 									</div>
 
 								</div>
@@ -101,52 +108,54 @@
 									<ul class="nav">
 										<li class="active">
 
-
-											<h2 class="profile-desc-title">Apellido Paterno:</h2>
-											${usuario.aPaterno}
+											 
+											<p class="text-muted">Apellido Paterno:</p>
+											<p class="text-primary">${usuario.aPaterno}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Apellido Materno:</h2>
-											${usuario.aMaterno}
+												<p class="text-muted">Apellido Materno:</p>
+											<p class="text-primary">${usuario.aMaterno}</p>
 										</li>
 										<li>
-											<h2 class="profile-desc-title">Email:</h2> ${usuario.email}
-										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Fecha de nacimiento:</h2>
-											${usuario.fechaNacimiento}
+											<p class="text-muted">Email:  </p>
+											<p class="text-primary">${usuario.email}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Estado Civil:</h2>
-											${usuario.estadoCivil}
+											<p class="text-muted">Fecha de nacimiento:</p>
+											<p class="text-primary">${usuario.fechaNacimiento}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Teléfono:</h2>
-											${usuario.telefono}
+											<<p class="text-muted">Estado Civil:</p>
+											<p class="text-primary">${usuario.estadoCivil}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Sexo:</h2> ${usuario.sexo}
+											<p class="text-muted">Teléfono:</p>
+											<p class="text-primary">${usuario.telefono}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Calificación:</h2>
-											${usuario.evaluacion}
+											<p class="text-muted">Sexo:</p>
+											<p class="text-primary"> ${usuario.sexo}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Escuela:</h2>
-											${usuario.escuela.nombre}
+											<p class="text-muted">Calificación:</p>
+											<p class="text-primary">${usuario.evaluacion}</p>
+										</li>
+										<li>
+
+											<p class="text-muted">Escuela:</p>
+											<p class="text-primary">${usuario.escuela.nombre}</p>
 										</li>
 
 										<li>
 
-											<h2 class="profile-desc-title">Fecha ingreso IPN:</h2>
-											${usuario.fechaIngresoIPN}
+											<p class="text-muted">Fecha ingreso IPN:</p>
+											<p class="text-primary">${usuario.fechaIngresoIPN}</p>
 										</li>
 
 

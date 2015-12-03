@@ -42,15 +42,20 @@
             <!-- END PAGE HEADER-->
 
             <!-- BEGIN PAGE CONTENT-->
-            <div class="portlet light portlet-fit bordered">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="icon-social-dribbble font-red"></i>
-                                <span class="caption-subject font-red bold ">Invitar a usuario</span>
-                            </div>
-                            
-                        </div>
-                  </div>
+           <div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Invitar usuario a proyecto</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+           
 
             
             <div class="row">

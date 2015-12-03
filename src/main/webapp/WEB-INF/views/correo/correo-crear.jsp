@@ -52,14 +52,21 @@
 
             <!-- BEGIN PAGE CONTENT-->
             <div class="portlet light portlet-fit bordered">
-                        <div class="portlet-title">
-                            <div class="caption">
-                              
-                                <span class="caption-subject font-red bold ">Crear correo</span>
-                            </div>
-                            
-                        </div>
-                  </div>
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Crear mensaje</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+
+                  
+                  
             
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">

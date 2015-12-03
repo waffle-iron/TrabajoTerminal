@@ -46,15 +46,22 @@
 				<!-- BEGIN PAGE CONTENT-->
 				
 
-				<div class="portlet light portlet-fit bordered">
-                        <div class="portlet-title">
-                            <div class="caption">
-                              
-                                <span class="caption-subject font-red bold ">Proyecto propio</span>
-                            </div>
-                            
-                        </div>
-                  </div>
+			
+                  <div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="5px">							 
+							 <span class="caption-subject font-red bold uppercase ">Proyecto propio</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+
+                  
 				
 				<div class="row">
 				
@@ -84,11 +91,11 @@
 										${proyecto.nombre}</div>
 									<div class="profile-usertitle-job">
 										<a href="${contexto}/proyecto/${proyecto.idProyecto}/editar ">
-											Editar proyecto</a>
+											<i class="fa fa-edit"></i>Editar proyecto</a>&nbsp;<i class="fa fa-share"></i>
 									</div>
 									<div class="profile-usertitle-job">
 										<a href="${contexto}/proyecto/reporte/${proyecto.idProyecto}">
-											Reporte de proyecto</a>
+											<i class="fa fa-external-link"></i> Reporte de proyecto</a>&nbsp;<i class="fa fa-share"></i>
 									</div>
 									
 																			
@@ -102,36 +109,33 @@
 									<ul class="nav">
 										<li class="active">
 
+											<p class="text-muted">Descripción:</p>
+											<p class="text-primary">${proyecto.descripcion}</p>
+											</li>
+										<li>
 
-											<h2 class="profile-desc-title">Descripción:</h2>
-											${proyecto.descripcion}
+											<p class="text-muted">Fecha de inicio:</p>
+											<p class="text-primary">${proyecto.fechaInicio}</p>
+										</li>
+										<li>
+											<p class="text-muted">Avance:</p>
+											 <p class="text-primary">${proyecto.avance}</p>
+										</li>
+										
+										<li>
+
+											<p class="text-muted">Tipo de proyecto:</p>
+											<p class="text-primary">${proyecto.tipoProyecto.nombre}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Fecha de inicio:</h2>
-											${proyecto.fechaInicio}
-										</li>
-										<li>
-											<h2 class="profile-desc-title">Fecha de fin:</h2> ${proyecto.fechaFin}
+											<p class="text-muted">Estado:</p>
+											<p class="text-primary">${proyecto.estado.nombre}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Avance:</h2>
-											${proyecto.avance} 
-										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Tipo de proyecto:</h2>
-											${proyecto.tipoProyecto.nombre}
-										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Estado:</h2>
-											${proyecto.estado.nombre}
-										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Coordinador:</h2> ${proyecto.coordinador.nombres}
+											<p class="text-muted">Coordinador:</p>
+											<p class="text-primary"> ${proyecto.coordinador.nombres}</p>
 										</li>
 										
 

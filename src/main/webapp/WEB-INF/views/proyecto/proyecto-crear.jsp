@@ -44,15 +44,20 @@
             <!-- END PAGE HEADER-->
 
             <!-- BEGIN PAGE CONTENT-->
-            <div class="portlet light portlet-fit bordered">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                
-                                <span class="caption-subject font-red bold ">Nuevo proyecto</span>
-                            </div>
-                            
-                        </div>
-                  </div>
+           <div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Crear proyecto</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+
             
             	
             <div class="row">

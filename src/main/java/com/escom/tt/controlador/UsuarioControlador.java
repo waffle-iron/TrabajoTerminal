@@ -189,7 +189,7 @@ public class UsuarioControlador {
 	}
 
 	@RequestMapping(value = "/usuario/{usuarioId:[0-9]+}/editar", method = RequestMethod.GET)
-	public String actualizar(Principal principal, @PathVariable Integer usuarioId, Model modelo, Principal principal) {
+	public String actualizar(Principal principal, @PathVariable Integer usuarioId, Model modelo) {
 		Usuario usuario = null;
 		String ruta = null;
 		String nombre = principal.getName();

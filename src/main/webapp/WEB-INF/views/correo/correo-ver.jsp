@@ -117,7 +117,7 @@
 						</div>
 						<div class="row">
 											 <div class="profile-userbuttons">
-		                                        <button type="button" class="btn btn-circle grey btn-sm" onclick="location.href='${contexto}correo'">Cancelar</button>
+		                                        <button type="button" class="btn btn-circle grey btn-sm" onclick="location.href='${contexto}/correo'">Regresar</button>
 		                                    </div>
 													
 										</div>

@@ -58,7 +58,21 @@
 				
 							
                 <div class="search-bar bordered">
-                 <h1>Realiza una búsqueda</h1>   
+                <div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Realiza una búsqueda</span><br /></font>
+							<span class="caption-subject font-dark bold ">...</span>
+							
+							
+						</div>
+
+					</div>
+				</div>
+                 
                 <form action="${urlBusquedaBus}" method="get" name="form">	
                             <div class="row">
                                 <div class="col-md-11">

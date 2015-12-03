@@ -51,6 +51,20 @@
 					<c:if test="${creado}">
                         <h1 class="text-success"><strong>Se ha creado un nuevo proyecto</strong></h1>
 					</c:if>
+					<div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Contenido de proyecto</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+					
 					<div class="row">
 					<div class="col-md-4" >
 					</div>
@@ -66,7 +80,8 @@
 								<!-- SIDEBAR USER TITLE -->
 								<div class="profile-usertitle">
 									<div class="profile-usertitle-name">
-										${proyecto.nombre}</div>
+										${proyecto.nombre}
+										</div>
 									
 																			
 								</div>
@@ -79,39 +94,36 @@
 									<ul class="nav">
 										<li class="active">
 
-
-											<h2 class="profile-desc-title">Descripción:</h2>
-											${proyecto.descripcion}
+											<p class="text-muted">Descripción:</p>
+											<p class="text-primary">${proyecto.descripcion}</p>
+											
+											
+										</li>
+										<li>
+											<p class="text-muted">Fecha de inicio:</p>
+											<p class="text-primary">${proyecto.fechaInicio}</p>
+										</li>
+										<li>
+											<p class="text-muted">Fecha de fin:</p>
+											<p class="text-primary">${proyecto.fechaFin}</p>
+											
+											
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Fecha de inicio:</h2>
-											${proyecto.fechaInicio}
+											<p class="text-muted">Avance:</p>
+											<p class="text-primary">${proyecto.avance} </p>
 										</li>
 										<li>
-											<h2 class="profile-desc-title">Fecha de fin:</h2> ${proyecto.fechaFin}
+											<p class="text-muted">Tipo de proyecto:</p>
+											<p class="text-primary">${proyecto.tipoProyecto.nombre}</p>
+											
+											
 										</li>
 										<li>
-
-											<h2 class="profile-desc-title">Avance:</h2>
-											${proyecto.avance} 
+											<p class="text-muted">Estado:</p>
+											<p class="text-primary">${proyecto.estado.nombre}</p>
 										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Tipo de proyecto:</h2>
-											${proyecto.tipoProyecto.nombre}
-										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Estado:</h2>
-											${proyecto.estado.nombre}
-										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Coordinador:</h2> ${proyecto.coordinador.nombres}
-										</li>
-										
-
 
 									</ul>
 								</div>

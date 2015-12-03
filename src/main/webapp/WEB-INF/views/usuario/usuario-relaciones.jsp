@@ -38,15 +38,20 @@
             <!-- BEGIN PAGE HEADER-->
             <!-- END PAGE HEADER-->
 			
-			<div class="portlet light portlet-fit bordered">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                    <i class="fa fa-list"></i>
-                                <span class="caption-subject font-red bold ">Sugerencias</span>
-                            </div>
-                            
-                        </div>
-                  </div>
+		<div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Sugerencias de colaboradores</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+		
 			
 			
             <c:forEach items="${mapa}" var="entry">
