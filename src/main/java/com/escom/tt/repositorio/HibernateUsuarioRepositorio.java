@@ -113,29 +113,38 @@ public class HibernateUsuarioRepositorio implements UsuarioRepositorio {
 	}
 
 	@Override
-	public List<Usuario> obtenerPorRelacionEscuela(Escuela escuela){
+	public List<Usuario> obtenerPorRelacionEscuela(Escuela escuela, String email){
 		List<Usuario> usuarios = null;
 		Session session = sf.getCurrentSession();
 		Criteria criteria = session.createCriteria(Usuario.class);
-		criteria.add(Restrictions.eq("escuela", escuela));
+		criteria.add(Restrictions.and(
+				Restrictions.eq("escuela", escuela),
+				Restrictions.not(Restrictions.eq("email", email))
+				));
 		usuarios = criteria.list();
 		return usuarios;
 	}
 	@Override
-	public List<Usuario> obtenerPorRelacionGradoAcademico(Grado grado){
+	public List<Usuario> obtenerPorRelacionGradoAcademico(Grado grado, String email){
 		List<Usuario> usuarios = null;
 		Session session = sf.getCurrentSession();
 		Criteria criteria = session.createCriteria(Usuario.class);
-		criteria.add(Restrictions.eq("grado", grado));
+		criteria.add(Restrictions.and(
+				Restrictions.eq("grado", grado),
+				Restrictions.not(Restrictions.eq("email", email))
+		));
 		usuarios = criteria.list();
 		return usuarios;
 	}
 	@Override
-	public List<Usuario> obtenerPorRelacionIdioma(Idioma idioma){
+	public List<Usuario> obtenerPorRelacionIdioma(Idioma idioma, String email){
 		List<Usuario> usuarios = null;
 		Session session = sf.getCurrentSession();
 		Criteria criteria = session.createCriteria(Usuario.class);
-		criteria.add(Restrictions.eq("idiomas.", idioma));
+		criteria.add(Restrictions.and(
+				Restrictions.eq("idiomas", idioma),
+				Restrictions.not(Restrictions.eq("email", email))
+		));
 		usuarios = criteria.list();
 		return usuarios;
 	}

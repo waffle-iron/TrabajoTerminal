@@ -29,9 +29,9 @@ public interface UsuarioRepositorio {
 	
 	List<Usuario> usuarioPorGrado(int idGrado);
 
-	List<Usuario> obtenerPorRelacionEscuela(Escuela escuela);
+	List<Usuario> obtenerPorRelacionEscuela(Escuela escuela, String email);
 
-	List<Usuario> obtenerPorRelacionGradoAcademico(Grado grado);
+	List<Usuario> obtenerPorRelacionGradoAcademico(Grado grado, String email);
 
-	List<Usuario> obtenerPorRelacionIdioma(Idioma idioma);
+	List<Usuario> obtenerPorRelacionIdioma(Idioma idioma, String email);
 }

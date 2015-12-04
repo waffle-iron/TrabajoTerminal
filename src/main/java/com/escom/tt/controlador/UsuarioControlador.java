@@ -375,11 +375,11 @@ public class UsuarioControlador {
 			usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
 
 		if (usuario != null) {
-			usuarioMap.put("Escuela " + usuario.getEscuela().getNombre(), usuarioRepositorio.obtenerPorRelacionEscuela(usuario.getEscuela()));
+			usuarioMap.put("Escuela " + usuario.getEscuela().getNombre(), usuarioRepositorio.obtenerPorRelacionEscuela(usuario.getEscuela(), nombre));
 
-			usuarioMap.put("Grado " + usuario.getGrado().getNombre(), usuarioRepositorio.obtenerPorRelacionGradoAcademico(usuario.getGrado()));
+			usuarioMap.put("Grado " + usuario.getGrado().getNombre(), usuarioRepositorio.obtenerPorRelacionGradoAcademico(usuario.getGrado(), nombre));
 			for (Idioma idioma : usuario.getIdiomas())
-				usuarioMap.put("Idioma " + idioma.getNombre(), usuarioRepositorio.obtenerPorRelacionIdioma(idioma));
+				usuarioMap.put("Idioma " + idioma.getNombre(), usuarioRepositorio.obtenerPorRelacionIdioma(idioma, nombre));
 		}
 		model.addAttribute("mapa", usuarioMap);
 		model.addAttribute("nombre", nombre);

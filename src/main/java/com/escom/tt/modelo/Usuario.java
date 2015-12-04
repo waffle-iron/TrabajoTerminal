@@ -114,7 +114,7 @@ public class Usuario {
 	private List<Proyecto> proyectos;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="USUARIO_HAS_IDOMAS",
+	@JoinTable(name="USUARIO_HAS_IDIOMAS",
 				joinColumns={@JoinColumn(name="Usuarios_idUsuarios")},
 				inverseJoinColumns={@JoinColumn(name="Idiomas_idIdiomas")})
 	private List<Idioma> idiomas;
