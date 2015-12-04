@@ -12,11 +12,11 @@
 <!-- BEGIN HEAD -->
 <head>
 
-	<title>Trabajor terminal | archivo base</title>
-	<meta content="" name="description"/>
-	<meta content="" name="author"/>
+<title>Trabajor terminal | archivo base</title>
+<meta content="" name="description" />
+<meta content="" name="author" />
 
-	<jsp:include page="../recursos/estilos.jsp"></jsp:include>
+<jsp:include page="../recursos/estilos.jsp"></jsp:include>
 
 </head>
 <!-- END HEAD -->
@@ -32,190 +32,165 @@
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo">
-<!-- BEGIN HEADER -->
-<jsp:include page="../recursos/header.jsp"></jsp:include>
-<!-- END HEADER -->
-<div class="clearfix"></div>
-<!-- BEGIN CONTAINER -->
-<div class="page-container">
-	<!-- BEGIN SIDEBAR -->
-	<jsp:include page="../recursos/side-bar.jsp"></jsp:include>
-	<!-- END SIDEBAR -->
-	<!-- BEGIN CONTENT -->
-	<div class="page-content-wrapper">
-		<div class="page-content">
+	<!-- BEGIN HEADER -->
+	<jsp:include page="../recursos/header.jsp"></jsp:include>
+	<!-- END HEADER -->
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<jsp:include page="../recursos/side-bar.jsp"></jsp:include>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
 
-			<!-- BEGIN PAGE HEADER-->
-			<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
-			<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE HEADER-->
+				<!-- END PAGE HEADER-->
+				<div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-social-dribbble font-red"></i>
+                                <span class="caption-subject font-red bold ">Detalle de perfil seleccionado</span>
+                            </div>
+                            
+                        </div>
+                  </div>
+				
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row">
+					<c:if test="${actualizado}">
+						<h1 class="text-success"><strong>Datos actualizados</strong></h1>
+					</c:if>
+					<c:if test="${creado}">
+                        <h1 class="text-success"><strong>Se ha creado un nuevo Usuario</strong></h1>
+					</c:if>
+					
+					<div class="row">
+					<div class="col-md-4" >
+					</div>
+						<div class="col-md-4" >
+<!-- 					******** -->
+<!-- BEGIN PROFILE SIDEBAR -->
+						<div class="profile-sidebar" style="width: 250px;">
+							<!-- PORTLET MAIN -->
+							<div class="portlet light profile-sidebar-portlet">
+								<!-- SIDEBAR USERPIC -->
+								
+								<!-- END SIDEBAR USERPIC -->
+								<!-- SIDEBAR USER TITLE -->
+								<div class="profile-usertitle">
+									<div class="profile-usertitle-name">
+										${usuario.nombreUsuario}</div>
+									<div class="profile-usertitle-job">
+										${usuario.grado.nombre}</div>
+									
+								</div>
+								<!-- END SIDEBAR USER TITLE -->
+								<!-- SIDEBAR BUTTONS -->
+								<div class="profile-userbuttons">
+								<a href ="${contexto}/usuario/invitar/${usuario.idUsuarios}">
+									<button type="button" class="btn btn-circle red btn-sm">Invitar
+										a colaborar</button>
+								</a>
+								<a href="${contexto}/correo/crear">                        
+									<button type="button" class="btn btn-circle btn-danger btn-sm">Mensaje</button>
+								</a>
+								</div>					
+								<!-- END SIDEBAR BUTTONS -->
+								<!-- SIDEBAR MENU -->
+								<div class="profile-usermenu">
+									<ul class="nav">
+										<li class="active">
 
-			<!-- BEGIN PAGE CONTENT-->
-			<div class="row">
-				<c:if test="${actualizado}">
-					<h1 class="text-success"><strong>Datos actualizados</strong></h1>
-				</c:if>
-				<c:if test="${creado}">
-					<h1 class="text-success"><strong>Se ha creado un nuevo Usuario</strong></h1>
-				</c:if>
-				<div class="col-md-8 col-md-offset-2">
-					<div class="portlet blue-hoki box">
-						<div class="portlet-title">
-							<div class="caption">
-								<i class="fa fa-cogs"></i>Información del usuario
-							</div>
-							<div class="actions">
-								<div class="btn-group">
-									<a class="btn blue-hoki btn-circle btn-sm" href="javascript:;" data-toggle="dropdown"
-									   data-hover="dropdown" data-close-others="true"> Más
-										<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="dropdown-menu pull-right">
-										<li>
-											<a href="${contexto}/chat/${usuario.idUsuarios}"> Enviar Mensaje </a>
+
+											<h2 class="profile-desc-title">Apellido Paterno:</h2>
+											${usuario.aPaterno}
 										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Apellido Materno:</h2>
+											${usuario.aMaterno}
+										</li>
+										<li>
+											<h2 class="profile-desc-title">Email:</h2> ${usuario.email}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Fecha de nacimiento:</h2>
+											${usuario.fechaNacimiento}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Estado Civil:</h2>
+											${usuario.estadoCivil}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Teléfono:</h2>
+											${usuario.telefono}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Sexo:</h2> ${usuario.sexo}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Calificación:</h2>
+											${usuario.evaluacion}
+										</li>
+										<li>
+
+											<h2 class="profile-desc-title">Escuela:</h2>
+											${usuario.escuela.nombre}
+										</li>
+
+										<li>
+
+											<h2 class="profile-desc-title">Fecha ingreso IPN:</h2>
+											${usuario.fechaIngresoIPN}
+										</li>
+
+
+
 									</ul>
 								</div>
-							</div>
-						</div>
-						<div class="portlet-body">
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Nombre de usuario:
-								</div>
-								<div class="col-md-7 value">
-									${usuario.nombreUsuario}
-								</div>
+								<!-- END MENU -->
 							</div>
 
-
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Nombres
-								</div>
-								<div class="col-md-7 value">
-									${usuario.nombres}
-								</div>
-							</div>
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Apellido paterno
-								</div>
-								<div class="col-md-7 value">
-									${usuario.aPaterno}
-								</div>
-							</div>
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Apellido materno
-								</div>
-								<div class="col-md-7 value">
-									${usuario.aMaterno}
-								</div>
-							</div>
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Email
-								</div>
-								<div class="col-md-7 value">
-									${usuario.email}
-								</div>
-							</div>
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Fecha de nacimiento
-								</div>
-								<div class="col-md-7 value">
-									${usuario.fechaNacimiento}
-								</div>
-							</div>
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Estado Civil
-								</div>
-								<div class="col-md-7 value">
-									${usuario.estadoCivil}
-								</div>
-							</div>
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Telefono
-								</div>
-								<div class="col-md-7 value">
-									${usuario.telefono}
-								</div>
-							</div>
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Sexo
-								</div>
-								<div class="col-md-7 value">
-									${usuario.sexo}
-								</div>
-							</div>
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Fecha ingreso IPN
-								</div>
-								<div class="col-md-7 value">
-									${usuario.fechaIngresoIPN}
-								</div>
-							</div>
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Calificacion
-								</div>
-								<div class="col-md-7 value">
-									${usuario.evaluacion}
-								</div>
-							</div>
-
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Grado
-								</div>
-								<div class="col-md-7 value">
-									${usuario.grado.nombre}
-								</div>
-							</div>
-							<div class="row static-info">
-								<div class="col-md-5 name">
-									Escuela
-								</div>
-								<div class="col-md-7 value">
-									${usuario.escuela.nombre}
-								</div>
-							</div>
 
 
 						</div>
+						<!-- END BEGIN PROFILE SIDEBAR -->
+						</div>
+<!-- ********** --><div class="col-md-4">
 					</div>
-
-
+					
+					
 				</div>
+				<!-- END PAGE CONTENT-->
 			</div>
-			<!-- END PAGE CONTENT-->
 		</div>
+		<!-- END CONTENT -->
 	</div>
-	<!-- END CONTENT -->
-</div>
-<!-- END CONTAINER -->
+	<!-- END CONTAINER -->
 
-<!-- BEGIN FOOTER -->
-<jsp:include page="../recursos/footer.jsp"></jsp:include>
-<!-- END FOOTER -->
+	<!-- BEGIN FOOTER -->
+	<jsp:include page="../recursos/footer.jsp"></jsp:include>
+	<!-- END FOOTER -->
 
-<!-- BEGIN JS -->
-<jsp:include page="../recursos/recursos-js.jsp"></jsp:include>
-<!-- END JS -->
-<script>
-	jQuery(document).ready(function () {
-		Metronic.init(); // init metronic core components
-		Layout.init(); // init current layout
-		Demo.init(); // init demo features
-	});
-</script>
+	<!-- BEGIN JS -->
+	<jsp:include page="../recursos/recursos-js.jsp"></jsp:include>
+	<!-- END JS -->
+	<script>
+		jQuery(document).ready(function() {
+			Metronic.init(); // init metronic core components
+			Layout.init(); // init current layout
+			Demo.init(); // init demo features
+		});
+	</script>
 
-<!-- END JAVASCRIPTS -->
+	<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>

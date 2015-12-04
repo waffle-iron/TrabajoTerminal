@@ -19,4 +19,9 @@ public interface CorreoRepositorio {
     List<Correo> obtenerTodos();
 
     List<Correo> chat(Usuario emisor, Usuario receptor);
+    
+    List<Correo> obtenerCorreosPropios(Usuario usuario);
+    
+    List<Correo> obtenerCorreosPropiosRecibidos(Usuario usuario);
+    
 }

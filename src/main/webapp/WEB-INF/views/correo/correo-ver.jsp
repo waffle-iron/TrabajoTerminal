@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:url value="/" var="contexto"/>
+<c:set var="contexto" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -46,7 +47,16 @@
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
+				<div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-social-dribbble font-red"></i>
+                                <span class="caption-subject font-red bold ">Información del correo</span>
+                            </div>
+                            
+                        </div>
+                  </div>
+				
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
@@ -58,14 +68,14 @@
                         <h1 class="text-success"><strong>Se ha creado un nuevo correo</strong></h1>
 					</c:if>
 					<div class="col-md-8 col-md-offset-2">
-						<div class="portlet blue-hoki box">
+						<div class="portlet grey box">
 							<div class="portlet-title">
 								<div class="caption">
 									<i class="fa fa-cogs"></i>Información del correo
 								</div>
 								<div class="actions">
-									<a href="${contexto}correo/${correo.idCorreo}/editar" class="btn btn-default btn-sm">
-										<i class="fa fa-pencil"></i> Editar </a>
+<%-- 									<a href="${contexto}correo/${correo.idCorreo}/editar" class="btn btn-default btn-sm"> --%>
+<!-- 										<i class="fa fa-pencil"></i> Editar </a> -->
 									<a href="${contexto}correo/eliminar/${correo.idCorreo}/" class="btn btn-default btn-sm">
 										<i class="fa fa-pencil"></i> Eliminar </a>
 								</div>
@@ -105,7 +115,13 @@
 								</div>
 							</div>
 						</div>
-
+						<div class="row">
+											 <div class="profile-userbuttons">
+		                                        <button type="button" class="btn btn-circle grey btn-sm" onclick="location.href='${contexto}/correo'">Regresar</button>
+		                                    </div>
+													
+										</div>
+						
 
 					</div>
 				</div>

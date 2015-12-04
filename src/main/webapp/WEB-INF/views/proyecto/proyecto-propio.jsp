@@ -41,12 +41,28 @@
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
 				
 
+			
+                  <div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="5px">							 
+							 <span class="caption-subject font-red bold uppercase ">Proyecto propio</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+
+                  
+				
 				<div class="row">
 				
 				
@@ -73,6 +89,14 @@
 								<div class="profile-usertitle">
 									<div class="profile-usertitle-name">
 										${proyecto.nombre}</div>
+									<div class="profile-usertitle-job">
+										<a href="${contexto}/proyecto/${proyecto.idProyecto}/editar ">
+											<i class="fa fa-edit"></i>Editar proyecto</a>&nbsp;<i class="fa fa-share"></i>
+									</div>
+									<div class="profile-usertitle-job">
+										<a href="${contexto}/proyecto/reporte/${proyecto.idProyecto}">
+											<i class="fa fa-external-link"></i> Reporte de proyecto</a>&nbsp;<i class="fa fa-share"></i>
+									</div>
 									
 																			
 								</div>
@@ -85,36 +109,33 @@
 									<ul class="nav">
 										<li class="active">
 
+											<p class="text-muted">Descripción:</p>
+											<p class="text-primary">${proyecto.descripcion}</p>
+											</li>
+										<li>
 
-											<h2 class="profile-desc-title">Descripción:</h2>
-											${proyecto.descripcion}
+											<p class="text-muted">Fecha de inicio:</p>
+											<p class="text-primary">${proyecto.fechaInicio}</p>
+										</li>
+										<li>
+											<p class="text-muted">Avance:</p>
+											 <p class="text-primary">${proyecto.avance}</p>
+										</li>
+										
+										<li>
+
+											<p class="text-muted">Tipo de proyecto:</p>
+											<p class="text-primary">${proyecto.tipoProyecto.nombre}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Fecha de inicio:</h2>
-											${proyecto.fechaInicio}
-										</li>
-										<li>
-											<h2 class="profile-desc-title">Fecha de fin:</h2> ${proyecto.fechaFin}
+											<p class="text-muted">Estado:</p>
+											<p class="text-primary">${proyecto.estado.nombre}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Avance:</h2>
-											${proyecto.avance} 
-										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Tipo de proyecto:</h2>
-											${proyecto.tipoProyecto.nombre}
-										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Estado:</h2>
-											${proyecto.estado.nombre}
-										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Coordinador:</h2> ${proyecto.coordinador.nombres}
+											<p class="text-muted">Coordinador:</p>
+											<p class="text-primary"> ${proyecto.coordinador.nombres}</p>
 										</li>
 										
 
@@ -152,7 +173,7 @@
                                        
                                         
                                         <a href="${contexto}/proyecto/invitar">
-                                            <button type="submit" class="btn green">Invitar colaborador</button>
+                                            <button type="submit" class="btn red-soft">Invitar colaborador</button>
                                             </a>
                                         
                                     </div>
@@ -168,10 +189,10 @@
                                 </div>
 						
 					<!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet box blue">
+                    <div class="portlet box grey">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Colaboradores de <b>${proyecto.nombre}</b>
+                                Colaboradores de <b>${proyecto.nombre}</b>
                             </div>
                         </div>
                         <div class="portlet-body">
@@ -235,7 +256,7 @@
                                                 ${colaborador.usuario.telefono}
                                             </td>
                                             <td>
-                                                <a href="${contexto}/proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs purple">
+                                                <a href="${contexto}/proyecto/${proyecto.idProyecto}/asignar-tarea/${colaborador.usuario.idUsuarios}" class="btn default btn-xs grey">
                                                     <i class="fa fa-edit"></i> Asignar </a>
                                             </td>        
                                             <td>        
@@ -252,10 +273,10 @@
                         </div>
                     </div>
                     <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet box blue">
+                    <div class="portlet box grey">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Tareas de <b>${proyecto.nombre}</b>
+                                Tareas de <b>${proyecto.nombre}</b>
                             </div>
                         </div>
                         <div class="portlet-body">
@@ -279,7 +300,7 @@
                                             Fecha de Asignación
                                         </th>
                                         <th>
-                                            Usuario asignaado
+                                            Usuario asignado
                                         </th>
                                         <th>
 											Editar tarea
@@ -311,7 +332,7 @@
                                                 ${tarea.colaboradorProyecto.usuario.nombres} ${tarea.colaboradorProyecto.usuario.aPaterno}
                                             </td>
                                             <td>
-                                                <a href="${contexto}/tarea/${tarea.idTarea}/editar" class="btn default btn-xs purple">
+                                                <a href="${contexto}/tarea/${tarea.idTarea}/editar" class="btn default btn-xs grey">
                                                     <i class="fa fa-edit"></i> Editar </a>
                                             </td>
                                             <td>

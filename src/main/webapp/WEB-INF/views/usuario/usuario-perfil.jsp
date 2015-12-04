@@ -47,10 +47,26 @@
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
+
 				<!-- END PAGE HEADER-->
 
 				<!-- BEGIN PAGE CONTENT-->
+
+				<div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Mi perfil</span><br /></font>
+							<span class="caption-subject font-dark bold ">${nombre}</span>
+							
+							
+						</div>
+
+					</div>
+				</div>
+
 				<div class="row">
 					<div class="col-md-12">
 						<!-- BEGIN PROFILE SIDEBAR -->
@@ -58,73 +74,88 @@
 							<!-- PORTLET MAIN -->
 							<div class="portlet light profile-sidebar-portlet">
 								<!-- SIDEBAR USERPIC -->
-								
+
 								<!-- END SIDEBAR USERPIC -->
 								<!-- SIDEBAR USER TITLE -->
 								<div class="profile-usertitle">
 									<div class="profile-usertitle-name">
-										${usuario.nombreUsuario}</div>
+										<span class="caption-subject font-black bold ">
+										${usuario.nombreUsuario}
+										</span></div>
+									<div>
+										Nivel: ${usuario.grado.nombre}</div><br />
 									<div class="profile-usertitle-job">
-										${usuario.grado.nombre}</div>
+									
+										<a href="${contexto}/usuario/${usuario.idUsuarios}/editar " >
+											Editar perfil</a>&nbsp; <i class="fa fa-share"></i>
+									</div>
 									<div class="profile-usertitle-job">
-										<a href ="${contexto}/usuario/${usuario.idUsuarios}/editar "> Editar perfil</a></div>
-										
+										<a href="${contexto}/mis-invitaciones">
+											Ver invitaciones</a>&nbsp;<i class="fa fa-share"></i>
+									</div>
+									<div class="profile-usertitle-job">
+										<a href="${contexto}/crear/correo">
+											<i class="fa fa-envelope-o"></i>&nbsp;Enviar correo en chat</a>&nbsp;<i class="fa fa-share"></i>
+									</div>
+
 								</div>
 								<!-- END SIDEBAR USER TITLE -->
 								<!-- SIDEBAR BUTTONS -->
-								
+
 								<!-- END SIDEBAR BUTTONS -->
 								<!-- SIDEBAR MENU -->
 								<div class="profile-usermenu">
 									<ul class="nav">
 										<li class="active">
 
-
-											<h2 class="profile-desc-title">Apellido Paterno:</h2>
-											${usuario.aPaterno}
+											 
+											<p class="text-muted">Apellido Paterno:</p>
+											<p class="text-primary">${usuario.aPaterno}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Apellido Materno:</h2>
-											${usuario.aMaterno}
+												<p class="text-muted">Apellido Materno:</p>
+											<p class="text-primary">${usuario.aMaterno}</p>
 										</li>
 										<li>
-											<h2 class="profile-desc-title">Email:</h2> ${usuario.email}
-										</li>
-										<li>
-
-											<h2 class="profile-desc-title">Fecha de nacimiento:</h2>
-											${usuario.fechaNacimiento}
+											<p class="text-muted">Email:  </p>
+											<p class="text-primary">${usuario.email}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Estado Civil:</h2>
-											${usuario.estadoCivil}
+											<p class="text-muted">Fecha de nacimiento:</p>
+											<p class="text-primary">${usuario.fechaNacimiento}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Teléfono:</h2>
-											${usuario.telefono}
+											<<p class="text-muted">Estado Civil:</p>
+											<p class="text-primary">${usuario.estadoCivil}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Sexo:</h2> ${usuario.sexo}
+											<p class="text-muted">Teléfono:</p>
+											<p class="text-primary">${usuario.telefono}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Calificación:</h2>
-											${usuario.evaluacion}
+											<p class="text-muted">Sexo:</p>
+											<p class="text-primary"> ${usuario.sexo}</p>
 										</li>
 										<li>
 
-											<h2 class="profile-desc-title">Escuela:</h2>
-											${usuario.escuela.nombre}
+											<p class="text-muted">Calificación:</p>
+											<p class="text-primary">${usuario.evaluacion}</p>
+										</li>
+										<li>
+
+											<p class="text-muted">Escuela:</p>
+											<p class="text-primary">${usuario.escuela.nombre}</p>
 										</li>
 
 										<li>
 
-											<h2 class="profile-desc-title">Fecha ingreso IPN:</h2>
-											${usuario.fechaIngresoIPN}
+											<p class="text-muted">Fecha ingreso IPN:</p>
+											<p class="text-primary">${usuario.fechaIngresoIPN}</p>
 										</li>
 
 
@@ -138,57 +169,24 @@
 
 						</div>
 						<!-- END BEGIN PROFILE SIDEBAR -->
-						
-						
-                                
-                                
-						
+
+
+
+
+
 						<!-- BEGIN PROFILE CONTENT -->
 						<div class="profile-content" align="center">
-						<div class="row" align="center">
-						<div class="col-md-4">
-						</div>
-						
-						<div class="col-md-4">
-						<div class="profile-sidebar" style="width: 500x;">
-							<!-- PORTLET MAIN -->
-							<div class="portlet light profile-sidebar-portlet">
-						<div class="profile-content">
-							<div class="row">
-								<div class="col-md-12">
-								
-						<div class="form-actions">
-                                    <div class="row" align="center">
-                                       
-                                        
-                                        <a href="${contexto}/proyecto/crear">
-                                            <button type="submit" class="btn green">Crear Proyecto</button>
-                                            </a>
-                                        
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                                
-                                </div>
-                                </div>
-                                <div class="col-md-4">
-                                </div>
-						</div>
-						
+							
+
 							<div class="row">
 								<div class="col-md-12">
 
 
 
 									<!-- BEGIN EXAMPLE TABLE PORTLET-->
-									<div class="portlet box blue-madison">
+									<div class="portlet box grey">
 										<div class="portlet-title">
-											<div class="caption">
-												<i class="fa fa-globe"></i>Proyectos
-											</div>
+											<div class="caption">Mis Proyectos</div>
 											<div class="tools">
 												<a href="javascript:;" class="reload"> </a> <a
 													href="javascript:;" class="remove"> </a>
@@ -196,7 +194,7 @@
 										</div>
 										<div class="portlet-body" style="height: 600px">
 											<table class="table table-striped table-bordered table-hover"
-												id="sample_3" >
+												id="sample_3">
 												<thead>
 													<tr>
 														<th>#</th>
@@ -206,38 +204,115 @@
 														<th>Fecha de Fin</th>
 														<th>Coordinador</th>
 														<th>Editar proyecto</th>
-														
+
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${proyectos}" var="proyecto" varStatus="loop">
-													<tr>
-														<td>
-														<a href="${contexto}/proyecto/propio/${proyecto.idProyecto}">${loop.index + 1}</a>
-														</td>
-														<td>${proyecto.nombre}</td>
-														<td>${proyecto.descripcion}</td>
-														<td>${proyecto.fechaInicio}</td>
-														<td>${proyecto.fechaFin}</td>
-														<td>${proyecto.coordinador.nombres}</td>
-														<td>
-															<a href="${contexto}/proyecto/${proyecto.idProyecto}/editar" class="btn default btn-xs purple">
-                                                    		<i class="fa fa-edit"></i> Editar </a>
-                                            			</td>
-													</tr>
-																						
+													<c:forEach items="${proyectos}" var="proyecto"
+														varStatus="loop">
+														<tr>
+															<td><a
+																href="${contexto}/proyecto/propio/${proyecto.idProyecto}">${loop.index + 1}</a>
+															</td>
+															<td>${proyecto.nombre}</td>
+															<td>${proyecto.descripcion}</td>
+															<td>${proyecto.fechaInicio}</td>
+															<td>${proyecto.fechaFin}</td>
+															<td>${proyecto.coordinador.nombres}</td>
+															<td><a
+																href="${contexto}/proyecto/${proyecto.idProyecto}/editar"
+																class="btn default btn-xs grey"> <i
+																	class="fa fa-edit"></i> Editar
+															</a></td>
+														</tr>
+
 													</c:forEach>
 												</tbody>
 											</table>
 										</div>
 									</div>
 									<!-- END EXAMPLE TABLE PORTLET-->
-									
-									
-									
-									
-									
+
+
+
+
+
 								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+
+
+
+									<!-- BEGIN EXAMPLE TABLE PORTLET-->
+									<div class="portlet box grey">
+										<div class="portlet-title">
+											<div class="caption">Proyectos en los que participo como colaborador</div>
+											<div class="tools">
+												<a href="javascript:;" class="reload"> </a> <a
+													href="javascript:;" class="remove"> </a>
+											</div>
+										</div>
+										<div class="portlet-body" style="height: 600px">
+											<table class="table table-striped table-bordered table-hover"
+												id="sample_3">
+												<thead>
+													<tr>
+														<th>#</th>
+														<th>Nombre</th>
+														<th>Descripción</th>
+														<th>Fecha de Inicio</th>
+														<th>Fecha de Fin</th>
+														<th>Coordinador</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach items="${proyectosLikeColaborador}" var="proyecto"
+														varStatus="loop">
+														<tr>
+															<td><a
+																href="${contexto}/proyecto/colaborador/${proyecto.idProyecto}">${loop.index + 1}</a>
+															</td>
+															<td>${proyecto.nombre}</td>
+															<td>${proyecto.descripcion}</td>
+															<td>${proyecto.fechaInicio}</td>
+															<td>${proyecto.fechaFin}</td>
+															<td>${proyecto.coordinador.nombres}</td>
+														</tr>
+
+													</c:forEach>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<!-- END EXAMPLE TABLE PORTLET-->
+
+
+
+
+
+								</div>
+							</div>
+							<div class="row" align="center">
+								<div class="col-md-4"></div>
+
+								<div class="col-md-4">
+									<div class="profile-sidebar" style="width: 500x;">
+										<!-- PORTLET MAIN -->
+										<div class="portlet light profile-sidebar-portlet">
+											<div class="profile-content">
+												<div class="row" align="center">
+													<a href="${contexto}/proyecto/crear">
+														<button type="submit" class="btn red-soft">Crear
+															Proyecto</button>
+													</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="col-md-4"></div>
 							</div>
 						</div>
 					</div>
@@ -262,7 +337,7 @@
 			Layout.init(); // init current layout
 			Demo.init(); // init demo features
 			TableAdvanced.init();
-			
+
 		});
 	</script>
 

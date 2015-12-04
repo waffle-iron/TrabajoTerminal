@@ -2,6 +2,8 @@
          pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -46,17 +48,33 @@
         <div class="page-content">
 
             <!-- BEGIN PAGE HEADER-->
-            <jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
             <!-- END PAGE HEADER-->
 
             <!-- BEGIN PAGE CONTENT-->
+            <div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Crear mensaje</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+
+                  
+                  
+            
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet box blue">
+                    <div class="portlet box grey">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>Registrar un correo
+                                Registrar un correo
                             </div>
                         </div>
                         <div class="portlet-body form">
@@ -93,23 +111,35 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Emisor
-                                            <span class="required"> * </span>
-                                        </label>
+<!--                                     <div class="form-group"> -->
+<!--                                         <label class="control-label col-md-3">Emisor -->
+<!--                                             <span class="required"> * </span> -->
+<!--                                         </label> -->
 
-                                        <div class="col-md-4">
+<!--                                         <div class="col-md-4"> -->
+<!--                                             <div class="input-icon right"> -->
+<%--                                                 <form:select path="usuarioEmisor.idUsuarios" cssClass="form-control"> --%>
+<%--                                                     <form:option value="" label="Selecciona una opción"/> --%>
+<%--                                                     <form:options items="${usuarioEmisorList}" itemValue="idUsuarios" --%>
+<%--                                                                   itemLabel="nombreUsuario"/> --%>
+<%--                                                 </form:select> --%>
+<%--                                                 <form:errors path="usuarioEmisor" element="span" --%>
+<%--                                                              cssClass="help-block text-danger"/> --%>
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+ 									<div class="form-group" >
+<!--                                         <label class="control-label col-md-3">Emisor -->
+<!--                                             <span class="required"> * </span> -->
+<!--                                         </label> -->
+                                        <div class="col-md-7">
                                             <div class="input-icon right">
-                                                <form:select path="usuarioEmisor.idUsuarios" cssClass="form-control">
-                                                    <form:option value="" label="Selecciona una opción"/>
-                                                    <form:options items="${usuarioEmisorList}" itemValue="idUsuarios"
-                                                                  itemLabel="nombreUsuario"/>
-                                                </form:select>
+                                                <form:input path="usuarioEmisor"  value="${nombre2}" type="hidden"/>
                                                 <form:errors path="usuarioEmisor" element="span"
                                                              cssClass="help-block text-danger"/>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>						
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Receptor
                                             <span class="required"> * </span>
@@ -129,12 +159,15 @@
                                     </div>
                                 </div>
                                 <div class="form-actions">
+                                 
                                     <div class="row">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="btn green">Crear</button>
-                                            <button type="button" class="btn default">Cancelar</button>
-                                        </div>
-                                    </div>
+											 <div class="profile-userbuttons">
+		                                        <button type="submit" class="btn btn-circle red btn-sm">Crear</button>
+		                                        <button type="button" class="btn btn-circle grey btn-sm" onclick="location.href='${contexto}/usuario/perfil'">Cancelar</button>
+		                                    </div>
+													
+										</div>
+                                    
                                 </div>
                             </form:form>
                         </div>

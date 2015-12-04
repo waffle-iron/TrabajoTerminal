@@ -10,29 +10,35 @@
             data-auto-scroll="true" data-slide-speed="200">
 
             <li class="start ${ruta == '/trabajoterminal/' ?  'active open' : ' '}"><a href="${contexto}"> <i
-                    class="icon-home"></i> <span class="title">INICIO</span>
+                    class="icon-home"></i> <span class="title">Principal</span>
             </a></li>
+            
+            <li class="start ${ruta == '/trabajoterminal/' ?  'active open' : ' '}"><a href="${contexto.concat('/buscar')}"> 
+             <i class="fa fa-search"></i><span class="title">Buscar</span>
+            </a></li>
+            
 
-			<c:set var="contextonivel" value="${contexto.concat('/nivel')}" />
-			<c:set var="contextoidioma" value="${contexto.concat('/idioma')}" />
-			<c:set var="contextoestado" value="${contexto.concat('/estado')}" />
-			<c:set var="contextopalabra_clave" value="${contexto.concat('/palabra_clave')}" />
-			<c:set var="contextoarea" value="${contexto.concat('/area')}" />
-			<c:set var="contextotipoproyecto" value="${contexto.concat('/tipoproyecto')}" />
+<%-- 			<c:set var="contextonivel" value="${contexto.concat('/nivel')}" /> --%>
+<%-- 			<c:set var="contextoidioma" value="${contexto.concat('/idioma')}" /> --%>
+<%-- 			<c:set var="contextoestado" value="${contexto.concat('/estado')}" /> --%>
+<%-- 			<c:set var="contextopalabra_clave" value="${contexto.concat('/palabra_clave')}" /> --%>
+<%-- 			<c:set var="contextoarea" value="${contexto.concat('/area')}" /> --%>
+<%-- 			<c:set var="contextotipoproyecto" value="${contexto.concat('/tipoproyecto')}" /> --%>
 			<c:set var="contextocorreo" value="${contexto.concat('/correo')}" />
-			<c:set var="contextodireccion" value="${contexto.concat('/direccion')}" />
-			<c:set var="contextoescuela" value="${contexto.concat('/escuela')}" />
-			<c:set var="contextogrado" value="${contexto.concat('/grado')}" />
+<%-- 			<c:set var="contextodireccion" value="${contexto.concat('/direccion')}" /> --%>
+<%-- 			<c:set var="contextoescuela" value="${contexto.concat('/escuela')}" /> --%>
+<%-- 			<c:set var="contextogrado" value="${contexto.concat('/grado')}" /> --%>
 			<c:set var="contextoinvitacion" value="${contexto.concat('/invitacion')}" />
 			<c:set var="contextoproyecto" value="${contexto.concat('/proyecto')}" />
 			<c:set var="contextousuario" value="${contexto.concat('/usuario')}" />
+			
 
-			<c:set var="contextonivelcrear" value="${contexto.concat('/nivel/crear')}" />
-			<c:set var="contextoidiomacrear" value="${contexto.concat('/idioma/crear')}" />
-			<c:set var="contextoestadocrear" value="${contexto.concat('/estado/crear')}" />
-			<c:set var="contextopalabra_clavecrear" value="${contexto.concat('/palabra_clave/crear')}" />
-			<c:set var="contextoareacrear" value="${contexto.concat('/area/crear')}" />
-			<c:set var="contextotipoproyectocrear" value="${contexto.concat('/tipoproyecto/crear')}" />
+<%-- 			<c:set var="contextonivelcrear" value="${contexto.concat('/nivel/crear')}" /> --%>
+<%-- 			<c:set var="contextoidiomacrear" value="${contexto.concat('/idioma/crear')}" /> --%>
+<%-- 			<c:set var="contextoestadocrear" value="${contexto.concat('/estado/crear')}" /> --%>
+<%-- 			<c:set var="contextopalabra_clavecrear" value="${contexto.concat('/palabra_clave/crear')}" /> --%>
+<%-- 			<c:set var="contextoareacrear" value="${contexto.concat('/area/crear')}" /> --%>
+<%-- 			<c:set var="contextotipoproyectocrear" value="${contexto.concat('/tipoproyecto/crear')}" /> --%>
 			<c:set var="contextocorreocrear" value="${contexto.concat('/correo/crear')}" />
 			<c:set var="contextodireccioncrear" value="${contexto.concat('/direccion/crear')}" />
 			<c:set var="contextogradocrear" value="${contexto.concat('/grado/crear')}" />
@@ -41,195 +47,209 @@
             <c:set var="contextoproyectoInvitar" value="${contexto.concat('/proyecto/invitar')}" />
 
 
-			<li class="${( ruta == contextopalabra_clave
-                        || ruta == contextopalabra_clavecrear) ?  'active' : ' '}"> 
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Palabra_clave</span> <span
-                    class="arrow ${( ruta == contextopalabra_clave
-                                 || ruta == contextopalabra_clavecrear) ?  'open text-success' : ' '}"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="${( ruta == contextopalabra_clave) ?  'open' : ' '}">
-                        <a href="${contexto}/palabra_clave">
-                            Ver todos
-                        </a>
-                    </li>
-                    <li class="${( ruta == contextopalabra_clavecrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/palabra_clave/crear">
-                        Crear
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<%-- 			<li class="${( ruta == contextopalabra_clave --%>
+<%--                         || ruta == contextopalabra_clavecrear) ?  'active' : ' '}">  --%>
+<!--                 <a href="javascript:;"> <i -->
+<!--                     class="icon-rocket"></i> <span class="title">Palabra_clave</span> <span -->
+<%--                     class="arrow ${( ruta == contextopalabra_clave --%>
+<%--                                  || ruta == contextopalabra_clavecrear) ?  'open text-success' : ' '}"></span> --%>
+<!--                 </a> -->
+<!--                 <ul class="sub-menu"> -->
+<%--                     <li class="${( ruta == contextopalabra_clave) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/palabra_clave"> --%>
+<!--                             Ver todos -->
+<!--                         </a> -->
+<!--                     </li> -->
+<%--                     <li class="${( ruta == contextopalabra_clavecrear ) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/palabra_clave/crear"> --%>
+<!--                         Crear -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </li> -->
 
 
-			<li class="${( ruta == contextoestado
-                       || ruta == contextoestadocrear) ?  'active' : ' '}">
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Estado</span> <span
-                    class="arrow ${( ruta == contextoestado
-                                  || ruta == contextoestadocrear) ?  'open text-success' : ' '}"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="${( ruta == contextoestado) ?  'open' : ' '}">
-                        <a href="${contexto}/estado">
-                            Ver todos
-                        </a>
-                    </li>
-                    <li class="${( ruta == contextoestadocrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/estado/crear">
-                        Crear
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<%-- 			<li class="${( ruta == contextoestado --%>
+<%--                        || ruta == contextoestadocrear) ?  'active' : ' '}"> --%>
+<!--                 <a href="javascript:;"> <i -->
+<!--                     class="icon-rocket"></i> <span class="title">Estado</span> <span -->
+<%--                     class="arrow ${( ruta == contextoestado --%>
+<%--                                   || ruta == contextoestadocrear) ?  'open text-success' : ' '}"></span> --%>
+<!--                 </a> -->
+<!--                 <ul class="sub-menu"> -->
+<%--                     <li class="${( ruta == contextoestado) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/estado"> --%>
+<!--                             Ver todos -->
+<!--                         </a> -->
+<!--                     </li> -->
+<%--                     <li class="${( ruta == contextoestadocrear ) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/estado/crear"> --%>
+<!--                         Crear -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </li> -->
 
 
-			<li class="${( ruta == contextoidioma
-                         || ruta == contextoidiomacrear) ?  'active' : ' '}"> 
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Idioma</span> <span
-                    class="arrow ${( ruta == contextoidioma
-                                   || ruta == contextoidiomacrear) ?  'open text-success' : ' '}"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="${( ruta == contextoidioma) ?  'open' : ' '}">
-                        <a href="${contexto}/idioma">
-                            Ver todos
-                        </a>
-                    </li>
-                    <li class="${( ruta == contextoidiomacrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/idioma/crear">
-                        Crear
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<%-- 			<li class="${( ruta == contextoidioma --%>
+<%--                          || ruta == contextoidiomacrear) ?  'active' : ' '}">  --%>
+<!--                 <a href="javascript:;"> <i -->
+<!--                     class="icon-rocket"></i> <span class="title">Idioma</span> <span -->
+<%--                     class="arrow ${( ruta == contextoidioma --%>
+<%--                                    || ruta == contextoidiomacrear) ?  'open text-success' : ' '}"></span> --%>
+<!--                 </a> -->
+<!--                 <ul class="sub-menu"> -->
+<%--                     <li class="${( ruta == contextoidioma) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/idioma"> --%>
+<!--                             Ver todos -->
+<!--                         </a> -->
+<!--                     </li> -->
+<%--                     <li class="${( ruta == contextoidiomacrear ) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/idioma/crear"> --%>
+<!--                         Crear -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </li> -->
 
 
-            <li class="${ ( ruta == contextonivel ) ?  'active' : ' '}">
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Nivel</span> <span
-                    class="arrow ${( ruta == contextonivel || ruta == contextonivelcrear) ?  'open text-success' : ' '}"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="${( ruta == contextonivel) ?  'open' : ' '}">
-                        <a href="${contexto}/nivel">
-                            Ver todos
-                        </a>
-                    </li>
-                    <li class="${( ruta == contextonivelcrear) ?  'open' : ' '}">
-                        <a href="${contexto}/nivel/crear">
-                        Crear
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<%--             <li class="${ ( ruta == contextonivel ) ?  'active' : ' '}"> --%>
+<!--                 <a href="javascript:;"> <i -->
+<!--                     class="icon-rocket"></i> <span class="title">Nivel</span> <span -->
+<%--                     class="arrow ${( ruta == contextonivel || ruta == contextonivelcrear) ?  'open text-success' : ' '}"></span> --%>
+<!--                 </a> -->
+<!--                 <ul class="sub-menu"> -->
+<%--                     <li class="${( ruta == contextonivel) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/nivel"> --%>
+<!--                             Ver todos -->
+<!--                         </a> -->
+<!--                     </li> -->
+<%--                     <li class="${( ruta == contextonivelcrear) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/nivel/crear"> --%>
+<!--                         Crear -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </li> -->
 
-            <li class="${( ruta == contextotipoproyecto
-                         || ruta == contextotipoproyectocrear) ?  'active' : ' '}"> 
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Tipo Proyecto</span> <span
-                    class="arrow ${( ruta == contextotipoproyecto
-                                   || ruta == contextotipoproyectocrear) ?  'open text-success' : ' '}"></span> 
-                </a>
-                <ul class="sub-menu">
-                    <li class="${( ruta == contextotipoproyecto) ?  'open' : ' '}">
-                        <a href="${contexto}/tipoproyecto">
-                            Ver todos
-                        </a>
-                    </li>
-                    <li class="${( ruta == contextotipoproyectocrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/tipoproyecto/crear">
-                        Crear
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<%--             <li class="${( ruta == contextotipoproyecto --%>
+<%--                          || ruta == contextotipoproyectocrear) ?  'active' : ' '}">  --%>
+<!--                 <a href="javascript:;"> <i -->
+<!--                     class="icon-rocket"></i> <span class="title">Tipo Proyecto</span> <span -->
+<%--                     class="arrow ${( ruta == contextotipoproyecto --%>
+<%--                                    || ruta == contextotipoproyectocrear) ?  'open text-success' : ' '}"></span>  --%>
+<!--                 </a> -->
+<!--                 <ul class="sub-menu"> -->
+<%--                     <li class="${( ruta == contextotipoproyecto) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/tipoproyecto"> --%>
+<!--                             Ver todos -->
+<!--                         </a> -->
+<!--                     </li> -->
+<%--                     <li class="${( ruta == contextotipoproyectocrear ) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/tipoproyecto/crear"> --%>
+<!--                         Crear -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </li> -->
 
-            <li class="${( ruta == contextoarea
-                         || ruta == contextoareacrear ) ?  'active' : ' '}"> 
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Area</span> <span
-                    class="arrow ${( ruta == contextoarea
-                                   || ruta == contextoareacrear) ?  'open text-success' : ' '}"></span> 
-                </a>
-                <ul class="sub-menu">
-                    <li class="${( ruta == contextoarea) ?  'open' : ' '}">
-                        <a href="${contexto}/area">
-                            Ver todos
-                        </a>
-                    </li>
-                    <li class="${( ruta == contextoareacrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/area/crear">
-                        Crear
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<%--             <li class="${( ruta == contextoarea --%>
+<%--                          || ruta == contextoareacrear ) ?  'active' : ' '}">  --%>
+<!--                 <a href="javascript:;"> <i -->
+<!--                     class="icon-rocket"></i> <span class="title">Area</span> <span -->
+<%--                     class="arrow ${( ruta == contextoarea --%>
+<%--                                    || ruta == contextoareacrear) ?  'open text-success' : ' '}"></span>  --%>
+<!--                 </a> -->
+<!--                 <ul class="sub-menu"> -->
+<%--                     <li class="${( ruta == contextoarea) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/area"> --%>
+<!--                             Ver todos -->
+<!--                         </a> -->
+<!--                     </li> -->
+<%--                     <li class="${( ruta == contextoareacrear ) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/area/crear"> --%>
+<!--                         Crear -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </li> -->
 
 			<li class="${( ruta == contextocorreo
                          || ruta == contextocorreocrear ) ?  'active' : ' '}"> 
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Correo</span> <span
+                <a href="javascript:;">   <i class="icon-envelope"></i> <span class="title">Correo chat</span> <span
                     class="arrow ${( ruta == contextocorreo
                                   || ruta == contextocorreocrear) ?  'open text-success' : ' '}"></span> 
                 </a>
                 <ul class="sub-menu">
+                    
+                   
+                    
                     <li class="${( ruta == contextocorreo) ?  'open' : ' '}">
                         <a href="${contexto}/correo">
                             Ver todos
                         </a>
                     </li>
+                     <li class="${( ruta == contextocorreo) ?  'open' : ' '}">
+                        <a href="${contexto}/correo/enviados">
+                            Ver enviados
+                        </a>
+                    </li>
+                    <li class="${( ruta == contextocorreo) ?  'open' : ' '}">
+                        <a href="${contexto}/correo/recibidos">
+                            Ver recibidos
+                        </a>
+                    </li>
+                    
+                    
                     <li class="${( ruta == contextocorreocrear ) ?  'open' : ' '}">
                         <a href="${contexto}/correo/crear">
-                        Crear
+                        Crear nuevo chat
                         </a>
                     </li>
                 </ul>
             </li>
             
-            <li class="${( ruta == contextodireccion
-                         || ruta == contextodireccioncrear ) ?  'active' : ' '}"> 
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Direcciï¿½n</span> <span
-                    class="arrow ${( ruta == contextodireccion
-                                   || ruta == contextodireccioncrear) ?  'open text-success' : ' '}"></span> 
-                </a>
-                <ul class="sub-menu">
-                    <li class="${( ruta == contextodireccion) ?  'open' : ' '}">
-                        <a href="${contexto}/direccion">
-                            Ver todos
-                        </a>
-                    </li>
-                    <li class="${( ruta == contextodireccioncrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/direccion/crear">
-                        Crear
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<%--             <li class="${( ruta == contextodireccion --%>
+<%--                          || ruta == contextodireccioncrear ) ?  'active' : ' '}">  --%>
+<!--                 <a href="javascript:;"> <i -->
+<!--                     class="icon-rocket"></i> <span class="title">Direcciï¿½n</span> <span -->
+<%--                     class="arrow ${( ruta == contextodireccion --%>
+<%--                                    || ruta == contextodireccioncrear) ?  'open text-success' : ' '}"></span>  --%>
+<!--                 </a> -->
+<!--                 <ul class="sub-menu"> -->
+<%--                     <li class="${( ruta == contextodireccion) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/direccion"> --%>
+<!--                             Ver todos -->
+<!--                         </a> -->
+<!--                     </li> -->
+<%--                     <li class="${( ruta == contextodireccioncrear ) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/direccion/crear"> --%>
+<!--                         Crear -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </li> -->
             
-            <li class="${( ruta == contextoescuela
-                         || ruta == contextoescuelacrear ) ?  'active' : ' '}"> 
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Escuela</span> <span
-                    class="arrow ${( ruta == contextoescuela
-                                   || ruta == contextoescuelacrear) ?  'open text-success' : ' '}"></span> 
-                </a>
-                <ul class="sub-menu">
-                    <li class="${( ruta == contextoescuela) ?  'open' : ' '}">
-                        <a href="${contexto}/escuela">
-                            Ver todos
-                        </a>
-                    </li>
-                    <li class="${( ruta == contextoescuelacrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/escuela/crear">
-                        Crear
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<%--             <li class="${( ruta == contextoescuela --%>
+<%--                          || ruta == contextoescuelacrear ) ?  'active' : ' '}">  --%>
+<!--                 <a href="javascript:;"> <i -->
+<!--                     class="icon-rocket"></i> <span class="title">Escuela</span> <span -->
+<%--                     class="arrow ${( ruta == contextoescuela --%>
+<%--                                    || ruta == contextoescuelacrear) ?  'open text-success' : ' '}"></span>  --%>
+<!--                 </a> -->
+<!--                 <ul class="sub-menu"> -->
+<%--                     <li class="${( ruta == contextoescuela) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/escuela"> --%>
+<!--                             Ver todos -->
+<!--                         </a> -->
+<!--                     </li> -->
+<%--                     <li class="${( ruta == contextoescuelacrear ) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/escuela/crear"> --%>
+<!--                         Crear -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </li> -->
             
 <%--             <li class="${( ruta == contextogrado --%>
 <%--                          || ruta == contextogradocrear ) ?  'active' : ' '}">  --%>
@@ -254,20 +274,19 @@
             
             <li class="${( ruta == contextoinvitacion
                         || ruta == contextoinvitacioncrear ) ?  'active' : ' '}">
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Invitacion</span> <span
+                <a href="javascript:;">   <i class="icon-folder"></i> <span class="title">Invitación</span> <span
                     class="arrow ${( ruta == contextoinvitacion
                                   || ruta == contextoinvitacioncrear) ?  'open text-success' : ' '}"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextoinvitacion) ?  'open' : ' '}">
-                        <a href="${contexto}/invitacion">
-                            Ver todos
+                        <a href="${contexto}/mis-invitaciones">
+                            Ver todas
                         </a>
                     </li>
                     <li class="${( ruta == contextoinvitacioncrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/invitacion/crear">
-                        Crear
+                        <a href="${contexto}/proyecto/invitar">
+                        Crear invitación
                         </a>
                     </li>
                 </ul>
@@ -276,8 +295,7 @@
             <li class="${( ruta == contextoproyecto
                         || ruta == contextoproyectocrear
                         || ruta == contextoproyectoInvitar) ?  'active' : ' '}">
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Proyecto</span> <span
+                <a href="javascript:;"> <i class="icon-note"></i> <span class="title">Proyecto</span> <span
                     class="arrow ${( ruta == contextoproyecto
                                   || ruta == contextoproyectocrear) ?  'open text-success' : ' '}"></span>
                 </a>
@@ -289,7 +307,7 @@
                     </li>
                     <li class="${( ruta == contextoproyectocrear ) ?  'open' : ' '}">
                         <a href="${contexto}/proyecto/crear">
-                        Crear
+                        Crear proyecto
                         </a>
                     </li>
                     <li class="${( ruta == contextoproyectoInvitar ) ?  'open' : ' '}">
@@ -302,24 +320,26 @@
             
             <li class="${( ruta == contextousuario
                         || ruta == contextousuariocrear ) ?  'active' : ' '}">
-                <a href="javascript:;"> <i
-                    class="icon-rocket"></i> <span class="title">Usuario</span> <span
+                <a href="javascript:;"> <i class="icon-user"></i> <span class="title">Usuario</span> <span
                     class="arrow ${( ruta == contextousuario
                                   || ruta == contextousuariocrear) ?  'open text-success' : ' '}"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextousuario) ?  'open' : ' '}">
-                        <a href="${contexto}/usuario">
-                            Ver todos
+                        <a href="${contexto}/usuario/perfil">
+                            Perfil
                         </a>
                     </li>
                     <li class="${( ruta == contextousuariocrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/usuario/crear">
-                        Crear
+                        <a href="${contexto}/usuario/${usuario.idUsuarios}/editar ">
+                        Editar perfil
                         </a>
                     </li>
                 </ul>
             </li>
+             <li class="start ${ruta == '/trabajoterminal/' ?  'active open' : ' '}"><a href="${contexto.concat('/relacion-de-usuarios')}"> 
+               <i class="icon-info"></i><span class="title">Sugerencias</span>
+            </a></li>
             
             
             

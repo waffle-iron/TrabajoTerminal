@@ -50,19 +50,19 @@ var PrograGraficas = function() {
 	var pieData = function(){
 		var pieData = [ {
 			value : document.getElementById("totalUsuGrado1").value,
-			color : "#F7464A",
-			highlight : "#FF5A5E",
-			label : "Red"
+			color : "#1BBAAA",
+			highlight : "#610B0B",
+			label : "Usuarios nivel medio superior"
 		}, {
 			value : document.getElementById("totalUsuGrado2").value,
-			color : "#46BFBD",
-			highlight : "#5AD3D1",
-			label : "Green"
+			color : "#642EFE",
+			highlight : "#610B0B",
+			label : "Usuarios nivel superior"
 		}, {
 			value : document.getElementById("totalUsuGrado3").value,
-			color : "#FDB45C",
-			highlight : "#FFC870",
-			label : "Yellow"
+			color : "#B18904",
+			highlight : "#610B0B",
+			label : "Posgrado"
 		},
 
 		];
@@ -77,7 +77,7 @@ var PrograGraficas = function() {
 			value : document.getElementById("proyectosArea1").value,
 			color : "#F7464A",
 			highlight : "#FF5A5E",
-			label : "Ingeniería y Ciencias Físico Matemáticas"
+			label : "Ingenieria y Ciencias Fisico Matematicas"
 		}, {
 			value : document.getElementById("proyectosArea2").value,
 			color : "#46BFBD",
@@ -87,7 +87,7 @@ var PrograGraficas = function() {
 			value : document.getElementById("proyectosArea3").value,
 			color : "#FDB45C",
 			highlight : "#FFC870",
-			label : "Ciencias Médico Biológicas"
+			label : "Ciencias Medico Biologicas"
 		} ];
 
 		var ctx = document.getElementById("chart-area2").getContext("2d");

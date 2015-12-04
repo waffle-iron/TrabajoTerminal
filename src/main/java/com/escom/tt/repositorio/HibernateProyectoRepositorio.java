@@ -108,6 +108,17 @@ public class HibernateProyectoRepositorio implements ProyectoRepositorio {
 	}
 
 	@Override
+	public List<Proyecto> obtenerPorColaborador(ColaboradorProyecto colaboradorProyecto){
+		List<Proyecto> invitaciones = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Proyecto.class);
+		Criteria criteriaPK = criteria.createCriteria("colaboradorProyectos");
+		criteriaPK.add(Restrictions.eq("usuario", colaboradorProyecto.getUsuario()));
+		invitaciones = criteriaPK.list();
+		return invitaciones;
+	}
+
+	@Override
 	public List<Proyecto> buscaTipoProyectoUsuario(int tipoProyecto,	Usuario usu) {
 		List<Proyecto> proyectos = null;
 		Session session = sf.getCurrentSession();

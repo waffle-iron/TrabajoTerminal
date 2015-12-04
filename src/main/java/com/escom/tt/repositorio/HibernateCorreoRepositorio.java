@@ -76,4 +76,28 @@ public class HibernateCorreoRepositorio implements CorreoRepositorio {
 		correos = criteria.list();
 		return correos;
 	}
+
+	@Override
+	public List<Correo> obtenerCorreosPropios(Usuario usuario) {
+		List<Correo> correos = null;
+
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Correo.class);
+		criteria.add(Restrictions.like("usuarioEmisor", usuario));
+		correos = criteria.list();
+		
+		return correos;
+	}
+
+	@Override
+	public List<Correo> obtenerCorreosPropiosRecibidos(Usuario usuario) {
+		List<Correo> correos = null;
+
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Correo.class);
+		criteria.add(Restrictions.like("usuarioReceptor", usuario));
+		correos = criteria.list();
+		
+		return correos;
+	}
 }

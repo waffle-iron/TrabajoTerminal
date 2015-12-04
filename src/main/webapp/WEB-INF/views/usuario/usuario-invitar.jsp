@@ -3,7 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<c:set var="contexto" value="${pageContext.request.contextPath}" />
 
 
 <!DOCTYPE html>
@@ -43,7 +42,7 @@
             <!-- END PAGE HEADER-->
 
             <!-- BEGIN PAGE CONTENT-->
-            <div class="portlet light portlet-fit bordered">
+           <div class="portlet light portlet-fit bordered">
 					<div class="portlet-title">
 						<div class="caption">
 							
@@ -56,12 +55,18 @@
 
 					</div>
 				</div>
+           
+
             
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <!-- BEGIN VALIDATION STATES-->
                     <div class="portlet box grey">
-                       
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i>Invitar Usuario a proyecto
+                            </div>
+                        </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
                             <c:url value="/proyecto/crearInvitacion" var="urlInvitarUsuario"/>
@@ -87,14 +92,16 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Correo o nombre de Usuario:
-                                            <span class="required"> * </span>
+                                        <label class="control-label col-md-3">Usuario a invitar:
+                                            <span class="required"></span>
                                         </label>
 
                                         <div class="col-md-7">
-
-                                            <input name="correoUsuario" class="form-control"  required/>
-
+									
+										
+										
+											 <input name="correoUsuario" class="form-control" value="${usuarioAInvitar.email}"/>
+											
                                         </div>
                                     </div>
 
@@ -117,7 +124,11 @@
 
                                 </div>
                                 <div class="form-actions">
-                              
+<!--                                     <div class="row"> -->
+<!--                                         <div class="col-md-offset-3 col-md-9"> -->
+<!--                                             <button type="submit" class="btn green">Invitar</button> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
                                     <div class="row">
 											 <div class="profile-userbuttons">
 		                                        <button type="submit" class="btn btn-circle red btn-sm">Invitar</button>

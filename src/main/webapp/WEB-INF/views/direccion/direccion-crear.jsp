@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet box blue">
+                    <div class="portlet box poli">
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="fa fa-gift"></i>Registrar una nueva direccion

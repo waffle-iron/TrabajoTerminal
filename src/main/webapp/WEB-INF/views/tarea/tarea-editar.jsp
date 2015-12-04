@@ -5,6 +5,9 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
+
+
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -39,17 +42,26 @@
 			<div class="page-content">
 
 				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
 				<!-- END PAGE HEADER-->
 
+				<div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-social-dribbble font-red"></i>
+                                <span class="caption-subject font-red bold ">Actualizar tarea</span>
+                            </div>
+                            
+                        </div>
+                  </div>
+				
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
 						<!-- BEGIN VALIDATION STATES-->
-						<div class="portlet box blue">
+						<div class="portlet box grey">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-gift"></i>Actualizar Tarea a: <b>${colaborador}</b>
+									Actualizar tarea: <b>${colaborador}</b>
 								</div>
 							</div>
 							<div class="portlet-body form">
@@ -91,9 +103,9 @@
 
 											<div class="col-md-7">
 												<div class="input-icon right">
-													<form:input path="estado" cssClass="form-control" />
-													<form:errors path="estado" element="span"
-														cssClass="help-block text-danger" />
+													<form:select path="estado">
+														<form:options items="${estadoMap}" cssClass="form-control" />
+													</form:select>
 												</div>
 											</div>
 										</div>
@@ -111,20 +123,22 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="control-label col-md-3">Avance <span
+											<label class="control-label col-md-3">Avance: <b><span id="text-avance"> % ${avance} </span></b> <span
 												class="required"> * </span>
 											</label>
 
 											<div class="col-md-7">
 												<div class="input-icon right">
-													<form:input path="avance" cssClass="form-control" />
+													<form:input path="avance" cssClass="form-control" type="range" min="1" max="100" />
 													<form:errors path="*" element="span"
 														cssClass="help-block text-danger" />
 												</div>
 											</div>
 										</div>
+
 										<fmt:formatDate value="${fechaEntrega}" var="var_fechaEntrega"
 											pattern="yyyy-MM-dd" />
+
 										<form:hidden path="fechaEntrega" value="${var_fechaEntrega}" />
 										<form:hidden path="idTarea"></form:hidden>
 										<form:hidden path="colaboradorProyecto.proyecto.idProyecto"></form:hidden>
@@ -132,10 +146,13 @@
 									</div>
 									<div class="form-actions">
 										<div class="row">
-											<div class="col-md-offset-3 col-md-9">
-												<button type="submit" class="btn green">Actualizar</button>
-											</div>
+											 <div class="profile-userbuttons">
+		                                        <button type="submit" class="btn btn-circle red btn-sm">Actualizar</button>
+		                                        <button type="button" class="btn btn-circle grey btn-sm" onclick="location.href='${contexto}/usuario/perfil'">Cancelar</button>
+		                                    </div>
+													
 										</div>
+										
 									</div>
 								</form:form>
 							</div>
@@ -162,6 +179,7 @@
 			Metronic.init(); // init metronic core components
 			Layout.init(); // init current layout
 			Demo.init(); // init demo features
+			TT.init();
 		});
 	</script>
 

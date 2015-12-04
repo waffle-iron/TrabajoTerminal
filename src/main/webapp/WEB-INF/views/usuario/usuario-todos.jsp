@@ -65,7 +65,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="portlet light">
+                    <div class="portlet poli">
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="fa fa-shopping-cart"></i>Usuarios
@@ -144,7 +144,7 @@
                                             </td>
                                             <td>
                                                 <a href="${contexto}usuario/ver/${usuario.idUsuarios}">
-                                                    ${usuario.contraseña}
+                                                    ${usuario.password}
                                                 </a>
                                             </td>
                                             <td>

@@ -12,7 +12,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>Metronic | Login Options - Login Form 4</title>
+    <title>SIBIPI</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -61,7 +61,7 @@
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="index.html">
-        <img src="${pageContext.request.contextPath}/resources/tema/assets/admin/layout4/img/logo-big.png" alt=""/>
+        <img src="${pageContext.request.contextPath}/resources/tema/assets/admin/layout4/img/logoTT.png" alt=""/>
     </a>
 </div>
 <!-- END LOGO -->
@@ -77,7 +77,7 @@
     <!--  dsasgegfsadgsgf
     -->
     <form class="login-form" action="${rutaAutentificar}" method="POST">
-        <h3 class="form-title">Inicio de sesiï¿½n</h3>
+        <h3 class="form-title">Inicio de sesión</h3>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -90,16 +90,16 @@
         </div>
         <div class="form-group">
             <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <label class="control-label visible-ie8 visible-ie9">email</label>
+            <label class="control-label visible-ie8 visible-ie9">Correo</label>
 
             <div class="input-icon">
                 <i class="fa fa-user"></i>
                 <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="email"
-                       name="email" value="juancvfenix@gmail.com"/>
+                       name="email" value="gio_rt@hotmail.com"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Password</label>
+            <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
 
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
@@ -109,14 +109,14 @@
         </div>
 
         <div class="form-actions">
-            <button type="submit" class="btn blue pull-right">
-                Iniciar Sesiï¿½n <i class="m-icon-swapright m-icon-white"></i>
+            <button type="submit" class="btn red-soft pull-right">
+                Iniciar Sesión <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="create-account">
             <p>
-                Aï¿½n no tienes una cuenta??&nbsp; <a href="${contexto}registro" id="register-btn">
-                Registrate</a>
+                ¿Aún no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
+                Regístrate</a>
             </p>
         </div>
     </form>
@@ -125,7 +125,7 @@
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-    2014 &copy; Metronic - Admin Dashboard Template.
+...
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
@@ -170,10 +170,8 @@
         Demo.init();
         // init background slide images
         $.backstretch([
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/1.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/2.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/3.jpg",
-                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/4.jpg"
+                    "${pageContext.request.contextPath}/resources/tema/assets/admin/pages/media/bg/1.jpg"
+
                 ], {
                     fade: 1000,
                     duration: 8000

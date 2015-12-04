@@ -70,6 +70,7 @@ public class ProyectoControlador {
 			BindingResult validacion, Model modelo, Principal principal) {
 		String ruta = null;
 		String mensaje = null;
+		String mensajeCombo = null;
 
 		if (validacion.hasErrors()) {
 			List<ObjectError> error = validacion.getAllErrors();
@@ -87,6 +88,7 @@ public class ProyectoControlador {
 					usuarioRepositorio.obtenerTodos());
 			modelo.addAttribute("nombre", principal.getName());
 			modelo.addAttribute("mensajeFechas", mensaje);
+			modelo.addAttribute("mensajeCombo",mensajeCombo);
 			ruta = "proyecto/proyecto-crear";
 		} else {
 			// validacion de fechas
@@ -151,7 +153,9 @@ public class ProyectoControlador {
 				modelo.addAttribute("nombre", principal.getName());
 				modelo.addAttribute("mensajeFechas", mensaje1);
 				ruta = "proyecto/proyecto-editar";
-			}else{
+			}
+			else{
+
 			mensaje1="";
 					
 			Integer id = proyectoRepositorio.actualizar(proyecto);
@@ -291,14 +295,10 @@ public class ProyectoControlador {
     	modelo.addAttribute("tamProOtros", tamProOtros); 
     	modelo.addAttribute("totalProyectos", totalProyectos); 
     	
-    	
-    	
-    	
-        modelo.addAttribute("proyectosList", proyectosDeCoordinador);
+       modelo.addAttribute("proyectosList", proyectosDeCoordinador);
         modelo.addAttribute("eliminado", eliminado);
         modelo.addAttribute("nombre",principal.getName());
         modelo.addAttribute("idd",email);
-        
         
         return "proyecto/proyecto-todos";
     }
@@ -347,11 +347,15 @@ public class ProyectoControlador {
         tarea.setFechaEntrega(new Date());
         tarea.setColaboradorProyecto(new ColaboradorProyecto(miProyecto, usuarioTarea));
 
+
+
         if (miProyecto == null || !miProyecto.getCoordinador().getEmail().equals(coordinador.getEmail()))
             ruta = "redirect:/";
 
         if (validacion.hasErrors()){
+			System.err.println(validacion.getAllErrors());
             modelo.addAttribute("tarea", tarea);
+            System.err.println("ERROR--------------------------"+validacion.getErrorCount());
             ruta = "redirect:/proyecto/"+miProyecto.getIdProyecto()+"/asignar-tarea/"+usuarioTarea.getIdUsuarios()+"?creado=false";
         }else{
             tareaRepositorio.crear(tarea);
@@ -415,7 +419,7 @@ public class ProyectoControlador {
         boolean estaColaborador = false;
         Integer error = 4;
 
-        if (correoUsuario == null || proyectoId == null)
+        if (correoUsuario == null || proyectoId == null || principal.getName().equals( correoUsuario ) )
             return "redirect:/proyecto/invitar?error=" + error;
 
 
@@ -463,6 +467,7 @@ public class ProyectoControlador {
 		Usuario usuario = null;
 		List<Tarea> tareaList = null;
 		Proyecto proyecto = null;
+		String nombre = principal.getName();
 
 		usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
 		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
@@ -470,13 +475,51 @@ public class ProyectoControlador {
 		if (proyecto != null) {
 
 			if (proyecto.getCoordinador().getEmail().equals(usuario.getEmail())) {
-				if (principal.getName().equals(proyecto.getCoordinador().getEmail())){
+				//if (principal.getName().equals(proyecto.getCoordinador().getEmail())){
 					tareaList = tareaRepositorio.obtenerPorProyecto(new ColaboradorProyecto(proyecto));
 				
 				modelo.addAttribute("tareasList", tareaList);
 				modelo.addAttribute("proyecto", proyecto);
+				modelo.addAttribute("nombre", nombre);
+				
 				ruta = "proyecto/proyecto-propio";
-				}
+				//}
+			}
+		} else {
+			ruta = "redirect:/usuario/perfil";
+		}
+
+		return ruta;
+	}
+
+	@RequestMapping(value = "/proyecto/colaborador/{proyectoId:[0-9]+}", method = RequestMethod.GET)
+	public String consultarProyectoColaborador(@PathVariable Integer proyectoId,
+										  Model modelo,
+										  Principal principal) {
+
+		String ruta = null;
+		Usuario usuario = null;
+		List<Tarea> tareaList = null;
+		Proyecto proyecto = null;
+		String nombre = principal.getName();
+
+		usuario = usuarioRepositorio.buscarPorCorreo(principal.getName());
+		proyecto = proyectoRepositorio.buscarPorId(proyectoId);
+
+		if (proyecto != null) {
+
+			if (!proyecto.getCoordinador().getEmail().equals(usuario.getEmail())) {
+
+				//if (principal.getName().equals(proyecto.getCoordinador().getEmail())){
+
+					tareaList = tareaRepositorio.obtenerPorColaboradorProyecto(new ColaboradorProyecto(proyecto, usuario));
+
+					modelo.addAttribute("tareasList", tareaList);
+					modelo.addAttribute("proyecto", proyecto);
+					modelo.addAttribute("nombre", nombre);
+
+					ruta = "proyecto/proyecto-colaborador";
+				//}
 			}
 		} else {
 			ruta = "redirect:/usuario/perfil";
@@ -532,4 +575,7 @@ public class ProyectoControlador {
 
 		return "redirect:/proyecto/propio/" + proyectoId;
 	}   
+    
+    
+    
 }

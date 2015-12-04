@@ -7,6 +7,7 @@ import com.escom.tt.modelo.Usuario;
 import com.escom.tt.repositorio.InvitacionRepositorio;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +16,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
 import java.security.Principal;
 import java.util.List;
 
@@ -161,12 +165,18 @@ public class InvitacionControlador {
     }
 
     @RequestMapping(value="/mis-invitaciones")
-    public String misInvitaciones(Principal principal, Model model) {
+    public String misInvitaciones(Principal principal, Model model, HttpSession session) {
         List<Invitacion> invitacionList = null;
         ColaboradorProyecto colaboradorProyecto = null;
         colaboradorProyecto = new ColaboradorProyecto(usuarioRepositorio.buscarPorCorreo(principal.getName()));
         invitacionList = invitacionRepositorio.obtenerPorUsuario(colaboradorProyecto);
+        int totalInvitaciones = invitacionList.size();
+        String nombre = principal.getName();
         model.addAttribute("invitaciones", invitacionList);
+        model.addAttribute("nombre", nombre);
+		session.setAttribute("totalInvitaciones", totalInvitaciones);
+
+        
         return "invitacion/invitacion-propias";
     }
 }

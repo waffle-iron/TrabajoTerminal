@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 @Entity
-@Table(name="Correo")
+@Table(name="CORREO")
 public class Correo {
 	
 

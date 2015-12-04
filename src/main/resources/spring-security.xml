@@ -10,9 +10,9 @@
         <security:form-login login-page="/login"
                              authentication-failure-url="/login?valido=false"
                              login-processing-url="/autentificar" username-parameter="email"
-                             password-parameter="password" default-target-url="/" />
+                             password-parameter="password" default-target-url="/usuario/perfil" />
 
-        <security:logout logout-url="/logout"
+        <security:logout logout-url="/login"
                          logout-success-url="/login" delete-cookies="JSESSIONID"/>
 
 
@@ -38,8 +38,13 @@
         <security:intercept-url pattern="/chat/**" access="hasAnyRole('ROLE_ADMIN')"/>
         
         <security:intercept-url pattern="/usuario/perfil" access="hasAnyRole('ROLE_ADMIN')"/>
-        
-        
+        <security:intercept-url pattern="/relacion-de-usuarios" access="hasAnyRole('ROLE_ADMIN')"/>
+
+
+        <security:intercept-url pattern="/usuario/invitar/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/usuario/ver/**" access="hasAnyRole('ROLE_ADMIN')"/>
+
+
        
     </security:http>
     <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">

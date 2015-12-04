@@ -50,8 +50,7 @@ public class HibernateInvitacionRepositorio implements InvitacionRepositorio {
 	@Override
 	public List<Invitacion> obtenerTodos() {
 		List<Invitacion> invitacions = null;
-		invitacions = sf.getCurrentSession().createCriteria(Invitacion.class)
-				.list();
+		invitacions = sf.getCurrentSession().createCriteria(Invitacion.class).list();
 		return invitacions;
 	}
 

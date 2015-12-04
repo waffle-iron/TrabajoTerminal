@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+mo <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contexto" value="${pageContext.request.contextPath}" />
-
+<c:url value="/" var="contexto"/>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -57,7 +56,7 @@
 							
 							 <i class="icon-share font-dark"></i>
 							 <font size="6px">							 
-							 <span class="caption-subject font-red bold uppercase ">Mis correos</span><br /></font>
+							 <span class="caption-subject font-red bold uppercase ">Mis correos enviados o creados</span><br /></font>
 							<span class="caption-subject font-dark bold ">...</span>
 							
 							
@@ -151,80 +150,7 @@
 
                 </div>
             </div>
-             <div class="row">
-                <div class="col-md-12">
-                    <div class="portlet light">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                Lista de correos recibidos
-                            </div>
-
-                        </div>
-                        <div class="portlet-body">
-                            <div class="table-scrollable">
-                                <table class="table table-striped table-bordered table-advance table-hover">
-                                    <thead>
-                                    <tr>
-<!--                                          <th class="hidden-xs"> -->
-<!--                                            Id -->
-<!--                                         </th> -->
-                                        <th class="hidden-xs">
-                                           Asunto
-                                        </th>
-                                        <th>
-                                           Contenido
-                                        </th>
-                                        <th>
-                                            Usuario emisor
-                                        </th>
-                                        <th>
-                                            Usuario receptor
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    <c:forEach items="${correosListRecibidos}" var="correo">
-                                        <tr>
-<!--                                         <td> -->
-<%--                                                 <a href="${contexto}correo/ver/${correo.idCorreo}"> --%>
-<%--                                                     ${correo.idCorreo} --%>
-<!--                                                 </a> -->
-<!--                                             </td> -->
-                                           
-                                            <td>
-                                                <a href="${contexto}correo/ver/${correo.idCorreo}">
-                                                    ${correo.asunto}
-                                                </a>
-                                            </td>
-                                            <td>
-                                                
-                                                    ${correo.contenido}
-                                                
-                                            </td>
-                                                                                        
-                                            <td>
-                                                    ${correo.usuarioReceptor.nombreUsuario}
-                                            
-                                            </td>
-                                             <td>
-                                             <a href="${contexto}chat/${correo.usuarioEmisor.idUsuarios}">
-                                             
-                                                    ${correo.usuarioEmisor.nombreUsuario}
-                                             </a>
-                                            </td>
-                                                                                        
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END SAMPLE TABLE PORTLET-->
-
-                </div>
-            </div>
+            
             <!-- END PAGE CONTENT-->
         </div>
     </div>

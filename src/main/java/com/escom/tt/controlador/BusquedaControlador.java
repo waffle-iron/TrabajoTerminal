@@ -58,10 +58,11 @@ public class BusquedaControlador {
 		return "resultados-busqueda";
 	}
 	@RequestMapping(value="/buscar/noEncontrado", method = RequestMethod.GET)
-    public String buscarNoEncontrado(@RequestParam(required = false) String cadena, Model modelo) {
+    public String buscarNoEncontrado(@RequestParam(required = false) String cadena, Model modelo, Principal principal) {
 		List<Proyecto> proyectos = null;
 		List<Usuario> usuarios = null;
 		String cadenaNoEncontrada = null;
+		String nombre = principal.getName();
 		proyectos=proyectoRepositorio.buscarPorProyecto(cadena);
 		usuarios=usuarioRepositorio.buscarPorUsuario(cadena);
 		
@@ -74,6 +75,8 @@ public class BusquedaControlador {
 				if (usuarios!=null) {
 					System.out.println("*********************usuarios no es nulo");
 				}
+				modelo.addAttribute("nombre", nombre);
+				
 		}
 		if(proyectos.size()==0 && usuarios.size()==0){
 			System.out.println("entrooo");

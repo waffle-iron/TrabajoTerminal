@@ -46,9 +46,7 @@
 		<div class="page-content-wrapper">
 			<div class="page-content">
 
-				<!-- BEGIN PAGE HEADER-->
-				<jsp:include page="recursos/breadcrumbs.jsp"></jsp:include>
-				<!-- END PAGE HEADER-->
+				
 
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row-fluid span12"></div>
@@ -56,39 +54,57 @@
 				<c:url value="/buscar/noEncontrado" var="urlBusquedaBus" />
 
 				<!-- BEGIN FORM 1-->
-				<div class="row">
-				<div class="page-title">
-					<h1>&nbsp;Realiza una búsqueda<small> </small></h1>
-				</div>
 				
-				<form action="${urlBusquedaBus}" method="get" name="form">
-					<div class="col-md-5">
-					<div class="form-body">
-						<div class="form-group">
-							<input id="entrada" name="cadena" class="form-control input-sm"
-								placeholder="Search..." required="required"/>
+				
+							
+                <div class="search-bar bordered">
+                <div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Realiza una búsqueda</span><br /></font>
+							<span class="caption-subject font-dark bold ">...</span>
+							
+							
 						</div>
+
 					</div>
-					</div>
-					<div class="col-md-2">
-						<button type="submit" class="btn blue"  >Buscar</button>
-					</div>					
-				</form>
 				</div>
+                 
+                <form action="${urlBusquedaBus}" method="get" name="form">	
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="input-group">
+                                        <input id="entrada" name="cadena" class="form-control" placeholder="Buscar..." required="required">
+                                        <span class="input-group-btn">
+                                            <button class="btn red-soft" >Buscar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                </form>
+                </div>
+                
+
 				<div class="row"></div>	<div class="row"></div>				
 
 				<div class="row span12">
 					<div class="col-md-8 col-md-offset-2"></div>
 				</div>
 				<div class="row"></div><div class="row"></div>
+				<div class="row"></div><div class="row"></div>
+				<div class="row"></div><div class="row"></div>
+				<div class="row"></div><div class="row"></div>
 				
 				<c:if test="${proyectos.size()>0}">
 				<div class="row">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
-					<div class="portlet box red-intense">
+					<div class="portlet box grey">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-globe"></i>Resultados
+								Resultados
 							</div>
 							<div class="actions">
 								<div class="btn-group">
@@ -124,14 +140,14 @@
 									<c:forEach items="${proyectos}" var="proyecto">
 										<tr>
 											<td>
-												<a href="${contexto}/proyecto/ver/${proyecto.idProyecto}" class="btn default btn-xs blue">
+												<a href="${contexto}/proyecto/ver/${proyecto.idProyecto}" class="btn default btn-xs ">
 												<i class="fa fa-file-audio-o"></i>
 												${proyecto.nombre} </a>																							
 											</td>
 											<td>${proyecto.descripcion}</td>
 											<td>${proyecto.estado}</td>
 											<td>
-												<a href="${contexto}/usuario/ver/${proyecto.coordinador.idUsuarios}" class="btn default btn-xs red">
+												<a href="${contexto}/usuario/ver/${proyecto.coordinador.idUsuarios}" class="btn default btn-xs ">
 												<i class="fa fa-user"></i>
 												${proyecto.coordinador.nombres} </a>		
 											</td>
@@ -148,7 +164,7 @@
 				<c:if test="${usuarios.size()>0}">
 				<div class="row">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
-					<div class="portlet box red-intense">
+					<div class="portlet box grey">
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="fa fa-globe"></i>Resultados Usuarios
@@ -187,7 +203,7 @@
 									<c:forEach items="${usuarios}" var="usuario">
 										<tr>
 											<td>
-												<a href="${contexto}/usuario/ver/${proyecto.coordinador.idUsuarios}" class="btn default btn-xs red">
+												<a href="${contexto}/usuario/ver/${usuario.idUsuarios}"" class="btn default btn-xs ">
 												<i class="fa fa-user"></i>
 												${usuario.nombreUsuario} </a>														
 											</td>
@@ -210,20 +226,15 @@
 				<!-- END EXAMPLE TABLE PORTLET-->
 			</div>
 		</div>
-
-
-
 		<!-- END PAGE CONTENT-->
 	</div>
 	</div>
 	<!-- END CONTENT -->
 	</div>
 	<!-- END CONTAINER -->
-
 	<!-- BEGIN FOOTER -->
 	<jsp:include page="recursos/footer.jsp"></jsp:include>
 	<!-- END FOOTER -->
-
 	<!-- BEGIN JS -->
 	<jsp:include page="recursos/recursos-js.jsp"></jsp:include>
 	<!-- END JS -->
@@ -233,7 +244,6 @@
 			Layout.init(); // init current layout
 			Demo.init(); // init demo features
 			TableAdvanced.init();
-
 		});
 	</script>
 	<script>
@@ -243,7 +253,6 @@
 		}} 
 		
 	</script> 
-
 	<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

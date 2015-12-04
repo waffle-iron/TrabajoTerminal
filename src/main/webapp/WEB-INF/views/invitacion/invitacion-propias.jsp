@@ -39,7 +39,6 @@
         <div class="page-content">
 
             <!-- BEGIN PAGE HEADER-->
-            <jsp:include page="../recursos/breadcrumbs.jsp"></jsp:include>
             <!-- END PAGE HEADER-->
 
             <!-- BEGIN PAGE CONTENT-->
@@ -48,53 +47,55 @@
 
                 <div class="col-md-12">
                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                    <div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Mis invitaciones</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+                    
+                    
                     <div class="portlet light bordered">
-                        <div class="portlet-title">
-                            <div class="caption font-dark">
-                                <i class="icon-settings font-dark"></i>
-                                <span class="caption-subject bold uppercase"> Mis Invitaciones</span>
-                            </div>
-                            <div class="actions">
-                                <div class="btn-group btn-group-devided" data-toggle="buttons">
-                                    <label class="btn btn-transparent dark btn-outline btn-circle btn-sm active">
-                                        <input type="radio" name="options" class="toggle" id="option1">Actions</label>
-                                    <label class="btn btn-transparent dark btn-outline btn-circle btn-sm">
-                                        <input type="radio" name="options" class="toggle" id="option2">Settings</label>
-                                </div>
-                            </div>
-                        </div>
+                       
                         <div class="portlet-body">
                             <div class="table-toolbar">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="btn-group">
-                                            <button id="sample_editable_1_new" class="btn sbold green"> Add New
+                                            <button id="sample_editable_1_new" class="btn sbold green">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="btn-group pull-right">
-                                            <button class="btn green  btn-outline dropdown-toggle"
-                                                    data-toggle="dropdown">Tools
-                                                <i class="fa fa-angle-down"></i>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <i class="fa fa-print"></i> Print </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <i class="fa fa-file-excel-o"></i> Export to Excel </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+<!--                                     <div class="col-md-6"> -->
+<!--                                         <div class="btn-group pull-right"> -->
+<!--                                             <button class="btn green  btn-outline dropdown-toggle" -->
+<!--                                                     data-toggle="dropdown">... -->
+<!--                                                 <i class="fa fa-angle-down"></i> -->
+<!--                                             </button> -->
+<!--                                             <ul class="dropdown-menu pull-right"> -->
+<!--                                                 <li> -->
+<!--                                                     <a href="javascript:;"> -->
+<!--                                                         <i class="fa fa-print"></i> .. </a> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <a href="javascript:;"> -->
+<!--                                                         <i class="fa fa-file-pdf-o"></i> .. </a> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <a href="javascript:;"> -->
+<!--                                                         <i class="fa fa-file-excel-o"></i> .. </a> -->
+<!--                                                 </li> -->
+<!--                                             </ul> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
                                 </div>
                             </div>
                             <table class="table table-striped table-bordered table-hover table-checkable order-column"
@@ -105,7 +106,7 @@
                                         <input type="checkbox" class="group-checkable"
                                                data-set="#sample_1 .checkboxes"/></th>
                                     <th> Proyecto</th>
-                                    <th>Quien te invita</th>
+                                    <th>Quién te invita</th>
                                     <th> Fecha</th>
                                     <th> Estado</th>
                                     <th></th>

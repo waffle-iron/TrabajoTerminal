@@ -44,11 +44,7 @@
 				<!-- BEGIN PAGE HEAD-->
 				<div class="page-head">
 					<!-- BEGIN PAGE TITLE -->
-					<div class="page-title">
-						<h1>
-							... <small></small>
-						</h1>
-					</div>
+				
 					<!-- END PAGE TITLE -->
 					<!-- BEGIN PAGE TOOLBAR -->
 
@@ -56,13 +52,23 @@
 				</div>
 				<!-- END PAGE HEAD-->
 				<!-- BEGIN PAGE BREADCRUMB -->
-				<ul class="page-breadcrumb breadcrumb">
-					<li><a href="index.html">Home</a> <i class="fa fa-circle"></i>
-					</li>
-					<li><span class="active">Apps</span></li>
-				</ul>
 				<!-- END PAGE BREADCRUMB -->
 				<!-- BEGIN PAGE BASE CONTENT -->
+				<div class="portlet light portlet-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							
+							 <i class="icon-share font-dark"></i>
+							 <font size="6px">							 
+							 <span class="caption-subject font-red bold uppercase ">Tipos de proyecto que tengo</span><br /></font>
+							
+							
+						</div>
+
+					</div>
+				</div>
+				
+				
 				<div class="row">
 				
 					<div class="col-md-9">
@@ -284,10 +290,10 @@
 							<thead>
 								<tr>
 									<th><i class="fa fa-bars"></i> <span
-										class="caption-subject font-green-sharp bold uppercase">
+										class="caption-subject">
 											Proyecto</span></th>
 									<th class="hidden-xs"><i class="fa fa-edit"></i> <span
-										class="caption-subject font-red bold uppercase">
+										class="caption-subject">
 											Acciones</span></th>
 									<th></th>
 									<th></th>
@@ -308,18 +314,18 @@
 										</td>
 										<td><a
 											href="${contexto}proyecto/reporte/${proyecto.idProyecto}"
-											class="btn default btn-xs purple"> <i class="fa fa-edit"></i>
-												Ver
+											class="btn default btn-xs grey"> <i class="fa fa-edit"></i>
+												Ver detalle
 										</a></td>
 										<td><a
 											href="${contexto}proyecto/${proyecto.idProyecto}/editar"
-											class="btn default btn-xs purple"> <i class="fa fa-edit"></i>
-												Edit
+											class="btn default btn-xs grey"> <i class="fa fa-edit"></i>
+												Editar
 										</a></td>
 										<td><a
 											href="${contexto}proyecto/eliminar/${proyecto.idProyecto}"
 											class="btn default btn-xs black"> <i
-												class="fa fa-trash-o"></i> Delete
+												class="fa fa-trash-o"></i> Eliminar
 										</a></td>
 
 									</tr>

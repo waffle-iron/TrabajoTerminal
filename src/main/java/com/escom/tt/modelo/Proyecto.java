@@ -56,12 +56,12 @@ public class Proyecto {
     private Integer avance;
 
     @ManyToOne
-    @JoinColumn(name="tipo")
+    @JoinColumn(name="tipo", nullable=false)
     @NotNull(message = "Se necesita un tipo de proyecto")
     private TipoProyecto tipoProyecto;
 
     @ManyToOne
-    @JoinColumn(name="estado")
+    @JoinColumn(name="estado",nullable=false)
     @NotNull(message = "Se necesita un estado de proyecto")
     private Estado estado;
 
