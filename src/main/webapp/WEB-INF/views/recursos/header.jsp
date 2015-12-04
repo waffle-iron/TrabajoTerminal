@@ -74,7 +74,7 @@
 						class="dropdown-toggle" data-toggle="dropdown"
 						data-hover="dropdown" data-close-others="true"> <i
 							class="icon-bell"></i> <span class="badge badge-success">
-								Alertas </span>
+								Alertas ${totalInvitaciones} </span>
 					</a>
 						<ul class="dropdown-menu">
 							<li class="external">
@@ -115,7 +115,7 @@
 						id="header_inbox_bar"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" data-hover="dropdown"
 						data-close-others="true"> <i class="icon-envelope-open"></i> <span
-							class="badge badge-danger"> 4 </span>
+							class="badge badge-danger"> ${totalRecibidos} </span>
 					</a>
 						<ul class="dropdown-menu">
 							<li class="external">
@@ -151,13 +151,13 @@
 						id="header_task_bar"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" data-hover="dropdown"
 						data-close-others="true"> <i class="icon-calendar"></i> <span
-							class="badge badge-primary"> 3 </span>
+							class="badge badge-primary"> ${totalProyectos} </span>
 					</a>
 						<ul class="dropdown-menu extended tasks">
 							<li class="external">
 								<h3>
-									Tu tienes <span class="bold">2</span> Proyectos
-								</h3> <a href="page_todo.html">Ver todas</a>
+									Tu tienes <span class="bold">${totalProyectos}</span> Proyectos
+								</h3>  <a href="${contexto}/proyecto">Ver todos</a>
 							</li>
 							<li>
 								<ul class="dropdown-menu-list scroller" style="height: 275px;"

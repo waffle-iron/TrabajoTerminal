@@ -5,9 +5,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.escom.tt.modelo.Idioma;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,15 +19,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.escom.tt.modelo.ColaboradorProyecto;
+import com.escom.tt.modelo.Correo;
+import com.escom.tt.modelo.Invitacion;
 import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Usuario;
+import com.escom.tt.repositorio.BusquedaRepositorio;
+import com.escom.tt.repositorio.CorreoRepositorio;
 import com.escom.tt.repositorio.EscuelaRepositorio;
 import com.escom.tt.repositorio.GradoRepositorio;
+import com.escom.tt.repositorio.InvitacionRepositorio;
 import com.escom.tt.repositorio.ProyectoRepositorio;
 import com.escom.tt.repositorio.UsuarioRepositorio;
 
 @Controller
+@RequestMapping("/")
+@SessionAttributes("totalRecibidos,totalInvitaciones,totalProyectos")
 public class UsuarioControlador {
 
 	@Autowired
@@ -39,6 +50,16 @@ public class UsuarioControlador {
 
 	@Autowired
 	private ProyectoRepositorio proyectoRepositorio;
+	
+	@Autowired
+	private CorreoRepositorio correoRepositorio;
+	
+	@Autowired
+	private InvitacionRepositorio invitacionRepositorio;
+	
+    @Autowired    
+    private BusquedaRepositorio busquedaRepositorio;
+    
 
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public String registrarse(Model modelo) {
@@ -254,21 +275,38 @@ public class UsuarioControlador {
 
 	@RequestMapping(value = "/usuario/perfil")
 	public String verMiPerfil(Principal principal, Model modelo,
-			Boolean actualizado, Boolean creado) {
+			Boolean actualizado, Boolean creado,HttpSession session) {
 		String ruta = null;
 		Usuario usuario = null;
 		String nombre = null;
+		nombre = principal.getName();
+		
+		//---solo para saber el numero de invitaciones
+		List<Invitacion> invitacionList = null;
+		ColaboradorProyecto colaboradorProyecto = null;
+        colaboradorProyecto = new ColaboradorProyecto(usuarioRepositorio.buscarPorCorreo(principal.getName()));
+        invitacionList = invitacionRepositorio.obtenerPorUsuario(colaboradorProyecto);
+        int totalInvitaciones = invitacionList.size();
+        //--------------
+        //---para numero de proyectos
+        List<Proyecto> proyectosDeCoordinador = null;
+    	Usuario usuarioTemp0=busquedaRepositorio.buscarPorEmail(nombre);
+    	proyectosDeCoordinador=busquedaRepositorio.buscarPorCoordinador(usuarioTemp0);
+        
+		
+		Usuario usuarioTemp = new Usuario();
+		usuarioTemp = usuarioRepositorio.buscarPorCorreo(nombre);
+		
+		List<Correo> correoListRecibidos = correoRepositorio.obtenerCorreosPropiosRecibidos(usuarioTemp);
+		int totalRecibidos = correoListRecibidos.size();
 		if (principal!= null){
 			
 		
 		nombre = principal.getName();
-		System.out.println("*************************"+nombre);
 		}
-		System.out.println(nombre);
-
+		
 		List<Proyecto> proyectos = null;
-
-		System.err.println(principal);
+	
 
 		if (nombre != null) {
 			// así logramos traer la información del usuario que está en la
@@ -288,6 +326,11 @@ public class UsuarioControlador {
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
 			modelo.addAttribute("nombre", nombre);
+			session.setAttribute("totalRecibidos", totalRecibidos);
+			session.setAttribute("totalInvitaciones", totalInvitaciones);
+			session.setAttribute("totalProyectos", proyectosDeCoordinador.size());
+			
+			
 			
 			ruta = "usuario/usuario-perfil";
 		} else

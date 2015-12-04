@@ -4,10 +4,14 @@ import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.escom.tt.modelo.Usuario;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.escom.tt.modelo.Correo;
 import com.escom.tt.modelo.Escuela;
@@ -221,10 +226,10 @@ public class CorreoControlador {
 		usuario = usuarioRepositorio.buscarPorCorreo(nombre);
 		List<Correo> correoListPropios = null;
 		List<Correo> correoListRecibidos = null;
-		
+		int totalRecibidos = 0;
 		correoListPropios = correoRepositorio.obtenerCorreosPropios(usuario);
 		correoListRecibidos = correoRepositorio.obtenerCorreosPropiosRecibidos(usuario);
-		
+		totalRecibidos = correoListRecibidos.size();
 //		correoList = correoRepositorio.obtenerTodos();
 
 		modelo.addAttribute("correosListPropios", correoListPropios);
@@ -232,7 +237,8 @@ public class CorreoControlador {
 		
 		modelo.addAttribute("eliminado", eliminado);
 		modelo.addAttribute("nombre", nombre);
-		
+//		modelo.addAttribute("totalRecibidos", totalRecibidos);
+//		session.setAttribute("totalRecibidos", totalRecibidos);
 
 		return "correo/correo-enviados";
 	}
