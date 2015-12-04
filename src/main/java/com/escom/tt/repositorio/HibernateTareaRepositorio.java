@@ -102,13 +102,13 @@ public class HibernateTareaRepositorio implements TareaRepositorio {
 	}
 
 	@Override
-	public List<Tarea> obtenerPorColaborador(Usuario usuario) {
+	public List<Tarea> obtenerPorColaboradorProyecto(ColaboradorProyecto colaboradorProyecto) {
 		List<Tarea> tareas = null;
 		Session session = sf.getCurrentSession();
 		Criteria criteria = session.createCriteria(Tarea.class);
-		Criteria criteriaPK = criteria.createCriteria("colaboradorProyecto");
-		criteriaPK.add(Restrictions.eq("usuario",usuario));
-		tareas = criteriaPK.list();
+
+		criteria.add(Restrictions.eq("colaboradorProyecto",colaboradorProyecto));
+		tareas = criteria.list();
 		return tareas;
 	}
 

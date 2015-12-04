@@ -512,7 +512,7 @@ public class ProyectoControlador {
 
 				//if (principal.getName().equals(proyecto.getCoordinador().getEmail())){
 
-					tareaList = tareaRepositorio.obtenerPorColaborador(usuario);
+					tareaList = tareaRepositorio.obtenerPorColaboradorProyecto(new ColaboradorProyecto(proyecto, usuario));
 
 					modelo.addAttribute("tareasList", tareaList);
 					modelo.addAttribute("proyecto", proyecto);

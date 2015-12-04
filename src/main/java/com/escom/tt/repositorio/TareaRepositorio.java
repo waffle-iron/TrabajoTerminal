@@ -28,5 +28,5 @@ public interface TareaRepositorio {
     
     List<Tarea> obtenerPorProy(Proyecto proyecto);
 
-    List<Tarea> obtenerPorColaborador(Usuario usuario);
+    List<Tarea> obtenerPorColaboradorProyecto(ColaboradorProyecto colaboradorProyecto);
 }
