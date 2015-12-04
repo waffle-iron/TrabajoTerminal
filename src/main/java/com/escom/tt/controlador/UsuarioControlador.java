@@ -306,13 +306,17 @@ public class UsuarioControlador {
 		}
 		
 		List<Proyecto> proyectos = null;
-	
+		List<Proyecto> proyectosLikeColaborador = null;
+
 
 		if (nombre != null) {
 			// así logramos traer la información del usuario que está en la
 			// sesión
 			usuario = usuarioRepositorio.buscarPorCorreo(nombre);
 			proyectos = proyectoRepositorio.buscarPorCoordinador(usuario);
+			proyectosLikeColaborador = proyectoRepositorio.obtenerPorColaborador(new ColaboradorProyecto(usuarioTemp0));
+
+
 			System.out.println(proyectos);
 		}
 
@@ -323,6 +327,7 @@ public class UsuarioControlador {
 		if (usuario != null) {
 			modelo.addAttribute("usuario", usuario);
 			modelo.addAttribute("proyectos", proyectos);
+			modelo.addAttribute("proyectosLikeColaborador", proyectosLikeColaborador);
 			modelo.addAttribute("actualizado", actualizado);
 			modelo.addAttribute("creado", creado);
 			modelo.addAttribute("nombre", nombre);

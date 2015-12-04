@@ -1,11 +1,6 @@
 package com.escom.tt.repositorio;
 
-import com.escom.tt.modelo.Area;
-import com.escom.tt.modelo.ColaboradorProyecto;
-import com.escom.tt.modelo.Grado;
-import com.escom.tt.modelo.Proyecto;
-import com.escom.tt.modelo.TipoProyecto;
-import com.escom.tt.modelo.Usuario;
+import com.escom.tt.modelo.*;
 
 import java.util.List;
 
@@ -39,11 +34,11 @@ public interface ProyectoRepositorio {
     List<Proyecto> obtenerTodosProyectosPorGradoSUp();
     
     List<Proyecto> obtenerProyectosPorArea(int idArea);
-    
-    
-    
-    
-    
+
+
+
+
+    List<Proyecto> obtenerPorColaborador(ColaboradorProyecto colaboradorProyecto);
     
   
     

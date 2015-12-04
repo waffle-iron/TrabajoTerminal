@@ -2,10 +2,7 @@ package com.escom.tt.repositorio;
 
 import java.util.List;
 
-import com.escom.tt.modelo.Escuela;
-import com.escom.tt.modelo.Grado;
-import com.escom.tt.modelo.Idioma;
-import com.escom.tt.modelo.Usuario;
+import com.escom.tt.modelo.*;
 
 public interface UsuarioRepositorio {
 

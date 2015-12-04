@@ -4,6 +4,7 @@ import com.escom.tt.modelo.ColaboradorProyecto;
 import com.escom.tt.modelo.Proyecto;
 import com.escom.tt.modelo.Tarea;
 
+import com.escom.tt.modelo.Usuario;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -98,9 +99,17 @@ public class HibernateTareaRepositorio implements TareaRepositorio {
 		criteriaPK.add(Restrictions.eq("proyecto",proyecto));
 		tareas = criteriaPK.list();
 		return tareas;
-			
-		
-		
+	}
+
+	@Override
+	public List<Tarea> obtenerPorColaborador(Usuario usuario) {
+		List<Tarea> tareas = null;
+		Session session = sf.getCurrentSession();
+		Criteria criteria = session.createCriteria(Tarea.class);
+		Criteria criteriaPK = criteria.createCriteria("colaboradorProyecto");
+		criteriaPK.add(Restrictions.eq("usuario",usuario));
+		tareas = criteriaPK.list();
+		return tareas;
 	}
 
 }
