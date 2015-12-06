@@ -575,7 +575,71 @@ public class ProyectoControlador {
 
 		return "redirect:/proyecto/propio/" + proyectoId;
 	}   
+    @RequestMapping(value="/proyectos")
+    public String verTodosDeSistema(Model modelo,Boolean eliminado, Principal principal) {
     
+    	List<Proyecto> proyectosTodos = null;
+    	proyectosTodos = proyectoRepositorio.obtenerTodos();
+    	int total = proyectosTodos.size();
+    	
+    	List<Proyecto> tiposProyectoMultidisciplinario = null;            	
+    	tiposProyectoMultidisciplinario=proyectoRepositorio.buscaTipoProyectoUsuario(1);
+    	int tamMultid=tiposProyectoMultidisciplinario.size();
+    	/* Programa Especial*/
+    	List<Proyecto> tiposProyectoProgramaEspecial = null;            	
+    	tiposProyectoProgramaEspecial=proyectoRepositorio.buscaTipoProyectoUsuario(2);
+    	int tamProEsp=tiposProyectoProgramaEspecial.size();
+    	/* Propuesta de estudio*/
+    	List<Proyecto> tiposProyectoPropuestaEstudio = null;            	
+    	tiposProyectoPropuestaEstudio=proyectoRepositorio.buscaTipoProyectoUsuario(3);
+    	int tamProEst=tiposProyectoPropuestaEstudio.size();
+    	/* Proyecto individual*/
+    	List<Proyecto> tiposProyectoProyectoIndividual = null;            	
+    	tiposProyectoProyectoIndividual=proyectoRepositorio.buscaTipoProyectoUsuario(4);
+    	int tamProInd=tiposProyectoProyectoIndividual.size();
+    	/* Proyecto Red*/
+    	List<Proyecto> tiposProyectoProyectoRed = null;            	
+    	tiposProyectoProyectoRed=proyectoRepositorio.buscaTipoProyectoUsuario(5);
+    	int tamProRed=tiposProyectoProyectoRed.size();
+    	/* Proyecto Innovacion*/
+    	List<Proyecto> tiposProyectoProyectoInnovación = null;            	
+    	tiposProyectoProyectoInnovación=proyectoRepositorio.buscaTipoProyectoUsuario(6);
+    	int tamProInn=tiposProyectoProyectoInnovación.size();
+    	/* Proyecto Trabajo terminal*/
+    	List<Proyecto> tiposProyectoTT = null;            	
+    	tiposProyectoTT=proyectoRepositorio.buscaTipoProyectoUsuario(7);
+    	int tamProTT=tiposProyectoTT.size();
+    	/* Proyecto Otros*/
+    	List<Proyecto> tiposProyectoOtros = null;            	
+    	tiposProyectoOtros=proyectoRepositorio.buscaTipoProyectoUsuario(8);
+    	int tamProOtros=tiposProyectoOtros.size();
+    
+    	
+        modelo.addAttribute("tiposProyectoMultidisciplinario",tiposProyectoMultidisciplinario);
+    	modelo.addAttribute("tamMultid", tamMultid);            	
+    	modelo.addAttribute("tiposProyectoProgramaEspecial",tiposProyectoProgramaEspecial);
+    	modelo.addAttribute("tamProEsp", tamProEsp); 
+    	modelo.addAttribute("tiposProyectoPropuestaEstudio",tiposProyectoPropuestaEstudio);
+    	modelo.addAttribute("tamProEst", tamProEst); 
+    	modelo.addAttribute("tiposProyectoProyectoIndividual",tiposProyectoProyectoIndividual);
+    	modelo.addAttribute("tamProInd", tamProInd); 
+    	modelo.addAttribute("tiposProyectoProyectoRed",tiposProyectoProyectoRed);
+    	modelo.addAttribute("tamProRed", tamProRed); 
+    	modelo.addAttribute("tiposProyectoProyectoInnovación",tiposProyectoProyectoInnovación);
+    	modelo.addAttribute("tamProInn", tamProInn); 
+    	modelo.addAttribute("tiposProyectoTT",tiposProyectoTT);
+    	modelo.addAttribute("tamProTT", tamProTT); 
+    	modelo.addAttribute("tiposProyectoOtros",tiposProyectoOtros);
+    	modelo.addAttribute("tamProOtros", tamProOtros); 
+    	modelo.addAttribute("totalProyectos", total); 
+    	modelo.addAttribute("proyectosList", proyectosTodos); 
+    	
+    	
+    	
+    	
+    	return "proyectos-todos";
+    			
+    }
     
     
 }

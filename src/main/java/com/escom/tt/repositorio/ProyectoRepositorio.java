@@ -27,6 +27,9 @@ public interface ProyectoRepositorio {
     
     List<Proyecto> buscaTipoProyectoUsuario(int tipoProyecto, Usuario usu);
     
+    List<Proyecto> buscaTipoProyectoUsuario(int tipoProyecto);
+    
+    
     List<Proyecto> buscaTipoProyecto(int tipoProyecto);
     
     List<Proyecto> obtenerTodosProyectosPorGradoMedSUp();

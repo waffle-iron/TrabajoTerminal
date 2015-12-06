@@ -27,7 +27,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="${( ruta == contextoLogin) ?  'open' : ' '}">
-                        <a href="${contexto}/login">
+                        <a href="${contexto}/login" >
                             Iniciar sesión
                         </a>
                     </li>
@@ -43,6 +43,11 @@
                     <li class="${( ruta == contextoEstadisticas) ?  'open' : ' '}">
                         <a href="${contexto}/estadisticas">
                             Estadisticas del Sistema
+                        </a>
+                    </li>
+                    <li class="${( ruta == contextoEstadisticas) ?  'open' : ' '}">
+                        <a href="${contexto}/proyectos">
+                            Ver proyectos del sistema
                         </a>
                     </li>
                     

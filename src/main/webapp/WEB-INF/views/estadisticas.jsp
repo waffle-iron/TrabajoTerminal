@@ -76,7 +76,7 @@
 								</div>
 								<div class="desc">Total de proyectos</div>
 							</div>
-							<a class="more" href="javascript:;"> Ver <i
+							<a class="more" href="${contexto}/proyectos"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -94,7 +94,8 @@
 								<div class="desc">Proyectos registrados en nivel medio
 									superior</div>
 							</div>
-							<a class="more" href="javascript:;"> Ver <i
+							 
+							<a class="more" href="${contexto}/proyectos"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -106,12 +107,12 @@
 							</div>
 							<div class="details">
 								<div class="number">
-									+ <span data-counter="counterup"></span>
+									 <span data-counter="counterup"></span>
 									${totalProyectosPorGradoSup}
 								</div>
 								<div class="desc">Proyectos registrados en nivel superior</div>
 							</div>
-							<a class="more" href="javascript:;"> Ver <i
+							<a class="more" href="${contexto}/proyectos"> Ver <i
 								class="m-icon-swapright m-icon-white"></i>
 							</a>
 						</div>
@@ -145,7 +146,7 @@
 													class="fa fa-angle-down"></i>
 												</a>
 												<ul class="dropdown-menu pull-right">
-													<li><a href=""> Ver </a></li>
+													<li><a href="${contexto}/proyectos"> Ver </a></li>
 													<li class="divider"></li>
 												</ul>
 											</div>
@@ -285,9 +286,7 @@
 								</div>
 								<div class="desc">Usuarios</div>
 							</div>
-							<a class="more" href="javascript:;"> Ver <i
-								class="m-icon-swapright m-icon-white"></i>
-							</a>
+							
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -302,9 +301,7 @@
 								</div>
 								<div class="desc">Usuarios nivel medio superior</div>
 							</div>
-							<a class="more" href="javascript:;"> Ver <i
-								class="m-icon-swapright m-icon-white"></i>
-							</a>
+							
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -319,9 +316,7 @@
 								</div>
 								<div class="desc">Usuarios nivel superior</div>
 							</div>
-							<a class="more" href="javascript:;"> Ver <i
-								class="m-icon-swapright m-icon-white"></i>
-							</a>
+							
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -336,9 +331,7 @@
 								</div>
 								<div class="desc">Posgrado</div>
 							</div>
-							<a class="more" href="javascript:;"> Ver <i
-								class="m-icon-swapright m-icon-white"></i>
-							</a>
+							
 						</div>
 					</div>
 				</div>
@@ -408,9 +401,7 @@
 								</div>
 								<div class="desc">Ingeniería y Ciencias Físico Matemáticas</div>
 							</div>
-							<a class="more" href="javascript:;"> Ver <i
-								class="m-icon-swapright m-icon-white"></i>
-							</a>
+							
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -425,9 +416,7 @@
 								</div>
 								<div class="desc">Ciencias Sociales y Administrativas</div>
 							</div>
-							<a class="more" href="javascript:;"> Ver <i
-								class="m-icon-swapright m-icon-white"></i>
-							</a>
+							
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -442,9 +431,7 @@
 								</div>
 								<div class="desc">Ciencias Médico Biológicas</div>
 							</div>
-							<a class="more" href="javascript:;"> Ver <i
-								class="m-icon-swapright m-icon-white"></i>
-							</a>
+							
 						</div>
 					</div>
 					

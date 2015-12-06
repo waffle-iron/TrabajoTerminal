@@ -1,7 +1,7 @@
 <%@taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c"        uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring"   uri="http://www.springframework.org/tags" %>
-<c:url value="/" var="contexto"/>
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -115,7 +115,7 @@
         </div>
         <div class="create-account">
             <p>
-                ¿Aún no tienes una cuenta?&nbsp; <a href="${contexto}registro" id="register-btn">
+                ¿Aún no tienes una cuenta?&nbsp; <a href="${contexto}/registro" id="register-btn">
                 Regístrate</a>
             </p>
         </div>

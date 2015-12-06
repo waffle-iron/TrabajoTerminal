@@ -182,9 +182,9 @@
 								<div class="col-md-12">
 
 
-
 									<!-- BEGIN EXAMPLE TABLE PORTLET-->
 									<div class="portlet box grey">
+									
 										<div class="portlet-title">
 											<div class="caption">Mis Proyectos</div>
 											<div class="tools">
@@ -212,7 +212,7 @@
 														varStatus="loop">
 														<tr>
 															<td><a
-																href="${contexto}/proyecto/propio/${proyecto.idProyecto}">${loop.index + 1}</a>
+																href="${contexto}/proyecto/propio/${proyecto.idProyecto}" id="blockui_sample_1_3">${loop.index + 1}</a>
 															</td>
 															<td>${proyecto.nombre}</td>
 															<td>${proyecto.descripcion}</td>
@@ -232,7 +232,6 @@
 										</div>
 									</div>
 									<!-- END EXAMPLE TABLE PORTLET-->
-
 
 
 
