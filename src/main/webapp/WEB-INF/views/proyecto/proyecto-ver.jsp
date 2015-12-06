@@ -5,6 +5,8 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
