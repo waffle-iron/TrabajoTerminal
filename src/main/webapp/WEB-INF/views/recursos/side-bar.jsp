@@ -330,11 +330,11 @@
                             Perfil
                         </a>
                     </li>
-                    <li class="${( ruta == contextousuariocrear ) ?  'open' : ' '}">
-                        <a href="${contexto}/usuario/${usuario.idUsuarios}/editar ">
-                        Editar perfil
-                        </a>
-                    </li>
+<%--                     <li class="${( ruta == contextousuariocrear ) ?  'open' : ' '}"> --%>
+<%--                         <a href="${contexto}/usuario/${usuario.idUsuarios}/editar "> --%>
+<!--                         Editar perfil -->
+<!--                         </a> -->
+<!--                     </li> -->
                 </ul>
             </li>
              <li class="start ${ruta == '/trabajoterminal/' ?  'active open' : ' '}"><a href="${contexto.concat('/relacion-de-usuarios')}"> 

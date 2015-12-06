@@ -5,7 +5,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<c:url value="/" var="contexto" />
+<c:set var="contexto" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 
@@ -81,8 +81,8 @@
 											data-target=".todo-project-list-content">
 											<span class="caption-subject font-green-sharp bold uppercase">Mis Proyectos
 											</span> <span
-												class="caption-helper visible-sm-inline-block visible-xs-inline-block">click
-												to view project list</span>
+												class="caption-helper visible-sm-inline-block visible-xs-inline-block">Lista
+												</span>
 										</div>
 										<div class="actions">
 											<div class="btn-group">
@@ -322,11 +322,11 @@
 											class="btn default btn-xs grey"> <i class="fa fa-edit"></i>
 												Editar
 										</a></td>
-										<td><a
-											href="${contexto}proyecto/eliminar/${proyecto.idProyecto}"
-											class="btn default btn-xs black"> <i
-												class="fa fa-trash-o"></i> Eliminar
-										</a></td>
+<!-- 										<td><a -->
+<%-- 											href="${contexto}proyecto/eliminar/${proyecto.idProyecto}" --%>
+<!-- 											class="btn default btn-xs black"> <i -->
+<!-- 												class="fa fa-trash-o"></i> Eliminar -->
+<!-- 										</a></td> -->
 
 									</tr>
 								</c:forEach>
